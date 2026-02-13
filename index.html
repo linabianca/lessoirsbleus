@@ -308,7 +308,7 @@
 
         @media (max-width: 768px) {
             .section {
-                padding: 80px 20px 40px 20px;
+                padding: 120px 20px 50px 20px;
             }
 
             .projects-container {
@@ -323,13 +323,16 @@
 
             .poster-container {
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
+                display: flex;
+                justify-content: center;
             }
 
             .poster-container img {
                 width: 90%;
                 max-width: 280px;
                 height: auto;
+                margin-bottom: 30px;
             }
 
             .text-content {
@@ -347,23 +350,30 @@
                 padding: 8px 18px;
                 font-size: 0.7em;
                 margin-bottom: 15px;
+                display: inline-block;
             }
 
             .text-content p {
                 font-size: 1em;
                 line-height: 1.6;
                 margin-bottom: 25px;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             .button-group {
                 justify-content: center;
                 gap: 12px;
+                flex-direction: column;
+                align-items: center;
             }
 
             .btn {
                 padding: 16px 32px;
                 font-size: 0.85em;
-                min-width: 150px;
+                width: 80%;
+                min-width: 200px;
                 text-align: center;
             }
 
