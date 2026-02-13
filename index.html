@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lina Biancarelli | Autrice de Théâtre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 4px solid #C41E3A;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 900;
+        }
+
+        header p {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .scroll-nav {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .scroll-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            display: block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .scroll-nav a:hover,
+        .scroll-nav a.active {
+            background: white;
+            border-color: white;
+            width: 40px;
+            border-radius: 2px;
+        }
+
+        .scroll-nav a span {
+            display: none;
+            position: absolute;
+            right: 20px;
+            top: -2px;
+            white-space: nowrap;
+            color: white;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .scroll-nav a:hover span,
+        .scroll-nav a.active span {
+            display: block;
+        }
+
+        .projects-container {
+            padding-top: 80px;
+        }
+
+        .section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            padding: 60px 40px;
+            overflow: hidden;
+        }
+
+        /* Section 1 - Les Échecs */
+        .section:nth-child(1) {
+            background: linear-gradient(135deg, #E8B997 0%, #f0c2a8 100%);
+            color: #2a2a2a;
+        }
+
+        .section:nth-child(1) .accent {
+            color: #C41E3A;
+        }
+
+        /* Section 2 - Deux secondes */
+        .section:nth-child(2) {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2839 100%);
+            color: #e8d4a8;
+        }
+
+        .section:nth-child(2) .accent {
+            color: #f4d03f;
+        }
+
+        /* Section 3 - Mazel */
+        .section:nth-child(3) {
+            background: linear-gradient(135deg, #d4e4f0 0%, #f0ead6 100%);
+            color: #2a2a2a;
+        }
+
+        .section:nth-child(3) .accent {
+            color: #a0654e;
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .poster-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .poster-container img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 4px solid currentColor;
+        }
+
+        .section:nth-child(2) .poster-container img {
+            border-color: #f4d03f;
+        }
+
+        .section:nth-child(3) .poster-container img {
+            border-color: #a0654e;
+        }
+
+        .text-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .tag {
+            display: inline-block;
+            background: currentColor;
+            color: inherit;
+            padding: 6px 16px;
+            border-radius: 0;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .section:nth-child(1) .tag {
+            background: #C41E3A;
+            color: white;
+        }
+
+        .section:nth-child(2) .tag {
+            background: #f4d03f;
+            color: #1a3a52;
+        }
+
+        .section:nth-child(3) .tag {
+            background: #a0654e;
+            color: white;
+        }
+
+        .text-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .text-content .accent {
+            font-weight: 700;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: currentColor;
+            color: inherit;
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid currentColor;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section:nth-child(1) .btn {
+            background: #C41E3A;
+            color: white;
+            border-color: #C41E3A;
+        }
+
+        .section:nth-child(1) .btn:hover {
+            background: white;
+            color: #C41E3A;
+        }
+
+        .section:nth-child(2) .btn {
+            background: #f4d03f;
+            color: #1a3a52;
+            border-color: #f4d03f;
+        }
+
+        .section:nth-child(2) .btn:hover {
+            background: transparent;
+            color: #f4d03f;
+        }
+
+        .section:nth-child(3) .btn {
+            background: #a0654e;
+            color: white;
+            border-color: #a0654e;
+        }
+
+        .section:nth-child(3) .btn:hover {
+            background: white;
+            color: #a0654e;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-nav {
+                display: none;
+            }
+
+            .section-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .text-content h2 {
+                font-size: 2em;
+            }
+
+            .poster-container img {
+                max-width: 300px;
+            }
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-top: 4px solid #C41E3A;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Lina Biancarelli</h1>
+    <p>Autrice Dramatique & Metteuse en scène</p>
+</header>
+
+<nav class="scroll-nav">
+    <a href="#les-echecs" class="nav-dot active" data-section="0">
+        <span>Les Échecs</span>
+    </a>
+    <a href="#deux-secondes" class="nav-dot" data-section="1">
+        <span>Deux Secondes</span>
+    </a>
+    <a href="#mazel" class="nav-dot" data-section="2">
+        <span>Mazel</span>
+    </a>
+</nav>
+
+<div class="projects-container">
+    <!-- Section 1: Les Échecs -->
+    <section class="section" id="les-echecs">
+        <div class="section-content">
+            <div class="poster-container">
+                <img src="assets/les-echecs-affiche.jpeg" alt="Les Échecs">
+            </div>
+            <div class="text-content">
+                <span class="tag">Comédie</span>
+                <h2>Les Échecs</h2>
+                <p>Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
+                <div class="button-group">
+                    <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn">Voir l'édition</a>
+                    <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn">Vidéo</a>
+                    <a href="les-echecs.html" class="btn">Détails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Deux secondes avant l'extase -->
+    <section class="section" id="deux-secondes">
+        <div class="section-content">
+            <div class="poster-container">
+                <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
+            </div>
+            <div class="text-content">
+                <span class="tag">Tragédie moderne</span>
+                <h2>Deux secondes avant l'extase</h2>
+                <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
+                <div class="button-group">
+                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir l'édition</a>
+                    <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn">Vidéo</a>
+                    <a href="deux-secondes.html" class="btn">Détails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Mazel -->
+    <section class="section" id="mazel">
+        <div class="section-content">
+            <div class="poster-container">
+                <img src="assets/mazel-affiche.jpeg" alt="Mazel">
+            </div>
+            <div class="text-content">
+                <span class="tag">Comédie familiale</span>
+                <h2>Mazel</h2>
+                <p>Un joyeux chaos familial franco-algérien où l'on jongle avec les héritages et les contradictions.</p>
+                <div class="button-group">
+                    <a href="mazel.html" class="btn">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+</footer>
+
+<script>
+    // Navigation dot highlighting on scroll
+    const sections = document.querySelectorAll('.section');
+    const navDots = document.querySelectorAll('.nav-dot');
+
+    window.addEventListener('scroll', () => {
+        let current = 0;
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+                current = index;
+            }
+        });
+
+        navDots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === current) {
+                dot.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Échecs | Lina Biancarelli</title>
+    <style>
+        :root {
+            --bg-color: #fdfcf8;
+            --text-color: #2c3e50;
+            --accent-color: #e67e22;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .play-detail {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .play-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .play-poster {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .play-poster img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .play-info h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: var(--text-color);
+        }
+
+        .play-info .tag {
+            display: inline-block;
+            background: #eee;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .performance-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .performance-item strong {
+            color: var(--accent-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--text-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .play-header {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            font-size: 0.9em;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Lina Biancarelli</h1>
+    <p>Autrice Dramatique & Metteuse en scène</p>
+</header>
+
+<div class="container">
+    <a href="index.html" class="back-link">← Retour aux pièces</a>
+
+    <div class="play-detail">
+        <div class="play-header">
+            <div class="play-poster">
+                <img src="assets/les-echecs-affiche.jpeg" alt="Les Échecs">
+            </div>
+            <div class="play-info">
+                <span class="tag">Comédie</span>
+                <h2>Les Échecs</h2>
+                <p>Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
+                
+                <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn">Voir l'édition Albiana</a>
+                <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn">Regarder la vidéo</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Historique des représentations</h3>
+            <p>Ajoutez ici les dates et lieux de représentation...</p>
+            <!-- Template pour les performances -->
+            <div class="performance-item">
+                <strong>Date:</strong> À compléter<br>
+                <strong>Lieu:</strong> À compléter<br>
+                <strong>Compagnie:</strong> Troupe des Soirs bleus
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Galerie photos</h3>
+            <p>Les photos des représentations apparaîtront ici une fois ajoutées à l'ordre des assets...</p>
+            <div class="gallery">
+                <!-- Images will go here -->
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Synopsis détaillé</h3>
+            <p>Vous pouvez ajouter une description plus longue de la pièce ici...</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+</footer>
+
+</body>
+</html>
