@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Troupe des Soirs Bleus | Lina Biancarelli</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a3a52 0%, #2a5a7a 50%, #0f2839 100%);
+            color: #e8d4a8;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 4px solid #7fd4d4;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #7fd4d4;
+            font-weight: 900;
+        }
+
+        header p {
+            font-style: italic;
+            color: rgba(127, 212, 212, 0.7);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 140px 30px 60px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #7fd4d4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid #7fd4d4;
+            padding: 12px 24px;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            background: #7fd4d4;
+            color: #0f2839;
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-title h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #7fd4d4;
+        }
+
+        .page-title p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Kaleidoscope Grid */
+        .actors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .actor-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            border: 6px solid #7fd4d4;
+            box-shadow: 0 0 0 2px #0f2839, 0 15px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            background: #1a3a52;
+        }
+
+        .actor-card:hover {
+            transform: scale(1.08) rotateY(5deg);
+            box-shadow: 0 0 0 2px #0f2839, 0 25px 60px rgba(127, 212, 212, 0.4);
+            border-color: #a8e8e8;
+        }
+
+        .actor-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: all 0.4s ease;
+        }
+
+        .actor-card:hover img {
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        /* Image framing adjustments for specific actors */
+        .actor-card:nth-child(2) img { object-position: center 25%; } /* Anissa */
+        .actor-card:nth-child(3) img { object-position: center 30%; } /* Cécile */
+        .actor-card:nth-child(7) img { object-position: center 20%; } /* Maymouna */
+        .actor-card:nth-child(9) img { object-position: center 35%; } /* Valentin */
+        .actor-card:nth-child(10) img { object-position: center 25%; } /* Victor */
+        .actor-card:nth-child(8) img { object-position: center 25%; } /* Tania */
+        .actor-card:nth-child(5) img { object-position: center 30%; } /* Ilias */
+        .actor-card:nth-child(6) img { object-position: center 25%; } /* Lina Chelha / Alessandra */
+
+        /* Placeholder card for missing photos */
+        .actor-card.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-style: dashed;
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .actor-card.placeholder:hover {
+            transform: scale(1.02);
+            opacity: 0.85;
+        }
+
+        .placeholder-content {
+            text-align: center;
+            color: #7fd4d4;
+        }
+
+        .placeholder-content .actor-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .placeholder-content .coming-soon {
+            font-size: 0.85em;
+            opacity: 0.7;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .actor-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 40, 57, 0.95), transparent);
+            color: #7fd4d4;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            height: 100%;
+        }
+
+        .actor-card:hover .actor-overlay {
+            transform: translateY(0);
+        }
+
+        .actor-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Grid */
+        @media (max-width: 1200px) {
+            .actors-grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .container {
+                padding: 120px 20px 40px;
+            }
+
+            .page-title h2 {
+                font-size: 2em;
+            }
+
+            .actors-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 15px;
+            }
+
+            .back-link {
+                font-size: 0.85em;
+                padding: 10px 18px;
+            }
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: #e8d4a8;
+            text-align: center;
+            padding: 40px;
+            border-top: 4px solid #7fd4d4;
+            font-size: 0.9em;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" style="text-decoration: none; color: inherit;">
+        <h1>La Troupe des Soirs Bleus</h1>
+        <p>Les acteurs et actrices au cœur de nos créations</p>
+    </a>
+</header>
+
+<div class="container">
+    <a href="index.html" class="back-link">← Retour</a>
+
+    <div class="page-title">
+        <h2>La Troupe des Soirs Bleus</h2>
+        <p>Découvrez les talentueuses actrices et acteurs qui donnent vie à nos créations théâtrales</p>
+    </div>
+
+    <div class="actors-grid">
+        <div class="actor-card">
+            <img src="assets/photo troupe/Ale.jpg" alt="Ale">
+            <div class="actor-overlay">
+                <span class="actor-name">Ale</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Anissa.png" alt="Anissa">
+            <div class="actor-overlay">
+                <span class="actor-name">Anissa</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Cecile.jpg" alt="Cécile">
+            <div class="actor-overlay">
+                <span class="actor-name">Cécile</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Clemence 1.jpg" alt="Clémence">
+            <div class="actor-overlay">
+                <span class="actor-name">Clémence</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Ilias.png" alt="Ilias">
+            <div class="actor-overlay">
+                <span class="actor-name">Ilias</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/LinaChelha.png" alt="Lina Chelha">
+            <div class="actor-overlay">
+                <span class="actor-name">Lina Chelha</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Maymouna.png" alt="Maymouna">
+            <div class="actor-overlay">
+                <span class="actor-name">Maymouna</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Tania.png" alt="Tania">
+            <div class="actor-overlay">
+                <span class="actor-name">Tania</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Valentin.png" alt="Valentin">
+            <div class="actor-overlay">
+                <span class="actor-name">Valentin</span>
+            </div>
+        </div>
+
+        <div class="actor-card">
+            <img src="assets/photo troupe/Victor.png" alt="Victor">
+            <div class="actor-overlay">
+                <span class="actor-name">Victor</span>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Fleur</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Sabrina</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Anaïs</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Julie</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Frédérique</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Eliot</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Lara</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Jeanne</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder">
+            <div class="placeholder-content">
+                <div class="actor-name">Tanja</div>
+                <div class="coming-soon">À venir</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+</footer>
+
+</body>
+</html>
