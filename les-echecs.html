@@ -298,38 +298,123 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .hero-content h2 {
-                font-size: 1.5em;
-            }
-
             .container {
                 max-width: 100%;
                 padding: 100px 15px 30px;
+            }
+
+            .back-link {
+                display: block;
+                margin-bottom: 30px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+                text-align: center;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-bottom: 60px;
+            }
+
+            .hero-poster {
+                order: -1;
+                margin-bottom: 20px;
+            }
+
+            .hero-poster img {
+                width: 100%;
+                max-width: 240px;
+                height: auto;
+            }
+
+            .hero-content h2 {
+                font-size: 1.4em;
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            .hero-content p {
+                font-size: 0.95em;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            .tag {
+                padding: 10px 20px;
+                font-size: 0.7em;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .btn {
+                padding: 16px 28px;
+                font-size: 0.85em;
+                width: 100%;
+                text-align: center;
             }
 
             header h1 {
                 font-size: 1.3em;
             }
 
-            .hero-poster img {
-                max-width: 250px;
+            header p {
+                font-size: 0.8em;
             }
 
-            .hero-content p {
-                font-size: 1em;
+            .section {
+                margin-bottom: 50px;
+            }
+
+            .section h3 {
+                font-size: 1.4em;
+                padding-bottom: 12px;
+                margin-bottom: 25px;
             }
 
             .video-container {
                 margin-bottom: 30px;
+                border-width: 3px;
             }
 
-            .section h3 {
-                font-size: 1.5em;
+            .description-text {
+                padding: 20px;
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 200px;
+            }
+
+            .performance-item {
+                padding: 15px;
+                font-size: 0.95em;
+                margin-bottom: 12px;
+            }
+
+            .credits {
+                padding: 20px;
+                font-size: 0.9em;
+            }
+
+            .info-box {
+                padding: 15px;
+                font-size: 0.95em;
+            }
+
+            footer {
+                padding: 30px 15px;
+                font-size: 0.85em;
+                margin-top: 60px;
             }
         }
     </style>
