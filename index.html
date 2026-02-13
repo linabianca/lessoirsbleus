@@ -52,13 +52,15 @@
 
         .scroll-nav {
             position: fixed;
-            right: 30px;
+            right: 0px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 50;
+            z-index: 3;
             display: flex;
             flex-direction: column;
             gap: 20px;
+            pointer-events: auto;
+            padding-right: 8px;
         }
 
         .scroll-nav a {
@@ -70,27 +72,31 @@
             transition: all 0.3s ease;
             cursor: pointer;
             border: 2px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: visible;
         }
 
         .scroll-nav a:hover,
         .scroll-nav a.active {
             background: white;
             border-color: white;
-            width: 40px;
+            width: 120px;
             border-radius: 2px;
         }
 
         .scroll-nav a span {
             display: none;
             position: absolute;
-            right: 20px;
-            top: -2px;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
             white-space: nowrap;
-            color: white;
-            font-size: 0.9em;
+            color: #1a3a52;
+            font-size: 0.85em;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
+            z-index: 5;
         }
 
         .scroll-nav a:hover span,
@@ -111,6 +117,8 @@
             scroll-snap-stop: always;
             padding: 100px 40px 60px 40px;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         /* Section 1 - Mazel */
@@ -151,6 +159,8 @@
             justify-items: center;
             width: 100%;
             max-width: 1400px;
+            position: relative;
+            z-index: 2;
         }
 
         .poster-container {
@@ -166,6 +176,13 @@
             height: auto;
             box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
             border: 4px solid currentColor;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .poster-container img:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 35px 100px rgba(0, 0, 0, 0.6);
         }
 
         .section:nth-child(2) .poster-container img {
@@ -178,6 +195,10 @@
 
         .text-content {
             width: 100%;
+            position: relative;
+            z-index: 10;
+            padding-left: 20px;
+            margin-right: 80px;
         }
 
         .text-content h2 {
@@ -307,6 +328,10 @@
         }
 
         @media (max-width: 768px) {
+            .scroll-nav {
+                display: none !important;
+            }
+
             .section {
                 padding: 120px 20px 80px 20px;
                 height: auto;
@@ -341,6 +366,9 @@
                 width: 100%;
                 text-align: center;
                 padding: 0 10px;
+                position: relative;
+                z-index: 10;
+                margin-right: 0;
             }
 
             .text-content h2 {
