@@ -163,7 +163,7 @@
 
         /* Section 5 - À propos */
         .section:nth-child(5) {
-            background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+            background: linear-gradient(135deg, rgba(74, 74, 74, 0.85) 0%, rgba(106, 106, 106, 0.85) 100%);
             color: #f0e8d8;
         }
 
@@ -421,6 +421,7 @@
                 position: relative;
                 z-index: 10;
                 margin-right: 0;
+                padding-left: 0;
             }
 
             .text-content h2 {
@@ -460,6 +461,20 @@
                 max-width: 300px;
                 text-align: center;
                 display: inline-block;
+            }
+
+            /* Mobile styles for new sections */
+            .section:nth-child(4) .text-content,
+            .section:nth-child(5) .text-content {
+                padding: 0 15px;
+            }
+
+            .section:nth-child(4) .text-content h2 {
+                font-size: 1.6em;
+            }
+
+            .section:nth-child(5) .poster-container img {
+                max-width: 250px;
             }
 
             header h1 {
