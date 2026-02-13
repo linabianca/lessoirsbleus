@@ -151,6 +151,26 @@
             color: #C41E3A;
         }
 
+        /* Section 4 - Projets à venir */
+        .section:nth-child(4) {
+            background: linear-gradient(135deg, #2c5f5f 0%, #3a7c7c 100%);
+            color: #e8f4f4;
+        }
+
+        .section:nth-child(4) .accent {
+            color: #7fd4d4;
+        }
+
+        /* Section 5 - À propos */
+        .section:nth-child(5) {
+            background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+            color: #f0e8d8;
+        }
+
+        .section:nth-child(5) .accent {
+            color: #d4a574;
+        }
+
         .section-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -238,6 +258,16 @@
             color: white;
         }
 
+        .section:nth-child(4) .tag {
+            background: #7fd4d4;
+            color: #1a4a4a;
+        }
+
+        .section:nth-child(5) .tag {
+            background: #d4a574;
+            color: #2a2a2a;
+        }
+
         .text-content p {
             font-size: 1.1em;
             line-height: 1.8;
@@ -301,6 +331,28 @@
         .section:nth-child(3) .btn:hover {
             background: white;
             color: #C41E3A;
+        }
+
+        .section:nth-child(4) .btn {
+            background: #7fd4d4;
+            color: #1a4a4a;
+            border-color: #7fd4d4;
+        }
+
+        .section:nth-child(4) .btn:hover {
+            background: transparent;
+            color: #7fd4d4;
+        }
+
+        .section:nth-child(5) .btn {
+            background: #d4a574;
+            color: #2a2a2a;
+            border-color: #d4a574;
+        }
+
+        .section:nth-child(5) .btn:hover {
+            background: transparent;
+            color: #d4a574;
         }
 
         .btn:hover {
@@ -446,6 +498,12 @@
     <a href="#les-echecs" class="nav-dot" data-section="2">
         <span>Les Échecs</span>
     </a>
+    <a href="#projets-a-venir" class="nav-dot" data-section="3">
+        <span>À Venir</span>
+    </a>
+    <a href="#a-propos" class="nav-dot" data-section="4">
+        <span>À Propos</span>
+    </a>
 </nav>
 
 <div class="projects-container">
@@ -473,7 +531,7 @@
                 <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
             </div>
             <div class="text-content">
-                <span class="tag">Tragédie moderne</span>
+                <span class="tag">Tragédie</span>
                 <h2>Deux secondes avant l'extase</h2>
                 <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
                 <div class="button-group">
@@ -499,6 +557,39 @@
                     <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn">Voir le livre</a>
                     <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn">Vidéo</a>
                     <a href="les-echecs.html" class="btn">Détails</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Projets à venir -->
+    <section class="section" id="projets-a-venir">
+        <div class="section-content">
+            <div class="text-content">
+                <span class="tag">À venir</span>
+                <h2>Projets à Venir</h2>
+                <p><span class="accent">Ophelia au bord du gouffre</span> — Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</p>
+                <p><span class="accent">Oedipe</span> — Un projet en développement, mais dont le nom en révèle déjà trop!</p>
+                <div class="button-group">
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me Contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: À propos -->
+    <section class="section" id="a-propos">
+        <div class="section-content">
+            <div class="poster-container">
+                <img src="assets/photo troupe/Lina 21.jpg" alt="Lina Biancarelli">
+            </div>
+            <div class="text-content">
+                <span class="tag">Biographie</span>
+                <h2>À Propos</h2>
+                <p>Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd'hui résidente en Italie.</p>
+                <p>Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre.</p>
+                <div class="button-group">
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me Contacter</a>
                 </div>
             </div>
         </div>
