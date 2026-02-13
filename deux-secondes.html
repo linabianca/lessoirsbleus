@@ -5,169 +5,332 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deux secondes avant l'extase | Lina Biancarelli</title>
     <style>
-        :root {
-            --bg-color: #fdfcf8;
-            --text-color: #2c3e50;
-            --accent-color: #e67e22;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2839 100%);
+            color: #e8d4a8;
             line-height: 1.6;
         }
 
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
             text-align: center;
-            padding: 60px 20px;
-            background: white;
-            border-bottom: 1px solid #eee;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 4px solid #f4d03f;
+            backdrop-filter: blur(10px);
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 1.8em;
             letter-spacing: 2px;
             text-transform: uppercase;
+            color: #f4d03f;
+            font-weight: 900;
         }
 
         header p {
             font-style: italic;
-            color: #7f8c8d;
+            color: rgba(244, 208, 63, 0.7);
+            font-size: 0.9em;
+            margin-top: 5px;
         }
 
         .container {
             max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 120px 30px 40px;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 30px;
-            color: var(--accent-color);
+            margin-bottom: 40px;
+            margin-top: 20px;
+            color: #f4d03f;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid #f4d03f;
+            padding: 12px 24px;
+            white-space: nowrap;
         }
 
         .back-link:hover {
-            text-decoration: underline;
+            background: #f4d03f;
+            color: #1a3a52;
         }
 
-        .play-detail {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .play-header {
+        /* Hero Section */
+        .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-            align-items: start;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
         }
 
-        .play-poster {
-            width: 100%;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .hero-poster {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .play-poster img {
+        .hero-poster img {
             width: 100%;
+            max-width: 320px;
             height: auto;
-            display: block;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 5px solid #f4d03f;
         }
 
-        .play-info h2 {
-            margin-top: 0;
-            font-size: 2em;
-            color: var(--text-color);
+        .hero-content h2 {
+            font-size: 2.2em;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f4d03f;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
-        .play-info .tag {
+        .tag {
             display: inline-block;
-            background: #eee;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 0.9em;
-            margin-bottom: 15px;
+            background: #f4d03f;
+            color: #1a3a52;
+            padding: 8px 20px;
+            border-radius: 0;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
-        .section {
+        .hero-content p {
+            font-size: 1.2em;
+            line-height: 1.8;
             margin-bottom: 30px;
+            opacity: 0.95;
         }
 
-        .section h3 {
-            color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
+        .info-box {
+            background: rgba(244, 208, 63, 0.1);
+            border-left: 5px solid #f4d03f;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0;
         }
 
-        .performance-item {
-            background: #f9f9f9;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--accent-color);
-            border-radius: 4px;
+        .info-box strong {
+            color: #f4d03f;
         }
 
-        .performance-item strong {
-            color: var(--accent-color);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--text-color);
-            color: white;
+            padding: 14px 28px;
+            background: #f4d03f;
+            color: #1a3a52;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 0;
             font-size: 0.9em;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #f4d03f;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background: var(--accent-color);
+            background: transparent;
+            color: #f4d03f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(244, 208, 63, 0.3);
         }
 
-        @media (max-width: 768px) {
-            .play-header {
-                grid-template-columns: 1fr;
-            }
+        /* YouTube Section */
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h3 {
+            font-size: 2em;
+            color: #f4d03f;
+            border-bottom: 3px solid #f4d03f;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 5px solid #f4d03f;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Description Section */
+        .description-text {
+            background: rgba(244, 208, 63, 0.05);
+            padding: 30px;
+            border-left: 5px solid #f4d03f;
+            margin-bottom: 40px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border: 4px solid #f4d03f;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(244, 208, 63, 0.2);
+        }
+
+        /* Performance History */
+        .performance-item {
+            background: rgba(244, 208, 63, 0.1);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #f4d03f;
+            border-radius: 0;
+        }
+
+        .performance-item strong {
+            color: #f4d03f;
+        }
+
+        /* Credits Section */
+        .credits {
+            background: rgba(244, 208, 63, 0.05);
+            padding: 30px;
+            border: 2px solid #f4d03f;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .credits p {
+            margin: 10px 0;
+        }
+
+        .credits strong {
+            color: #f4d03f;
         }
 
         footer {
+            background: rgba(0, 0, 0, 0.5);
+            color: #e8d4a8;
             text-align: center;
             padding: 40px;
-            margin-top: 60px;
+            border-top: 4px solid #f4d03f;
             font-size: 0.9em;
-            border-top: 1px solid #eee;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8em;
+            }
+
+            .container {
+                padding: 120px 20px 40px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5em;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 100px 15px 30px;
+            }
+
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            .hero-poster img {
+                max-width: 250px;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .video-container {
+                margin-bottom: 30px;
+            }
+
+            .section h3 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -179,84 +342,104 @@
 </header>
 
 <div class="container">
-    <a href="index.html" class="back-link">← Retour aux pièces</a>
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
 
-    <div class="play-detail">
-        <div class="play-header">
-            <div class="play-poster">
-                <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
-            </div>
-            <div class="play-info">
-                <span class="tag">Tragédie moderne</span>
-                <h2>Deux secondes avant l'extase</h2>
-                <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
-                
-                <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir l'édition Albiana</a>
-                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn">Regarder la vidéo</a>
-            </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-poster">
+            <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
         </div>
-
-        <div class="section">
-            <h3>Historique des représentations</h3>
-            <p>Ajoutez ici les dates et lieux de représentation...</p>
-            <!-- Template pour les performances -->
-            <div class="performance-item">
-                <strong>Date:</strong> À compléter<br>
-                <strong>Lieu:</strong> À compléter<br>
-                <strong>Compagnie:</strong> Troupe des Soirs bleus
+        <div class="hero-content">
+            <span class="tag">Tragédie moderne</span>
+            <h2>Deux secondes avant l'extase</h2>
+            <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
+            
+            <div class="info-box">
+                <strong>Édition :</strong> Albiana<br>
+                <strong>Compagnie :</strong> Troupe des Soirs bleus<br>
+                <strong>Soutien :</strong> La Ménagerie AG
             </div>
-        </div>
 
-        <div class="section">
-            <h3>Galerie photos</h3>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_4713.jpg" alt="Deux secondes avant l'extase - Photo 1">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_4860.jpg" alt="Deux secondes avant l'extase - Photo 2">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_4879.jpg" alt="Deux secondes avant l'extase - Photo 3">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5041.jpg" alt="Deux secondes avant l'extase - Photo 4">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5063.jpg" alt="Deux secondes avant l'extase - Photo 5">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5153.jpg" alt="Deux secondes avant l'extase - Photo 6">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5230.jpg" alt="Deux secondes avant l'extase - Photo 7">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5420.jpg" alt="Deux secondes avant l'extase - Photo 8">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5548.jpg" alt="Deux secondes avant l'extase - Photo 9">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5554.jpg" alt="Deux secondes avant l'extase - Photo 10">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/deux secondes/IMG_5645.jpg" alt="Deux secondes avant l'extase - Photo 11">
-                </div>
+            <div class="button-group">
+                <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir l'édition</a>
+                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn">Regarder</a>
             </div>
-        </div>
-
-        <div class="section">
-            <h3>Synopsis détaillé</h3>
-            <p>Vous pouvez ajouter une description plus longue de la pièce ici...</p>
-        </div>
-
-        <div class="section">
-            <h3>Crédits photos</h3>
-            <p>Photographies par : À compléter</p>
-            <p style="font-size: 0.9em; color: #7f8c8d; margin-top: 10px;">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
         </div>
     </div>
+
+    <!-- Video Section -->
+    <div class="section">
+        <h3>Bande annonce</h3>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/b2g6xKHCNzY" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="section">
+        <h3>Synopsis détaillé</h3>
+        <div class="description-text">
+            <p>Vous pouvez ajouter une description plus longue et détaillée de la pièce ici, incluant le contexte de création, les thèmes principaux, et l'interprétation personnelle apportée à cette adaptation de l'Antigone classique.</p>
+        </div>
+    </div>
+
+    <!-- Performances Section -->
+    <div class="section">
+        <h3>Historique des représentations</h3>
+        <div class="performance-item">
+            <strong>Date :</strong> À compléter<br>
+            <strong>Lieu :</strong> À compléter<br>
+            <strong>Compagnie :</strong> Troupe des Soirs bleus
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="section">
+        <h3>Galerie photos</h3>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4713.jpg" alt="Photo de représentation 1">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4860.jpg" alt="Photo de représentation 2">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4879.jpg" alt="Photo de représentation 3">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5041.jpg" alt="Photo de représentation 4">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5063.jpg" alt="Photo de représentation 5">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5153.jpg" alt="Photo de représentation 6">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5230.jpg" alt="Photo de représentation 7">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5420.jpg" alt="Photo de représentation 8">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5548.jpg" alt="Photo de représentation 9">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5554.jpg" alt="Photo de représentation 10">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5645.jpg" alt="Photo de représentation 11">
+            </div>
+        </div>
+    </div>
+
+    <!-- Credits Section -->
+    <div class="credits">
+        <h3 style="color: #f4d03f; margin-top: 0;">Crédits photos</h3>
+        <p><strong>Photographies par :</strong> À compléter</p>
+        <p style="font-size: 0.95em; opacity: 0.8;">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
+    </div>
+
 </div>
 
 <footer>
