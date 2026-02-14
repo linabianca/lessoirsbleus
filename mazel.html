@@ -210,6 +210,8 @@
             margin-bottom: 40px;
             font-size: 1.05em;
             line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         /* Gallery Section */
@@ -266,6 +268,39 @@
 
         .credits strong {
             color: #a0654e;
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #a0654e;
+            border-color: #a0654e;
         }
 
         footer {
@@ -407,6 +442,8 @@
                 line-height: 1.6;
                 max-width: 90%;
                 margin: 0 auto 40px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
             }
 
             .gallery {
@@ -449,11 +486,18 @@
 
 <header>
     <h1>Lina Biancarelli</h1>
-    <p>Autrice de théâtre</p>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
 </header>
 
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+</div>
+
 <div class="container">
-    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -461,26 +505,26 @@
             <img src="assets/mazel-affiche.jpeg" alt="Mazel">
         </div>
         <div class="hero-content">
-            <span class="tag">Comédie familiale</span>
-            <h2>Mazel</h2>
-            <p>Un joyeux chaos familial franco-algérien où l'on jongle avec les héritages et les contradictions.</p>
+            <span class="tag" data-i18n="mazel.tag">Comédie familiale</span>
+            <h2 data-i18n="mazel.title">Mazel</h2>
+            <p data-i18n="mazel.short-desc">Un joyeux chaos familial franco-algérien où l'on jongle avec les héritages et les contradictions.</p>
             
             <div class="info-box">
-                <strong>Édition :</strong> Albiana<br>
-                <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #a0654e; text-decoration: none; border-bottom: 2px solid #a0654e; transition: all 0.3s ease;">Troupe des Soirs bleus</a><br>
-                <strong>Mise en scène originale :</strong> Anissa Raiss<br>
-                <strong>Soutien :</strong> La Ménagerie AG
+                <strong data-i18n="label.edition">Édition :</strong> Albiana<br>
+                <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #a0654e; text-decoration: none; border-bottom: 2px solid #a0654e; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a><br>
+                <strong data-i18n="label.direction">Mise en scène originale :</strong> Anissa Raiss<br>
+                <strong data-i18n="label.support">Soutien :</strong> La Ménagerie AG
             </div>
 
             <div class="button-group">
-                <a href="https://www.albiana.fr/accueil/mazel.html" target="_blank" class="btn">Voir l'édition</a>
+                <a href="https://www.albiana.fr/accueil/mazel.html" target="_blank" class="btn" data-i18n="btn.see-edition">Voir l'édition</a>
             </div>
         </div>
     </div>
 
     <!-- Video Section (optional) -->
     <div class="section">
-        <h3>Captation</h3>
+        <h3 data-i18n="mazel.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen="" loading="lazy"></iframe>
         </div>
@@ -488,8 +532,8 @@
 
     <!-- Description Section -->
     <div class="section">
-        <h3>Synopsis</h3>
-        <div class="description-text">
+        <h3 data-i18n="label.synopsis">Synopsis</h3>
+        <div class="description-text" data-i18n="mazel.description">
             <p>L'histoire suit Thiziri, une jeune femme en quête de repères, qui revient passer quatre jours dans sa famille. Entre les matelas posés à même le sol et les odeurs de café, elle se retrouve plongée dans le « joyeux bordel » familial. Sa mémé Houria cache ses médicaments (ou des Tic-Tac) dans son soutien-gorge, tandis que son oncle Bilal cherche sa place de chef de famille à travers une spiritualité rigoureuse, espérant ne plus être un étranger nulle part.</p>
             <p>Dans cette maison où tout le monde se parle sans toujours se comprendre, Thiziri tente de mener l'enquête. Pourquoi sa grand-mère cache-t-elle son passeport ? Pourquoi ne dit-elle jamais où elle va ? Où va sa tante à l'heure de la prière et quelle est cette mystérieuse odeur qui vient de sa chambre ? Qui est ce chauffeur de poids-lourds qui semble toujours tombé à point nommé ?</p>
             <p>De la colocation improvisée dans le salon aux hôtels de Louxor, Mazel est un voyage qui nous rappelle que, malgré les déchirements de l'exil et les blessures du passé, l'amour familial est une forme de magie.</p>
@@ -499,14 +543,14 @@
 
     <!-- Performances Section -->
     <div class="section">
-        <h3>Historique des représentations</h3>
+        <h3 data-i18n="label.performances">Historique des représentations</h3>
         <div class="performance-item">
-            <strong>Date :</strong> 5 février 2026<br>
-            <strong>Lieu :</strong> ACUD Theater Berlin<br>
-            <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #a0654e; text-decoration: none; border-bottom: 2px solid #a0654e; transition: all 0.3s ease;">Troupe des Soirs bleus</a>
+            <strong data-i18n="label.date">Date :</strong> 5 février 2026<br>
+            <strong data-i18n="label.location">Lieu :</strong> ACUD Theater Berlin<br>
+            <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #a0654e; text-decoration: none; border-bottom: 2px solid #a0654e; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a>
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;">Distribution originale</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.cast">Distribution originale</h3>
         <div class="performance-item">
             <strong>Thiziri :</strong> Anaïs Tazibt<br>
             <strong>Houria :</strong> Valentin Tesseron<br>
@@ -523,7 +567,7 @@
 
     <!-- Gallery Section -->
     <div class="section">
-        <h3>Galerie photos</h3>
+        <h3 data-i18n="label.gallery">Galerie photos</h3>
         <div class="gallery">
             <!-- Ajoutez les images de la galerie ici -->
         </div>
@@ -531,17 +575,166 @@
 
     <!-- Credits Section -->
     <div class="credits">
-        <h3 style="color: #a0654e; margin-top: 0;">Crédits photos</h3>
-        <p><strong>Photographies par :</strong></p>
-        <p><strong>Affiche créée par :</strong> Léa Giboni</p>
-        <p style="font-size: 0.95em; opacity: 0.8;">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
+        <h3 style="color: #a0654e; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
+        <p><strong data-i18n="label.photos-by">Photographies par :</strong></p>
+        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Léa Giboni</p>
+        <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
     </div>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
 </footer>
 
-</body>
-</html>
+<script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Autrice de théâtre',
+            'btn.back': '← Retour à l\'accueil',
+            'mazel.tag': 'Comédie familiale',
+            'mazel.title': 'Mazel',
+            'mazel.short-desc': 'Un joyeux chaos familial franco-algérien où l\'on jongle avec les héritages et les contradictions.',
+            'mazel.video-section': 'Captation',
+            'mazel.description': 'L\'histoire suit Thiziri, une jeune femme en quête de repères, qui revient passer quatre jours dans sa famille. Entre les matelas posés à même le sol et les odeurs de café, elle se retrouve plongée dans le « joyeux bordel » familial. Sa mémé Houria cache ses médicaments (ou des Tic-Tac) dans son soutien-gorge, tandis que son oncle Bilal cherche sa place de chef de famille à travers une spiritualité rigoureuse, espérant ne plus être un étranger nulle part.\n\nDans cette maison où tout le monde se parle sans toujours se comprendre, Thiziri tente de mener l\'enquête. Pourquoi sa grand-mère cache-t-elle son passeport ? Pourquoi ne dit-elle jamais où elle va ? Où va sa tante à l\'heure de la prière et quelle est cette mystérieuse odeur qui vient de sa chambre ? Qui est ce chauffeur de poids-lourds qui semble toujours tombé à point nommé ?\n\nDe la colocation improvisée dans le salon aux hôtels de Louxor, Mazel est un voyage qui nous rappelle que, malgré les déchirements de l\'exil et les blessures du passé, l\'amour familial est une forme de magie.\n\n« Mazel » : parce que tout n\'est pas encore dit, parce que la vie continue, encore et toujours.',
+            'label.edition': 'Édition :',
+            'label.company': 'Compagnie :',
+            'label.direction': 'Mise en scène originale :',
+            'label.support': 'Soutien :',
+            'btn.see-edition': 'Voir l\'édition',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Historique des représentations',
+            'label.date': 'Date :',
+            'label.location': 'Lieu :',
+            'label.cast': 'Distribution originale',
+            'label.gallery': 'Galerie photos',
+            'label.photo-credits': 'Crédits photos',
+            'label.photos-by': 'Photographies par :',
+            'label.poster-by': 'Affiche créée par :',
+            'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
+            'company.name': 'Troupe des Soirs bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'btn.back': '← Back Home',
+            'mazel.tag': 'Family Comedy',
+            'mazel.title': 'Mazel',
+            'mazel.short-desc': 'A joyful Franco-Algerian family chaos where we juggle heritages and contradictions.',
+            'mazel.video-section': 'Capture',
+            'mazel.description': 'The story follows Thiziri, a young woman searching for her bearings, who returns to spend four days with her family. Between mattresses on the floor and the smell of coffee, she finds herself plunged into the "joyful mess" of family life. Her grandmother Houria hides her medications (or Tic-Tacs) in her bra, while her uncle Bilal seeks his place as head of family through rigorous spirituality, hoping no longer to be a stranger anywhere.\n\nIn this house where everyone talks without always understanding each other, Thiziri attempts to investigate. Why does her grandmother hide her passport? Why does she never say where she\'s going? Where does her aunt go at prayer time and what is that mysterious smell coming from her room? Who is this truck driver who seems to always show up at just the right moment?\n\nFrom improvisational living in the living room to hotels in Luxor, Mazel is a journey that reminds us that, despite the tears of exile and the wounds of the past, family love is a form of magic.\n\n"Mazel": because not everything has been said yet, because life continues, again and again.',
+            'label.edition': 'Edition:',
+            'label.company': 'Company:',
+            'label.direction': 'Original Direction:',
+            'label.support': 'Support:',
+            'btn.see-edition': 'See Edition',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Performance History',
+            'label.date': 'Date:',
+            'label.location': 'Location:',
+            'label.cast': 'Original Cast',
+            'label.gallery': 'Photo Gallery',
+            'label.photo-credits': 'Photo Credits',
+            'label.photos-by': 'Photos by:',
+            'label.poster-by': 'Poster by:',
+            'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'btn.back': '← INDIETRO',
+            'mazel.tag': 'Commedia Familiare',
+            'mazel.title': 'Mazel',
+            'mazel.short-desc': 'Un gioioso caos familiare franco-algerino dove si giocolano ereditaggi e contraddizioni.',
+            'mazel.video-section': 'Registrazione',
+            'mazel.description': 'La storia segue Thiziri, una giovane donna in cerca di orientamento, che ritorna per trascorrere quattro giorni con la sua famiglia. Tra materassi sul pavimento e odori di caffè, si ritrova immersa nel "glorioso caos" della vita familiare. Sua nonna Houria nasconde i suoi medicinali (o Tic-Tac) nel reggiseno, mentre suo zio Bilal cerca il suo posto da capo famiglia attraverso una spiritualità rigorosa, sperando di non essere più straniero da nessuna parte.\n\nIn questa casa dove tutti parlano senza sempre comprendersi, Thiziri tenta di indagare. Perché sua nonna nasconde il passaporto? Perché non dice mai dove sta andando? Dove va sua zia all\'ora della preghiera e qual è quell\'odore misterioso che viene dalla sua camera? Chi è questo autista di camion che sembra sempre arrivare al momento giusto?\n\nDalla convivenza improvvisata in soggiorno agli hotel di Luxor, Mazel è un viaggio che ci ricorda che, nonostante le lacrime dell\'esilio e le ferite del passato, l\'amore familiare è una forma di magia.\n\n"Mazel": perché non tutto è ancora stato detto, perché la vita continua, ancora e ancora.',
+            'label.edition': 'Edizione:',
+            'label.company': 'Compagnia:',
+            'label.direction': 'Regia Originale:',
+            'label.support': 'Supporto:',
+            'btn.see-edition': 'Vedi Edizione',
+            'label.synopsis': 'Trama',
+            'label.performances': 'Storico delle Rappresentazioni',
+            'label.date': 'Data:',
+            'label.location': 'Luogo:',
+            'label.cast': 'Cast Originale',
+            'label.gallery': 'Galleria Foto',
+            'label.photo-credits': 'Crediti Fotografici',
+            'label.photos-by': 'Foto di:',
+            'label.poster-by': 'Manifesto di:',
+            'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'btn.back': '← ZURÜCK ZUR ÜBERSICHT',
+            'mazel.tag': 'Familienkomödie',
+            'mazel.title': 'Mazel',
+            'mazel.short-desc': 'Ein freudiges deutsch-algerisches Familienchaos, in dem wir mit Erbschaften und Widersprüchen jonglieren.',
+            'mazel.video-section': 'Aufzeichnung',
+            'mazel.description': 'Thiziri ist eine junge Frau auf der Suche nach Orientierung. Für vier Tage kehrt sie in den Schoß ihrer Familie zurück – hinein in ein „glorreiches Chaos" aus Matratzenlagern und dem allgegenwärtigen Duft von Kaffee.\n\nIn diesem Haus, in dem alle gleichzeitig reden und sich doch oft missverstehen, wird Thiziri zur Ermittlerin in eigener Sache:\n\nWarum versteckt Großmutter Houria ihre Medikamente (oder sind es Tic-Tacs?) im Büstenhalter?\n\nWarum rückt sie ihren Reisepass nicht heraus und schweigt beharrlich über ihre Ziele?\n\nWohin verschwindet die Tante zur Gebetszeit, und was hat es mit dem seltsamen Geruch in ihrem Zimmer auf sich?\n\nUnd wer ist dieser mysteriöse Lastwagenkurier, der immer genau im richtigen Moment auftaucht?\n\nWährend ihr Onkel Bilal versucht, durch strikte Spiritualität seine Rolle als Familienoberhaupt zu festigen und der Fremde zu entfliehen, entfaltet sich zwischen dem improvisierten Alltag im Wohnzimmer und fernen Hotels in Luxor eine Reise der Erkenntnis.\n\nMazel (Arabisch für „noch nicht" oder „immer noch") erinnert uns daran, dass trotz der Tränen des Exils und der Wunden der Vergangenheit die Liebe einer Familie eine ganz eigene Magie besitzt. Denn noch ist nicht alles gesagt. Weil das Leben weitergeht – immer und immer wieder.',
+            'label.edition': 'Ausgabe:',
+            'label.company': 'Kompanie:',
+            'label.direction': 'Ursprüngliche Regie:',
+            'label.support': 'Unterstützung:',
+            'btn.see-edition': 'Ausgabe Ansehen',
+            'label.synopsis': 'Handlung',
+            'label.performances': 'Aufführungsverlauf',
+            'label.date': 'Datum:',
+            'label.location': 'Ort:',
+            'label.cast': 'Originalbesetzung',
+            'label.gallery': 'Fotogalerie',
+            'label.photo-credits': 'Fotokredit',
+            'label.photos-by': 'Fotos von:',
+            'label.poster-by': 'Plakat von:',
+            'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                element.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Event listeners for language buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setLanguage(this.getAttribute('data-lang'));
+        });
+    });
+
+    // Initialize page with saved language
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+    });
+</script>

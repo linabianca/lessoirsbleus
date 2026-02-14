@@ -496,6 +496,39 @@
             }
         }
 
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #C41E3A;
+            border-color: #C41E3A;
+        }
+
         footer {
             background: #1a1a1a;
             color: white;
@@ -510,24 +543,31 @@
 
 <header>
     <h1>Lina Biancarelli</h1>
-    <p>Autrice de théâtre</p>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
 </header>
+
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+</div>
 
 <nav class="scroll-nav">
     <a href="#mazel" class="nav-dot active" data-section="0">
-        <span>Mazel</span>
+        <span data-i18n="nav.mazel">Mazel</span>
     </a>
     <a href="#deux-secondes" class="nav-dot" data-section="1">
-        <span>2 Secondes</span>
+        <span data-i18n="nav.deux-secondes">2 Secondes</span>
     </a>
     <a href="#les-echecs" class="nav-dot" data-section="2">
-        <span>Les Échecs</span>
+        <span data-i18n="nav.les-echecs">Les Échecs</span>
     </a>
     <a href="#projets-a-venir" class="nav-dot" data-section="3">
-        <span>À Venir</span>
+        <span data-i18n="nav.projets-a-venir">À Venir</span>
     </a>
     <a href="#a-propos" class="nav-dot" data-section="4">
-        <span>À Propos</span>
+        <span data-i18n="nav.a-propos">À Propos</span>
     </a>
 </nav>
 
@@ -541,11 +581,11 @@
                 </a>
             </div>
             <div class="text-content">
-                <span class="tag">Comédie familiale</span>
-                <h2>Mazel</h2>
-                <p>Une comédie qui explore avec tendresse et humour l'angoisse du « d'où je viens », au cœur d'une famille franco-algérienne. Dans ce joyeux chaos familial, chaque personnage tente, à sa manière, de jongler avec ses identités, ses héritages, ses contradictions.</p>
+                <span class="tag" data-i18n="section1.tag">Comédie familiale</span>
+                <h2 data-i18n="section1.title">Mazel</h2>
+                <p data-i18n="section1.description">Une comédie qui explore avec tendresse et humour l'angoisse du « d'où je viens », au cœur d'une famille franco-algérienne. Dans ce joyeux chaos familial, chaque personnage tente, à sa manière, de jongler avec ses identités, ses héritages, ses contradictions.</p>
                 <div class="button-group">
-                    <a href="mazel.html" class="btn">En savoir plus</a>
+                    <a href="mazel.html" class="btn" data-i18n="btn.learn-more">En savoir plus</a>
                 </div>
             </div>
         </div>
@@ -560,13 +600,13 @@
                 </a>
             </div>
             <div class="text-content">
-                <span class="tag">Tragédie</span>
-                <h2>2 Secondes avant l'extase</h2>
-                <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
+                <span class="tag" data-i18n="section2.tag">Tragédie</span>
+                <h2 data-i18n="section2.title">2 Secondes avant l'extase</h2>
+                <p data-i18n="section2.description">Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
                 <div class="button-group">
-                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir le livre</a>
-                    <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn">Vidéo</a>
-                    <a href="deux-secondes.html" class="btn">Détails</a>
+                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir le livre</a>
+                    <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn" data-i18n="btn.video">Vidéo</a>
+                    <a href="deux-secondes.html" class="btn" data-i18n="btn.details">Détails</a>
                 </div>
             </div>
         </div>
@@ -581,13 +621,13 @@
                 </a>
             </div>
             <div class="text-content">
-                <span class="tag">Comédie</span>
-                <h2>Les Échecs</h2>
-                <p>Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
+                <span class="tag" data-i18n="section3.tag">Comédie</span>
+                <h2 data-i18n="section3.title">Les Échecs</h2>
+                <p data-i18n="section3.description">Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
                 <div class="button-group">
-                    <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn">Voir le livre</a>
-                    <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn">Vidéo</a>
-                    <a href="les-echecs.html" class="btn">Détails</a>
+                    <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir le livre</a>
+                    <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn" data-i18n="btn.video">Vidéo</a>
+                    <a href="les-echecs.html" class="btn" data-i18n="btn.details">Détails</a>
                 </div>
             </div>
         </div>
@@ -597,12 +637,12 @@
     <section class="section" id="projets-a-venir">
         <div class="section-content">
             <div class="text-content">
-                <span class="tag">À venir</span>
-                <h2>Projets à Venir</h2>
-                <p><span class="accent">Ophelia au bord du gouffre</span> — Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</p>
-                <p><span class="accent">Oedipe</span> — Un projet en développement, mais dont le nom en révèle déjà trop!</p>
+                <span class="tag" data-i18n="section4.tag">À venir</span>
+                <h2 data-i18n="section4.title">Projets à Venir</h2>
+                <p><span class="accent" data-i18n="section4.project1.title">Ophelia au bord du gouffre</span> — <span data-i18n="section4.project1.description">Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</span></p>
+                <p><span class="accent" data-i18n="section4.project2.title">Oedipe</span> — <span data-i18n="section4.project2.description">Un projet en développement, mais dont le nom en révèle déjà trop!</span></p>
                 <div class="button-group">
-                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me Contacter</a>
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
                 </div>
             </div>
         </div>
@@ -615,15 +655,15 @@
                 <a href="mailto:biancarellilina1@gmail.com" style="display: flex; justify-content: center; align-items: center;">
                     <img src="assets/photo troupe/Lina 21.jpg" alt="Lina Biancarelli">
                 </a>
-                <p style="font-size: 0.75em; font-style: italic; margin-top: 10px; opacity: 0.5; text-align: center; letter-spacing: 0.5px;">Photo © Anna de Tavera</p>
+                <p style="font-size: 0.75em; font-style: italic; margin-top: 10px; opacity: 0.5; text-align: center; letter-spacing: 0.5px;" data-i18n="section5.photo-credit">Photo © Anna de Tavera</p>
             </div>
             <div class="text-content">
-                <span class="tag">Biographie</span>
-                <h2>À Propos</h2>
-                <p>Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd'hui résidente en Italie.</p>
-                <p>Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre. <a href="la-troupe-des-soirs-bleus.html" style="color: #d4a574; text-decoration: none; border-bottom: 2px solid #d4a574; transition: all 0.3s ease;">Rencontrez la troupe des soirs bleus !</a></p>
+                <span class="tag" data-i18n="section5.tag">Biographie</span>
+                <h2 data-i18n="section5.title">À Propos</h2>
+                <p data-i18n="section5.description">Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd'hui résidente en Italie.</p>
+                <p data-i18n="section5.troupe">Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre. <a href="la-troupe-des-soirs-bleus.html" style="color: #d4a574; text-decoration: none; border-bottom: 2px solid #d4a574; transition: all 0.3s ease;" data-i18n="section5.troupe-link">Rencontrez la troupe des soirs bleus !</a></p>
                 <div class="button-group">
-                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me Contacter</a>
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
                 </div>
             </div>
         </div>
@@ -631,10 +671,224 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
 </footer>
 
 <script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Autrice de théâtre',
+            'nav.mazel': 'Mazel',
+            'nav.deux-secondes': '2 Secondes',
+            'nav.les-echecs': 'Les Échecs',
+            'nav.projets-a-venir': 'À Venir',
+            'nav.a-propos': 'À Propos',
+            
+            'section1.tag': 'Comédie familiale',
+            'section1.title': 'Mazel',
+            'section1.description': 'Une comédie qui explore avec tendresse et humour l\'angoisse du « d\'où je viens », au cœur d\'une famille franco-algérienne.\n\nDans ce joyeux chaos familial, chaque personnage tente, à sa manière, de jongler avec ses identités, ses héritages, ses contradictions.',
+            
+            'section2.tag': 'Tragédie',
+            'section2.title': '2 Secondes avant l\'extase',
+            'section2.description': 'Une adaptation d\'Antigone. Le portrait d\'une femme qui aime démesurément, saisie juste avant l\'abîme.',
+            
+            'section3.tag': 'Comédie',
+            'section3.title': 'Les Échecs',
+            'section3.description': 'Une comédie sur les déboires d\'une jeune femme : amours, colocation et petites tragédies du quotidien.',
+            
+            'section4.tag': 'À venir',
+            'section4.title': 'Projets à Venir',
+            'section4.project1.title': 'Ophelia au bord du gouffre',
+            'section4.project1.description': 'Une nouvelle création.\n\nEt si Ophélia n\'avait jamais été folle? Et si elle n\'allait simplement que cueillir des fleurs la nuit...?',
+            'section4.project2.title': 'Oedipe',
+            'section4.project2.description': 'Un projet en développement, mais dont le nom en révèle déjà trop!',
+            
+            'section5.tag': 'Biographie',
+            'section5.title': 'À Propos',
+            'section5.photo-credit': 'Photo © Anna de Tavera',
+            'section5.description': 'Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd\'hui résidente en Italie.',
+            'section5.troupe': 'Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre. ',
+            'section5.troupe-link': 'Rencontrez la troupe des soirs bleus !',
+            
+            'btn.learn-more': 'En savoir plus',
+            'btn.see-book': 'Voir le livre',
+            'btn.video': 'Vidéo',
+            'btn.details': 'Détails',
+            'btn.contact': 'Me Contacter',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'nav.mazel': 'Mazel',
+            'nav.deux-secondes': '2 Seconds',
+            'nav.les-echecs': 'The Defeats',
+            'nav.projets-a-venir': 'Upcoming',
+            'nav.a-propos': 'About',
+            
+            'section1.tag': 'Family Comedy',
+            'section1.title': 'Mazel',
+            'section1.description': 'A comedy that explores with tenderness and humor the anxiety of "where do I come from", at the heart of a Franco-Algerian family.\n\nIn this joyful family chaos, each character tries, in their own way, to juggle their identities, their heritages, their contradictions.',
+            
+            'section2.tag': 'Tragedy',
+            'section2.title': '2 Seconds Before Ecstasy',
+            'section2.description': 'An adaptation of Antigone. The portrait of a woman who loves excessively, captured just before the abyss.',
+            
+            'section3.tag': 'Comedy',
+            'section3.title': 'The Defeats',
+            'section3.description': 'A comedy about the misadventures of a young woman: love, roommates and small everyday tragedies.',
+            
+            'section4.tag': 'Upcoming',
+            'section4.title': 'Upcoming Projects',
+            'section4.project1.title': 'Ophelia at the Edge',
+            'section4.project1.description': 'A new creation.\n\nWhat if Ophelia had never gone mad? What if she was simply gathering flowers at night...?',
+            'section4.project2.title': 'Oedipus',
+            'section4.project2.description': 'A project in development, but whose name already reveals too much!',
+            
+            'section5.tag': 'Biography',
+            'section5.title': 'About',
+            'section5.photo-credit': 'Photo © Anna de Tavera',
+            'section5.description': 'Lina Biancarelli is a nomadic playwright, medical student, trained in psychoanalysis and psychotherapy. Corsican, Algerian, Berliner, now resident in Italy.',
+            'section5.troupe': 'Always looking for new projects to bring together theater enthusiasts. ',
+            'section5.troupe-link': 'Meet La Troupe des Soirs Bleus!',
+            
+            'btn.learn-more': 'Learn More',
+            'btn.see-book': 'See the Book',
+            'btn.video': 'Video',
+            'btn.details': 'Details',
+            'btn.contact': 'Contact Me',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'nav.mazel': 'Mazel',
+            'nav.due-secondi': '2 Secondi',
+            'nav.les-echecs': 'Gli Scacchi',
+            'nav.projets-a-venir': 'In Arrivo',
+            'nav.a-propos': 'Chi Sono',
+            
+            'section1.tag': 'Commedia Familiare',
+            'section1.title': 'Mazel',
+            'section1.description': 'Una commedia che esplora con tenerezza e umorismo l\'ansia del "da dove vengo", nel cuore di una famiglia franco-algerina.\n\nIn questo caos familiare allegro, ogni personaggio tenta, a suo modo, di destreggiarsi tra le sue identità, i suoi eredità, le sue contraddizioni.',
+            
+            'section2.tag': 'Tragedia',
+            'section2.title': '2 Secondi Prima dell\'Estasi',
+            'section2.description': 'Un adattamento dell\'Antigone. Il ritratto di una donna che ama eccessivamente, colta proprio prima dell\'abisso.',
+            
+            'section3.tag': 'Commedia',
+            'section3.title': 'Gli Scacchi',
+            'section3.description': 'Una commedia sulle disavventure di una giovane donna: amore, coinquilini e piccole tragedie quotidiane.',
+            
+            'section4.tag': 'In Arrivo',
+            'section4.title': 'Progetti in Arrivo',
+            'section4.project1.title': 'Ofelia sull\'Orlo',
+            'section4.project1.description': 'Una nuova creazione.\n\nE se Ofelia non fosse mai impazzita? E se raccogliesse semplicemente fiori di notte...?',
+            'section4.project2.title': 'Edipo',
+            'section4.project2.description': 'Un progetto in sviluppo, ma il cui nome rivela già troppo!',
+            
+            'section5.tag': 'Biografia',
+            'section5.title': 'Chi Sono',
+            'section5.photo-credit': 'Foto © Anna de Tavera',
+            'section5.description': 'Lina Biancarelli è una drammaturga nomade, studentessa di medicina, formata in psicoanalisi e psicoterapia. Corsa, Algerina, Berlinese, ora residente in Italia.',
+            'section5.troupe': 'Sempre alla ricerca di nuovi progetti per riunire gli appassionati di teatro. ',
+            'section5.troupe-link': 'Conosci La Troupe des Soirs Bleus!',
+            
+            'btn.learn-more': 'Scopri di Più',
+            'btn.see-book': 'Vedi il Libro',
+            'btn.video': 'Video',
+            'btn.details': 'Dettagli',
+            'btn.contact': 'Contattami',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'nav.mazel': 'Mazel',
+            'nav.zwei-sekunden': '2 Sekunden',
+            'nav.les-echecs': 'Les Échecs',
+            'nav.projets-a-venir': 'Bevorstehend',
+            'nav.a-propos': 'Über Mich',
+            
+            'section1.tag': 'Familienkomödie',
+            'section1.title': 'Mazel',
+            'section1.description': 'Ein freudiges franco-algerisches Familienchaos, in dem wir mit Erbschaften und Widersprüchen jonglieren.\n\nJede Figur versucht auf ihre Weise, ihre Identitäten, ihre Erbe und ihre Widersprüche zu bewältigen.',
+            
+            'section2.tag': 'Tragödie',
+            'section2.title': '2 Sekunden vor der Ekstase',
+            'section2.description': 'Eine Antigone-Adaption: Das Porträt einer Frau, deren maßlose Liebe sie bis an den Abgrund treibt.',
+            
+            'section3.tag': 'Komödie',
+            'section3.title': 'Les Échecs',
+            'section3.description': 'Eine Komödie über die Missgeschicke einer jungen Frau: Liebe, Mitbewohner und kleine alltägliche Tragödien.',
+            
+            'section4.tag': 'Bevorstehend',
+            'section4.title': 'Bevorstehende Projekte',
+            'section4.project1.title': 'Ophelia am Rande',
+            'section4.project1.description': 'Eine Neuschöpfung\n\nWas wäre, wenn Ophelia nie dem Wahnsinn verfallen wäre?\nWas, wenn sie in der Stille der Nacht einfach nur Blumen sammeln würde…?',
+            'section4.project2.title': 'Ödipus',
+            'section4.project2.description': 'Ein Projekt in Entwicklung, aber dessen Name verrät bereits zu viel!',
+            
+            'section5.tag': 'Biografie',
+            'section5.title': 'Über Mich',
+            'section5.photo-credit': 'Foto © Anna de Tavera',
+            'section5.description': 'Lina Biancarelli ist eine nomadische Dramatikerin, Medizinstudentin, ausgebildet in Psychoanalyse und Psychotherapie. Korsin, Algerierin, Berlinerin, jetzt in Italien ansässig.',
+            'section5.troupe': 'Immer auf der Suche nach neuen Projekten, um Theaterbegeisterte zusammenzubringen. ',
+            'section5.troupe-link': 'Lerne La Troupe des Soirs Bleus kennen!',
+            
+            'btn.learn-more': 'Mehr Erfahren',
+            'btn.see-book': 'Das Buch Ansehen',
+            'btn.video': 'Video',
+            'btn.details': 'Details',
+            'btn.contact': 'Kontaktieren Sie Mich',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                element.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Event listeners for language buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setLanguage(this.getAttribute('data-lang'));
+        });
+    });
+
+    // Initialize page with saved language
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+    });
+
     // Navigation dot highlighting on scroll
     const sections = document.querySelectorAll('.section');
     const navDots = document.querySelectorAll('.nav-dot');

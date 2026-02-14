@@ -210,6 +210,8 @@
             margin-bottom: 40px;
             font-size: 1.05em;
             line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         /* Gallery Section */
@@ -267,7 +269,39 @@
         .credits strong {
             color: #f4d03f;
         }
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
 
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #f4d03f;
+            border-color: #f4d03f;
+            color: #1a3a52;
+        }
         footer {
             background: rgba(0, 0, 0, 0.5);
             color: #e8d4a8;
@@ -407,6 +441,8 @@
                 line-height: 1.6;
                 max-width: 90%;
                 margin: 0 auto 40px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
             }
 
             .gallery {
@@ -449,11 +485,18 @@
 
 <header>
     <h1>Lina Biancarelli</h1>
-    <p>Autrice de théâtre</p>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
 </header>
 
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+</div>
+
 <div class="container">
-    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -461,26 +504,26 @@
             <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
         </div>
         <div class="hero-content">
-            <span class="tag">Tragédie moderne</span>
-            <h2>Deux secondes avant l'extase</h2>
-            <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
+            <span class="tag" data-i18n="deux-secondes.tag">Tragédie moderne</span>
+            <h2 data-i18n="deux-secondes.title">Deux secondes avant l'extase</h2>
+            <p data-i18n="deux-secondes.short-desc">Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
             
             <div class="info-box">
-                <strong>Édition :</strong> Albiana<br>
-                <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Troupe des Soirs bleus</a><br>
-                <strong>Soutien :</strong> La Ménagerie AG
+                <strong data-i18n="label.edition">Édition :</strong> Albiana<br>
+                <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a><br>
+                <strong data-i18n="label.support">Soutien :</strong> La Ménagerie AG
             </div>
 
             <div class="button-group">
-                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir le livre</a>
-                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn">Regarder</a>
+                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir le livre</a>
+                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn" data-i18n="btn.watch">Regarder</a>
             </div>
         </div>
     </div>
 
     <!-- Video Section -->
     <div class="section">
-        <h3>Captation</h3>
+        <h3 data-i18n="deux-secondes.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/b2g6xKHCNzY" allowfullscreen="" loading="lazy"></iframe>
         </div>
@@ -488,8 +531,8 @@
 
     <!-- Description Section -->
     <div class="section">
-        <h3>Synopsis</h3>
-        <div class="description-text">
+        <h3 data-i18n="label.synopsis">Synopsis</h3>
+        <div class="description-text" data-i18n="deux-secondes.description">
             <p>Deux secondes avant l'extase est une réinterprétation du mythe d'Antigone. Cette nouvelle version du classique explore les tensions intérieures entre loyauté, justice et rébellion, offrant une vision contemporaine de la tragédie intemporelle de Sophocle.</p>
             <p>Première représentation en janvier 2024 à Berlin.</p>
         </div>
@@ -497,15 +540,15 @@
 
     <!-- Performances Section -->
     <div class="section">
-        <h3>Historique des représentations</h3>
+        <h3 data-i18n="label.performances">Historique des représentations</h3>
         <div class="performance-item">
-            <strong>Date :</strong> 11 janvier 2024<br>
-            <strong>Lieu :</strong> ACUD Theater Berlin<br>
-            <strong>Mise en scène :</strong> Lina Biancarelli<br>
-            <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Troupe des Soirs bleus</a>
+            <strong data-i18n="label.date">Date :</strong> 11 janvier 2024<br>
+            <strong data-i18n="label.location">Lieu :</strong> ACUD Theater Berlin<br>
+            <strong data-i18n="label.direction">Mise en scène :</strong> Lina Biancarelli<br>
+            <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a>
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;">Distribution originale</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.cast">Distribution originale</h3>
         <div class="performance-item">
             Tania Nunez<br>
             Maymouna Diouf<br>
@@ -519,17 +562,17 @@
             Lina Chelha
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;">Équipe créative</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.creative-team">Équipe créative</h3>
         <div class="performance-item">
-            <strong>Lumières et scénographie :</strong> Cécile Boos<br>
-            <strong>Musique :</strong> Romain Firroloni<br>
-            <strong>Traduction en allemand :</strong> Sarah Holstein
+            <strong data-i18n="label.lights-scenography">Lumières et scénographie :</strong> Cécile Boos<br>
+            <strong data-i18n="label.music">Musique :</strong> Romain Firroloni<br>
+            <strong data-i18n="label.german-translation">Traduction en allemand :</strong> Sarah Holstein
         </div>
     </div>
 
     <!-- Gallery Section -->
     <div class="section">
-        <h3>Galerie photos</h3>
+        <h3 data-i18n="label.gallery">Galerie photos</h3>
         <div class="gallery">
             <div class="gallery-item">
                 <img src="assets/deux secondes/IMG_4713.jpg" alt="Photo de représentation 1">
@@ -569,17 +612,186 @@
 
     <!-- Credits Section -->
     <div class="credits">
-        <h3 style="color: #f4d03f; margin-top: 0;">Crédits photos</h3>
-        <p><strong>Photographies par :</strong> <a href="https://www.instagram.com/anepsyy/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Anepsyy</a></p>
-        <p><strong>Affiche créée par :</strong> Alessandro Bocquet</p>
-        <p style="font-size: 0.95em; opacity: 0.8;">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
+        <h3 style="color: #f4d03f; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
+        <p><strong data-i18n="label.photos-by">Photographies par :</strong> <a href="https://www.instagram.com/anepsyy/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Anepsyy</a></p>
+        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Alessandro Bocquet</p>
+        <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
     </div>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
 </footer>
 
-</body>
-</html>
+<script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Autrice de théâtre',
+            'btn.back': '← Retour à l\'accueil',
+            'btn.watch': 'Regarder',
+            'btn.see-book': 'Voir le livre',
+            'deux-secondes.tag': 'Tragédie moderne',
+            'deux-secondes.title': 'Deux secondes avant l\'extase',
+            'deux-secondes.short-desc': 'Une adaptation d\'Antigone. Le portrait d\'une femme qui aime démesurément, saisie juste avant l\'abîme.',
+            'deux-secondes.video-section': 'Captation',
+            'deux-secondes.description': 'Deux secondes avant l\'extase est une réécriture du mythe d\'Antigone, qui déplace le regard des enjeux politiques vers l\'intimité d\'une femme qui aime démesurément.\n\nLa pièce s\'ouvre sur un moment suspendu : le monologue d\'Antigone contemplant l\'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n\'aurait pas eu à choisir le sacrifice.\n\nL\'histoire nous plonge dans la veille du drame. Loin de l\'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s\'enfermer dans une Thèbes maudite et sanglante.\n\nMais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu\'il lui inflige n\'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d\'une vie qui continue sans elle.\n\nLe dénouement, porté par l\'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l\'extase finale. Entre empoisonnement libérateur et espoir d\'antidote, le Chœur nous laisse face à l\'éternelle question : peut-on réellement choisir la fin ?',
+            'label.edition': 'Édition :',
+            'label.company': 'Compagnie :',
+            'label.support': 'Soutien :',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Historique des représentations',
+            'label.date': 'Date :',
+            'label.location': 'Lieu :',
+            'label.direction': 'Mise en scène :',
+            'label.cast': 'Distribution originale',
+            'label.creative-team': 'Équipe créative',
+            'label.lights-scenography': 'Lumières et scénographie :',
+            'label.music': 'Musique :',
+            'label.german-translation': 'Traduction en allemand :',
+            'label.gallery': 'Galerie photos',
+            'label.photo-credits': 'Crédits photos',
+            'label.photos-by': 'Photographies par :',
+            'label.poster-by': 'Affiche créée par :',
+            'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
+            'company.name': 'Troupe des Soirs bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'btn.back': '← Back Home',
+            'btn.watch': 'Watch',
+            'btn.see-book': 'See the Book',
+            'deux-secondes.tag': 'Modern Tragedy',
+            'deux-secondes.title': '2 Seconds Before Ecstasy',
+            'deux-secondes.short-desc': 'An adaptation of Antigone. The portrait of a woman who loves excessively, captured just before the abyss.',
+            'deux-secondes.video-section': 'Capture',
+            'deux-secondes.description': 'Two Seconds Before Ecstasy is a rewriting of the myth of Antigone, shifting the focus from political issues to the intimacy of a woman who loves excessively.\n\nThe play opens with a suspended moment: Antigone\'s monologue as she contemplates the abyss, stealing a few seconds from a dreary life to imagine an existence where she would not have had to choose sacrifice.\n\nThe story plunges us into the eve of the drama. Far from the marble heroine, we discover a vibrant Antigone, consumed by desire for her fiancé Haemon, and confronted by her sister Ismene, the embodiment of life and beauty. Her perfection hides a secret: she is expecting a child and begs her sister to choose life for her future nephew, rather than locking herself away in a cursed and bloody Thebes.\n\nBut for Antigone, refusal is an act of absolute courage. She rejects the simple happiness offered by her uncle Creon, a weary regent who dreams of planting turnips but finds himself trapped by his own authority. The punishment he inflicts on her is not immediate death, but psychological torture: condemned to an endless dream by a paralyzing potion, she must remain a spectator of a life that continues without her.\n\nThe dénouement, carried by the cruel innocence of two children, Eusebia and Laodamas, tips over into final ecstasy. Between liberating poisoning and the hope of an antidote, the Chorus leaves us with the eternal question: can we really choose the end?',
+            'label.edition': 'Edition:',
+            'label.company': 'Company:',
+            'label.support': 'Support:',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Performance History',
+            'label.date': 'Date:',
+            'label.location': 'Location:',
+            'label.direction': 'Direction:',
+            'label.cast': 'Original Cast',
+            'label.creative-team': 'Creative Team',
+            'label.lights-scenography': 'Lights and Scenography:',
+            'label.music': 'Music:',
+            'label.german-translation': 'German Translation:',
+            'label.gallery': 'Photo Gallery',
+            'label.photo-credits': 'Photo Credits',
+            'label.photos-by': 'Photos by:',
+            'label.poster-by': 'Poster by:',
+            'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'btn.back': '← INDIETRO',
+            'btn.watch': 'Guarda',
+            'btn.see-book': 'Vedi il Libro',
+            'deux-secondes.tag': 'Tragedia Moderna',
+            'deux-secondes.title': '2 Secondi Prima dell\'Estasi',
+            'deux-secondes.short-desc': 'Un adattamento dell\'Antigone. Il ritratto di una donna che ama eccessivamente, colta proprio prima dell\'abisso.',
+            'deux-secondes.video-section': 'Registrazione',
+            'deux-secondes.description': '2 Secondi Prima dell\'Estasi è una rivisitazione del mito di Antigone, che sposta l\'attenzione dalle questioni politiche all\'intimità di una donna che ama smisuratamente.\n\nL\'opera si apre con un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando qualche secondo a una vita tetra per immaginare un\'esistenza in cui non avrebbe dovuto scegliere il sacrificio.\n\nLa storia ci immerge nella vigilia del dramma. Lontana dall\'eroina di marmo, scopriamo un\'Antigone vibrante, posseduta dal desiderio per il suo fidanzato Emone e confrontata con sua sorella Ismene, incarnazione della vita e della bellezza. La sua perfezione nasconde un segreto: è incinta e supplica la sorella di scegliere la vita per il futuro nipote, piuttosto che rinchiudersi in una Tebe maledetta e sanguinosa.\n\nMa per Antigone, il rifiuto è un atto di assoluto coraggio. Rifiuta la semplicità della felicità offerta da suo zio Creonte, un reggente stanco che sogna di piantare rape ma si ritrova intrappolato dalla sua stessa autorità. La punizione che le infligge non è la morte immediata, ma una tortura psicologica: condannata a un sogno senza fine da un decotto paralizzante, deve rimanere spettatrice di una vita che continua senza di lei.\n\nIl finale, sostenuto dalla crudele innocenza di due bambini, Eusebia e Laodamas, culmina in un\'estasi finale. Tra avvelenamento liberatorio e speranza di antidoto, il Coro ci lascia di fronte all\'eterna domanda: si può davvero scegliere la fine?',
+            'label.edition': 'Edizione:',
+            'label.company': 'Compagnia:',
+            'label.support': 'Supporto:',
+            'label.synopsis': 'Trama',
+            'label.performances': 'Storico delle Rappresentazioni',
+            'label.date': 'Data:',
+            'label.location': 'Luogo:',
+            'label.direction': 'Regia:',
+            'label.cast': 'Cast Originale',
+            'label.creative-team': 'Equipe Creativa',
+            'label.lights-scenography': 'Luci e Scenografia:',
+            'label.music': 'Musica:',
+            'label.german-translation': 'Traduzione in Tedesco:',
+            'label.gallery': 'Galleria Foto',
+            'label.photo-credits': 'Crediti Fotografici',
+            'label.photos-by': 'Foto di:',
+            'label.poster-by': 'Manifesto di:',
+            'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'btn.back': '← ZURÜCK ZUR ÜBERSICHT',
+            'btn.watch': 'Ansehen',
+            'btn.see-book': 'Das Buch Ansehen',
+            'deux-secondes.tag': 'Moderne Tragödie',
+            'deux-secondes.title': '2 Sekunden vor der Ekstase',
+            'deux-secondes.short-desc': 'Eine Anpassung der Antigone. Das Porträt einer Frau, die übermäßig liebt, erfasst gerade vor dem Abgrund.',
+            'deux-secondes.video-section': 'Aufzeichnung',
+            'deux-secondes.description': 'Zwei Sekunden vor der Ekstase ist eine Neufassung des Mythos von Antigone, die den Blick von den politischen Themen auf die Intimität einer Frau lenkt, die maßlos liebt.\n\nDas Stück beginnt mit einem Moment des Stillstands: dem Monolog von Antigone, die in den Abgrund blickt und für einige Sekunden ihrem tristen Leben entflieht, um sich ein Leben vorzustellen, in dem sie sich nicht für das Opfer entscheiden müsste.\n\nDie Geschichte versetzt uns in den Vorabend des Dramas. Weit entfernt von der marmornen Heldin entdecken wir eine lebhafte Antigone, die von der Sehnsucht nach ihrem Verlobten Haemon erfüllt ist und sich ihrer Schwester Ismene gegenüber sieht, der Verkörperung von Leben und Schönheit. Ihre Perfektion verbirgt ein Geheimnis: Sie erwartet ein Kind und fleht ihre Schwester an, für ihren zukünftigen Neffen das Leben zu wählen, anstatt sich in einem verfluchten und blutigen Theben einzuschließen.\n\nAber für Antigone ist die Weigerung ein Akt absoluten Mutes. Sie lehnt das einfache Glück ab, das ihr Onkel Kreon ihr anbietet, ein müder Regent, der davon träumt, Rüben anzupflanzen, aber in seiner eigenen Autorität gefangen ist. Die Strafe, die er ihr auferlegt, ist nicht der sofortige Tod, sondern psychologische Folter: Durch einen lähmenden Trank zu endlosen Träumen verdammt, muss sie Zuschauerin eines Lebens bleiben, das ohne sie weitergeht.\n\nDie Auflösung, getragen von der grausamen Unschuld zweier Kinder, Eusébie und Laodamas, kippt in finale Ekstase. Zwischen befreiender Vergiftung und Hoffnung auf ein Gegenmittel lässt uns der Chor mit der ewigen Frage zurück: Kann man sich wirklich für das Ende entscheiden?',
+            'label.edition': 'Ausgabe:',
+            'label.company': 'Kompanie:',
+            'label.support': 'Unterstützung:',
+            'label.synopsis': 'Handlung',
+            'label.performances': 'Aufführungsverlauf',
+            'label.date': 'Datum:',
+            'label.location': 'Ort:',
+            'label.direction': 'Regie:',
+            'label.cast': 'Originalbesetzung',
+            'label.creative-team': 'Kreatives Team',
+            'label.lights-scenography': 'Lichter und Szenografie:',
+            'label.music': 'Musik:',
+            'label.german-translation': 'Deutsche Übersetzung:',
+            'label.gallery': 'Fotogalerie',
+            'label.photo-credits': 'Fotokredit',
+            'label.photos-by': 'Fotos von:',
+            'label.poster-by': 'Plakat von:',
+            'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                element.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Event listeners for language buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setLanguage(this.getAttribute('data-lang'));
+        });
+    });
+
+    // Initialize page with saved language
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+    });
+</script>

@@ -210,6 +210,8 @@
             margin-bottom: 40px;
             font-size: 1.05em;
             line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         /* Gallery Section */
@@ -267,7 +269,38 @@
         .credits strong {
             color: #C41E3A;
         }
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
 
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #C41E3A;
+            border-color: #C41E3A;
+        }
         footer {
             background: rgba(0, 0, 0, 0.7);
             color: #E8B997;
@@ -407,6 +440,8 @@
                 line-height: 1.6;
                 max-width: 90%;
                 margin: 0 auto 40px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
             }
 
             .gallery {
@@ -449,11 +484,18 @@
 
 <header>
     <h1>Lina Biancarelli</h1>
-    <p>Autrice de théâtre</p>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
 </header>
 
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+</div>
+
 <div class="container">
-    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+    <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -461,36 +503,35 @@
             <img src="assets/les-echecs-affiche.jpeg" alt="Les Échecs">
         </div>
         <div class="hero-content">
-            <span class="tag">Comédie</span>
-            <h2>Les Échecs</h2>
-            <p>Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
+            <span class="tag" data-i18n="les-echecs.tag">Comédie</span>
+            <h2 data-i18n="les-echecs.title">Les Échecs</h2>
+            <p data-i18n="les-echecs.short-desc">Une comédie sur les déboires d'une jeune femme : amours, colocation et petites tragédies du quotidien.</p>
             
             <div class="info-box">
-                <strong>Édition :</strong> Albiana<br>
-                <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #C41E3A; text-decoration: none; border-bottom: 2px solid #C41E3A; transition: all 0.3s ease;">Troupe des Soirs bleus</a><br>
-                <strong>Soutien :</strong> La Ménagerie AG
+                <strong data-i18n="label.edition">Édition :</strong> Albiana<br>
+                <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #C41E3A; text-decoration: none; border-bottom: 2px solid #C41E3A; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a><br>
+                <strong data-i18n="label.support">Soutien :</strong> La Ménagerie AG
             </div>
 
             <div class="button-group">
-                    <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn">Voir le livre</a>
-                <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn">Regarder</a>
+                    <a href="https://www.albiana.fr/accueil/1879-les-echecs.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir le livre</a>
+                <a href="https://www.youtube.com/watch?v=EdyymWuFT7I" target="_blank" class="btn" data-i18n="btn.watch">Regarder</a>
             </div>
         </div>
     </div>
 
     <!-- Video Section -->
     <div class="section">
-        <h3>Captation</h3>
+        <h3 data-i18n="les-echecs.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/EdyymWuFT7I" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
     <!-- Description Section -->
-    <!-- Description Section -->
     <div class="section">
-        <h3>Synopsis</h3>
-        <div class="description-text">
+        <h3 data-i18n="label.synopsis">Synopsis</h3>
+        <div class="description-text" data-i18n="les-echecs.description">
             <p>Les Échecs est une exploration tragi-comique des relations humaines, de la solitude et de la difficulté de faire le deuil — qu'il s'agisse d'une amitié brisée ou d'un amour avorté. À travers le personnage de Camille, la pièce nous plonge dans une succession de confrontations, réelles ou fantasmées.</p>
             <p>L'histoire s'ouvre sur la rencontre entre Camille et Mathys, un séducteur invétéré dont la vie n'est qu'une série de mensonges tous plus nuls les uns que les autres. Entre cours d'œnologie inventés et métaphores douteuse, Camille tente de trouver une vérité là où il n'y a que du paraître.</p>
             <p>Puis on bascule dans l'intimité de la vie en colocation avec Tina et Mara. Ce qui commence par des anecdotes légères — une urgence médicale farfelue ou une chasse obsessionnelle aux mites — finit par révéler les failles profondes de l'amitié. Camille doit affronter la « fuite » de ses amies et la violence sourde des ruptures amicales, qu'elle compare à de véritables divorces.</p>
@@ -501,15 +542,15 @@
 
     <!-- Performances Section -->
     <div class="section">
-        <h3>Historique des représentations</h3>
+        <h3 data-i18n="label.performances">Historique des représentations</h3>
         <div class="performance-item">
-            <strong>Date :</strong> 15 novembre 2022<br>
-            <strong>Lieu :</strong> ACUD Theater Berlin<br>
-            <strong>Mise en scène :</strong> Lina Biancarelli<br>
-            <strong>Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #C41E3A; text-decoration: none; border-bottom: 2px solid #C41E3A; transition: all 0.3s ease;">Troupe des Soirs bleus</a>
+            <strong data-i18n="label.date">Date :</strong> 15 novembre 2022<br>
+            <strong data-i18n="label.location">Lieu :</strong> ACUD Theater Berlin<br>
+            <strong data-i18n="label.direction">Mise en scène :</strong> Lina Biancarelli<br>
+            <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #C41E3A; text-decoration: none; border-bottom: 2px solid #C41E3A; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a>
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;">Distribution originale</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.cast">Distribution originale</h3>
         <div class="performance-item">
             Fleur Grelet<br>
             Victor Perier<br>
@@ -523,15 +564,15 @@
             Lara Chorosz
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;">Équipe créative</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.creative-team">Équipe créative</h3>
         <div class="performance-item">
-            <strong>Musique :</strong> Lara Chorosz
+            <strong data-i18n="label.music">Musique :</strong> Lara Chorosz
         </div>
     </div>
 
     <!-- Gallery Section -->
     <div class="section">
-        <h3>Galerie photos</h3>
+        <h3 data-i18n="label.gallery">Galerie photos</h3>
         <div class="gallery">
             <div class="gallery-item">
                 <img src="assets/les echecs/Lesechecs2022-154.jpg" alt="Les Échecs - Photo 1">
@@ -568,17 +609,178 @@
 
     <!-- Credits Section -->
     <div class="credits">
-        <h3 style="color: #C41E3A; margin-top: 0;">Crédits photos</h3>
-        <p><strong>Photographies par :</strong> Sabrina Jeblaoui, Malou Labrecque</p>
-        <p><strong>Affiche créée par :</strong> Alessandro Bocquet</p>
-        <p style="font-size: 0.95em; opacity: 0.8;">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
+        <h3 style="color: #C41E3A; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
+        <p><strong data-i18n="label.photos-by">Photographies par :</strong> Sabrina Jeblaoui, Malou Labrecque</p>
+        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Alessandro Bocquet</p>
+        <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
     </div>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
 </footer>
 
-</body>
-</html>
+<script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Autrice de théâtre',
+            'btn.back': '← Retour à l\'accueil',
+            'btn.watch': 'Regarder',
+            'btn.see-book': 'Voir le livre',
+            'les-echecs.tag': 'Comédie',
+            'les-echecs.title': 'Les Échecs',
+            'les-echecs.short-desc': 'Une comédie sur les déboires d\'une jeune femme : amours, colocation et petites tragédies du quotidien.',
+            'les-echecs.video-section': 'Captation',
+            'les-echecs.description': 'Les Échecs est une exploration tragi-comique des relations humaines, de la solitude et de la difficulté de faire le deuil — qu\'il s\'agisse d\'une amitié brisée ou d\'un amour avorté. À travers le personnage de Camille, la pièce nous plonge dans une succession de confrontations, réelles ou fantasmées.\n\nL\'histoire s\'ouvre sur la rencontre entre Camille et Mathys, un séducteur invétéré dont la vie n\'est qu\'une série de mensonges tous plus nuls les uns que les autres. Entre cours d\'œnologie inventés et métaphores douteuse, Camille tente de trouver une vérité là où il n\'y a que du paraître.\n\nPuis on bascule dans l\'intimité de la vie en colocation avec Tina et Mara. Ce qui commence par des anecdotes légères — une urgence médicale farfelue ou une chasse obsessionnelle aux mites — finit par révéler les failles profondes de l\'amitié. Camille doit affronter la « fuite » de ses amies et la violence sourde des ruptures amicales, qu\'elle compare à de véritables divorces.\n\nTout au long du récit, l\'ombre d\'Ariel, son premier amour, plane. Dans un dialogue onirique, elle interroge la mémoire et les « calques » que nous apposons sur nos souvenirs pour les rendre supportables.\n\nLe dénouement se joue littéralement autour de plusieurs échiquiers : Camille y affronte ses fantômes et ses proches une dernière fois. Elle y apprend que si la fin est inévitable, la clé réside dans l\'acceptation de l\'amour reçu et dans la décision, malgré tout, de continuer à vivre.',
+            'label.edition': 'Édition :',
+            'label.company': 'Compagnie :',
+            'label.support': 'Soutien :',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Historique des représentations',
+            'label.date': 'Date :',
+            'label.location': 'Lieu :',
+            'label.direction': 'Mise en scène :',
+            'label.cast': 'Distribution originale',
+            'label.creative-team': 'Équipe créative',
+            'label.music': 'Musique :',
+            'label.gallery': 'Galerie photos',
+            'label.photo-credits': 'Crédits photos',
+            'label.photos-by': 'Photographies par :',
+            'label.poster-by': 'Affiche créée par :',
+            'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
+            'company.name': 'Troupe des Soirs bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'btn.back': '← Back Home',
+            'btn.watch': 'Watch',
+            'btn.see-book': 'See the Book',
+            'les-echecs.tag': 'Comedy',
+            'les-echecs.title': 'The Defeats',
+            'les-echecs.short-desc': 'A comedy about the misadventures of a young woman: love, roommates and small everyday tragedies.',
+            'les-echecs.video-section': 'Capture',
+            'les-echecs.description': 'The Defeats is a tragicomic exploration of human relationships, loneliness and the difficulty of grieving — whether it\'s a broken friendship or a failed love. Through the character of Camille, the play plunges us into a succession of confrontations, real or imagined.\n\nThe story opens with a meeting between Camille and Mathys, an inveterate seducer whose life is nothing but a series of lies, each more ridiculous than the last. Between invented wine courses and questionable metaphors, Camille tries to find truth where there is only appearance.\n\nThen we slip into the intimacy of shared housing with Tina and Mara. What starts with light anecdotes — a quirky medical emergency or an obsessive moth hunt — ends up revealing deep cracks in friendship. Camille must face the "flight" of her friends and the quiet violence of broken friendships, which she compares to true divorces.\n\nThroughout the narrative, the shadow of Ariel, her first love, looms. In a dreamlike dialogue, she questions memory and the "overlays" we place on our memories to make them bearable.\n\nThe denouement literally plays out around several chessboards: Camille faces her ghosts and loved ones one last time. She learns that while the end is inevitable, the key lies in accepting the love received and in the decision, despite everything, to continue living.',
+            'label.edition': 'Edition:',
+            'label.company': 'Company:',
+            'label.support': 'Support:',
+            'label.synopsis': 'Synopsis',
+            'label.performances': 'Performance History',
+            'label.date': 'Date:',
+            'label.location': 'Location:',
+            'label.direction': 'Direction:',
+            'label.cast': 'Original Cast',
+            'label.creative-team': 'Creative Team',
+            'label.music': 'Music:',
+            'label.gallery': 'Photo Gallery',
+            'label.photo-credits': 'Photo Credits',
+            'label.photos-by': 'Photos by:',
+            'label.poster-by': 'Poster by:',
+            'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'btn.back': '← INDIETRO',
+            'btn.watch': 'Guarda',
+            'btn.see-book': 'Vedi il Libro',
+            'les-echecs.tag': 'Commedia',
+            'les-echecs.title': 'Gli Scacchi',
+            'les-echecs.short-desc': 'Una commedia sulle disavventure di una giovane donna: amore, coinquilini e piccole tragedie quotidiane.',
+            'les-echecs.video-section': 'Registrazione',
+            'les-echecs.description': 'Gli Scacchi è un\'esplorazione tragicomica delle relazioni umane, della solitudine e della difficoltà di fare il lutto — che si tratti di un\'amicizia spezzata o di un amore mancato. Attraverso il personaggio di Camille, il dramma ci immerge in una successione di scontri, reali o immaginari.\n\nLa storia si apre con un incontro tra Camille e Mathys, un seduttore incallito la cui vita non è altro che una serie di bugie, ognuna più ridicola dell\'altra. Tra corsi di enologia inventati e metafore discutibili, Camille cerca di trovare verità dove c\'è solo apparenza.\n\nPoi scorriamo nell\'intimità della vita in comune con Tina e Mara. Quello che comincia con aneddoti leggeri — un\'emergenza medica bizzarra o una caccia ossessiva alle tarme — finisce per rivelare crepe profonde nell\'amicizia. Camille deve affrontare la "fuga" delle sue amiche e la violenza silenziosa delle amicizie spezzate, che confronta con veri divorzi.\n\nDurante tutta la narrazione, l\'ombra di Ariel, il suo primo amore, incombe. In un dialogo onirico, questiona la memoria e gli "strati" che mettiamo sui nostri ricordi per renderli sopportabili.\n\nIl finale si sviluppa letteralmente intorno a più scacchiere: Camille affronta i suoi fantasmi e i suoi cari una ultima volta. Impara che mentre la fine è inevitabile, la chiave sta nell\'accettare l\'amore ricevuto e nella decisione, nonostante tutto, di continuare a vivere.',
+            'label.edition': 'Edizione:',
+            'label.company': 'Compagnia:',
+            'label.support': 'Supporto:',
+            'label.synopsis': 'Trama',
+            'label.performances': 'Storico delle Rappresentazioni',
+            'label.date': 'Data:',
+            'label.location': 'Luogo:',
+            'label.direction': 'Regia:',
+            'label.cast': 'Cast Originale',
+            'label.creative-team': 'Equipe Creativa',
+            'label.music': 'Musica:',
+            'label.gallery': 'Galleria Foto',
+            'label.photo-credits': 'Crediti Fotografici',
+            'label.photos-by': 'Foto di:',
+            'label.poster-by': 'Manifesto di:',
+            'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'btn.back': '← ZURÜCK ZUR ÜBERSICHT',
+            'btn.watch': 'Ansehen',
+            'btn.see-book': 'Das Buch Ansehen',
+            'les-echecs.tag': 'Komödie',
+            'les-echecs.title': 'Les Échecs',
+            'les-echecs.short-desc': 'Eine Komödie über die Missgeschicke einer jungen Frau: Liebe, Mitbewohner und kleine alltägliche Tragödien.',
+            'les-echecs.video-section': 'Aufzeichnung',
+            'les-echecs.description': 'Les échecs ist eine tragikomische Erforschung menschlicher Beziehungen, der Einsamkeit und der Schwierigkeit zu trauern – sei es um eine zerbrochene Freundschaft oder eine gescheiterte Liebe.\n\nDurch die Figur der Camille werden wir in eine Abfolge von Konfrontationen hineingezogen – mal real, mal imaginär. Die Geschichte beginnt mit dem Treffen zwischen Camille und Mathys, einem eingefleischten Verführer, dessen Leben aus einer Kette von Lügen besteht, von denen eine lächerlicher ist als die letzte. Zwischen erfundenen Weinkursen und fragwürdigen Metaphern sucht Camille nach Wahrheit, wo es nur Schein gibt.\n\nDann tauchen wir ab in die Intimität des Zusammenlebens mit Tina und Mara. Was mit leichten Anekdoten beginnt – einem bizarren medizinischen Notfall oder einer obsessiven Mottenjagd –, legt schließlich tiefe Risse in der Freundschaft offen. Camille muss sich der „Flucht" ihrer Freundinnen und der stillen Gewalt zerbrochener Bindungen stellen, die sie mit schmerzhaften Scheidungen vergleicht.\n\nÜber der gesamten Erzählung schwebt der Schatten von Ariel, ihrer ersten Liebe. In einem traumartigen Dialog hinterfragt sie die Erinnerung und jene „Überlagerungen", die wir über unsere Vergangenheit legen, um sie erträglich zu machen.\n\nDas Finale findet buchstäblich an mehreren Schachbrettern statt: Camille stellt sich ein letztes Mal ihren Geistern und ihren Lieben. Sie begreift, dass das Ende zwar unvermeidlich ist, die Antwort jedoch in der Annahme der erfahrenen Liebe liegt – und in der Entscheidung, trotz allem weiterzuleben.',
+            'label.edition': 'Ausgabe:',
+            'label.company': 'Kompanie:',
+            'label.support': 'Unterstützung:',
+            'label.synopsis': 'Handlung',
+            'label.performances': 'Aufführungsverlauf',
+            'label.date': 'Datum:',
+            'label.location': 'Ort:',
+            'label.direction': 'Regie:',
+            'label.cast': 'Originalbesetzung',
+            'label.creative-team': 'Kreatives Team',
+            'label.music': 'Musik:',
+            'label.gallery': 'Fotogalerie',
+            'label.photo-credits': 'Fotokredit',
+            'label.photos-by': 'Fotos von:',
+            'label.poster-by': 'Plakat von:',
+            'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
+            'company.name': 'La Troupe des Soirs Bleus',
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                element.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Event listeners for language buttons
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setLanguage(this.getAttribute('data-lang'));
+        });
+    });
+
+    // Initialize page with saved language
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+    });
+</script>
