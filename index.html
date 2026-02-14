@@ -78,10 +78,8 @@
 
         .scroll-nav a:hover,
         .scroll-nav a.active {
-            background: white;
-            border-color: white;
-            width: 120px;
-            border-radius: 2px;
+            background: transparent;
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .scroll-nav a span {
@@ -97,11 +95,15 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             z-index: 5;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
         }
 
         .scroll-nav a:hover span,
         .scroll-nav a.active span {
             display: block;
+            border-bottom-color: white;
         }
 
         .projects-container {
@@ -512,7 +514,7 @@
         <span>Mazel</span>
     </a>
     <a href="#deux-secondes" class="nav-dot" data-section="1">
-        <span>Deux Secondes</span>
+        <span>2 Secondes</span>
     </a>
     <a href="#les-echecs" class="nav-dot" data-section="2">
         <span>Les Échecs</span>
@@ -555,7 +557,7 @@
             </div>
             <div class="text-content">
                 <span class="tag">Tragédie</span>
-                <h2>Deux secondes avant l'extase</h2>
+                <h2>2 Secondes avant l'extase</h2>
                 <p>Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
                 <div class="button-group">
                     <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn">Voir le livre</a>
