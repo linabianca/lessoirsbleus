@@ -187,8 +187,11 @@
             transform: translateY(100%);
             transition: all 0.4s ease;
             display: flex;
-            align-items: flex-end;
-            height: 100%;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: auto;
+            text-align: center;
         }
 
         .actor-card:hover .actor-overlay {
@@ -199,6 +202,14 @@
             font-size: 1.2em;
             font-weight: bold;
             letter-spacing: 1px;
+        }
+
+        .actor-role {
+            font-size: 0.85em;
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+            opacity: 0.9;
         }
 
         /* Responsive Grid */
@@ -267,9 +278,9 @@
 
     <div class="actors-grid">
         <div class="actor-card">
-            <img src="assets/photo troupe/Ale.jpg" alt="Ale">
+            <img src="assets/photo troupe/Ale.jpg" alt="Alessandra">
             <div class="actor-overlay">
-                <span class="actor-name">Ale</span>
+                <span class="actor-name">Alessandra</span>
             </div>
         </div>
 
@@ -277,6 +288,7 @@
             <img src="assets/photo troupe/Anissa.png" alt="Anissa">
             <div class="actor-overlay">
                 <span class="actor-name">Anissa</span>
+                <span class="actor-role">Actrice / Metteuse en scène</span>
             </div>
         </div>
 
@@ -284,6 +296,7 @@
             <img src="assets/photo troupe/Cecile.jpg" alt="Cécile">
             <div class="actor-overlay">
                 <span class="actor-name">Cécile</span>
+                <span class="actor-role">Actrice / Scénographe</span>
             </div>
         </div>
 
@@ -304,7 +317,7 @@
         <div class="actor-card">
             <img src="assets/photo troupe/LinaChelha.png" alt="Lina Chelha">
             <div class="actor-overlay">
-                <span class="actor-name">Lina Chelha</span>
+                <span class="actor-name">Lina</span>
             </div>
         </div>
 
@@ -353,13 +366,14 @@
         <div class="actor-card placeholder">
             <div class="placeholder-content">
                 <div class="actor-name">Anaïs</div>
+                <div class="actor-role">Actrice / Photographe</div>
                 <div class="coming-soon">À venir</div>
             </div>
         </div>
 
         <div class="actor-card placeholder">
             <div class="placeholder-content">
-                <div class="actor-name">Julie</div>
+                <div class="actor-name">Léa</div>
                 <div class="coming-soon">À venir</div>
             </div>
         </div>
