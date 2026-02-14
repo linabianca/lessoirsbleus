@@ -246,6 +246,12 @@
                 font-size: 0.85em;
                 padding: 10px 18px;
             }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .language-switcher {
+                right: 15px;
+                left: auto;
+            }
         }
 
         .language-switcher {
@@ -281,6 +287,19 @@
             border-color: #7fd4d4;
             color: #0f2839;
         }
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
 
         footer {
             background: rgba(0, 0, 0, 0.7);
@@ -307,6 +326,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
 <div class="container">
@@ -510,6 +530,18 @@
             'actor.anaïs-role': 'Schauspielerin / Fotografin',
             'label.coming-soon': 'Bald',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'btn.back': '← العودة',
+            'troupe.title': 'فرقة أمسيات الأزرق',
+            'troupe.subtitle': 'الممثلات والممثلون في قلب إبداعاتنا',
+            'troupe.page-title': 'فرقة أمسيات الأزرق',
+            'troupe.description': 'تعرف على الممثلات والممثلين الموهوبين الذين يحيون إبداعاتنا المسرحية',
+            'actor.anissa-role': 'ممثلة / مخرجة',
+            'actor.cecile-role': 'ممثلة / مصممة ديكور',
+            'actor.anaïs-role': 'ممثلة / مصورة',
+            'label.coming-soon': 'قريباً',
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
         }
     };
 
@@ -521,6 +553,14 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
+        // Set document direction for RTL languages
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
     }
 
     function updatePageLanguage() {

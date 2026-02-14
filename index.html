@@ -528,6 +528,19 @@
             header p {
                 font-size: 0.8em;
             }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .text-content {
+                padding-right: 0;
+                padding-left: 0;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            html[lang="ar"] .language-switcher {
+                right: 15px;
+                left: auto;
+            }
         }
 
         .language-switcher {
@@ -586,6 +599,47 @@
             border-top: 4px solid #C41E3A;
             font-size: 0.9em;
         }
+
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] .scroll-nav {
+            right: auto;
+            left: 0px;
+            padding-right: 0;
+            padding-left: 8px;
+        }
+
+        html[lang="ar"] .scroll-nav a span {
+            right: auto;
+            left: 15px;
+        }
+
+        html[lang="ar"] .text-content {
+            padding-left: 0;
+            padding-right: 20px;
+            margin-right: 0;
+            margin-left: 80px;
+        }
+
+        html[lang="ar"] .text-content p {
+            text-align: justify;
+        }
+
+        html[lang="ar"] .section-content {
+            direction: rtl;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
     </style>
 </head>
 <body>
@@ -600,6 +654,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
 <nav class="scroll-nav">
@@ -893,6 +948,48 @@
             'btn.contact': 'Kontaktieren Sie Mich',
             
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'nav.mazel': 'مازال',
+            'nav.deux-secondes': 'ثانيتان',
+            'nav.les-echecs': 'Les Échecs',
+            'nav.projets-a-venir': 'قادم',
+            'nav.a-propos': 'حول',
+            
+            'section1.tag': 'كوميديا عائلية',
+            'section1.title': 'مازال',
+            'section1.description': 'كوميديا تستكشف بحنان وفكاهة قلق "من أين جئت"، في قلب عائلة فرنسية جزائرية.\n\nفي هذا الفوضى العائلية المبهجة، يحاول كل شخصية بطريقته الخاصة التوازن بين هوياتها وتراثها وتناقضاتها.',
+            
+            'section2.tag': 'تراجيديا',
+            'section2.title': 'ثانيتان قبل النشوة',
+            'section2.description': 'اقتباس من أنتيجون. صورة شاعرية لامرأة تحب بإفراط، مأخوذة قبل الهاوية مباشرة.',
+            
+            'section3.tag': 'كوميديا',
+            'section3.title': 'Les Échecs',
+            'section3.description': 'Les Échecs - كوميديا عن نكبات امرأة شابة: الحب والرفقاء والمآسي الصغيرة في الحياة اليومية.',
+            
+            'section4.tag': 'قادم',
+            'section4.title': 'مشاريع قادمة',
+            'section4.project1.title': 'أوفيليا على الحافة',
+            'section4.project1.description': 'إنشاء جديد.\n\nماذا لو لم تجن أوفيليا قط؟ ماذا لو كانت تجمع الأزهار ليلا فقط...؟',
+            'section4.project2.title': 'أوديب',
+            'section4.project2.description': 'مشروع قيد التطوير، لكن اسمه يكشف بالفعل الكثير!',
+            
+            'section5.tag': 'السيرة الذاتية',
+            'section5.title': 'حول',
+            'section5.photo-credit': 'صورة © آنا دي تافيرا',
+            'section5.description': 'لينا بيانكاريلي هي كاتبة مسرح بدوية، طالبة طب، مدربة في التحليل النفسي والعلاج النفسي. قرسية، جزائرية، برلينية، تعيش الآن في إيطاليا.',
+            'section5.troupe': 'دائمة البحث عن مشاريع جديدة لتجميع عشاق المسرح. ',
+            'section5.troupe-link': 'تعرف على La Troupe des Soirs Bleus!',
+            
+            'btn.learn-more': 'معرفة المزيد',
+            'btn.see-book': 'عرض الكتاب',
+            'btn.video': 'فيديو',
+            'btn.details': 'التفاصيل',
+            'btn.contact': 'اتصل بي',
+            
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
         }
     };
 
@@ -904,6 +1001,14 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
+        // Set document direction for RTL languages
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
     }
 
     function updatePageLanguage() {

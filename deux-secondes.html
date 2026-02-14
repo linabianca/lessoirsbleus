@@ -301,6 +301,19 @@
             border-color: #f4d03f;
             color: #1a3a52;
         }
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
         footer {
             background: rgba(0, 0, 0, 0.5);
             color: #e8d4a8;
@@ -478,6 +491,16 @@
                 font-size: 0.85em;
                 margin-top: 70px;
             }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .hero-content {
+                padding: 0 10px;
+            }
+
+            html[lang="ar"] .language-switcher {
+                right: 15px;
+                left: auto;
+            }
         }
     </style>
 </head>
@@ -493,6 +516,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
 <div class="container">
@@ -750,6 +774,37 @@
             'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
             'company.name': 'La Troupe des Soirs Bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'btn.back': '← العودة للصفحة الرئيسية',
+            'btn.watch': 'مشاهدة',
+            'btn.see-book': 'عرض الكتاب',
+            'deux-secondes.tag': 'مأساة معاصرة',
+            'deux-secondes.title': 'ثانيتان قبل النشوة',
+            'deux-secondes.short-desc': 'اقتباس من أنتيغون. صورة امرأة تحب بإفراط، في لحظة قبل الهاوية.',
+            'deux-secondes.video-section': 'التسجيل',
+            'deux-secondes.description': 'ثانيتان قبل النشوة هي إعادة صياغة لأسطورة أنتيغون، تحول التركيز من القضايا السياسية إلى الحميمية الداخلية لامرأة تحب بلا حدود.\n\nتبدأ المسرحية برمح معلق: منولوج أنتيغون وهي تتأمل الهاوية، تسرق بضع ثوانٍ من حياة مملة لتتخيل وجودًا لم تكن لتضطر فيه للاختيار بين التضحية والحياة.\n\nتغوص الأحداث بنا إلى ليلة الدراما. بعيدة عن بطلة الرخام، نكتشف أنتيغون النابضة بالحياة، المأخوذة برغبتها لخطيبها هيمون، والمواجهة حول أختها إسمينه، تجسيد الحياة والجمال. تخفي كمالها سرًا: إنها حامل وتستحث أختها على اختيار الحياة لحفيدتها المستقبلية، بدلاً من الانعزال في طيبة الملعونة والدموية.\n\nلكن بالنسبة لأنتيغون، الرفض هو عمل شجاعة مطلقة. ترفض السعادة البسيطة التي يقدمها عمها كريون، والي متعب يحلم بزراعة اللفت لكنه محاصر بسلطته الخاصة. العقاب الذي يوقعه عليها ليس الموت الفوري، بل تعذيب نفسي: ملعونة بالأحلام اللانهائية بفعل جرعة مشلول، عليها أن تبقى متفرجة على حياة تستمر بدونها.\n\nالنهاية، المحمولة بالبراءة القاسية لطفلين، يسيتا وليودميس، تنجرف نحو النشوة النهائية. بين السم المحرر والأمل في الترياق، يتركنا الجوقة أمام السؤال الأبدي: هل يمكننا حقا أن نختار النهاية؟',
+            'label.edition': 'الطبعة:',
+            'label.company': 'الفرقة:',
+            'label.support': 'الدعم:',
+            'label.synopsis': 'القصة',
+            'label.performances': 'سجل العروض',
+            'label.date': 'التاريخ:',
+            'label.location': 'المكان:',
+            'label.direction': 'الإخراج:',
+            'label.cast': 'الفريق الأصلي',
+            'label.creative-team': 'الفريق الإبداعي',
+            'label.lights-scenography': 'الإضاءة والديكور:',
+            'label.music': 'الموسيقى:',
+            'label.german-translation': 'الترجمة الألمانية:',
+            'label.gallery': 'معرض الصور',
+            'label.photo-credits': 'اعتمادات الصور',
+            'label.photos-by': 'الصور بواسطة:',
+            'label.poster-by': 'الملصق من قبل:',
+            'label.thanks': 'شكرًا للمصورين على هذه الصور المذهلة للعروض.',
+            'company.name': 'فرقة أمسيات الأزرق',
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
         }
     };
 
@@ -761,6 +816,14 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
+        // Set document direction for RTL languages
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
     }
 
     function updatePageLanguage() {

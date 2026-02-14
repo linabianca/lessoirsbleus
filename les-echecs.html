@@ -300,6 +300,19 @@
             background: #C41E3A;
             border-color: #C41E3A;
         }
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
         footer {
             background: rgba(0, 0, 0, 0.7);
             color: #E8B997;
@@ -477,6 +490,16 @@
                 font-size: 0.85em;
                 margin-top: 70px;
             }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .hero-content {
+                padding: 0 10px;
+            }
+
+            html[lang="ar"] .language-switcher {
+                right: 15px;
+                left: auto;
+            }
         }
     </style>
 </head>
@@ -492,6 +515,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
 <div class="container">
@@ -611,7 +635,7 @@
     <div class="credits">
         <h3 style="color: #C41E3A; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
         <p><strong data-i18n="label.photos-by">Photographies par :</strong> Sabrina Jeblaoui, Malou Labrecque</p>
-        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Alessandro Bocquet</p>
+        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> <span data-i18n="les-echecs.poster-by">Alessandro Bocquet</span></p>
         <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
     </div>
 
@@ -651,6 +675,7 @@
             'label.poster-by': 'Affiche créée par :',
             'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
             'les-echecs.music-by': 'Lara Chorosz',
+            'les-echecs.poster-by': 'Alessandro Bocquet',
             'company.name': 'Troupe des Soirs bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
         },
@@ -681,6 +706,7 @@
             'label.poster-by': 'Poster by:',
             'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
             'les-echecs.music-by': 'Lara Chorosz',
+            'les-echecs.poster-by': 'Alessandro Bocquet',
             'company.name': 'La Troupe des Soirs Bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
         },
@@ -711,6 +737,7 @@
             'label.poster-by': 'Manifesto di:',
             'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
             'les-echecs.music-by': 'Lara Chorosz',
+            'les-echecs.poster-by': 'Alessandro Bocquet',
             'company.name': 'La Troupe des Soirs Bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
         },
@@ -741,8 +768,40 @@
             'label.poster-by': 'Plakat von:',
             'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
             'les-echecs.music-by': 'Lara Chorosz',
+            'les-echecs.poster-by': 'Alessandro Bocquet',
             'company.name': 'La Troupe des Soirs Bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'btn.back': '← العودة للصفحة الرئيسية',
+            'btn.watch': 'مشاهدة',
+            'btn.see-book': 'عرض الكتاب',
+            'les-echecs.tag': 'كوميديا',
+            'les-echecs.title': 'Les Échecs',
+            'les-echecs.short-desc': 'Les Échecs - كوميديا عن محنة فتاة شابة: الحب والرفقاء والمأساة اليومية.',
+            'les-echecs.video-section': 'التسجيل',
+            'les-echecs.description': 'الفشل هو استكشاف مأساوي هزلي للعلاقات الإنسانية، والوحدة، وصعوبة الحزن—سواء كانت صداقة مكسورة أو حب فاشل. من خلال شخصية كاميل، تقذفنا المسرحية في سلسلة من المواجهات، حقيقية أو خيالية.\n\nتبدأ القصة بلقاء بين كاميل وماثيس، مغوٍ روتيني حياته عبارة عن سلسلة من الأكاذيب، كل واحدة أكثر سخافة من الأخرى. بين دورات النبيذ المختلقة والاستعارات المريبة، تحاول كاميل إيجاد حقيقة حيث لا يوجد سوى ظهور.\n\nثم نغوص في حميمية العيش المشترك مع تينا ومارا. ما يبدأ بحكايات خفيفة—حالة طوارئ طبية غريبة أو صيد عث وسواسي—ينتهي به الحال إلى كشف شقوق عميقة في الصداقة. يجب على كاميل أن تواجه "فرار" أصدقائها والعنف الصامت للعلاقات المكسورة، والتي تقارنها بالطلاق الحقيقي.\n\nعلى مدار السرد بأكمله، يحوم ظل أريال، حبها الأول. في حوار شبيه بالحلم، تتساءل عن الذاكرة و"الطبقات الحرفية" التي نضعها على ذكرياتنا لجعلها محتملة.\n\nالنهاية تحدث حرفياً حول عدة رقعات شطرنج: تواجه كاميل أشباحها وأحبائها مرة أخيرة. تتعلم أنه بينما النهاية حتمية، المفتاح يكمن في قبول الحب المستقبل والقرار، رغم كل شيء، باستمرار حياتك.',
+            'label.edition': 'الطبعة:',
+            'label.company': 'الفرقة:',
+            'label.support': 'الدعم:',
+            'label.synopsis': 'القصة',
+            'label.performances': 'سجل العروض',
+            'label.date': 'التاريخ:',
+            'label.location': 'المكان:',
+            'label.direction': 'الإخراج:',
+            'label.cast': 'الفريق الأصلي',
+            'label.creative-team': 'الفريق الإبداعي',
+            'label.music': 'الموسيقى:',
+            'label.gallery': 'معرض الصور',
+            'label.photo-credits': 'اعتمادات الصور',
+            'label.photos-by': 'الصور بواسطة:',
+            'label.poster-by': 'الملصق من قبل:',
+            'label.thanks': 'شكرًا للمصورين على هذه الصور المذهلة للعروض.',
+            'les-echecs.music-by': 'لارا شوروز',
+            'les-echecs.poster-by': 'أليساندرو بوكيت',
+            'company.name': 'فرقة أمسيات الأزرق',
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
         }
     };
 
@@ -754,6 +813,14 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
+        // Set document direction for RTL languages
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
     }
 
     function updatePageLanguage() {

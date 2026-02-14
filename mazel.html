@@ -303,6 +303,19 @@
             background: #a0654e;
             border-color: #a0654e;
         }
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
 
         footer {
             background: rgba(0, 0, 0, 0.7);
@@ -481,6 +494,16 @@
                 font-size: 0.85em;
                 margin-top: 70px;
             }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .hero-content {
+                padding: 0 10px;
+            }
+
+            html[lang="ar"] .language-switcher {
+                right: 15px;
+                left: auto;
+            }
         }
     </style>
 </head>
@@ -496,6 +519,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
 <div class="container">
@@ -695,6 +719,32 @@
             'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
             'company.name': 'La Troupe des Soirs Bleus',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'btn.back': '← العودة للصفحة الرئيسية',
+            'mazel.tag': 'كوميديا عائلية',
+            'mazel.title': 'مازال',
+            'mazel.short-desc': 'فوضى عائلية فرنسية جزائرية مفرحة حيث نتلاعب بالموروثات والتناقضات.',
+            'mazel.video-section': 'التسجيل',
+            'mazel.description': 'تتابع القصة ثيزيري، فتاة شابة تبحث عن معالم لنفسها، وهي تعود لتقضي أربعة أيام مع عائلتها. بين المراتب على الأرض ورائحة القهوة، تجد نفسها منغمسة في "الفوضى المرحة" للحياة العائلية. تخفي جدتها هوريا أدويتها (أو ربما حلويات تيك تاك) في حمالة صدرها، بينما يبحث عمها بلال عن مكانه كرب أسرة من خلال روحانية صارمة، آملاً أن يتوقف عن كونه غريباً في كل مكان.\n\nفي هذا البيت حيث الجميع يتحدثون بدون أن يفهم بعضهم البعض بالضرورة، تحاول ثيزيري التحقيق. لماذا تخفي جدتها جواز سفرها؟ لماذا لا تقول أبداً إلى أين تذهب؟ إلى أين تذهب عمتها في وقت الصلاة وما هي الرائحة الغريبة القادمة من غرفتها؟ من هذا سائق الشاحنة الغامض الذي يبدو أنه يأتي دائماً في الوقت المناسب؟\n\nمن المعيشة المرتجلة في غرفة المعيشة إلى فنادق الأقصر، مازل هي رحلة تذكرنا بأنه رغم دموع النفي وجروح الماضي، فإن الحب العائلي هو شكل من أشكال السحر.\n\n"مازل": لأنه لم يقل كل شيء بعد، لأن الحياة تستمر، دائماً وأبداً.',
+            'label.edition': 'الطبعة:',
+            'label.company': 'الفرقة:',
+            'label.direction': 'الإخراج الأصلي:',
+            'label.support': 'الدعم:',
+            'btn.see-edition': 'عرض الطبعة',
+            'label.synopsis': 'القصة',
+            'label.performances': 'سجل العروض',
+            'label.date': 'التاريخ:',
+            'label.location': 'المكان:',
+            'label.cast': 'الفريق الأصلي',
+            'label.gallery': 'معرض الصور',
+            'label.photo-credits': 'اعتمادات الصور',
+            'label.photos-by': 'الصور بواسطة:',
+            'label.poster-by': 'الملصق من قبل:',
+            'label.thanks': 'شكرًا للمصورين على هذه الصور المذهلة للعروض.',
+            'company.name': 'فرقة أمسيات الأزرق',
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
         }
     };
 
@@ -706,6 +756,14 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
+        // Set document direction for RTL languages
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
     }
 
     function updatePageLanguage() {
