@@ -487,6 +487,23 @@
                 flex-direction: column;
             }
 
+            .section:nth-child(5) .text-content {
+                padding: 0 15px;
+                margin-top: 20px;
+            }
+
+            .section:nth-child(5) .text-content h2 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+
+            .section:nth-child(5) .text-content p {
+                font-size: 0.95em;
+                line-height: 1.5;
+                margin-bottom: 25px;
+                word-break: break-word;
+            }
+
             header h1 {
                 font-size: 1.5em;
             }
@@ -527,6 +544,21 @@
         .lang-btn.active {
             background: #C41E3A;
             border-color: #C41E3A;
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 15px;
+                left: 15px;
+                gap: 4px;
+            }
+
+            .lang-btn {
+                padding: 6px 8px;
+                font-size: 0.7em;
+                letter-spacing: 0.5px;
+                border: 1.5px solid rgba(255, 255, 255, 0.3);
+            }
         }
 
         footer {
