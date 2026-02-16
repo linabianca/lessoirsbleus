@@ -268,6 +268,87 @@
             transition: transform 0.3s ease;
         }
 
+        /* Accordion Toggle Header */
+        .accordion-toggle {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .accordion-toggle::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: #a0654e;
+        }
+
+        .accordion-toggle.collapsed::after {
+            transform: translateY(-50%) rotate(-180deg);
+        }
+
+        .accordion-toggle:hover {
+            color: #a0654e;
+        }
+
+        /* Script Container - Accordion */
+        .scripts-container {
+            max-height: 2000px;
+            opacity: 1;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+            margin-top: 30px;
+        }
+
+        .scripts-container.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        /* Script Formatting */
+        .script {
+            background: rgba(160, 101, 78, 0.05);
+            padding: 30px;
+            border-left: 5px solid #a0654e;
+            margin-bottom: 40px;
+            font-size: 1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .dialogue-line {
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .character {
+            font-weight: 700;
+            color: #a0654e;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+
+        .speech {
+            color: #2a2a2a;
+            font-style: italic;
+        }
+
+        .pause {
+            margin: 15px 0;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+
         #excerpt .description-text {
             max-height: 0;
             overflow: hidden;
@@ -776,9 +857,9 @@
 
     <!-- Excerpt Section -->
     <div class="section" id="excerpt">
-        <h3 data-i18n="label.excerpt">Extrait</h3>
-        <div class="description-text">
-            <p data-i18n="mazel.excerpt">You can add your text excerpt here...</p>
+        <h3 class="accordion-toggle" data-i18n="label.excerpt">Extrait</h3>
+        <div class="scripts-container" id="scripts-container">
+            <div id="script-content" data-i18n="mazel.excerpt"></div>
         </div>
     </div>
 
@@ -868,6 +949,7 @@
             'label.direction': 'Mise en scène originale :',
             'label.support': 'Soutien :',
             'label.excerpt': 'Extrait',
+            'mazel.excerpt': '<div class="script"><div class="pause"><strong>SCÈNE IX</strong> — Nadia et Thiziri sont à nouveau chez leur famille, il y a tout le monde, sauf Houria et Nour. Décor du salon. Tout le monde est autour du téléphone mis sur haut-parleur.</div><div class="dialogue-line"><span class="character">THIZIRI</span><span class="speech">C\'est bon ! On est connectés ! Coucou mémé, tu es sur haut-parleur !</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Allôôôôô ?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Oui, allô !</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Allôôôôôôôôôô ???</span></div><div class="dialogue-line"><span class="character">RATIBA ET RAZIKA</span><span class="speech">Allôôôôô !!!</span></div><div class="pause">On entend des bruits en fond. La connexion n\'est clairement pas bonne.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Allôôôôôôô ? Vous êtes là ?</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Nous, on est là, mais toi, tu es loin !</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ah mon fils, mon amour ! Tu as assez mangé ?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">(À Bilal) C\'est fou ça, avec toi, y a pas d\'interférence… (Au téléphone) Coucou maman ! On est tous là, il y a Thiziri, Ratiba, Razika, Bilal, Nacira, papa…</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ah !</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Ça va, maman ? C\'est comment, La Mecque ? Nour va bien ?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Oui ça va, c\'est bien ! C\'est très beau. Nour, ça va.</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Tu vas revenir un jour, où on peut revendre tes affaires ?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Tu ne touches pas à mes affaires !</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Je rigole, oh ! Personne n\'en voudrait de toute façon.</span></div><div class="pause">Houria et Bilal rient. On entend une voix masculine lointaine du côté de chez Houria.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Oui, oui. Bon. Nadia, je peux te parler ? Biya va faire un œuf de coq à Bilal !</span></div><div class="pause">Biya lève les yeux au ciel et râle bruyamment mais se lève et va dans la cuisine.</div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Je suis là, maman.</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Les autres partez</span></div></div>',
             'btn.see-edition': 'Voir l\'édition',
             'label.intro': 'Introduction',
             'label.captation': 'Captation',
@@ -903,6 +985,7 @@
             'label.direction': 'Original Direction:',
             'label.support': 'Support:',
             'label.excerpt': 'Excerpt',
+            'mazel.excerpt': '<div class="script"><div class="pause"><strong>SCENE IX</strong> — Nadia and Thiziri are back at their family home, everyone is there except Houria and Nour. The living room. Everyone is gathered around the phone on speaker.</div><div class="dialogue-line"><span class="character">THIZIRI</span><span class="speech">Good! We\'re connected! Hi grandma, you\'re on speaker!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Helloooo?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Yes, hello!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Helloooooooo???</span></div><div class="dialogue-line"><span class="character">RATIBA AND RAZIKA</span><span class="speech">Helloooo!!!</span></div><div class="pause">We hear background noise. The connection is clearly not good.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Helloooooo? Are you there?</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">We\'re here, but you\'re far away!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Oh my son, my love! Have you eaten enough?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">(To Bilal) It\'s crazy, with you there\'s no interference… (On phone) Hi mom! We\'re all here, there\'s Thiziri, Ratiba, Razika, Bilal, Nacira, dad…</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ah!</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">How are you, mom? What\'s it like, Mecca? How\'s Nour?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Yes, it\'s good, it\'s nice! It\'s very beautiful. Nour is fine.</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Are you coming back one day, or can we sell your stuff?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Don\'t you touch my things!</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">I\'m joking! No one would want them anyway.</span></div><div class="pause">Houria and Bilal laugh. We hear a distant male voice from Houria\'s side.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Yes, yes. Right. Nadia, can I talk to you? Biya is going to make a rooster egg for Bilal!</span></div><div class="pause">Biya rolls her eyes and grumbles loudly but gets up and goes to the kitchen.</div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">I\'m here, mom.</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Everyone else leave</span></div></div>',
             'btn.see-edition': 'See Edition',
             'label.distribution': 'Distribution',
             'label.synopsis': 'Synopsis',
@@ -934,6 +1017,7 @@
             'label.direction': 'Regia Originale:',
             'label.support': 'Supporto:',
             'label.excerpt': 'Estratto',
+            'mazel.excerpt': '<div class="script"><div class="pause"><strong>SCENA IX</strong> — Nadia e Thiziri sono di nuovo a casa della loro famiglia, c\'è tutta gente, tranne Houria e Nour. Decorazione del soggiorno. Tutti sono intorno al telefono messo in vivavoce.</div><div class="dialogue-line"><span class="character">THIZIRI</span><span class="speech">Perfetto! Siamo connessi! Ciao nonna, sei in vivavoce!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Alloooo?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Sì, ciao!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Allooooooooo???</span></div><div class="dialogue-line"><span class="character">RATIBA E RAZIKA</span><span class="speech">Alloooo!!!</span></div><div class="pause">Sentiamo rumori di sottofondo. La connessione chiaramente non è buona.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Allooooooo? Siete lì?</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Noi siamo qui, ma tu sei lontana!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Oh mio figlio, mio amore! Hai mangiato abbastanza?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">(A Bilal) È pazzo, con te non c\'è interferenza… (Al telefono) Ciao mamma! Siamo tutti qui, ci sono Thiziri, Ratiba, Razika, Bilal, Nacira, papà…</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ah!</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Come stai, mamma? Com\'è, la Mecca? Nour sta bene?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Sì, va bene, è bello! È molto bellissimo. Nour sta bene.</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Tornerai un giorno, oppure possiamo vendere le tue cose?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Non toccare le mie cose!</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Sto scherzando! Nessuno le compererebbe comunque.</span></div><div class="pause">Houria e Bilal ridono. Sentiamo una voce maschile lontana dal lato di Houria.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Sì, sì. Bene. Nadia, posso parlarti? Biya farà un uovo di gallo a Bilal!</span></div><div class="pause">Biya alza gli occhi al cielo e un forte lamenti ma si alza e va in cucina.</div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Sono qui, mamma.</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Gli altri, andate via</span></div></div>',
             'btn.see-edition': 'Vedi Edizione',
             'label.synopsis': 'Trama',
             'label.performances': 'rappresentazioni',
@@ -964,6 +1048,7 @@
             'label.direction': 'Ursprüngliche Regie:',
             'label.support': 'Unterstützung:',
             'label.excerpt': 'Auszug',
+            'mazel.excerpt': '<div class="script"><div class="pause"><strong>SZENE IX</strong> — Nadia und Thiziri sind wieder bei ihrer Familie, es sind alle da, außer Houria und Nour. Dekoration des Wohnzimmers. Alle stehen um das Telefon mit Lautsprecher.</div><div class="dialogue-line"><span class="character">THIZIRI</span><span class="speech">Gut! Wir sind verbunden! Hallo Oma, du bist auf Lautsprecher!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Halooooo?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Ja, hallo!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Haloooooooo???</span></div><div class="dialogue-line"><span class="character">RATIBA UND RAZIKA</span><span class="speech">Haloooo!!!</span></div><div class="pause">Wir hören Hintergrundgeräusche. Die Verbindung ist eindeutig nicht gut.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Haloooooo? Seid ihr da?</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Wir sind hier, aber du bist weit weg!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Oh mein Sohn, meine Liebe! Hast du genug gegessen?</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">(Zu Bilal) Das ist verrückt, bei dir gibt es keine Störungen… (Am Telefon) Hallo Mama! Wir sind alle hier, es gibt Thiziri, Ratiba, Razika, Bilal, Nacira, Papa…</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ah!</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Wie geht es dir, Mama? Wie ist es, Mekka? Geht es Nour gut?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ja, mir geht es gut, es ist schön! Es ist sehr schön. Nour geht es gut.</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Kommst du eines Tages zurück, oder können wir deine Sachen verkaufen?</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Fass meine Sachen nicht an!</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">Ich scherze! Niemand hätte sie ohnehin.</span></div><div class="pause">Houria und Bilal lachen. Wir hören eine männliche Stimme aus der Ferne von Houria\'s Seite.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ja, ja. Na ja. Nadia, kann ich mit dir sprechen? Biya wird ein Hahnenei für Bilal machen!</span></div><div class="pause">Biya verdreht die Augen und grummelt laut, aber sie steht auf und geht in die Küche.</div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">Ich bin hier, Mama.</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">Ihr anderen, geht weg</span></div></div>',
             'btn.see-edition': 'Ausgabe Ansehen',
             'label.synopsis': 'Handlung',
             'label.performances': 'Aufführungsverlauf',
@@ -994,6 +1079,7 @@
             'label.direction': 'الإخراج الأصلي:',
             'label.support': 'الدعم:',
             'label.excerpt': 'مقتطف',
+            'mazel.excerpt': '<div class="script"><div class="pause"><strong>مشهد التاسع</strong> — نادية وثيزيري عادتا إلى منزل عائلتهما، الجميع هناك ما عدا هورية ونور. ديكور غرفة المعيشة. الجميع حول الهاتف على الموضع العام.</div><div class="dialogue-line"><span class="character">THIZIRI</span><span class="speech">حسنا! نحن متصلون! مرحبا جدة، أنتِ على الموضع العام!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">السلام عليكم؟</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">أيوه، السلام عليكم!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">السلام عليكمممم؟؟؟</span></div><div class="dialogue-line"><span class="character">RATIBA AND RAZIKA</span><span class="speech">السلام عليكمم!!!</span></div><div class="pause">نسمع أصوات خلفية. الاتصال واضح أنه ليس جيد.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">السلام عليكمممم؟ هل أنتم هناك؟</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">نحن هنا، لكنك بعيدة!</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">يا إلهي يا حبيبي! هل أكلت ما يكفي؟</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">(إلى بلال) هذا مجنون، معك لا توجد تداخلات... (على الهاتف) مرحبا يا أماه! نحن هنا جميعا، هناك ثيزيري، راتيبة، رازيقة، بلال، ناسيرة، أبي...</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">آه!</span></div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">كيف حالك يا أماه؟ كيف هو، مكة؟ كيف حال نور؟</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">أيوه، تمام، جميل! جميل جدا جدا. نور بخير.</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">هل ستعودين يوما، أم يمكننا بيع أشيائك؟</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">لا تلمسي أشيائي!</span></div><div class="dialogue-line"><span class="character">BILAL</span><span class="speech">أنا أمزح! لا أحد سيريد منهم على أي حال.</span></div><div class="pause">هورية وبلال يضحكان. نسمع صوت ذكر بعيد من جانب هورية.</div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">نعم، نعم. حسنا. ندى، هل يمكنني التحدث معك؟ بيا ستصنع بيض الديك لبلال!</span></div><div class="pause">بيا تقلب عينيها وتتذمر بصوت عالٍ لكنها تقف وتذهب إلى المطبخ.</div><div class="dialogue-line"><span class="character">NADIA</span><span class="speech">أنا هنا يا أماه.</span></div><div class="dialogue-line"><span class="character">HOURIA</span><span class="speech">الآخرون اذهبوا</span></div></div>',
             'btn.see-edition': 'عرض الطبعة',
             'label.synopsis': 'القصة',
             'label.performances': 'سجل العروض',
@@ -1036,7 +1122,13 @@
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
-                element.textContent = translations[currentLanguage][key];
+                const content = translations[currentLanguage][key];
+                // Check if content contains HTML tags
+                if (content.includes('<') && content.includes('>')) {
+                    element.innerHTML = content;
+                } else {
+                    element.textContent = content;
+                }
             }
         });
     }
@@ -1119,16 +1211,20 @@
         setupScrollNavigation();
     }
 
-    // Excerpt toggle functionality
+    // Accordion functionality for Excerpt section
     document.addEventListener('DOMContentLoaded', function() {
         const excerptSection = document.getElementById('excerpt');
         if (!excerptSection) return;
 
-        const excerptTitle = excerptSection.querySelector('h3');
-        if (!excerptTitle) return;
+        const accordionToggle = excerptSection.querySelector('.accordion-toggle');
+        const scriptsContainer = document.getElementById('scripts-container');
 
-        excerptTitle.addEventListener('click', function() {
-            excerptSection.classList.toggle('active');
+        if (!accordionToggle || !scriptsContainer) return;
+
+        // Toggle accordion on header click
+        accordionToggle.addEventListener('click', function() {
+            accordionToggle.classList.toggle('collapsed');
+            scriptsContainer.classList.toggle('collapsed');
         });
     });
 

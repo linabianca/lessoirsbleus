@@ -78,7 +78,6 @@
             color: #1a3a52;
         }
 
-        /* Hero Section */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -151,16 +150,18 @@
             height: 100%;
         }
 
-        .tech-item value {
-            font-size: 1.1em;
+        .tech-item label {
+            font-weight: 700;
             color: #f4d03f;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
-        @media (max-width: 768px) {
-            .tech-sheet {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
+        .tech-item value {
+            font-size: 1.1em;
+            color: #e8d4a8;
         }
 
         .info-box {
@@ -173,6 +174,18 @@
 
         .info-box strong {
             color: #f4d03f;
+        }
+
+        .info-box a {
+            color: #f4d03f;
+            text-decoration: none;
+            border-bottom: 2px solid #f4d03f;
+            transition: all 0.3s ease;
+        }
+
+        .info-box a:hover {
+            color: #ffd45f;
+            border-bottom-color: #ffd45f;
         }
 
         .button-group {
@@ -203,7 +216,6 @@
             box-shadow: 0 8px 20px rgba(244, 208, 63, 0.3);
         }
 
-        /* YouTube Section */
         .section {
             margin-bottom: 60px;
         }
@@ -237,47 +249,85 @@
             border: none;
         }
 
-        /* Excerpt Section Toggle */
-        #excerpt h3 {
+        .accordion-toggle {
             cursor: pointer;
             user-select: none;
+            transition: all 0.3s ease;
             position: relative;
-            transition: color 0.3s ease;
+            padding-right: 30px;
+            color: #f4d03f;
         }
 
-        #excerpt h3:hover {
-            color: #f9e073;
-        }
-
-        #excerpt h3::after {
+        .accordion-toggle::after {
             content: '▼';
             position: absolute;
             right: 0;
-            font-size: 0.6em;
-            line-height: 1;
-            vertical-align: baseline;
+            top: 50%;
+            transform: translateY(-50%) rotate(0deg);
             transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: #f4d03f;
         }
 
-        #excerpt .description-text {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-            padding: 0 30px 0 30px;
+        .accordion-toggle.collapsed::after {
+            transform: translateY(-50%) rotate(-180deg);
         }
 
-        #excerpt.active .description-text {
+        .accordion-toggle:hover {
+            color: #ffd45f;
+        }
+
+        .scripts-container {
             max-height: 2000px;
             opacity: 1;
-            padding: 30px 30px 30px 30px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+            margin-top: 30px;
         }
 
-        #excerpt.active h3::after {
-            transform: rotate(180deg);
+        .scripts-container.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            overflow: hidden;
         }
 
-        /* Description Section */
+        .script {
+            background: rgba(244, 208, 63, 0.05);
+            padding: 30px;
+            border-left: 5px solid #f4d03f;
+            margin-bottom: 40px;
+            font-size: 1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .dialogue-line {
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .character {
+            font-weight: 700;
+            color: #f4d03f;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+
+        .speech {
+            color: #e8d4a8;
+            font-style: italic;
+        }
+
+        .pause {
+            margin: 15px 0;
+            color: #a0a080;
+            font-style: italic;
+            text-align: center;
+        }
+
         .description-text {
             background: rgba(244, 208, 63, 0.05);
             padding: 30px;
@@ -290,19 +340,6 @@
             text-align: justify;
         }
 
-        #excerpt .description-text {
-            background: rgba(244, 208, 63, 0.05);
-            padding: 30px;
-            border-left: 5px solid #f4d03f;
-            margin-bottom: 40px;
-            font-size: 1.05em;
-            line-height: 1.8;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            text-align: justify;
-        }
-
-        /* Gallery Section */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -312,7 +349,7 @@
         .gallery-item {
             border: 4px solid #f4d03f;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -325,10 +362,9 @@
 
         .gallery-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(244, 208, 63, 0.2);
+            box-shadow: 0 15px 40px rgba(244, 208, 63, 0.3);
         }
 
-        /* Performance History */
         .performance-item {
             background: rgba(244, 208, 63, 0.1);
             padding: 20px;
@@ -341,7 +377,18 @@
             color: #f4d03f;
         }
 
-        /* Credits Section */
+        .performance-item a {
+            color: #f4d03f;
+            text-decoration: none;
+            border-bottom: 2px solid #f4d03f;
+            transition: all 0.3s ease;
+        }
+
+        .performance-item a:hover {
+            color: #ffd45f;
+            border-bottom-color: #ffd45f;
+        }
+
         .credits {
             background: rgba(244, 208, 63, 0.05);
             padding: 30px;
@@ -429,6 +476,7 @@
                 display: none;
             }
         }
+
         .language-switcher {
             position: fixed;
             top: 20px;
@@ -462,7 +510,7 @@
             border-color: #f4d03f;
             color: #1a3a52;
         }
-        /* RTL Support for Arabic */
+
         html[lang="ar"] {
             direction: rtl;
         }
@@ -475,8 +523,9 @@
         html[lang="ar"] header {
             direction: rtl;
         }
+
         footer {
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             color: #e8d4a8;
             text-align: center;
             padding: 40px;
@@ -668,7 +717,6 @@
                 margin-top: 70px;
             }
 
-            /* Mobile RTL Support for Arabic */
             html[lang="ar"] .hero-content {
                 padding: 0 10px;
             }
@@ -708,14 +756,8 @@
     <a href="#synopsis" class="nav-dot">
         <span data-i18n="label.synopsis">Synopsis</span>
     </a>
-    <a href="#performances" class="nav-dot">
-        <span data-i18n="label.performances">Représentations</span>
-    </a>
-    <a href="#cast" class="nav-dot">
-        <span data-i18n="label.cast">Distribution</span>
-    </a>
-    <a href="#creative-team" class="nav-dot">
-        <span data-i18n="label.creative-team">Créative</span>
+    <a href="#galerie" class="nav-dot">
+        <span data-i18n="label.galerie">Galerie</span>
     </a>
     <a href="#credits" class="nav-dot">
         <span data-i18n="label.credits">Crédits</span>
@@ -726,15 +768,18 @@
     <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
 
     <!-- Intro Section -->
-    <div class="hero section" id="intro">
+    <div class="section" id="intro">
+        <!-- Hero Section -->
+        <div class="hero">
         <div class="hero-poster">
             <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
         </div>
         <div class="hero-content">
-            <span class="tag" data-i18n="deux-secondes.tag">Tragédie moderne</span>
-            <h2 data-i18n="deux-secondes.title">Deux secondes avant l'extase</h2>
+            <span class="tag" data-i18n="deux-secondes.tag">Tragédie</span>
+            <h2 data-i18n="deux-secondes.title">2 Secondes avant l'extase</h2>
             <p data-i18n="deux-secondes.short-desc">Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
-                        <div class="tech-sheet">
+            
+            <div class="tech-sheet">
                 <div class="tech-item">
                     <label data-i18n="label.characters">Nombre de personnages</label>
                     <value>10</value>
@@ -744,24 +789,25 @@
                     <value data-i18n="deux-secondes.duration">1h45</value>
                 </div>
             </div>
-                        <div class="info-box">
+            
+            <div class="info-box">
                 <strong data-i18n="label.edition">Édition :</strong> Albiana<br>
-                <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a><br>
-                <strong data-i18n="label.support">Soutien :</strong> <a href="https://lamenagerie.org/fr/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">La Ménagerie e.V</a>
+                <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" data-i18n="company.name">Troupe des Soirs bleus</a><br>
+                <strong data-i18n="label.direction">Mise en scène :</strong> Lina Biancarelli
             </div>
 
             <div class="button-group">
-                    <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir le livre</a>
-                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn" data-i18n="btn.watch">Regarder</a>
+                <a href="https://www.albiana.fr/accueil/1916-deux-secondes-avant-l-extase.html" target="_blank" class="btn" data-i18n="btn.see-book">Voir l'édition</a>
+                <a href="https://www.youtube.com/watch?v=b2g6xKHCNzY" target="_blank" class="btn" data-i18n="btn.video">Vidéo</a>
             </div>
         </div>
     </div>
 
     <!-- Excerpt Section -->
     <div class="section" id="excerpt">
-        <h3 data-i18n="label.excerpt">Extrait</h3>
-        <div class="description-text">
-            <p data-i18n="deux-secondes.excerpt">You can add your text excerpt here...</p>
+        <h3 class="accordion-toggle collapsed" data-i18n="label.excerpt">Extrait</h3>
+        <div class="scripts-container collapsed" id="scripts-container">
+            <div class="script" id="script-content-scene1"></div>
         </div>
     </div>
 
@@ -777,40 +823,56 @@
     <div class="section" id="synopsis">
         <h3 data-i18n="label.synopsis">Synopsis</h3>
         <div class="description-text" data-i18n="deux-secondes.description">
-            <p>Deux secondes avant l'extase est une réinterprétation du mythe d'Antigone. Cette nouvelle version du classique explore les tensions intérieures entre loyauté, justice et rébellion, offrant une vision contemporaine de la tragédie intemporelle de Sophocle.</p>
-            <p>Première représentation en janvier 2024 à Berlin.</p>
+            Une adaptation d'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.
         </div>
     </div>
 
-    <!-- Distribution Section -->
-    <div class="section" id="distribution">
-        <h3 style="margin-top: 0;" id="performances" data-i18n="label.performances">Historique des représentations</h3>
-        <div class="performance-item">
-            <strong data-i18n="label.date">Date :</strong> 11 janvier 2024<br>
-            <strong data-i18n="label.location">Lieu :</strong> ACUD Theater Berlin<br>
-            <strong data-i18n="label.direction">Mise en scène :</strong> Lina Biancarelli<br>
-            <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a>
-        </div>
-
-        <h3 style="margin-top: 40px; font-size: 1.5em;" id="cast" data-i18n="label.cast">Distribution originale</h3>
-        <div class="performance-item">
-            <strong><span data-i18n="cast.character1.name">Antigone</span> :</strong> Tania Nunez<br>
-            <strong><span data-i18n="cast.character2.name">Ismène</span> :</strong> Maymouna Diouf<br>
-            <strong><span data-i18n="cast.character3.name">Créon</span> :</strong> Clémence Guigue<br>
-            <strong><span data-i18n="cast.character4.name">Eurydice</span> :</strong> Alessandra Tosi<br>
-            <strong><span data-i18n="cast.character5.name">La Nourrice</span> :</strong> Anissa Raiss<br>
-            <strong><span data-i18n="cast.character6.name">Hémon</span> :</strong> Valentin Tesseron<br>
-            <strong><span data-i18n="cast.character7.name">Exupère</span> :</strong> Victor Perier<br>
-            <strong><span data-i18n="cast.character8.name">Eusébie</span> :</strong> Tanja Holstein<br>
-            <strong><span data-i18n="cast.character9.name">Laodamas</span> :</strong> Ilias Deligiannis<br>
-            <strong><span data-i18n="cast.character10.name">Le Choeur</span> :</strong> Lina Chelha
-        </div>
-
-        <h3 style="margin-top: 40px; font-size: 1.5em;" id="creative-team" data-i18n="label.creative-team">Équipe créative</h3>
-        <div class="performance-item">
-            <strong data-i18n="label.lights-scenography">Lumières et scénographie :</strong> Cécile Boos<br>
-            <strong data-i18n="label.music">Musique :</strong> Romain Firroloni<br>
-            <strong data-i18n="label.german-translation">Traduction en allemand :</strong> Sarah Holstein
+    <!-- Galerie Section -->
+    <div class="section" id="galerie">
+        <h3 data-i18n="label.galerie">Galerie photos</h3>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="assets/deux secondes/Ale.jpg" alt="Représentation - Ale">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/Cecile.jpg" alt="Représentation - Cécile">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/Clemence 1.jpg" alt="Représentation - Clémence">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4713.jpg" alt="Représentation - Scene 1">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4860.jpg" alt="Représentation - Scene 2">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_4879.jpg" alt="Représentation - Scene 3">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5041.jpg" alt="Représentation - Scene 4">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5063.jpg" alt="Représentation - Scene 5">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5153.jpg" alt="Représentation - Scene 6">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5230.jpg" alt="Représentation - Scene 7">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5420.jpg" alt="Représentation - Scene 8">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5548.jpg" alt="Représentation - Scene 9">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5554.jpg" alt="Représentation - Scene 10">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/deux secondes/IMG_5645.jpg" alt="Représentation - Scene 11">
+            </div>
         </div>
     </div>
 
@@ -818,8 +880,8 @@
     <div class="section" id="credits">
         <div class="credits">
         <h3 style="color: #f4d03f; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
-        <p><strong data-i18n="label.photos-by">Photographies par :</strong> <a href="https://www.instagram.com/anepsyy/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Anepsyy</a></p>
-        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Alessandro Bocquet</p>
+        <p><strong data-i18n="label.photos-by">Photographies par :</strong></p>
+        <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Lina Biancarelli</p>
         <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
         </div>
     </div>
@@ -836,211 +898,142 @@
         fr: {
             'header.subtitle': 'Autrice de théâtre',
             'btn.back': '← Retour à l\'accueil',
-            'btn.watch': 'Regarder',
-            'btn.see-book': 'Voir le livre',
-            'deux-secondes.tag': 'Tragédie moderne',
-            'deux-secondes.title': 'Deux secondes avant l\'extase',
+            'deux-secondes.tag': 'Tragédie',
+            'deux-secondes.title': '2 Secondes avant l\'extase',
             'deux-secondes.short-desc': 'Une adaptation d\'Antigone. Le portrait d\'une femme qui aime démesurément, saisie juste avant l\'abîme.',
             'deux-secondes.video-section': 'Captation',
-            'deux-secondes.description': 'Deux secondes avant l\'extase est une réécriture du mythe d\'Antigone, qui déplace le regard des enjeux politiques vers l\'intimité d\'une femme qui aime démesurément.\n\nLa pièce s\'ouvre sur un moment suspendu : le monologue d\'Antigone contemplant l\'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n\'aurait pas eu à choisir le sacrifice.\n\nL\'histoire nous plonge dans la veille du drame. Loin de l\'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s\'enfermer dans une Thèbes maudite et sanglante.\n\nMais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu\'il lui inflige n\'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d\'une vie qui continue sans elle.\n\nLe dénouement, porté par l\'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l\'extase finale. Entre empoisonnement libérateur et espoir d\'antidote, le Chœur nous laisse face à l\'éternelle question : peut-on réellement choisir la fin ?',
+            'deux-secondes.description': 'Une adaptation d\'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l\'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l\'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.',
+            'deux-secondes.duration': '1h45',
+            'deux-secondes.excerpt': '<div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu as toujours travaillé pour Jocaste, mais je ne t\'ai pas vue la pleurer.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Cela fait mauvais genre, ma reine. Mais c\'était une grande dame, elle me manquera. Mais comment la pleurer, quand je garde ses filles orphelines ? Leur chagrin est immense et je ne peux pas exprimer le mien. Par respect, vous comprenez ?</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu es bonne, nourrice.</span></div><div class="pause">Un temps. Eurydice commence à ranger avec la nourrice, à la grande surprise de celle-ci.</div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu ne me demandes pas pourquoi je te demande cela ? Jocaste me manque. J\'ai besoin de parler d\'elle. Personne n\'ose me parler d\'elle. Pas même ses enfants… Et mon mari… Enfin.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Vous voulez me parler de Jocaste ?</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Si cela ne te dérange pas.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Oh non… Moi vous savez… D\'habitude je chantonne pour moi-même, alors ça fait changement.</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Jocaste et moi… On a grandi ensemble petites. Elle était gaie comme un pinson. Une vraie petite folle. Antigone était comme cela avant aussi… Puis on a été séparées quelque temps. Des histoires de politique. Rien de passionnant. Mais quand on s\'est retrouvées… Comment l\'expliquer. Elle était devenue un papillon. Elle était resplendissante. J\'en ai eu la bouche sèche. Elle était toujours aussi gaie. Elle m\'a prise dans ses bras. On a développé une relation si douce, si tendre, si profonde… Je ne pensais pas vivre cela dans ma vie. Je ne pensais pas que ce soit possible. C\'était physique. Quand elle souriait, je vibrais. Je me rappelle surtout cette nuit, celle avant son mariage avec Laïos, où nous dormions dans la même chambre, afin d\'éviter que les fiancés ne se retrouvent avant les sacrements. Elle dormait près de moi, je voyais sa poitrine se soulever à chaque respiration. Je n\'ai pas réussi à dormir. À l\'aube, les rayons de lune se mélangeant aux premiers rayons de soleil formaient un halo bleu autour d\'elle. Elle a ouvert les paupières, son corps nu dans les draps blancs froissés, et elle m\'a tendu la main. Toute ma vie je m\'en souviendrai.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Votre mari le sait ?</span></div>',
             'label.edition': 'Édition :',
             'label.company': 'Compagnie :',
-            'label.support': 'Soutien :',
-            'label.excerpt': 'Extrait',
-            'label.synopsis': 'Synopsis',
-            'label.performances': 'Historique des représentations',
-            'label.date': 'Date :',
-            'label.location': 'Lieu :',
             'label.direction': 'Mise en scène :',
-            'label.cast': 'Distribution originale',
-            'label.creative-team': 'Équipe créative',
-            'label.lights-scenography': 'Lumières et scénographie :',
-            'label.music': 'Musique :',
-            'label.german-translation': 'Traduction en allemand :',
-            'label.gallery': 'Galerie photos',
+            'label.excerpt': 'Extrait',
+            'btn.see-book': 'Voir l\'édition',
+            'btn.video': 'Vidéo',
+            'label.intro': 'Introduction',
+            'label.captation': 'Captation',
+            'label.synopsis': 'Synopsis',
+            'label.galerie': 'Galerie photos',
+            'label.credits': 'Crédits',
             'label.characters': 'Nombre de personnages',
             'label.duration': 'Durée',
-            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Crédits photos',
             'label.photos-by': 'Photographies par :',
             'label.poster-by': 'Affiche créée par :',
             'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
             'company.name': 'Troupe des Soirs bleus',
-            'cast.character1.name': 'Antigone',
-            'cast.character2.name': 'Ismène',
-            'cast.character3.name': 'Créon',
-            'cast.character4.name': 'Eurydice',
-            'cast.character5.name': 'La Nourrice',
-            'cast.character6.name': 'Hémon',
-            'cast.character7.name': 'Exupère',
-            'cast.character8.name': 'Eusébie',
-            'cast.character9.name': 'Laodamas',
-            'cast.character10.name': 'Le Choeur',
             'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
         },
         en: {
             'header.subtitle': 'Playwright',
             'btn.back': '← Back Home',
-            'btn.watch': 'Watch',
-            'btn.see-book': 'See the Book',
-            'deux-secondes.tag': 'Modern Tragedy',
+            'btn.video': 'Video',
+            'btn.see-book': 'See Edition',
+            'deux-secondes.tag': 'Tragedy',
             'deux-secondes.title': '2 Seconds Before Ecstasy',
             'deux-secondes.short-desc': 'An adaptation of Antigone. The portrait of a woman who loves excessively, captured just before the abyss.',
             'deux-secondes.video-section': 'Capture',
-            'deux-secondes.description': 'Two Seconds Before Ecstasy is a rewriting of the myth of Antigone, shifting the focus from political issues to the intimacy of a woman who loves excessively.\n\nThe play opens with a suspended moment: Antigone\'s monologue as she contemplates the abyss, stealing a few seconds from a dreary life to imagine an existence where she would not have had to choose sacrifice.\n\nThe story plunges us into the eve of the drama. Far from the marble heroine, we discover a vibrant Antigone, consumed by desire for her fiancé Haemon, and confronted by her sister Ismene, the embodiment of life and beauty. Her perfection hides a secret: she is expecting a child and begs her sister to choose life for her future nephew, rather than locking herself away in a cursed and bloody Thebes.\n\nBut for Antigone, refusal is an act of absolute courage. She rejects the simple happiness offered by her uncle Creon, a weary regent who dreams of planting turnips but finds himself trapped by his own authority. The punishment he inflicts on her is not immediate death, but psychological torture: condemned to an endless dream by a paralyzing potion, she must remain a spectator of a life that continues without her.\n\nThe dénouement, carried by the cruel innocence of two children, Eusebia and Laodamas, tips over into final ecstasy. Between liberating poisoning and the hope of an antidote, the Chorus leaves us with the eternal question: can we really choose the end?',
+            'deux-secondes.description': 'An adaptation of Sophocles\' Antigone. A contemporary tragedy exploring the depths of passion and love at the cost of reason. Eurydice is a woman who loves, who desires, who lives her love with an intensity that reason cannot contain. In these two seconds before the abyss, she confronts herself, her choices, her contradictions.',
+            'deux-secondes.duration': '1h45',
             'label.edition': 'Edition:',
             'label.company': 'Company:',
-            'label.support': 'Support:',
-            'label.excerpt': 'Excerpt',
-            'label.synopsis': 'Synopsis',
-            'label.performances': 'Performance History',
-            'label.date': 'Date:',
-            'label.location': 'Location:',
             'label.direction': 'Direction:',
-            'label.cast': 'Original Cast',
-            'label.creative-team': 'Creative Team',
-            'label.lights-scenography': 'Lights and Scenography:',
-            'label.music': 'Music:',
-            'label.german-translation': 'German Translation:',
-            'label.gallery': 'Photo Gallery',
+            'label.excerpt': 'Excerpt',
+            'label.intro': 'Introduction',
+            'label.captation': 'Capture',
+            'label.synopsis': 'Synopsis',
+            'label.galerie': 'Photo Gallery',
+            'label.credits': 'Credits',
             'label.characters': 'Number of Characters',
             'label.duration': 'Duration',
-            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Photo Credits',
             'label.photos-by': 'Photos by:',
             'label.poster-by': 'Poster by:',
             'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
             'company.name': 'La Troupe des Soirs Bleus',
-            'cast.character1.name': 'Antigone',
-            'cast.character2.name': 'Ismene',
-            'cast.character3.name': 'Creon',
-            'cast.character4.name': 'Eurydice',
-            'cast.character5.name': 'The Nanny',
-            'cast.character6.name': 'Haemon',
-            'cast.character7.name': 'Exuperius',
-            'cast.character8.name': 'Eusebia',
-            'cast.character9.name': 'Laodamas',
-            'cast.character10.name': 'The Chorus',
             'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
         },
         it: {
             'header.subtitle': 'Drammaturga',
             'btn.back': '← INDIETRO',
-            'btn.watch': 'Guarda',
-            'btn.see-book': 'Vedi il Libro',
-            'deux-secondes.tag': 'Tragedia Moderna',
+            'btn.video': 'Video',
+            'btn.see-book': 'Vedi l\'Edizione',
+            'deux-secondes.tag': 'Tragedia',
             'deux-secondes.title': '2 Secondi Prima dell\'Estasi',
             'deux-secondes.short-desc': 'Un adattamento dell\'Antigone. Il ritratto di una donna che ama eccessivamente, colta proprio prima dell\'abisso.',
             'deux-secondes.video-section': 'Registrazione',
-            'deux-secondes.description': '2 Secondi Prima dell\'Estasi è una rivisitazione del mito di Antigone, che sposta l\'attenzione dalle questioni politiche all\'intimità di una donna che ama smisuratamente.\n\nL\'opera si apre con un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando qualche secondo a una vita tetra per immaginare un\'esistenza in cui non avrebbe dovuto scegliere il sacrificio.\n\nLa storia ci immerge nella vigilia del dramma. Lontana dall\'eroina di marmo, scopriamo un\'Antigone vibrante, posseduta dal desiderio per il suo fidanzato Emone e confrontata con sua sorella Ismene, incarnazione della vita e della bellezza. La sua perfezione nasconde un segreto: è incinta e supplica la sorella di scegliere la vita per il futuro nipote, piuttosto che rinchiudersi in una Tebe maledetta e sanguinosa.\n\nMa per Antigone, il rifiuto è un atto di assoluto coraggio. Rifiuta la semplicità della felicità offerta da suo zio Creonte, un reggente stanco che sogna di piantare rape ma si ritrova intrappolato dalla sua stessa autorità. La punizione che le infligge non è la morte immediata, ma una tortura psicologica: condannata a un sogno senza fine da un decotto paralizzante, deve rimanere spettatrice di una vita che continua senza di lei.\n\nIl finale, sostenuto dalla crudele innocenza di due bambini, Eusebia e Laodamas, culmina in un\'estasi finale. Tra avvelenamento liberatorio e speranza di antidoto, il Coro ci lascia di fronte all\'eterna domanda: si può davvero scegliere la fine?',
+            'deux-secondes.description': 'Un adattamento dell\'Antigone di Sofocle. Una tragedia contemporanea che esplora le profondità della passione e dell\'amore al costo della ragione. Euridice è una donna che ama, che desidera, che vive il suo amore con un\'intensità che la ragione non può contenere. In questi due secondi prima dell\'abisso, si confronta con se stessa, con le sue scelte, con le sue contraddizioni.',
+            'deux-secondes.duration': '1h45',
             'label.edition': 'Edizione:',
             'label.company': 'Compagnia:',
-            'label.support': 'Supporto:',
-            'label.excerpt': 'Estratto',
-            'label.synopsis': 'Trama',
-            'label.performances': 'rappresentazioni',
-            'label.date': 'Data',
-            'label.location': 'Luogo:',
             'label.direction': 'Regia:',
-            'label.cast': 'Cast Originale',
-            'label.creative-team': 'Equipe Creativa',
-            'label.lights-scenography': 'Luci e Scenografia:',
-            'label.music': 'Musica:',
-            'label.german-translation': 'Traduzione in Tedesco:',
-            'label.gallery': 'Galleria Foto',
+            'label.excerpt': 'Estratto',
+            'label.intro': 'Introduzione',
+            'label.captation': 'Registrazione',
+            'label.synopsis': 'Trama',
+            'label.galerie': 'Galleria Foto',
+            'label.credits': 'Crediti',
             'label.characters': 'Numero di Personaggi',
             'label.duration': 'Durata',
-            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Crediti Fotografici',
             'label.photos-by': 'Foto di:',
             'label.poster-by': 'Manifesto di:',
             'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
             'company.name': 'La Troupe des Soirs Bleus',
-            'cast.character1.name': 'Antigone',
-            'cast.character2.name': 'Ismene',
-            'cast.character3.name': 'Creone',
-            'cast.character4.name': 'Euridice',
-            'cast.character5.name': 'La Balia',
-            'cast.character6.name': 'Emone',
-            'cast.character7.name': 'Exuperius',
-            'cast.character8.name': 'Eusebia',
-            'cast.character9.name': 'Laodamas',
-            'cast.character10.name': 'Il Coro',
             'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
         },
         de: {
             'header.subtitle': 'Dramatikerin',
             'btn.back': '← ZURÜCK ZUR ÜBERSICHT',
-            'btn.watch': 'Ansehen',
-            'btn.see-book': 'Das Buch Ansehen',
-            'deux-secondes.tag': 'Moderne Tragödie',
+            'btn.video': 'Video',
+            'btn.see-book': 'Ausgabe Ansehen',
+            'deux-secondes.tag': 'Tragödie',
             'deux-secondes.title': '2 Sekunden vor dem Höhepunkt',
             'deux-secondes.short-desc': 'Eine Anpassung der Antigone. Das Porträt einer Frau, die übermäßig liebt, erfasst gerade vor dem Abgrund.',
             'deux-secondes.video-section': 'Aufzeichnung',
-            'deux-secondes.description': 'Zwei Sekunden vor dem Höhepunkt ist eine Neufassung des Mythos von Antigone, die den Blick von den politischen Themen auf die Intimität einer Frau lenkt, die maßlos liebt.\n\nDas Stück beginnt mit einem Moment des Stillstands: dem Monolog von Antigone, die in den Abgrund blickt und für einige Sekunden ihrem tristen Leben entflieht, um sich ein Leben vorzustellen, in dem sie sich nicht für das Opfer entscheiden müsste.\n\nDie Geschichte versetzt uns in den Vorabend des Dramas. Weit entfernt von der marmornen Heldin entdecken wir eine lebhafte Antigone, die von der Sehnsucht nach ihrem Verlobten Haemon erfüllt ist und sich ihrer Schwester Ismene gegenüber sieht, der Verkörperung von Leben und Schönheit. Ihre Perfektion verbirgt ein Geheimnis: Sie erwartet ein Kind und fleht ihre Schwester an, für ihren zukünftigen Neffen das Leben zu wählen, anstatt sich in einem verfluchten und blutigen Theben einzuschließen.\n\nAber für Antigone ist die Weigerung ein Akt absoluten Mutes. Sie lehnt das einfache Glück ab, das ihr Onkel Kreon ihr anbietet, ein müder Regent, der davon träumt, Rüben anzupflanzen, aber in seiner eigenen Autorität gefangen ist. Die Strafe, die er ihr auferlegt, ist nicht der sofortige Tod, sondern psychologische Folter: Durch einen lähmenden Trank zu endlosen Träumen verdammt, muss sie Zuschauerin eines Lebens bleiben, das ohne sie weitergeht.\n\nDie Auflösung, getragen von der grausamen Unschuld zweier Kinder, Eusébie und Laodamas, kippt in finale Ekstase. Zwischen befreiender Vergiftung und Hoffnung auf ein Gegenmittel lässt uns der Chor mit der ewigen Frage zurück: Kann man sich wirklich für das Ende entscheiden?',
+            'deux-secondes.description': 'Eine Anpassung von Sophokles\' Antigone. Eine zeitgenössische Tragödie, die die Tiefen der Leidenschaft und Liebe auf Kosten der Vernunft erforscht. Eurydike ist eine Frau, die liebt, die begehrt, die ihre Liebe mit einer Intensität lebt, die die Vernunft nicht enthalten kann. In diesen zwei Sekunden vor dem Abgrund setzt sie sich selbst, ihren Wahlmöglichkeiten und ihren Widersprüchen auseinander.',
+            'deux-secondes.duration': '1h45',
             'label.edition': 'Ausgabe:',
             'label.company': 'Kompanie:',
-            'label.support': 'Unterstützung:',
-            'label.excerpt': 'Auszug',
-            'label.synopsis': 'Handlung',
-            'label.performances': 'Aufführungsverlauf',
-            'label.date': 'Datum:',
-            'label.location': 'Ort:',
             'label.direction': 'Regie:',
-            'label.cast': 'Originalbesetzung',
-            'label.creative-team': 'Kreatives Team',
-            'label.lights-scenography': 'Lichter und Szenografie:',
-            'label.music': 'Musik:',
-            'label.german-translation': 'Deutsche Übersetzung:',
-            'label.gallery': 'Fotogalerie',
+            'label.excerpt': 'Auszug',
+            'label.intro': 'Einführung',
+            'label.captation': 'Aufzeichnung',
+            'label.synopsis': 'Handlung',
+            'label.galerie': 'Fotogalerie',
+            'label.credits': 'Credits',
             'label.characters': 'Anzahl der Charaktere',
             'label.duration': 'Dauer',
-            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Fotokredit',
             'label.photos-by': 'Fotos von:',
             'label.poster-by': 'Plakat von:',
             'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
             'company.name': 'La Troupe des Soirs Bleus',
-            'cast.character1.name': 'Antigone',
-            'cast.character2.name': 'Ismene',
-            'cast.character3.name': 'Kreon',
-            'cast.character4.name': 'Eurydike',
-            'cast.character5.name': 'Amme',
-            'cast.character6.name': 'Hämon',
-            'cast.character7.name': 'Exuperius',
-            'cast.character8.name': 'Eusebia',
-            'cast.character9.name': 'Laodamas',
-            'cast.character10.name': 'Chor',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
         },
         ar: {
             'header.subtitle': 'كاتبة مسرح',
             'btn.back': '← العودة للصفحة الرئيسية',
-            'btn.watch': 'مشاهدة',
-            'btn.see-book': 'عرض الكتاب',
-            'deux-secondes.tag': 'مأساة معاصرة',
+            'btn.video': 'فيديو',
+            'btn.see-book': 'عرض الطبعة',
+            'deux-secondes.tag': 'تراجيديا',
             'deux-secondes.title': 'ثانيتان قبل النشوة',
-            'deux-secondes.short-desc': 'اقتباس من أنتيغون. صورة امرأة تحب بإفراط، في لحظة قبل الهاوية.',
+            'deux-secondes.short-desc': 'اقتباس من أنتيجون. صورة امرأة تحب بإفراط، مأخوذة قبل الهاوية مباشرة.',
             'deux-secondes.video-section': 'التسجيل',
-            'deux-secondes.description': 'ثانيتان قبل النشوة هي إعادة صياغة لأسطورة أنتيغون، تحول التركيز من القضايا السياسية إلى الحميمية الداخلية لامرأة تحب بلا حدود.\n\nتبدأ المسرحية برمح معلق: منولوج أنتيغون وهي تتأمل الهاوية، تسرق بضع ثوانٍ من حياة مملة لتتخيل وجودًا لم تكن لتضطر فيه للاختيار بين التضحية والحياة.\n\nتغوص الأحداث بنا إلى ليلة الدراما. بعيدة عن بطلة الرخام، نكتشف أنتيغون النابضة بالحياة، المأخوذة برغبتها لخطيبها هيمون، والمواجهة حول أختها إسمينه، تجسيد الحياة والجمال. تخفي كمالها سرًا: إنها حامل وتستحث أختها على اختيار الحياة لحفيدتها المستقبلية، بدلاً من الانعزال في طيبة الملعونة والدموية.\n\nلكن بالنسبة لأنتيغون، الرفض هو عمل شجاعة مطلقة. ترفض السعادة البسيطة التي يقدمها عمها كريون، والي متعب يحلم بزراعة اللفت لكنه محاصر بسلطته الخاصة. العقاب الذي يوقعه عليها ليس الموت الفوري، بل تعذيب نفسي: ملعونة بالأحلام اللانهائية بفعل جرعة مشلول، عليها أن تبقى متفرجة على حياة تستمر بدونها.\n\nالنهاية، المحمولة بالبراءة القاسية لطفلين، يسيتا وليودميس، تنجرف نحو النشوة النهائية. بين السم المحرر والأمل في الترياق، يتركنا الجوقة أمام السؤال الأبدي: هل يمكننا حقا أن نختار النهاية؟',
+            'deux-secondes.description': 'اقتباس من أنتيجون لسوفوكليس. تراجيديا معاصرة تستكشف أعماق الشغف والحب على حساب العقل. يوريديس هي امرأة تحب، تشتهي، تعيش حبها بكثافة لا يستطيع العقل احتواءها. في هذه الثانيتين قبل الهاوية، تواجه نفسها، خياراتها، تناقضاتها.',
+            'deux-secondes.duration': '1h45',
             'label.edition': 'الطبعة:',
             'label.company': 'الفرقة:',
-            'label.support': 'الدعم:',
-            'label.excerpt': 'مقتطف',
-            'label.synopsis': 'القصة',
-            'label.performances': 'سجل العروض',
-            'label.date': 'التاريخ:',
-            'label.location': 'المكان:',
             'label.direction': 'الإخراج:',
-            'label.cast': 'الفريق الأصلي',
-            'label.creative-team': 'الفريق الإبداعي',
-            'label.lights-scenography': 'الإضاءة والديكور:',
-            'label.music': 'الموسيقى:',
-            'label.german-translation': 'الترجمة الألمانية:',
-            'label.gallery': 'معرض الصور',
+            'label.excerpt': 'مقتطف',
+            'label.intro': 'مقدمة',
+            'label.captation': 'التسجيل',
+            'label.synopsis': 'القصة',
+            'label.galerie': 'معرض الصور',
+            'label.credits': 'اعتمادات',
             'label.characters': 'عدد الشخصيات',
             'label.duration': 'المدة',
-            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'اعتمادات الصور',
             'label.photos-by': 'الصور بواسطة:',
             'label.poster-by': 'الملصق من قبل:',
@@ -1050,7 +1043,6 @@
         }
     };
 
-    // Language management
     let currentLanguage = localStorage.getItem('language') || 'fr';
 
     function setLanguage(lang) {
@@ -1058,7 +1050,6 @@
         localStorage.setItem('language', lang);
         updatePageLanguage();
         updateActiveButton(lang);
-        // Set document direction for RTL languages
         if (lang === 'ar') {
             document.documentElement.lang = 'ar';
             document.documentElement.dir = 'rtl';
@@ -1073,7 +1064,12 @@
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
-                element.textContent = translations[currentLanguage][key];
+                const content = translations[currentLanguage][key];
+                if (content.includes('<') && content.includes('>')) {
+                    element.innerHTML = content;
+                } else {
+                    element.textContent = content;
+                }
             }
         });
     }
@@ -1087,20 +1083,17 @@
         });
     }
 
-    // Event listeners for language buttons
     document.querySelectorAll('.lang-btn').forEach(button => {
         button.addEventListener('click', function() {
             setLanguage(this.getAttribute('data-lang'));
         });
     });
 
-    // Initialize page with saved language
     document.addEventListener('DOMContentLoaded', function() {
         updatePageLanguage();
         updateActiveButton(currentLanguage);
     });
 
-    // Scroll navigation for play pages - tracks all sections and subsections
     function setupScrollNavigation() {
         const navDots = document.querySelectorAll('.scroll-nav a.nav-dot');
         if (navDots.length === 0) return;
@@ -1111,14 +1104,11 @@
             let current = 0;
             const scrollPos = window.scrollY || window.pageYOffset;
 
-            // Check each navigation target's position
             for (let index = 0; index < navTargets.length; index++) {
                 const targetId = navTargets[index];
                 const element = document.querySelector('#' + targetId);
                 if (element) {
                     const elementTop = element.offsetTop;
-                    const elementHeight = element.clientHeight;
-                    // If we've scrolled past this element's start position, mark it as current
                     if (scrollPos >= elementTop - (window.innerHeight / 2)) {
                         current = index;
                     }
@@ -1133,10 +1123,8 @@
             });
         }
 
-        // Run on initial load
         updateActiveSection();
         
-        // Update on scroll with better performance
         let ticking = false;
         window.addEventListener('scroll', function() {
             if (!ticking) {
@@ -1147,53 +1135,37 @@
                 ticking = true;
             }
         }, false);
-
-        // Add click handlers to navigation dots
-        navDots.forEach((dot, dotIndex) => {
-        dot.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Get the previous section's ID to scroll to
-            let scrollTarget;
-            if (dotIndex > 0) {
-                // Scroll to end of previous section
-                const prevTargetId = navTargets[dotIndex - 1];
-                const prevElement = document.querySelector('#' + prevTargetId);
-                if (prevElement) {
-                    scrollTarget = prevElement.offsetTop + prevElement.clientHeight;
-                }
-            } else {
-                // First section, scroll to its top
-                const firstElement = document.querySelector('#intro');
-                scrollTarget = firstElement ? firstElement.offsetTop : 0;
-            }
-            
-            if (scrollTarget !== undefined) {
-                window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
-            }
-            
-            setTimeout(updateActiveSection, 100);
-        });
-        });
     }
 
-    // Set up scroll navigation when DOM is ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', setupScrollNavigation);
     } else {
         setupScrollNavigation();
     }
 
-    // Excerpt toggle functionality
     document.addEventListener('DOMContentLoaded', function() {
         const excerptSection = document.getElementById('excerpt');
         if (!excerptSection) return;
 
-        const excerptTitle = excerptSection.querySelector('h3');
-        if (!excerptTitle) return;
+        const accordionToggle = excerptSection.querySelector('.accordion-toggle');
+        const scriptsContainer = document.getElementById('scripts-container');
+        const scriptContent = document.getElementById('script-content-scene1');
 
-        excerptTitle.addEventListener('click', function() {
-            excerptSection.classList.toggle('active');
+        if (!accordionToggle || !scriptsContainer || !scriptContent) return;
+
+        // Initialize with current language
+        if (translations[currentLanguage] && translations[currentLanguage]['deux-secondes.excerpt']) {
+            scriptContent.innerHTML = translations[currentLanguage]['deux-secondes.excerpt'];
+        }
+
+        // Toggle accordion on header click
+        accordionToggle.addEventListener('click', function() {
+            accordionToggle.classList.toggle('collapsed');
+            scriptsContainer.classList.toggle('collapsed');
         });
     });
+
 </script>
+
+</body>
+</html>
