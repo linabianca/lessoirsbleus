@@ -237,6 +237,46 @@
             border: none;
         }
 
+        /* Excerpt Section Toggle */
+        #excerpt h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        #excerpt h3:hover {
+            color: #f9e073;
+        }
+
+        #excerpt h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            font-size: 0.6em;
+            line-height: 1;
+            vertical-align: baseline;
+            transition: transform 0.3s ease;
+        }
+
+        #excerpt .description-text {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 30px 0 30px;
+        }
+
+        #excerpt.active .description-text {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 30px 30px 30px 30px;
+        }
+
+        #excerpt.active h3::after {
+            transform: rotate(180deg);
+        }
+
         /* Description Section */
         .description-text {
             background: rgba(244, 208, 63, 0.05);
@@ -246,7 +286,21 @@
             font-size: 1.05em;
             line-height: 1.8;
             white-space: pre-wrap;
-            word-wrap: break-word;            text-align: justify;        }
+            word-wrap: break-word;
+            text-align: justify;
+        }
+
+        #excerpt .description-text {
+            background: rgba(244, 208, 63, 0.05);
+            padding: 30px;
+            border-left: 5px solid #f4d03f;
+            margin-bottom: 40px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: justify;
+        }
 
         /* Gallery Section */
         .gallery {
@@ -792,6 +846,7 @@
             'label.edition': 'Édition :',
             'label.company': 'Compagnie :',
             'label.support': 'Soutien :',
+            'label.excerpt': 'Extrait',
             'label.synopsis': 'Synopsis',
             'label.performances': 'Historique des représentations',
             'label.date': 'Date :',
@@ -836,6 +891,7 @@
             'label.edition': 'Edition:',
             'label.company': 'Company:',
             'label.support': 'Support:',
+            'label.excerpt': 'Excerpt',
             'label.synopsis': 'Synopsis',
             'label.performances': 'Performance History',
             'label.date': 'Date:',
@@ -880,6 +936,7 @@
             'label.edition': 'Edizione:',
             'label.company': 'Compagnia:',
             'label.support': 'Supporto:',
+            'label.excerpt': 'Estratto',
             'label.synopsis': 'Trama',
             'label.performances': 'rappresentazioni',
             'label.date': 'Data',
@@ -924,6 +981,7 @@
             'label.edition': 'Ausgabe:',
             'label.company': 'Kompanie:',
             'label.support': 'Unterstützung:',
+            'label.excerpt': 'Auszug',
             'label.synopsis': 'Handlung',
             'label.performances': 'Aufführungsverlauf',
             'label.date': 'Datum:',
@@ -968,6 +1026,7 @@
             'label.edition': 'الطبعة:',
             'label.company': 'الفرقة:',
             'label.support': 'الدعم:',
+            'label.excerpt': 'مقتطف',
             'label.synopsis': 'القصة',
             'label.performances': 'سجل العروض',
             'label.date': 'التاريخ:',
@@ -1124,4 +1183,17 @@
     } else {
         setupScrollNavigation();
     }
+
+    // Excerpt toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const excerptSection = document.getElementById('excerpt');
+        if (!excerptSection) return;
+
+        const excerptTitle = excerptSection.querySelector('h3');
+        if (!excerptTitle) return;
+
+        excerptTitle.addEventListener('click', function() {
+            excerptSection.classList.toggle('active');
+        });
+    });
 </script>

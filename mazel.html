@@ -246,8 +246,60 @@
             border: none;
         }
 
+        /* Excerpt Section Toggle */
+        #excerpt h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        #excerpt h3:hover {
+            color: #c2754f;
+        }
+
+        #excerpt h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            font-size: 0.6em;
+            line-height: 1;
+            vertical-align: baseline;
+            transition: transform 0.3s ease;
+        }
+
+        #excerpt .description-text {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 30px 0 30px;
+        }
+
+        #excerpt.active .description-text {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 30px 30px 30px 30px;
+        }
+
+        #excerpt.active h3::after {
+            transform: rotate(180deg);
+        }
+
         /* Description Section */
         .description-text {
+            background: rgba(160, 101, 78, 0.05);
+            padding: 30px;
+            border-left: 5px solid #a0654e;
+            margin-bottom: 40px;
+            font-size: 1.05em;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: justify;
+        }
+
+        #excerpt .description-text {
             background: rgba(160, 101, 78, 0.05);
             padding: 30px;
             border-left: 5px solid #a0654e;
@@ -815,6 +867,7 @@
             'label.company': 'Compagnie :',
             'label.direction': 'Mise en scène originale :',
             'label.support': 'Soutien :',
+            'label.excerpt': 'Extrait',
             'btn.see-edition': 'Voir l\'édition',
             'label.intro': 'Introduction',
             'label.captation': 'Captation',
@@ -849,6 +902,7 @@
             'label.company': 'Company:',
             'label.direction': 'Original Direction:',
             'label.support': 'Support:',
+            'label.excerpt': 'Excerpt',
             'btn.see-edition': 'See Edition',
             'label.distribution': 'Distribution',
             'label.synopsis': 'Synopsis',
@@ -879,6 +933,7 @@
             'label.company': 'Compagnia:',
             'label.direction': 'Regia Originale:',
             'label.support': 'Supporto:',
+            'label.excerpt': 'Estratto',
             'btn.see-edition': 'Vedi Edizione',
             'label.synopsis': 'Trama',
             'label.performances': 'rappresentazioni',
@@ -908,6 +963,7 @@
             'label.company': 'Kompanie:',
             'label.direction': 'Ursprüngliche Regie:',
             'label.support': 'Unterstützung:',
+            'label.excerpt': 'Auszug',
             'btn.see-edition': 'Ausgabe Ansehen',
             'label.synopsis': 'Handlung',
             'label.performances': 'Aufführungsverlauf',
@@ -937,6 +993,7 @@
             'label.company': 'الفرقة:',
             'label.direction': 'الإخراج الأصلي:',
             'label.support': 'الدعم:',
+            'label.excerpt': 'مقتطف',
             'btn.see-edition': 'عرض الطبعة',
             'label.synopsis': 'القصة',
             'label.performances': 'سجل العروض',
@@ -1062,5 +1119,17 @@
         setupScrollNavigation();
     }
 
+    // Excerpt toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const excerptSection = document.getElementById('excerpt');
+        if (!excerptSection) return;
+
+        const excerptTitle = excerptSection.querySelector('h3');
+        if (!excerptTitle) return;
+
+        excerptTitle.addEventListener('click', function() {
+            excerptSection.classList.toggle('active');
+        });
+    });
 
 </script>
