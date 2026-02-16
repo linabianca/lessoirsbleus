@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ophelia | Lina Biancarelli</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(180deg, #0a1428 0%, #1a2d4d 25%, #0f3a5a 50%, #1a2d4d 75%, #0a1428 100%);
+            background-attachment: fixed;
+            color: #e8e8f0;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Starfield background effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 60px 70px, #fff, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 50px 50px, #ddd, rgba(255, 255, 255, 0)),
+                radial-gradient(1px 1px at 130px 80px, #fff, rgba(255, 255, 255, 0)),
+                radial-gradient(2px 2px at 90px 10px, #eee, rgba(255, 255, 255, 0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Water wave effect */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: radial-gradient(ellipse at center, rgba(100, 200, 255, 0.15) 0%, rgba(50, 150, 200, 0.05) 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            background: rgba(10, 20, 40, 0.95);
+            border-bottom: 4px solid rgba(100, 180, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 900;
+        }
+
+        header p {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 30px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            margin-top: 20px;
+            color: rgba(100, 180, 255, 0.9);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(100, 180, 255, 0.6);
+            padding: 12px 24px;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            background: rgba(100, 180, 255, 0.8);
+            color: #0a1428;
+            border-color: rgba(100, 180, 255, 0.9);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-poster {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-poster img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: rgba(100, 180, 255, 0.95);
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(100, 180, 255, 0.7);
+            color: #0a1428;
+            padding: 8px 16px;
+            border-radius: 0;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .short-desc {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .tech-sheet {
+            background: rgba(50, 100, 150, 0.3);
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid rgba(100, 180, 255, 0.8);
+        }
+
+        .tech-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .tech-item label {
+            font-weight: 600;
+            color: rgba(100, 180, 255, 0.9);
+        }
+
+        .tech-item value {
+            font-style: italic;
+        }
+
+        .info-box {
+            background: rgba(50, 100, 150, 0.25);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 2px;
+            font-size: 0.95em;
+            line-height: 1.8;
+            border: 1px solid rgba(100, 180, 255, 0.3);
+        }
+
+        .info-box a {
+            color: rgba(100, 180, 255, 0.9);
+            text-decoration: none;
+            border-bottom: 2px solid rgba(100, 180, 255, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .info-box a:hover {
+            color: #0a1428;
+            background: rgba(100, 180, 255, 0.7);
+            padding: 2px 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: rgba(100, 180, 255, 0.75);
+            color: #0a1428;
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(100, 180, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: rgba(100, 200, 255, 0.95);
+            color: #0a1428;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(100, 180, 255, 0.4);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            color: rgba(100, 180, 255, 0.95);
+            font-weight: 800;
+            border-bottom: 3px solid rgba(100, 180, 255, 0.6);
+            padding-bottom: 10px;
+        }
+
+        .description-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .description-text p {
+            margin-bottom: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #8B7355;
+            border-color: #8B7355;
+        }
+
+        footer {
+            background: rgba(10, 20, 40, 0.95);
+            color: #e8e8f0;
+            text-align: center;
+            padding: 40px;
+            border-top: 4px solid rgba(100, 180, 255, 0.8);
+            font-size: 0.9em;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 120px 20px 40px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h2 {
+                font-size: 2em;
+            }
+
+            .hero-poster img {
+                max-width: 280px;
+            }
+
+            .section h3 {
+                font-size: 1.4em;
+            }
+
+            .description-text {
+                font-size: 0.95em;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .language-switcher {
+                position: fixed;
+                top: 100px;
+                right: 15px;
+                left: auto;
+                width: auto;
+                z-index: 99;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                background: transparent;
+                padding: 0;
+                border: none;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+                letter-spacing: 0.5px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            .lang-btn:hover {
+                background: rgba(0, 0, 0, 0.85);
+            }
+        }
+
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] .back-link {
+            float: right;
+            margin-left: 40px;
+        }
+
+        html[lang="ar"] .description-text {
+            text-align: justify;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Lina Biancarelli</h1>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
+</header>
+
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
+</div>
+
+<div class="container">
+    <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-poster">
+            <img src="assets/phare.jpg" alt="Ophelia au bord du gouffre" style="opacity: 0.8;">
+        </div>
+        <div class="hero-content">
+            <span class="tag" data-i18n="ophelia.tag">Création</span>
+            <h2 data-i18n="ophelia.title">Ophelia au bord du gouffre</h2>
+            <p class="short-desc" data-i18n="ophelia.short-desc">Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</p>
+            
+            <div class="tech-sheet">
+                <div class="tech-item">
+                    <label data-i18n="label.status">Statut</label>
+                    <value data-i18n="ophelia.status">En développement</value>
+                </div>
+                <div class="tech-item">
+                    <label data-i18n="label.genre">Genre</label>
+                    <value data-i18n="ophelia.genre">Exploration poétique</value>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <strong data-i18n="label.description">Description :</strong><br>
+                <span data-i18n="ophelia.info">Ophelia au bord du gouffre est une nouvelle création, une réinterprétation poétique et intime du personnage d'Ophelia. Loin des représentations classiques, cette pièce explore l'idée que la folie n'était peut-être qu'une apparence, et que derrière le chaos, il y a simplement une femme qui cherche sa vérité dans la nuit.</span>
+            </div>
+
+            <div class="button-group">
+                <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Concept Section -->
+    <div class="section">
+        <h3 data-i18n="label.concept">Concept</h3>
+        <div class="description-text">
+            <p data-i18n="ophelia.concept-part1">Ophelia est une figure littéraire qui a fasciné innombrables écrivains et metteurs en scène. Toujours présentée à travers le regard masculine, son histoire est souvent réduite à son malheur amoureux et à sa folie inévitable.</p>
+            <p data-i18n="ophelia.concept-part2">Et si nous lui donnions une autre voix? Et si sa quête nocturne de fleurs n'était pas le signe d'une dérangement mental, mais plutôt d'une recherche profonde de sens, de beauté et de liberté?</p>
+            <p data-i18n="ophelia.concept-part3">Cette création explore les zones grises entre la raison et la folie, entre la soumission et la rébellion, entre ce qu'on nous dit être et ce que nous choisissons de devenir.</p>
+        </div>
+    </div>
+
+    <!-- Inspiration Section -->
+    <div class="section">
+        <h3 data-i18n="label.inspiration">Inspirations</h3>
+        <div class="description-text">
+            <p data-i18n="ophelia.inspiration">Cette pièce s'inscrit dans la tradition des réinterprétations féministes de mythes et de textes classiques, tout en cherchant à créer quelque chose d'entièrement nouveau. Elle emprunte à la poésie contemporaine, aux traditions shakespeariennes, et à une sensibilité personnelle face aux questions d'identité et de liberté.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section">
+        <h3 data-i18n="label.contact">Collaboration et Développement</h3>
+        <div class="description-text">
+            <p data-i18n="ophelia.collaboration">Ce projet est actuellement en phase de développement. Lina Biancarelli cherche des collaborateurs passionnés - acteurs, metteurs en scène, dramaturges, musiciens - pour explorer et affiner cette vision.</p>
+            <p data-i18n="ophelia.collaboration-contact">Si cette création vous intéresse, ou si vous souhaitez discuter de possibilités de collaboration, n'hésitez pas à prendre contact.</p>
+        </div>
+        <div class="button-group">
+            <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+            <a href="index.html" class="btn" data-i18n="btn.back">Retour à l'accueil</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+</footer>
+
+<script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Autrice de théâtre',
+            'btn.back': '← Retour à l\'accueil',
+            'btn.contact': 'Me Contacter',
+            
+            'ophelia.tag': 'Création',
+            'ophelia.title': 'Ophelia au bord du gouffre',
+            'ophelia.short-desc': 'Une nouvelle création. Et si Ophélia n\'avait jamais été folle? Et si elle n\'allait simplement que cueillir des fleurs la nuit...?',
+            'ophelia.status': 'En développement',
+            'ophelia.genre': 'Exploration poétique',
+            
+            'label.description': 'Description :',
+            'ophelia.info': 'Ophelia au bord du gouffre est une nouvelle création, une réinterprétation poétique et intime du personnage d\'Ophelia. Loin des représentations classiques, cette pièce explore l\'idée que la folie n\'était peut-être qu\'une apparence, et que derrière le chaos, il y a simplement une femme qui cherche sa vérité dans la nuit.',
+            
+            'label.concept': 'Concept',
+            'ophelia.concept-part1': 'Ophelia est une figure littéraire qui a fasciné innombrables écrivains et metteurs en scène. Toujours présentée à travers le regard masculine, son histoire est souvent réduite à son malheur amoureux et à sa folie inévitable.',
+            'ophelia.concept-part2': 'Et si nous lui donnions une autre voix? Et si sa quête nocturne de fleurs n\'était pas le signe d\'un dérangement mental, mais plutôt d\'une recherche profonde de sens, de beauté et de liberté?',
+            'ophelia.concept-part3': 'Cette création explore les zones grises entre la raison et la folie, entre la soumission et la rébellion, entre ce qu\'on nous dit être et ce que nous choisissons de devenir.',
+            
+            'label.inspiration': 'Inspirations',
+            'ophelia.inspiration': 'Cette pièce s\'inscrit dans la tradition des réinterprétations féministes de mythes et de textes classiques, tout en cherchant à créer quelque chose d\'entièrement nouveau. Elle emprunte à la poésie contemporaine, aux traditions shakespeariennes, et à une sensibilité personnelle face aux questions d\'identité et de liberté.',
+            
+            'label.contact': 'Collaboration et Développement',
+            'ophelia.collaboration': 'Ce projet est actuellement en phase de développement. Lina Biancarelli cherche des collaborateurs passionnés - acteurs, metteurs en scène, dramaturges, musiciens - pour explorer et affiner cette vision.',
+            'ophelia.collaboration-contact': 'Si cette création vous intéresse, ou si vous souhaitez discuter de possibilités de collaboration, n\'hésitez pas à prendre contact.',
+            
+            'label.status': 'Statut',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'btn.back': '← Back',
+            'btn.contact': 'Contact Me',
+            
+            'ophelia.tag': 'Creation',
+            'ophelia.title': 'Ophelia at the Edge',
+            'ophelia.short-desc': 'A new creation. What if Ophelia had never gone mad? What if she was simply gathering flowers at night...?',
+            'ophelia.status': 'In Development',
+            'ophelia.genre': 'Poetic Exploration',
+            
+            'label.description': 'Description:',
+            'ophelia.info': 'Ophelia at the Edge is a new creation, a poetic and intimate reinterpretation of the character of Ophelia. Far from classical representations, this piece explores the idea that madness was perhaps only an appearance, and that behind the chaos, there is simply a woman seeking her truth in the night.',
+            
+            'label.concept': 'Concept',
+            'ophelia.concept-part1': 'Ophelia is a literary figure who has fascinated countless writers and directors. Always presented through a masculine gaze, her story is often reduced to amorous misfortune and inevitable madness.',
+            'ophelia.concept-part2': 'What if we gave her a different voice? What if her nocturnal quest for flowers was not a sign of mental derangement, but rather a deep search for meaning, beauty and freedom?',
+            'ophelia.concept-part3': 'This creation explores the gray areas between reason and madness, between submission and rebellion, between what we are told to be and what we choose to become.',
+            
+            'label.inspiration': 'Inspirations',
+            'ophelia.inspiration': 'This piece is part of the tradition of feminist reinterpretations of myths and classical texts, while seeking to create something entirely new. It draws from contemporary poetry, Shakespearean traditions, and a personal sensitivity to questions of identity and freedom.',
+            
+            'label.contact': 'Collaboration and Development',
+            'ophelia.collaboration': 'This project is currently in development. Lina Biancarelli is looking for passionate collaborators - actors, directors, playwrights, musicians - to explore and refine this vision.',
+            'ophelia.collaboration-contact': 'If this creation interests you, or if you would like to discuss collaboration possibilities, please feel free to contact me.',
+            
+            'label.status': 'Status',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'btn.back': '← Indietro',
+            'btn.contact': 'Contattami',
+            
+            'ophelia.tag': 'Creazione',
+            'ophelia.title': 'Ofelia sull\'Orlo',
+            'ophelia.short-desc': 'Una nuova creazione. E se Ofelia non fosse mai impazzita? E se raccogliesse semplicemente fiori di notte...?',
+            'ophelia.status': 'In Sviluppo',
+            'ophelia.genre': 'Esplorazione Poetica',
+            
+            'label.description': 'Descrizione:',
+            'ophelia.info': 'Ofelia sull\'Orlo è una nuova creazione, una reinterpretazione poetica e intima del personaggio di Ofelia. Lontana dalle rappresentazioni classiche, questa pièce esplora l\'idea che la follia fosse forse solo un\'apparenza, e che dietro il caos ci sia semplicemente una donna che cerca la sua verità nella notte.',
+            
+            'label.concept': 'Concetto',
+            'ophelia.concept-part1': 'Ofelia è una figura letteraria che ha affascinato innumerevoli scrittori e registi. Sempre presentata attraverso uno sguardo maschile, la sua storia è spesso ridotta alle disgrazie amorose e alla follia inevitabile.',
+            'ophelia.concept-part2': 'E se le dessimo una voce diversa? E se la sua ricerca notturna di fiori non fosse il segno di un disturbo mentale, ma piuttosto una ricerca profonda di significato, bellezza e libertà?',
+            'ophelia.concept-part3': 'Questa creazione esplora le zone grigie tra la ragione e la follia, tra la sottomissione e la ribellione, tra ciò che ci viene detto di essere e ciò che scegliamo di diventare.',
+            
+            'label.inspiration': 'Ispirazioni',
+            'ophelia.inspiration': 'Questo lavoro si inscrive nella tradizione delle reinterpretazioni femministe di miti e testi classici, cercando al contempo di creare qualcosa di completamente nuovo. Attinge dalla poesia contemporanea, dalle tradizioni shakespeariane e da una sensibilità personale alle questioni di identità e libertà.',
+            
+            'label.contact': 'Collaborazione e Sviluppo',
+            'ophelia.collaboration': 'Questo progetto è attualmente in fase di sviluppo. Lina Biancarelli cerca collaboratori appassionati - attori, registi, drammaturghi, musicisti - per esplorare e affinare questa visione.',
+            'ophelia.collaboration-contact': 'Se questa creazione ti interessa, o se desideri discutere di possibilità di collaborazione, non esitare a contattarmi.',
+            
+            'label.status': 'Stato',
+            'label.genre': 'Genere',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'btn.back': '← Zurück',
+            'btn.contact': 'Kontaktieren Sie Mich',
+            
+            'ophelia.tag': 'Neue Schöpfung',
+            'ophelia.title': 'Ophelia am Rande',
+            'ophelia.short-desc': 'Eine Neuschöpfung. Was wäre, wenn Ophelia nie dem Wahnsinn verfallen wäre? Was, wenn sie in der Stille der Nacht einfach nur Blumen sammeln würde…?',
+            'ophelia.status': 'In Entwicklung',
+            'ophelia.genre': 'Poetische Erkundung',
+            
+            'label.description': 'Beschreibung:',
+            'ophelia.info': 'Ophelia am Rande ist eine Neuschöpfung, eine poetische und intime Neuinterpretation der Figur Ophelia. Fernab klassischer Darstellungen erforscht dieses Stück die Idee, dass Wahnsinn vielleicht nur ein Anschein war und dass hinter dem Chaos einfach eine Frau ist, die in der Nacht nach ihrer Wahrheit sucht.',
+            
+            'label.concept': 'Konzept',
+            'ophelia.concept-part1': 'Ophelia ist eine literarische Figur, die zahlreiche Schriftsteller und Regisseure fasziniert hat. Immer aus männlicher Perspektive präsentiert, wird ihre Geschichte oft auf romantisches Unglück und unvermeidlichen Wahnsinn reduziert.',
+            'ophelia.concept-part2': 'Was wäre, wenn wir ihr eine andere Stimme geben würden? Was wäre, wenn ihre nächtliche Blumensuche nicht ein Zeichen von Geisteskrankheit wäre, sondern vielmehr eine tiefe Suche nach Sinn, Schönheit und Freiheit?',
+            'ophelia.concept-part3': 'Diese Schöpfung erforscht die Grauzonen zwischen Vernunft und Wahnsinn, zwischen Unterwerfung und Rebellion, zwischen dem, was uns gesagt wird, zu sein, und dem, was wir zu werden wählen.',
+            
+            'label.inspiration': 'Inspirationen',
+            'ophelia.inspiration': 'Dieses Stück steht in der Tradition feministischer Neuinterpretationen von Mythen und klassischen Texten und versucht gleichzeitig, etwas völlig Neues zu schaffen. Es schöpft aus zeitgenössischer Poesie, Shakespeare-Traditionen und einer persönlichen Sensibilität für Fragen von Identität und Freiheit.',
+            
+            'label.contact': 'Zusammenarbeit und Entwicklung',
+            'ophelia.collaboration': 'Dieses Projekt befindet sich derzeit in der Entwicklung. Lina Biancarelli sucht leidenschaftliche Mitarbeiter - Schauspieler, Regisseure, Dramatiker, Musiker - um diese Vision zu erkunden und zu verfeinern.',
+            'ophelia.collaboration-contact': 'Wenn diese Schöpfung Sie interessiert oder Sie über Zusammenarbeitsmöglichkeiten sprechen möchten, setzen Sie sich bitte gerne mit mir in Verbindung.',
+            
+            'label.status': 'Status',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'btn.back': '← العودة',
+            'btn.contact': 'اتصل بي',
+            
+            'ophelia.tag': 'إنشاء جديد',
+            'ophelia.title': 'أوفيليا على الحافة',
+            'ophelia.short-desc': 'إنشاء جديد. ماذا لو لم تجن أوفيليا قط؟ ماذا لو كانت تجمع الأزهار ليلا فقط...؟',
+            'ophelia.status': 'قيد التطوير',
+            'ophelia.genre': 'استكشاف شاعري',
+            
+            'label.description': 'الوصف:',
+            'ophelia.info': 'أوفيليا على الحافة هي إنشاء جديد، إعادة تفسير شاعرية وحميمية لشخصية أوفيليا. بعيداً عن التمثيلات الكلاسيكية، تستكشف هذه المسرحية فكرة أن الجنون ربما كان مجرد مظهر، وأن وراء الفوضى توجد ببساطة امرأة تبحث عن حقيقتها في الليل.',
+            
+            'label.concept': 'المفهوم',
+            'ophelia.concept-part1': 'أوفيليا هي شخصية أدبية افتتنت بها عدد لا يحصى من الكتاب والمخرجين. يتم تقديمها دائماً من خلال وجهة نظر ذكورية، وغالباً ما يتم تقليل قصتها إلى سوء الحظ في الحب والجنون الحتمي.',
+            'ophelia.concept-part2': 'ماذا لو أعطيناها صوتاً مختلفاً؟ ماذا لو لم تكن بحثها الليلي عن الزهور علامة على الاضطراب العقلي، بل بحثاً عميقاً عن المعنى والجمال والحرية؟',
+            'ophelia.concept-part3': 'يستكشف هذا الإنشاء الحدود الرمادية بين العقل والجنون، بين الخضوع والتمرد، بين ما يُقال لنا أن نكونه وما نختار أن نصبح عليه.',
+            
+            'label.inspiration': 'الإلهامات',
+            'ophelia.inspiration': 'تندرج هذه المسرحية ضمن تقليد إعادة التفسير النسوية للأساطير والنصوص الكلاسيكية، مع السعي لإنشاء شيء مختلف تماماً. وتستلهم من الشعر المعاصر والتقاليد الشكسبيرية وحساسية شخصية تجاه قضايا الهوية والحرية.',
+            
+            'label.contact': 'التعاون والتطوير',
+            'ophelia.collaboration': 'هذا المشروع حالياً في مرحلة التطوير. تبحث لينا بيانكاريلي عن متعاونين متحمسين - ممثلين ومخرجين ودرامتورجيين وموسيقيين - لاستكشاف وصقل هذه الرؤية.',
+            'ophelia.collaboration-contact': 'إذا كان هذا الإنشاء يثير اهتمامك، أو إذا كنت تريد مناقشة إمكانيات التعاون، فلا تتردد في الاتصال بي.',
+            
+            'label.status': 'الحالة',
+            'label.genre': 'النوع',
+            
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                element.textContent = translations[currentLanguage][key];
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            setLanguage(this.getAttribute('data-lang'));
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+    });
+</script>
+
+</body>
+</html>

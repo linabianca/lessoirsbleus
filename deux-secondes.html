@@ -11,6 +11,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #1a3a52 0%, #0f2839 100%);
@@ -126,6 +130,37 @@
             line-height: 1.8;
             margin-bottom: 30px;
             opacity: 0.95;
+        }
+
+        .tech-sheet {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: rgba(244, 208, 63, 0.08);
+            border: 2px solid #f4d03f;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .tech-item value {
+            font-size: 1.1em;
+            color: #f4d03f;
+        }
+
+        @media (max-width: 768px) {
+            .tech-sheet {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
 
         .info-box {
@@ -267,6 +302,78 @@
 
         .credits strong {
             color: #f4d03f;
+        }
+
+        .scroll-nav {
+            position: fixed;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            pointer-events: auto;
+            padding-right: 8px;
+        }
+
+        .scroll-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(244, 208, 63, 0.5);
+            display: block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid rgba(244, 208, 63, 0.5);
+            position: relative;
+            overflow: visible;
+        }
+
+        .scroll-nav a:hover,
+        .scroll-nav a.active {
+            background: #f4d03f;
+            border-color: #f4d03f;
+        }
+
+        .scroll-nav a span {
+            display: none;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            color: #f4d03f;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 5;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            background: transparent;
+            padding: 6px 12px;
+            border-radius: 2px;
+            box-shadow: none;
+        }
+
+        .scroll-nav a:hover span,
+        .scroll-nav a.active span {
+            display: block;
+            border-bottom-color: #f4d03f;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-nav a span {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-nav {
+                display: none;
+            }
         }
         .language-switcher {
             position: fixed;
@@ -534,11 +641,35 @@
     <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
+<nav class="scroll-nav">
+    <a href="#intro" class="nav-dot active">
+        <span data-i18n="label.intro">Intro</span>
+    </a>
+    <a href="#captation" class="nav-dot">
+        <span data-i18n="label.captation">Captation</span>
+    </a>
+    <a href="#synopsis" class="nav-dot">
+        <span data-i18n="label.synopsis">Synopsis</span>
+    </a>
+    <a href="#performances" class="nav-dot">
+        <span data-i18n="label.performances">Représentations</span>
+    </a>
+    <a href="#cast" class="nav-dot">
+        <span data-i18n="label.cast">Distribution</span>
+    </a>
+    <a href="#creative-team" class="nav-dot">
+        <span data-i18n="label.creative-team">Créative</span>
+    </a>
+    <a href="#credits" class="nav-dot">
+        <span data-i18n="label.credits">Crédits</span>
+    </a>
+</nav>
+
 <div class="container">
     <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
 
-    <!-- Hero Section -->
-    <div class="hero">
+    <!-- Intro Section -->
+    <div class="hero section" id="intro">
         <div class="hero-poster">
             <img src="assets/deux secondes-affiche.jpeg" alt="Deux secondes avant l'extase">
         </div>
@@ -546,8 +677,17 @@
             <span class="tag" data-i18n="deux-secondes.tag">Tragédie moderne</span>
             <h2 data-i18n="deux-secondes.title">Deux secondes avant l'extase</h2>
             <p data-i18n="deux-secondes.short-desc">Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
-            
-            <div class="info-box">
+                        <div class="tech-sheet">
+                <div class="tech-item">
+                    <label data-i18n="label.characters">Nombre de personnages</label>
+                    <value>10</value>
+                </div>
+                <div class="tech-item">
+                    <label data-i18n="label.duration">Durée</label>
+                    <value data-i18n="deux-secondes.duration">1h45</value>
+                </div>
+            </div>
+                        <div class="info-box">
                 <strong data-i18n="label.edition">Édition :</strong> Albiana<br>
                 <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a><br>
                 <strong data-i18n="label.support">Soutien :</strong> <a href="https://lamenagerie.org/fr/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">La Ménagerie e.V</a>
@@ -561,15 +701,15 @@
     </div>
 
     <!-- Video Section -->
-    <div class="section">
+    <div class="section" id="captation">
         <h3 data-i18n="deux-secondes.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/b2g6xKHCNzY" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 
-    <!-- Description Section -->
-    <div class="section">
+    <!-- Synopsis Section -->
+    <div class="section" id="synopsis">
         <h3 data-i18n="label.synopsis">Synopsis</h3>
         <div class="description-text" data-i18n="deux-secondes.description">
             <p>Deux secondes avant l'extase est une réinterprétation du mythe d'Antigone. Cette nouvelle version du classique explore les tensions intérieures entre loyauté, justice et rébellion, offrant une vision contemporaine de la tragédie intemporelle de Sophocle.</p>
@@ -577,9 +717,9 @@
         </div>
     </div>
 
-    <!-- Performances Section -->
-    <div class="section">
-        <h3 data-i18n="label.performances">Historique des représentations</h3>
+    <!-- Distribution Section -->
+    <div class="section" id="distribution">
+        <h3 style="margin-top: 0;" id="performances" data-i18n="label.performances">Historique des représentations</h3>
         <div class="performance-item">
             <strong data-i18n="label.date">Date :</strong> 11 janvier 2024<br>
             <strong data-i18n="label.location">Lieu :</strong> ACUD Theater Berlin<br>
@@ -587,21 +727,21 @@
             <strong data-i18n="label.company">Compagnie :</strong> <a href="la-troupe-des-soirs-bleus.html" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;" data-i18n="company.name">Troupe des Soirs bleus</a>
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.cast">Distribution originale</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" id="cast" data-i18n="label.cast">Distribution originale</h3>
         <div class="performance-item">
-            Tania Nunez<br>
-            Maymouna Diouf<br>
-            Clémence Guigue<br>
-            Alessandra Tosi<br>
-            Anissa Raiss<br>
-            Valentin Tesseron<br>
-            Victor Perier<br>
-            Tanja Holstein<br>
-            Ilias Deligiannis<br>
-            Lina Chelha
+            <strong><span data-i18n="cast.character1.name">Antigone</span> :</strong> Tania Nunez<br>
+            <strong><span data-i18n="cast.character2.name">Ismène</span> :</strong> Maymouna Diouf<br>
+            <strong><span data-i18n="cast.character3.name">Créon</span> :</strong> Clémence Guigue<br>
+            <strong><span data-i18n="cast.character4.name">Eurydice</span> :</strong> Alessandra Tosi<br>
+            <strong><span data-i18n="cast.character5.name">La Nourrice</span> :</strong> Anissa Raiss<br>
+            <strong><span data-i18n="cast.character6.name">Hémon</span> :</strong> Valentin Tesseron<br>
+            <strong><span data-i18n="cast.character7.name">Exupère</span> :</strong> Victor Perier<br>
+            <strong><span data-i18n="cast.character8.name">Eusébie</span> :</strong> Tanja Holstein<br>
+            <strong><span data-i18n="cast.character9.name">Laodamas</span> :</strong> Ilias Deligiannis<br>
+            <strong><span data-i18n="cast.character10.name">Le Choeur</span> :</strong> Lina Chelha
         </div>
 
-        <h3 style="margin-top: 40px; font-size: 1.5em;" data-i18n="label.creative-team">Équipe créative</h3>
+        <h3 style="margin-top: 40px; font-size: 1.5em;" id="creative-team" data-i18n="label.creative-team">Équipe créative</h3>
         <div class="performance-item">
             <strong data-i18n="label.lights-scenography">Lumières et scénographie :</strong> Cécile Boos<br>
             <strong data-i18n="label.music">Musique :</strong> Romain Firroloni<br>
@@ -609,52 +749,14 @@
         </div>
     </div>
 
-    <!-- Gallery Section -->
-    <div class="section">
-        <h3 data-i18n="label.gallery">Galerie photos</h3>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_4713.jpg" alt="Photo de représentation 1">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_4860.jpg" alt="Photo de représentation 2">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_4879.jpg" alt="Photo de représentation 3">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5041.jpg" alt="Photo de représentation 4">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5063.jpg" alt="Photo de représentation 5">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5153.jpg" alt="Photo de représentation 6">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5230.jpg" alt="Photo de représentation 7">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5420.jpg" alt="Photo de représentation 8">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5548.jpg" alt="Photo de représentation 9">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5554.jpg" alt="Photo de représentation 10">
-            </div>
-            <div class="gallery-item">
-                <img src="assets/deux secondes/IMG_5645.jpg" alt="Photo de représentation 11">
-            </div>
-        </div>
-    </div>
-
     <!-- Credits Section -->
-    <div class="credits">
+    <div class="section" id="credits">
+        <div class="credits">
         <h3 style="color: #f4d03f; margin-top: 0;" data-i18n="label.photo-credits">Crédits photos</h3>
         <p><strong data-i18n="label.photos-by">Photographies par :</strong> <a href="https://www.instagram.com/anepsyy/" target="_blank" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f; transition: all 0.3s ease;">Anepsyy</a></p>
         <p><strong data-i18n="label.poster-by">Affiche créée par :</strong> Alessandro Bocquet</p>
         <p style="font-size: 0.95em; opacity: 0.8;" data-i18n="label.thanks">Merci aux photographes pour ces magnifiques clichés des représentations.</p>
+        </div>
     </div>
 
 </div>
@@ -690,11 +792,24 @@
             'label.music': 'Musique :',
             'label.german-translation': 'Traduction en allemand :',
             'label.gallery': 'Galerie photos',
+            'label.characters': 'Nombre de personnages',
+            'label.duration': 'Durée',
+            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Crédits photos',
             'label.photos-by': 'Photographies par :',
             'label.poster-by': 'Affiche créée par :',
             'label.thanks': 'Merci aux photographes pour ces magnifiques clichés des représentations.',
             'company.name': 'Troupe des Soirs bleus',
+            'cast.character1.name': 'Antigone',
+            'cast.character2.name': 'Ismène',
+            'cast.character3.name': 'Créon',
+            'cast.character4.name': 'Eurydice',
+            'cast.character5.name': 'La Nourrice',
+            'cast.character6.name': 'Hémon',
+            'cast.character7.name': 'Exupère',
+            'cast.character8.name': 'Eusébie',
+            'cast.character9.name': 'Laodamas',
+            'cast.character10.name': 'Le Choeur',
             'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
         },
         en: {
@@ -721,11 +836,24 @@
             'label.music': 'Music:',
             'label.german-translation': 'German Translation:',
             'label.gallery': 'Photo Gallery',
+            'label.characters': 'Number of Characters',
+            'label.duration': 'Duration',
+            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Photo Credits',
             'label.photos-by': 'Photos by:',
             'label.poster-by': 'Poster by:',
             'label.thanks': 'Thanks to the photographers for these magnificent shots of the performances.',
             'company.name': 'La Troupe des Soirs Bleus',
+            'cast.character1.name': 'Antigone',
+            'cast.character2.name': 'Ismene',
+            'cast.character3.name': 'Creon',
+            'cast.character4.name': 'Eurydice',
+            'cast.character5.name': 'The Nanny',
+            'cast.character6.name': 'Haemon',
+            'cast.character7.name': 'Exuperius',
+            'cast.character8.name': 'Eusebia',
+            'cast.character9.name': 'Laodamas',
+            'cast.character10.name': 'The Chorus',
             'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
         },
         it: {
@@ -742,8 +870,8 @@
             'label.company': 'Compagnia:',
             'label.support': 'Supporto:',
             'label.synopsis': 'Trama',
-            'label.performances': 'Storico delle Rappresentazioni',
-            'label.date': 'Data:',
+            'label.performances': 'rappresentazioni',
+            'label.date': 'Data':
             'label.location': 'Luogo:',
             'label.direction': 'Regia:',
             'label.cast': 'Cast Originale',
@@ -752,11 +880,24 @@
             'label.music': 'Musica:',
             'label.german-translation': 'Traduzione in Tedesco:',
             'label.gallery': 'Galleria Foto',
+            'label.characters': 'Numero di Personaggi',
+            'label.duration': 'Durata',
+            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Crediti Fotografici',
             'label.photos-by': 'Foto di:',
             'label.poster-by': 'Manifesto di:',
             'label.thanks': 'Grazie ai fotografi per questi magnifici scatti delle rappresentazioni.',
             'company.name': 'La Troupe des Soirs Bleus',
+            'cast.character1.name': 'Antigone',
+            'cast.character2.name': 'Ismene',
+            'cast.character3.name': 'Creone',
+            'cast.character4.name': 'Euridice',
+            'cast.character5.name': 'La Balia',
+            'cast.character6.name': 'Emone',
+            'cast.character7.name': 'Exuperius',
+            'cast.character8.name': 'Eusebia',
+            'cast.character9.name': 'Laodamas',
+            'cast.character10.name': 'Il Coro',
             'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
         },
         de: {
@@ -783,11 +924,24 @@
             'label.music': 'Musik:',
             'label.german-translation': 'Deutsche Übersetzung:',
             'label.gallery': 'Fotogalerie',
+            'label.characters': 'Anzahl der Charaktere',
+            'label.duration': 'Dauer',
+            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'Fotokredit',
             'label.photos-by': 'Fotos von:',
             'label.poster-by': 'Plakat von:',
             'label.thanks': 'Danke an die Fotografen für diese wunderschönen Aufnahmen der Aufführungen.',
             'company.name': 'La Troupe des Soirs Bleus',
+            'cast.character1.name': 'Antigone',
+            'cast.character2.name': 'Ismene',
+            'cast.character3.name': 'Kreon',
+            'cast.character4.name': 'Eurydike',
+            'cast.character5.name': 'Amme',
+            'cast.character6.name': 'Hämon',
+            'cast.character7.name': 'Exuperius',
+            'cast.character8.name': 'Eusebia',
+            'cast.character9.name': 'Laodamas',
+            'cast.character10.name': 'Chor',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
         },
         ar: {
@@ -814,6 +968,9 @@
             'label.music': 'الموسيقى:',
             'label.german-translation': 'الترجمة الألمانية:',
             'label.gallery': 'معرض الصور',
+            'label.characters': 'عدد الشخصيات',
+            'label.duration': 'المدة',
+            'deux-secondes.duration': '1h45',
             'label.photo-credits': 'اعتمادات الصور',
             'label.photos-by': 'الصور بواسطة:',
             'label.poster-by': 'الملصق من قبل:',
@@ -871,5 +1028,66 @@
     document.addEventListener('DOMContentLoaded', function() {
         updatePageLanguage();
         updateActiveButton(currentLanguage);
+    });
+
+    // Scroll navigation for play pages - tracks all sections and subsections
+    const navDots = document.querySelectorAll('.scroll-nav a.nav-dot');
+    const navTargets = Array.from(navDots).map(dot => dot.getAttribute('href').substring(1));
+
+    function updateActiveSection() {
+        let current = 0;
+        const scrollPos = window.pageYOffset;
+
+        // Check each navigation target's position
+        navTargets.forEach((targetId, index) => {
+            const element = document.querySelector('#' + targetId);
+            if (element) {
+                const elementTop = element.offsetTop;
+                const elementHeight = element.clientHeight;
+                // If we've scrolled past this element's start position, mark it as current
+                if (scrollPos >= elementTop - elementHeight / 4) {
+                    current = index;
+                }
+            }
+        });
+
+        navDots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === current) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    // Initialize on page load
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection);
+
+    // Add click handlers to navigation dots
+    navDots.forEach((dot, dotIndex) => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Get the previous section's ID to scroll to
+            let scrollTarget;
+            if (dotIndex > 0) {
+                // Scroll to end of previous section
+                const prevTargetId = navTargets[dotIndex - 1];
+                const prevElement = document.querySelector('#' + prevTargetId);
+                if (prevElement) {
+                    scrollTarget = prevElement.offsetTop + prevElement.clientHeight;
+                }
+            } else {
+                // First section, scroll to its top
+                const firstElement = document.querySelector('#intro');
+                scrollTarget = firstElement ? firstElement.offsetTop : 0;
+            }
+            
+            if (scrollTarget !== undefined) {
+                window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+            }
+            
+            setTimeout(updateActiveSection, 100);
+        });
     });
 </script>
