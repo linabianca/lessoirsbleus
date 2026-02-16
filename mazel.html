@@ -1007,61 +1007,60 @@
     });
 
     // Scroll navigation for play pages - tracks all sections and subsections
-    const navDots = document.querySelectorAll('.scroll-nav a.nav-dot');
-    const navTargets = Array.from(navDots).map(dot => dot.getAttribute('href').substring(1));
+    function setupScrollNavigation() {
+        const navDots = document.querySelectorAll('.scroll-nav a.nav-dot');
+        if (navDots.length === 0) return;
 
-    function updateActiveSection() {
-        let current = 0;
-        const scrollPos = window.pageYOffset;
+        const navTargets = Array.from(navDots).map(dot => dot.getAttribute('href').substring(1));
 
-        // Check each navigation target's position
-        navTargets.forEach((targetId, index) => {
-            const element = document.querySelector('#' + targetId);
-            if (element) {
-                const elementTop = element.offsetTop;
-                const elementHeight = element.clientHeight;
-                // If we've scrolled past this element's start position, mark it as current
-                if (scrollPos >= elementTop - elementHeight / 4) {
-                    current = index;
+        function updateActiveSection() {
+            let current = 0;
+            const scrollPos = window.scrollY || window.pageYOffset;
+
+            // Check each navigation target's position
+            for (let index = 0; index < navTargets.length; index++) {
+                const targetId = navTargets[index];
+                const element = document.querySelector('#' + targetId);
+                if (element) {
+                    const elementTop = element.offsetTop;
+                    const elementHeight = element.clientHeight;
+                    // If we've scrolled past this element's start position, mark it as current
+                    if (scrollPos >= elementTop - (window.innerHeight / 2)) {
+                        current = index;
+                    }
                 }
             }
-        });
 
-        navDots.forEach((dot, index) => {
-            dot.classList.remove('active');
-            if (index === current) {
-                dot.classList.add('active');
+            navDots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === current) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        // Run on initial load
+        updateActiveSection();
+        
+        // Update on scroll with better performance
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    updateActiveSection();
+                    ticking = false;
+                });
+                ticking = true;
             }
-        });
+        }, false);
     }
 
-    window.addEventListener('scroll', updateActiveSection);
+    // Set up scroll navigation when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupScrollNavigation);
+    } else {
+        setupScrollNavigation();
+    }
 
-    // Add click handlers to navigation dots
-    navDots.forEach((dot, dotIndex) => {
-        dot.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Get the previous section's ID to scroll to
-            let scrollTarget;
-            if (dotIndex > 0) {
-                // Scroll to end of previous section
-                const prevTargetId = navTargets[dotIndex - 1];
-                const prevElement = document.querySelector('#' + prevTargetId);
-                if (prevElement) {
-                    scrollTarget = prevElement.offsetTop + prevElement.clientHeight;
-                }
-            } else {
-                // First section, scroll to its top
-                const firstElement = document.querySelector('#intro');
-                scrollTarget = firstElement ? firstElement.offsetTop : 0;
-            }
-            
-            if (scrollTarget !== undefined) {
-                window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
-            }
-            
-            setTimeout(updateActiveSection, 100);
-        });
-    });
+
 </script>
