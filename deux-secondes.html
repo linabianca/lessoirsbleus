@@ -338,6 +338,44 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             text-align: justify;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        #synopsis.active .description-text {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 30px;
+        }
+
+        #synopsis h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s ease;
+        }
+
+        #synopsis h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-180deg);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: #f4d03f;
+        }
+
+        #synopsis.active h3::after {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        #synopsis h3:hover {
+            color: #ffd45f;
+        }
         }
 
         .gallery {
@@ -809,10 +847,18 @@
         </div>
     </div>
 
+    <!-- Synopsis Section -->
+    <div class="section" id="synopsis">
+        <h3 data-i18n="label.synopsis">Synopsis</h3>
+        <div class="description-text" data-i18n="deux-secondes.description">
+            Une adaptation d'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.
+        </div>
+    </div>
+
     <!-- Excerpt Section -->
     <div class="section" id="excerpt">
-        <h3 class="accordion-toggle" data-i18n="label.excerpt">Extrait</h3>
-        <div class="scripts-container" id="scripts-container">
+        <h3 class="accordion-toggle collapsed" data-i18n="label.excerpt">Extrait</h3>
+        <div class="scripts-container collapsed" id="scripts-container">
             <div class="script" id="script-content-scene1"></div>
         </div>
     </div>
@@ -822,14 +868,6 @@
         <h3 data-i18n="deux-secondes.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/b2g6xKHCNzY" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <!-- Synopsis Section -->
-    <div class="section" id="synopsis">
-        <h3 data-i18n="label.synopsis">Synopsis</h3>
-        <div class="description-text" data-i18n="deux-secondes.description">
-            Une adaptation d'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.
         </div>
     </div>
 
@@ -1224,6 +1262,17 @@
             accordionToggle.classList.toggle('collapsed');
             scriptsContainer.classList.toggle('collapsed');
         });
+
+        // Accordion functionality for Synopsis section
+        const synopsisSection = document.getElementById('synopsis');
+        if (synopsisSection) {
+            const synopsisHeading = synopsisSection.querySelector('h3');
+            if (synopsisHeading) {
+                synopsisHeading.addEventListener('click', function() {
+                    synopsisSection.classList.toggle('active');
+                });
+            }
+        }
     });
 
 </script>

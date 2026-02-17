@@ -255,7 +255,46 @@
             font-size: 1.05em;
             line-height: 1.8;
             white-space: pre-wrap;
-            word-wrap: break-word;            text-align: justify;        }
+            word-wrap: break-word;
+            text-align: justify;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        }
+
+        #synopsis.active .description-text {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 30px;
+        }
+
+        #synopsis h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s ease;
+        }
+
+        #synopsis h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-180deg);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: #C41E3A;
+        }
+
+        #synopsis.active h3::after {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        #synopsis h3:hover {
+            color: #e74957;
+        }
 
         /* Script Selection Dropdown */
         .script-selector {
@@ -944,12 +983,24 @@
         </div>
     </div>
 
+    <!-- Synopsis Section -->
+    <div class="section" id="synopsis">
+        <h3 data-i18n="label.synopsis">Synopsis</h3>
+        <div class="description-text" data-i18n="les-echecs.description">
+            <p>Les Échecs est une exploration tragi-comique des relations humaines, de la solitude et de la difficulté de faire le deuil — qu'il s'agisse d'une amitié brisée ou d'un amour avorté. À travers le personnage de Camille, la pièce nous plonge dans une succession de confrontations, réelles ou fantasmées.</p>
+            <p>L'histoire s'ouvre sur la rencontre entre Camille et Mathys, un séducteur invétéré dont la vie n'est qu'une série de mensonges tous plus nuls les uns que les autres. Entre cours d'œnologie inventés et métaphores douteuse, Camille tente de trouver une vérité là où il n'y a que du paraître.</p>
+            <p>Puis on bascule dans l'intimité de la vie en colocation avec Tina et Mara. Ce qui commence par des anecdotes légères — une urgence médicale farfelue ou une chasse obsessionnelle aux mites — finit par révéler les failles profondes de l'amitié. Camille doit affronter la « fuite » de ses amies et la violence sourde des ruptures amicales, qu'elle compare à de véritables divorces.</p>
+            <p>Tout au long du récit, l'ombre d'Ariel, son premier amour, plane. Dans un dialogue onirique, elle interroge la mémoire et les « calques » que nous apposons sur nos souvenirs pour les rendre supportables.</p>
+            <p>Le dénouement se joue littéralement autour de plusieurs échiquiers : Camille y affronte ses fantômes et ses proches une dernière fois. Elle y apprend que si la fin est inévitable, la clé réside dans l'acceptation de l'amour reçu et dans la décision, malgré tout, de continuer à vivre.</p>
+        </div>
+    </div>
+
     <!-- Excerpt Section -->
     <div class="section" id="excerpt">
-        <h3 class="accordion-toggle" data-i18n="label.excerpt">Extrait</h3>
+        <h3 class="accordion-toggle collapsed" data-i18n="label.excerpt">Extrait</h3>
         
         <!-- Scripts Container - Collapsible -->
-        <div class="scripts-container" id="scripts-container">
+        <div class="scripts-container collapsed" id="scripts-container">
             <div class="script" data-scene="scene1">
                 <div class="script-title" data-i18n="scene.scene1">Scène 1 : Mathys et Camille</div>
                 <div id="script-content-scene1"></div>
@@ -962,18 +1013,6 @@
         <h3 data-i18n="les-echecs.video-section">Captation</h3>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/EdyymWuFT7I" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <!-- Synopsis Section -->
-    <div class="section" id="synopsis">
-        <h3 data-i18n="label.synopsis">Synopsis</h3>
-        <div class="description-text" data-i18n="les-echecs.description">
-            <p>Les Échecs est une exploration tragi-comique des relations humaines, de la solitude et de la difficulté de faire le deuil — qu'il s'agisse d'une amitié brisée ou d'un amour avorté. À travers le personnage de Camille, la pièce nous plonge dans une succession de confrontations, réelles ou fantasmées.</p>
-            <p>L'histoire s'ouvre sur la rencontre entre Camille et Mathys, un séducteur invétéré dont la vie n'est qu'une série de mensonges tous plus nuls les uns que les autres. Entre cours d'œnologie inventés et métaphores douteuse, Camille tente de trouver une vérité là où il n'y a que du paraître.</p>
-            <p>Puis on bascule dans l'intimité de la vie en colocation avec Tina et Mara. Ce qui commence par des anecdotes légères — une urgence médicale farfelue ou une chasse obsessionnelle aux mites — finit par révéler les failles profondes de l'amitié. Camille doit affronter la « fuite » de ses amies et la violence sourde des ruptures amicales, qu'elle compare à de véritables divorces.</p>
-            <p>Tout au long du récit, l'ombre d'Ariel, son premier amour, plane. Dans un dialogue onirique, elle interroge la mémoire et les « calques » que nous apposons sur nos souvenirs pour les rendre supportables.</p>
-            <p>Le dénouement se joue littéralement autour de plusieurs échiquiers : Camille y affronte ses fantômes et ses proches une dernière fois. Elle y apprend que si la fin est inévitable, la clé réside dans l'acceptation de l'amour reçu et dans la décision, malgré tout, de continuer à vivre.</p>
         </div>
     </div>
 
@@ -1434,6 +1473,17 @@
             accordionToggle.classList.toggle('collapsed');
             scriptsContainer.classList.toggle('collapsed');
         });
+
+        // Accordion functionality for Synopsis section
+        const synopsisSection = document.getElementById('synopsis');
+        if (synopsisSection) {
+            const synopsisHeading = synopsisSection.querySelector('h3');
+            if (synopsisHeading) {
+                synopsisHeading.addEventListener('click', function() {
+                    synopsisSection.classList.toggle('active');
+                });
+            }
+        }
     });
 
     // Initialize script content from translation
