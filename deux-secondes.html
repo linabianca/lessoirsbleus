@@ -376,12 +376,14 @@
         #synopsis h3:hover {
             color: #ffd45f;
         }
-        }
 
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            display: grid !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            max-width: 80% !important;
         }
 
         .gallery-item {
@@ -389,13 +391,17 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-width: 0;
+            max-width: 100% !important;
         }
 
         .gallery-item img {
-            width: 100%;
-            height: 300px;
+            width: 100% !important;
+            height: 100% !important;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
+            max-width: 100% !important;
         }
 
         .gallery-item:hover {
@@ -722,12 +728,12 @@
             }
 
             .gallery {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
 
             .gallery-item img {
-                height: 200px;
+                aspect-ratio: 1 / 1;
             }
 
             .performance-item {
@@ -851,7 +857,7 @@
     <div class="section" id="synopsis">
         <h3 data-i18n="label.synopsis">Synopsis</h3>
         <div class="description-text" data-i18n="deux-secondes.description">
-            Une adaptation d'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.
+            Deux secondes avant l'extase est une réécriture du mythe d'Antigone, qui déplace le regard des enjeux politiques vers l'intimité d'une femme qui aime démesurément. La pièce s'ouvre sur un moment suspendu : le monologue d'Antigone contemplant l'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n'aurait pas eu à choisir le sacrifice. L'histoire nous plonge dans la veille du drame. Loin de l'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s'enfermer dans une Thèbes maudite et sanglante. Mais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu'il lui inflige n'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d'une vie qui continue sans elle. Le dénouement, porté par l'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l'extase finale. Entre empoisonnement libérateur et espoir d'antidote, le Chœur nous laisse face à l'éternelle question : peut-on réellement choisir la fin ?
         </div>
     </div>
 
@@ -966,7 +972,7 @@
             'deux-secondes.title': '2 Secondes avant l\'extase',
             'deux-secondes.short-desc': 'Une adaptation d\'Antigone. Le portrait d\'une femme qui aime démesurément, saisie juste avant l\'abîme.',
             'deux-secondes.video-section': 'Captation',
-            'deux-secondes.description': 'Une adaptation d\'Antigone de Sophocle. Une tragédie contemporaine qui explore les tréfonds de la passion et de l\'amour au prix de la raison. Eurydice est une femme qui aime, qui désire, qui vit son amour avec une intensité que la raison ne peut contenir. Dans ces deux secondes avant l\'abîme, elle se confronte à elle-même, à ses choix, à ses contradictions.',
+            'deux-secondes.description': 'Deux secondes avant l\'extase est une réécriture du mythe d\'Antigone, qui déplace le regard des enjeux politiques vers l\'intimité d\'une femme qui aime démesurément. La pièce s\'ouvre sur un moment suspendu : le monologue d\'Antigone contemplant l\'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n\'aurait pas eu à choisir le sacrifice. L\'histoire nous plonge dans la veille du drame. Loin de l\'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s\'enfermer dans une Thèbes maudite et sanglante. Mais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu\'il lui inflige n\'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d\'une vie qui continue sans elle. Le dénouement, porté par l\'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l\'extase finale. Entre empoisonnement libérateur et espoir d\'antidote, le Chœur nous laisse face à l\'éternelle question : peut-on réellement choisir la fin ?',
             'deux-secondes.duration': '1h45',
             'deux-secondes.excerpt': '<div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu as toujours travaillé pour Jocaste, mais je ne t\'ai pas vue la pleurer.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Cela fait mauvais genre, ma reine. Mais c\'était une grande dame, elle me manquera. Mais comment la pleurer, quand je garde ses filles orphelines ? Leur chagrin est immense et je ne peux pas exprimer le mien. Par respect, vous comprenez ?</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu es bonne, nourrice.</span></div><div class="pause">Un temps. Eurydice commence à ranger avec la nourrice, à la grande surprise de celle-ci.</div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Tu ne me demandes pas pourquoi je te demande cela ? Jocaste me manque. J\'ai besoin de parler d\'elle. Personne n\'ose me parler d\'elle. Pas même ses enfants… Et mon mari… Enfin.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Vous voulez me parler de Jocaste ?</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Si cela ne te dérange pas.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Oh non… Moi vous savez… D\'habitude je chantonne pour moi-même, alors ça fait changement.</span></div><div class="dialogue-line"><span class="character">EURYDICE</span><span class="speech">Jocaste et moi… On a grandi ensemble petites. Elle était gaie comme un pinson. Une vraie petite folle. Antigone était comme cela avant aussi… Puis on a été séparées quelque temps. Des histoires de politique. Rien de passionnant. Mais quand on s\'est retrouvées… Comment l\'expliquer. Elle était devenue un papillon. Elle était resplendissante. J\'en ai eu la bouche sèche. Elle était toujours aussi gaie. Elle m\'a prise dans ses bras. On a développé une relation si douce, si tendre, si profonde… Je ne pensais pas vivre cela dans ma vie. Je ne pensais pas que ce soit possible. C\'était physique. Quand elle souriait, je vibrais. Je me rappelle surtout cette nuit, celle avant son mariage avec Laïos, où nous dormions dans la même chambre, afin d\'éviter que les fiancés ne se retrouvent avant les sacrements. Elle dormait près de moi, je voyais sa poitrine se soulever à chaque respiration. Je n\'ai pas réussi à dormir. À l\'aube, les rayons de lune se mélangeant aux premiers rayons de soleil formaient un halo bleu autour d\'elle. Elle a ouvert les paupières, son corps nu dans les draps blancs froissés, et elle m\'a tendu la main. Toute ma vie je m\'en souviendrai.</span></div><div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Votre mari le sait ?</span></div>',
             'label.edition': 'Édition :',
@@ -1005,7 +1011,7 @@
             'deux-secondes.title': '2 Seconds Before Ecstasy',
             'deux-secondes.short-desc': 'An adaptation of Antigone. The portrait of a woman who loves excessively, captured just before the abyss.',
             'deux-secondes.video-section': 'Capture',
-            'deux-secondes.description': 'An adaptation of Sophocles\' Antigone. A contemporary tragedy exploring the depths of passion and love at the cost of reason. Eurydice is a woman who loves, who desires, who lives her love with an intensity that reason cannot contain. In these two seconds before the abyss, she confronts herself, her choices, her contradictions.',
+            'deux-secondes.description': 'Two Seconds Before Ecstasy is a rewriting of the Antigone myth, shifting focus from political stakes to the intimacy of a woman who loves excessively. The play opens on a suspended moment: Antigone\'s monologue contemplating the abyss, stealing a few seconds from a dreary life to imagine an existence where she wouldn\'t have had to choose sacrifice. The story plunges us into the eve of drama. Far from a marble heroine, we discover a vibrant Antigone, inhabited by desire for her fiancé Haimon, and confronted with her sister Ismene, embodiment of life and beauty. Her perfection hides a secret: she is pregnant and begs her sister to choose life for this future nephew, rather than confining herself to a cursed and bloody Thebes. But for Antigone, refusal is an absolute act of courage. She rejects the simplicity of happiness offered by her uncle Creon, a tired regent who dreams of planting turnips but finds himself trapped by his own authority. The punishment he inflicts is not immediate death, but psychological torture: condemned to endless dreams by a paralyzing potion, she must remain a spectator of a life that continues without her. The denouement, carried by the cruel innocence of two children, Eusebeia and Laodamas, shifts toward final ecstasy. Between liberating poison and hope for an antidote, the Chorus leaves us facing the eternal question: can one truly choose the end?',
             'deux-secondes.duration': '1h45',
             'label.edition': 'Edition:',
             'label.company': 'Company:',
@@ -1041,7 +1047,7 @@
             'deux-secondes.title': '2 Secondi Prima dell\'Estasi',
             'deux-secondes.short-desc': 'Un adattamento dell\'Antigone. Il ritratto di una donna che ama eccessivamente, colta proprio prima dell\'abisso.',
             'deux-secondes.video-section': 'Registrazione',
-            'deux-secondes.description': 'Un adattamento dell\'Antigone di Sofocle. Una tragedia contemporanea che esplora le profondità della passione e dell\'amore al costo della ragione. Euridice è una donna che ama, che desidera, che vive il suo amore con un\'intensità che la ragione non può contenere. In questi due secondi prima dell\'abisso, si confronta con se stessa, con le sue scelte, con le sue contraddizioni.',
+            'deux-secondes.description': 'Due secondi prima dell\'estasi è una riscrittura del mito di Antigone, che sposta lo sguardo dalle questioni politiche all\'intimità di una donna che ama eccessivamente. Il dramma si apre su un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando alcuni secondi a una vita monotona per immaginare un\'esistenza dove non avrebbe dovuto scegliere il sacrificio. La storia ci immerge nella vigilia del dramma. Lontano dall\'eroina di marmo, scopriamo un\'Antigone vibrante, abitata dal desiderio per il suo fidanzato Emone, e confrontata con sua sorella Ismene, incarnazione della vita e della bellezza. La sua perfezione nasconde un segreto: è incinta e supplica sua sorella di scegliere la vita per questo nipote futuro, piuttosto che confinarsi in una Tebe maledetta e sanguinosa. Ma per Antigone, il rifiuto è un atto di coraggio assoluto. Rifiuta la semplicità della felicità offerta da suo zio Creonte, un reggente stanco che sogna di piantare rape ma si ritrova intrappolato dalla sua stessa autorità. La punizione che le infligge non è la morte immediata, ma una tortura psicologica: condannata ai sogni infiniti da una pozione paralizzante, deve rimanere spettatrice di una vita che continua senza di lei. Lo scioglimento, portato dall\'innocenza crudele di due bambini, Eusebeia e Laodamas, si trasforma verso l\'estasi finale. Tra il veleno liberatorio e la speranza di un antidoto, il Coro ci lascia di fronte alla domanda eterna: si può veramente scegliere la fine?',
             'deux-secondes.duration': '1h45',
             'label.edition': 'Edizione:',
             'label.company': 'Compagnia:',
@@ -1077,7 +1083,7 @@
             'deux-secondes.title': '2 Sekunden vor dem Höhepunkt',
             'deux-secondes.short-desc': 'Eine Anpassung der Antigone. Das Porträt einer Frau, die übermäßig liebt, erfasst gerade vor dem Abgrund.',
             'deux-secondes.video-section': 'Aufzeichnung',
-            'deux-secondes.description': 'Eine Anpassung von Sophokles\' Antigone. Eine zeitgenössische Tragödie, die die Tiefen der Leidenschaft und Liebe auf Kosten der Vernunft erforscht. Eurydike ist eine Frau, die liebt, die begehrt, die ihre Liebe mit einer Intensität lebt, die die Vernunft nicht enthalten kann. In diesen zwei Sekunden vor dem Abgrund setzt sie sich selbst, ihren Wahlmöglichkeiten und ihren Widersprüchen auseinander.',
+            'deux-secondes.description': 'Zwei Sekunden vor der Ekstase ist eine Umschreibung des Antigone-Mythos, die den Blick von den politischen Fragen zur Intimität einer Frau verlegt, die unstillbar liebt. Das Stück öffnet sich auf einen schwebenden Moment: Antigones Monolog, der in den Abgrund blickt, und stiehlt einige Sekunden aus einem trüben Leben, um sich ein Dasein vorzustellen, in dem sie nicht zwischen Opfer hätte wählen müssen. Die Geschichte taucht uns in die Nacht vor dem Drama. Weit entfernt von der steinernen Heldin entdecken wir eine vibrierende Antigone, erfüllt von Verlangen nach ihrem Verlobten Haimon, und konfrontiert mit ihrer Schwester Ismene, Verkörperung von Leben und Schönheit. Ihre Perfektion verbirgt ein Geheimnis: Sie ist schwanger und fleht ihre Schwester an, das Leben für diesen zukünftigen Neffen zu wählen, statt sich in einem verfluchten und blutigen Theben einzusperren. Aber für Antigone ist Ablehnung ein absoluter Akt des Mutes. Sie lehnt die Einfachheit des Glücks ab, das ihr Onkel Kreon anbietet, ein müder Regent, der davon träumt, Rüben zu pflanzen, aber in seiner eigenen Autorität gefangen ist. Die Strafe, die er ihr auferlegt, ist nicht sofortiger Tod, sondern psychologische Qual: verurteilt zu endlosen Träumen durch einen lähmenden Trank, muss sie Zuschauerin eines Lebens bleiben, das ohne sie weitergehen. Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Laodamas, wendet sich der finalen Ekstase zu. Zwischen befreiender Gift und der Hoffnung auf ein Gegengift lässt uns der Chor vor die ewige Frage stehen: Kann man das Ende wirklich wählen?',
             'deux-secondes.duration': '1h45',
             'label.edition': 'Ausgabe:',
             'label.company': 'Kompanie:',
@@ -1113,7 +1119,7 @@
             'deux-secondes.title': 'ثانيتان قبل النشوة',
             'deux-secondes.short-desc': 'اقتباس من أنتيجون. صورة امرأة تحب بإفراط، مأخوذة قبل الهاوية مباشرة.',
             'deux-secondes.video-section': 'التسجيل',
-            'deux-secondes.description': 'اقتباس من أنتيجون لسوفوكليس. تراجيديا معاصرة تستكشف أعماق الشغف والحب على حساب العقل. يوريديس هي امرأة تحب، تشتهي، تعيش حبها بكثافة لا يستطيع العقل احتواءها. في هذه الثانيتين قبل الهاوية، تواجه نفسها، خياراتها، تناقضاتها.',
+            'deux-secondes.description': 'ثانيتان قبل النشوة هي إعادة كتابة لأسطورة أنتيجون، تحول النظر من القضايا السياسية إلى الحميمية الخاصة بامرأة تحب بشكل مفرط. تبدأ المسرحية بلحظة معلقة: مونولوج أنتيجون وهي تتأمل الهاوية، تسرق بعض الثوان من حياة كئيبة لتتخيل وجوداً لم تكن لتضطر فيه للاختيار بين التضحية. تغمرنا القصة في أمس الدراما. بعيداً عن البطلة الرخامية، نكتشف أنتيجون نابضة بالحياة، تعيش الرغبة في خطيبها هيمون، وتواجه أختها إسميني، تجسد الحياة والجمال. يخفي كمالها سراً: فهي حامل وتتوسل إلى أختها أن تختار الحياة لهذا الحفيد المستقبلي، بدلاً من أن تحبس نفسها في طيبة الملعونة والدموية. لكن بالنسبة لأنتيجون، الرفض هو عمل شجاعة مطلقة. ترفض بساطة السعادة التي يقدمها عمها كريون، وصي متعب يحلم بغرس اللفت لكنه وجد نفسه محاصراً بسلطته الخاصة. العقاب الذي يلحقه بها ليس الموت الفوري، بل تعذيب نفسي: محكومة بأحلام لا نهاية لها بسبب جرعة مشلولة، يجب أن تبقى متفرجة على حياة تستمر دونها. النهاية، حملها البراءة القاسية لطفلين، يوسيبيا ولاوداماس، تنقلب نحو النشوة الأخيرة. بين السم المحرر والأمل بترياق، يتركنا الجوقة أمام السؤال الأبدي: هل يمكن فعلاً اختيار النهاية؟',
             'deux-secondes.duration': '1h45',
             'label.edition': 'الطبعة:',
             'label.company': 'الفرقة:',
