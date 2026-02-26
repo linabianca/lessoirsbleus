@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUCCA I'MPERNU | Lina Biancarelli</title>
+    <style>
+        :root {
+            --gold-prestige: #C5A059;
+            --sea-blue: #005F73;
+            --blood-tomato: #9B2226;
+            --mold-grey: #4A4E69;
+            --deep-black: #121212;
+            --sand-bg: #F4F1DE;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--sand-bg) 0%, #f0ede5 50%, var(--sand-bg) 100%);
+            color: var(--mold-grey);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced starfield overlay for depth */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Water wave effect */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: transparent;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            background: var(--deep-black);
+            border-bottom: 4px solid var(--gold-prestige);
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-prestige);
+            font-weight: 900;
+        }
+
+        header p {
+            font-style: italic;
+            color: rgba(197, 160, 89, 0.8);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 30px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            margin-top: 20px;
+            color: var(--blood-tomato);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid var(--blood-tomato);
+            padding: 12px 24px;
+            white-space: nowrap;
+        }
+
+        .back-link:hover {
+            background: var(--blood-tomato);
+            color: var(--sand-bg);
+            border-color: var(--blood-tomato);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-poster {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-poster img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: var(--blood-tomato);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--gold-prestige);
+            color: var(--deep-black);
+            padding: 8px 16px;
+            border-radius: 0;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .short-desc {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .tech-sheet {
+            background: rgba(50, 100, 150, 0.3);
+            padding: 20px;
+            margin: 30px 0;
+            border-left: 4px solid rgba(100, 180, 255, 0.8);
+        }
+
+        .tech-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .tech-item label {
+            font-weight: 600;
+            color: rgba(100, 180, 255, 0.9);
+        }
+
+        .tech-item value {
+            font-style: italic;
+        }
+
+        .info-box {
+            background: rgba(197, 160, 89, 0.1);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 2px;
+            font-size: 0.95em;
+            line-height: 1.8;
+            border: 1px solid var(--gold-prestige);
+            color: var(--mold-grey);
+        }
+
+        .info-box a {
+            color: var(--blood-tomato);
+            text-decoration: none;
+            border-bottom: 2px solid var(--blood-tomato);
+            transition: all 0.3s ease;
+        }
+
+        .info-box a:hover {
+            color: var(--deep-black);
+            background: var(--blood-tomato);
+            padding: 2px 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--gold-prestige);
+            color: var(--deep-black);
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold-prestige);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--blood-tomato);
+            color: var(--sand-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(155, 34, 38, 0.4);
+            border-color: var(--blood-tomato);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            margin-top: 40px;
+            color: var(--blood-tomato);
+            font-weight: 800;
+            border-bottom: 3px solid var(--gold-prestige);
+            padding-bottom: 10px;
+        }
+
+        /* Excerpt Section Toggle */
+        #excerpt h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        #excerpt h3:hover {
+            color: var(--gold-prestige);
+        }
+
+        #excerpt h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            font-size: 0.6em;
+            line-height: 1;
+            vertical-align: baseline;
+            transition: transform 0.3s ease;
+            transform: rotate(-180deg);
+        }
+
+        #excerpt .description-text {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 30px 0 30px;
+            background: rgba(197, 160, 89, 0.15);
+            border-left: 5px solid var(--blood-tomato);
+            color: var(--mold-grey);
+        }
+
+        #excerpt.active .description-text {
+            max-height: 2000px;
+            opacity: 1;
+            padding: 30px 30px 30px 30px;
+        }
+
+        #excerpt.active h3::after {
+            transform: rotate(0deg);
+        }
+
+        .description-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        #excerpt .description-text {
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+            color: var(--mold-grey);
+        }
+
+        .description-text p {
+            margin-bottom: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 0;
+            letter-spacing: 1px;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lang-btn.active {
+            background: #8B7355;
+            border-color: #8B7355;
+        }
+
+        .scroll-nav {
+            position: fixed;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            pointer-events: auto;
+            padding-right: 8px;
+        }
+
+        .scroll-nav a {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold-prestige);
+            display: block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--gold-prestige);
+            position: relative;
+            overflow: visible;
+        }
+
+        .scroll-nav a:hover,
+        .scroll-nav a.active {
+            background: var(--blood-tomato);
+            border-color: var(--blood-tomato);
+        }
+
+        .scroll-nav a span {
+            display: none;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            white-space: nowrap;
+            color: var(--blood-tomato);
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            z-index: 5;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            background: transparent;
+            padding: 6px 12px;
+            border-radius: 2px;
+            box-shadow: none;
+        }
+
+        .scroll-nav a:hover span,
+        .scroll-nav a.active span {
+            display: block;
+            border-bottom-color: var(--blood-tomato);
+        }
+
+        footer {
+            background: var(--deep-black);
+            color: var(--sand-bg);
+            text-align: center;
+            padding: 40px;
+            border-top: 4px solid var(--gold-prestige);
+            font-size: 0.9em;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .scroll-nav {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2em;
+            }
+
+            .hero-poster img {
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .scroll-nav {
+                display: none !important;
+            }
+
+            .container {
+                padding: 120px 20px 40px;
+            }
+
+            .back-link {
+                display: block;
+                margin-bottom: 30px;
+                padding: 10px 20px;
+                font-size: 0.85em;
+                width: fit-content;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+
+            .hero-poster img {
+                max-width: 250px;
+            }
+
+            .short-desc {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            .tech-sheet {
+                padding: 15px;
+                margin: 25px 0;
+            }
+
+            .tech-item {
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+
+            .section h3 {
+                font-size: 1.4em;
+                margin-top: 30px;
+            }
+
+            .description-text {
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+                padding: 14px 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery img {
+                height: 200px;
+            }
+
+            .language-switcher {
+                position: fixed;
+                top: 100px;
+                right: 15px;
+                left: auto;
+                width: auto;
+                z-index: 99;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                background: transparent;
+                padding: 0;
+                border: none;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+                letter-spacing: 0.5px;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            .lang-btn:hover {
+                background: rgba(0, 0, 0, 0.85);
+            }
+
+            footer {
+                padding: 30px 20px;
+                font-size: 0.85em;
+                margin-top: 60px;
+            }
+
+            /* Mobile RTL Support for Arabic */
+            html[lang="ar"] .language-switcher {
+                right: auto;
+                left: 15px;
+            }
+
+            html[lang="ar"] .container {
+                direction: rtl;
+            }
+
+            html[lang="ar"] .back-link {
+                float: none;
+                margin-left: 0;
+            }
+        }
+
+        /* RTL Support for Arabic */
+        html[lang="ar"] {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .language-switcher {
+            right: 20px;
+            left: auto;
+        }
+
+        html[lang="ar"] .back-link {
+            float: right;
+            margin-left: 40px;
+        }
+
+        html[lang="ar"] .description-text {
+            text-align: justify;
+        }
+
+        html[lang="ar"] header {
+            direction: rtl;
+        }
+
+        html[lang="ar"] .scroll-nav {
+            right: auto;
+            left: 0px;
+            padding-right: 0;
+            padding-left: 8px;
+        }
+
+        html[lang="ar"] .scroll-nav a span {
+            right: auto;
+            left: 15px;
+        }
+
+        /* Synopsis & Universe Section */
+        .synopsis-hero {
+            background: var(--deep-black);
+            color: white;
+            padding: 80px 30px;
+            text-align: center;
+            margin: 80px 0 60px 0;
+            border-top: 3px solid var(--gold-prestige);
+            border-bottom: 3px solid var(--blood-tomato);
+        }
+
+        .synopsis-hero h2 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 3.5em;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-prestige);
+            margin-bottom: 20px;
+        }
+
+        .synopsis-hero p {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .synopsis-narrative {
+            background: var(--sand-bg);
+            padding: 60px 30px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .synopsis-text {
+            color: var(--mold-grey);
+            line-height: 2;
+            font-size: 1.05em;
+        }
+
+        .synopsis-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .synopsis-text strong {
+            color: var(--blood-tomato);
+            font-weight: 600;
+        }
+
+        .synopsis-quote {
+            background: var(--deep-black);
+            border-left: 5px solid var(--gold-prestige);
+            padding: 40px;
+            height: fit-content;
+            position: relative;
+        }
+
+        .synopsis-quote::before {
+            content: '"';
+            font-size: 4em;
+            color: var(--blood-tomato);
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        .synopsis-quote-text {
+            color: var(--blood-tomato);
+            font-size: 1.4em;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .synopsis-quote-author {
+            color: var(--gold-prestige);
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        @media (max-width: 1024px) {
+            .synopsis-hero h2 {
+                font-size: 2.8em;
+            }
+
+            .synopsis-narrative {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .synopsis-hero {
+                padding: 60px 20px;
+                margin: 60px 0 40px 0;
+            }
+
+            .synopsis-hero h2 {
+                font-size: 2em;
+                letter-spacing: 2px;
+            }
+
+            .synopsis-narrative {
+                padding: 40px 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .synopsis-text {
+                font-size: 0.95em;
+                line-height: 1.8;
+            }
+
+            .synopsis-quote-text {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Lina Biancarelli</h1>
+    <p data-i18n="header.subtitle">Autrice de théâtre</p>
+</header>
+
+<div class="language-switcher">
+    <button class="lang-btn active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="it">IT</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="ar">AR</button>
+</div>
+
+<div class="container">
+    <a href="index.html" class="back-link" data-i18n="btn.back">← Retour à l'accueil</a>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-poster">
+            <img src="assets/night-sky-seamless.svg" alt="I'MVUCCA L'infernu" style="opacity: 0.8;">
+        </div>
+        <div class="hero-content">
+            <span class="tag" data-i18n="imvucca.tag">Création</span>
+            <h2 data-i18n="imvucca.title">VUCCA I'MPERNU</h2>
+            <p class="short-desc" data-i18n="imvucca.short-desc">À venir - Projet en phase de conception</p>
+            
+            <div class="tech-sheet">
+                <div class="tech-item">
+                    <label data-i18n="label.status">Statut</label>
+                    <value data-i18n="imvucca.status">En conception</value>
+                </div>
+                <div class="tech-item">
+                    <label data-i18n="label.genre">Genre</label>
+                    <value data-i18n="imvucca.genre">À définir</value>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <strong data-i18n="label.description">Description :</strong><br>
+                <span data-i18n="imvucca.info">VUCCA I'MPERNU est un nouveau projet en phase de développement. Plus de détails seront annoncés prochainement.</span>
+                <br><br>
+                <strong data-i18n="label.author">Autrice :</strong><br>
+                <span data-i18n="imvucca.author">Silvia Mangione</span>
+                <br><br>
+                <strong data-i18n="label.adaptation">Adaptation pour le théâtre :</strong><br>
+                <span data-i18n="imvucca.adaptation">Lina Biancarelli</span>
+                <br><br>
+                <strong data-i18n="label.language">Langue :</strong><br>
+                <span data-i18n="imvucca.language">Italien/Calabrais</span>
+            </div>
+
+            <div class="button-group">
+                <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Excerpt Section -->
+    <div class="section" id="excerpt">
+        <h3 data-i18n="label.excerpt">Extrait</h3>
+        <div class="description-text" data-i18n="imvucca.excerpt"></div>
+    </div>
+
+    <!-- Concept Section -->
+    <div class="section">
+        <h3 data-i18n="label.concept">Concept</h3>
+        <div class="description-text">
+            <p data-i18n="imvucca.concept">Ce projet est actuellement en phase de conception. Vous pouvez me contacter pour en savoir plus ou pour exprimer votre intérêt pour une collaboration.</p>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section">
+        <h3 data-i18n="label.contact">Intéressé?</h3>
+        <div class="description-text">
+            <p data-i18n="imvucca.collaboration">Si vous souhaitez en savoir plus sur ce projet ou si vous êtes intéressé par une collaboration, n'hésitez pas à prendre contact.</p>
+        </div>
+        <div class="button-group">
+            <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+            <a href="index.html" class="btn" data-i18n="btn.back">Retour à l'accueil</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
+</footer>
+
+<script>
+    // Translation object
+    const translations = {
+        fr: {
+            'header.subtitle': 'Auteur·rice de théâtre',
+            'btn.back': '← Retour à l\'accueil',
+            'btn.contact': 'Me Contacter',
+            
+            'imvucca.tag': 'Création',
+            'imvucca.title': 'VUCCA I\'MPERNU',
+            'imvucca.short-desc': 'À venir - Projet en phase de conception',
+            'imvucca.status': 'En conception',
+            'imvucca.genre': 'À définir',
+            
+            'label.description': 'Description :',
+            'imvucca.info': 'VUCCA I\'MPERNU est un nouveau projet en phase de développement. Plus de détails seront annoncé·e·s prochainement.',
+            'label.author': 'Autrice :',
+            'imvucca.author': 'Silvia Mangione',
+            'label.adaptation': 'Adaptation pour le théâtre :',
+            'imvucca.adaptation': 'Lina Biancarelli',
+            'label.language': 'Langue :',
+            'imvucca.language': 'Italien/Calabrais',
+            
+            'label.concept': 'Concept',
+            'imvucca.concept': 'Ce projet est actuellement en phase de conception. Vous pouvez me contacter pour en savoir plus ou pour exprimer votre intérêt pour une collaboration.',
+            'label.excerpt': 'Extrait',
+            'imvucca.excerpt': '<p><strong>La casa</strong></p><p>Eufemia entra in scena trasformata: i capelli sono raccolti con cura, i vestiti sono ordinati. Mentre parla, inizia a comporre lo spazio. Trascina una sedia, sistema un tavolo, appende (o posiziona su un cavalletto) il ritratto di suo padre. Ogni oggetto è un pezzo di puzzle che ritorna al suo posto.</p><p><strong>EUFEMIA</strong></p><p>Vivo in un grande palazzo. Da fuori sembra un castello, una casa di re. Grande più di tutti i palazzi di Reggio, con le finestre dorate che ci puoi vedere il mare. Con le statue di leoni bianchi e mattonelle gialle e blu e rosse e verdi e ancora dorate. Che deve farci venire vergogna a chi ci passa davanti, che devono abbassare gli occhi e la testa tutti quanti e farsi il segno della croce.</p><p>Dentro è molto più piccolo, i muri spessi quanto gli scogli della Marina che prima era un paese a solo. I muri spessi marci fatti di muffa e sabbia della marina. I muri e le fondamenta ammalate si sgretolano come il sale indurito nel boccaccio grande dentro la credenza in cucina. I muri e le fondamenta pieni di vermi e serpenti, che si muovono uguali e schizzano neri fuori verso il centro.</p><p>E al centro ci sono io, non sopra un letto ma sul pavimento, sotto una poltrona di paglia ancora verde.</p><p>Al centro ci sono io e grido e ho paura.</p><p>E fuori dalle sbarre gli occhi non incontrano niente. Non puoi raggiungere un mondo diverso da quello che vivi tu.</p><p>E fuori dalle finestre dorate nessuno osa spiare cosa succede dentro una casa di re.</p><p>E al centro ci sono sempre io.</p><p>Sul tappeto cucito da zia Annunziata che alla fine non si è mai sposata perché porta il velo nero, zia Annunziata che alla fine non si è mai fatta suora ma prega il Signore per una punizione e non per grazia.</p>',
+            
+            'label.contact': 'Intéressé·e·s ?',
+            'imvucca.collaboration': 'Si vous souhaitez en savoir plus sur ce projet ou si vous êtes intéressé·e·s par une collaboration, n\'hésitez pas à prendre contact.',
+            
+            'label.status': 'Statut',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+        },
+        en: {
+            'header.subtitle': 'Playwright',
+            'btn.back': '← Back',
+            'btn.contact': 'Contact Me',
+            
+            'imvucca.tag': 'Creation',
+            'imvucca.title': 'VUCCA I\'MPERNU',
+            'imvucca.short-desc': 'Coming soon - Project in design phase',
+            'imvucca.status': 'In Design',
+            'imvucca.genre': 'To be defined',
+            
+            'label.description': 'Description:',
+            'imvucca.info': 'VUCCA I\'MPERNU is a new project in development phase. More details will be announced soon.',
+            'label.author': 'Author:',
+            'imvucca.author': 'Silvia Mangione',
+            'label.adaptation': 'Theatrical Adaptation:',
+            'imvucca.adaptation': 'Lina Biancarelli',
+            'label.language': 'Language:',
+            'imvucca.language': 'Italian/Calabrese',
+            
+            'label.concept': 'Concept',
+            'imvucca.concept': 'This project is currently in the design phase. You can contact me to learn more or to express your interest in collaboration.',
+            'label.excerpt': 'Excerpt',
+            'imvucca.excerpt': '<p><strong>La casa</strong></p><p>Eufemia entra in scena trasformata: i capelli sono raccolti con cura, i vestiti sono ordinati. Mentre parla, inizia a comporre lo spazio. Trascina una sedia, sistema un tavolo, appende (o posiziona su un cavalletto) il ritratto di suo padre. Ogni oggetto è un pezzo di puzzle che ritorna al suo posto.</p><p><strong>EUFEMIA</strong></p><p>Vivo in un grande palazzo. Da fuori sembra un castello, una casa di re. Grande più di tutti i palazzi di Reggio, con le finestre dorate che ci puoi vedere il mare. Con le statue di leoni bianchi e mattonelle gialle e blu e rosse e verdi e ancora dorate. Che deve farci venire vergogna a chi ci passa davanti, che devono abbassare gli occhi e la testa tutti quanti e farsi il segno della croce.</p><p>Dentro è molto più piccolo, i muri spessi quanto gli scogli della Marina che prima era un paese a solo. I muri spessi marci fatti di muffa e sabbia della marina. I muri e le fondamenta ammalate si sgretolano come il sale indurito nel boccaccio grande dentro la credenza in cucina. I muri e le fondamenta pieni di vermi e serpenti, che si muovono uguali e schizzano neri fuori verso il centro.</p><p>E al centro ci sono io, non sopra un letto ma sul pavimento, sotto una poltrona di paglia ancora verde.</p><p>Al centro ci sono io e grido e ho paura.</p><p>E fuori dalle sbarre gli occhi non incontrano niente. Non puoi raggiungere un mondo diverso da quello che vivi tu.</p><p>E fuori dalle finestre dorate nessuno osa spiare cosa succede dentro una casa di re.</p><p>E al centro ci sono sempre io.</p><p>Sul tappeto cucito da zia Annunziata che alla fine non si è mai sposata perché porta il velo nero, zia Annunziata che alla fine non si è mai fatta suora ma prega il Signore per una punizione e non per grazia.</p>',
+            
+            'label.contact': 'Interested?',
+            'imvucca.collaboration': 'If you would like to learn more about this project or if you are interested in collaboration, feel free to contact me.',
+            
+            'label.status': 'Status',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
+        },
+        it: {
+            'header.subtitle': 'Drammaturga',
+            'btn.back': '← Indietro',
+            'btn.contact': 'Contattami',
+            
+            'imvucca.tag': 'Creazione',
+            'imvucca.title': 'VUCCA I\'MPERNU',
+            'imvucca.short-desc': 'Prossimamente - Progetto in fase di progettazione',
+            'imvucca.status': 'In Progettazione',
+            'imvucca.genre': 'Da definire',
+            
+            'label.description': 'Descrizione:',
+            'imvucca.info': 'VUCCA I\'MPERNU è un nuovo progetto in fase di sviluppo. Maggiori dettagli saranno annunciati presto.',
+            'label.author': 'Autrice:',
+            'imvucca.author': 'Silvia Mangione',
+            'label.adaptation': 'Adattamento Teatrale:',
+            'imvucca.adaptation': 'Lina Biancarelli',
+            'label.language': 'Lingua:',
+            'imvucca.language': 'Italiano/Calabrese',
+            
+            'label.concept': 'Concetto',
+            'imvucca.concept': 'Questo progetto è attualmente in fase di progettazione. Puoi contattarmi per saperne di più o per esprimere il tuo interesse alla collaborazione.',
+            'label.excerpt': 'Estratto',
+            'imvucca.excerpt': '<p><strong>La casa</strong></p><p>Eufemia entra in scena trasformata: i capelli sono raccolti con cura, i vestiti sono ordinati. Mentre parla, inizia a comporre lo spazio. Trascina una sedia, sistema un tavolo, appende (o posiziona su un cavalletto) il ritratto di suo padre. Ogni oggetto è un pezzo di puzzle che ritorna al suo posto.</p><p><strong>EUFEMIA</strong></p><p>Vivo in un grande palazzo. Da fuori sembra un castello, una casa di re. Grande più di tutti i palazzi di Reggio, con le finestre dorate che ci puoi vedere il mare. Con le statue di leoni bianchi e mattonelle gialle e blu e rosse e verdi e ancora dorate. Che deve farci venire vergogna a chi ci passa davanti, che devono abbassare gli occhi e la testa tutti quanti e farsi il segno della croce.</p><p>Dentro è molto più piccolo, i muri spessi quanto gli scogli della Marina che prima era un paese a solo. I muri spessi marci fatti di muffa e sabbia della marina. I muri e le fondamenta ammalate si sgretolano come il sale indurito nel boccaccio grande dentro la credenza in cucina. I muri e le fondamenta pieni di vermi e serpenti, che si muovono uguali e schizzano neri fuori verso il centro.</p><p>E al centro ci sono io, non sopra un letto ma sul pavimento, sotto una poltrona di paglia ancora verde.</p><p>Al centro ci sono io e grido e ho paura.</p><p>E fuori dalle sbarre gli occhi non incontrano niente. Non puoi raggiungere un mondo diverso da quello che vivi tu.</p><p>E fuori dalle finestre dorate nessuno osa spiare cosa succede dentro una casa di re.</p><p>E al centro ci sono sempre io.</p><p>Sul tappeto cucito da zia Annunziata che alla fine non si è mai sposata perché porta il velo nero, zia Annunziata che alla fine non si è mai fatta suora ma prega il Signore per una punizione e non per grazia.</p>',
+            
+            'label.contact': 'Interessato?',
+            'imvucca.collaboration': 'Se desideri saperne di più su questo progetto o se sei interessato alla collaborazione, non esitare a contattarmi.',
+            
+            'label.status': 'Stato',
+            'label.genre': 'Genere',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
+        },
+        de: {
+            'header.subtitle': 'Dramatikerin',
+            'btn.back': '← Zurück',
+            'btn.contact': 'Kontaktieren Sie Mich',
+            
+            'imvucca.tag': 'Neue Schöpfung',
+            'imvucca.title': 'VUCCA I\'MPERNU',
+            'imvucca.short-desc': 'Demnächst - Projekt in Entwurfsphase',
+            'imvucca.status': 'In Entwurfsphase',
+            'imvucca.genre': 'Zu definieren',
+            
+            'label.description': 'Beschreibung:',
+            'imvucca.info': 'VUCCA I\'MPERNU ist ein neues Projekt in der Entwicklungsphase. Weitere Details werden in Kürze bekannt gegeben.',
+            'label.author': 'Autorin:',
+            'imvucca.author': 'Silvia Mangione',
+            'label.adaptation': 'Theateradaption:',
+            'imvucca.adaptation': 'Lina Biancarelli',
+            'label.language': 'Sprache:',
+            'imvucca.language': 'Italienisch/Kalabrisch',
+            
+            'label.concept': 'Konzept',
+            'imvucca.concept': 'Dieses Projekt befindet sich derzeit in der Designphase. Sie können mich kontaktieren, um mehr zu erfahren oder Ihr Interesse an einer Zusammenarbeit auszudrücken.',
+            'label.excerpt': 'Auszug',
+            'imvucca.excerpt': '<p><strong>La casa</strong></p><p>Eufemia entra in scena trasformata: i capelli sono raccolti con cura, i vestiti sono ordinati. Mentre parla, inizia a comporre lo spazio. Trascina una sedia, sistema un tavolo, appende (o posiziona su un cavalletto) il ritratto di suo padre. Ogni oggetto è un pezzo di puzzle che ritorna al suo posto.</p><p><strong>EUFEMIA</strong></p><p>Vivo in un grande palazzo. Da fuori sembra un castello, una casa di re. Grande più di tutti i palazzi di Reggio, con le finestre dorate che ci puoi vedere il mare. Con le statue di leoni bianchi e mattonelle gialle e blu e rosse e verdi e ancora dorate. Che deve farci venire vergogna a chi ci passa davanti, che devono abbassare gli occhi e la testa tutti quanti e farsi il segno della croce.</p><p>Dentro è molto più piccolo, i muri spessi quanto gli scogli della Marina che prima era un paese a solo. I muri spessi marci fatti di muffa e sabbia della marina. I muri e le fondamenta ammalate si sgretolano come il sale indurito nel boccaccio grande dentro la credenza in cucina. I muri e le fondamenta pieni di vermi e serpenti, che si muovono uguali e schizzano neri fuori verso il centro.</p><p>E al centro ci sono io, non sopra un letto ma sul pavimento, sotto una poltrona di paglia ancora verde.</p><p>Al centro ci sono io e grido e ho paura.</p><p>E fuori dalle sbarre gli occhi non incontrano niente. Non puoi raggiungere un mondo diverso da quello che vivi tu.</p><p>E fuori dalle finestre dorate nessuno osa spiare cosa succede dentro una casa di re.</p><p>E al centro ci sono sempre io.</p><p>Sul tappeto cucito da zia Annunziata che alla fine non si è mai sposata perché porta il velo nero, zia Annunziata che alla fine non si è mai fatta suora ma prega il Signore per una punizione e non per grazia.</p>',
+            
+            'label.contact': 'Interessiert?',
+            'imvucca.collaboration': 'Wenn Sie mehr über dieses Projekt erfahren möchten oder an einer Zusammenarbeit interessiert sind, kontaktieren Sie mich bitte.',
+            
+            'label.status': 'Status',
+            'label.genre': 'Genre',
+            
+            'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
+        },
+        ar: {
+            'header.subtitle': 'كاتبة مسرح',
+            'btn.back': '← العودة',
+            'btn.contact': 'اتصل بي',
+            
+            'imvucca.tag': 'إنشاء جديد',
+            'imvucca.title': 'VUCCA I\'MPERNU',
+            'imvucca.short-desc': 'قريباً - مشروع في مرحلة التصميم',
+            'imvucca.status': 'في مرحلة التصميم',
+            'imvucca.genre': 'سيتم تحديده',
+            
+            'label.description': 'الوصف:',
+            'imvucca.info': 'VUCCA I\'MPERNU هو مشروع جديد في مرحلة التطوير. سيتم الإعلان عن المزيد من التفاصيل قريباً',
+            'label.author': 'المؤلفة:',
+            'imvucca.author': 'Silvia Mangione',
+            'label.adaptation': 'الاقتباس المسرحي:',
+            'imvucca.adaptation': 'Lina Biancarelli',
+            'label.language': 'اللغة:',
+            'imvucca.language': 'الإيطالية/كالابريز',
+            
+            'label.concept': 'المفهوم',
+            'imvucca.concept': 'هذا المشروع حالياً في مرحلة التصميم. يمكنك الاتصال بي لمعرفة المزيد أو للتعبير عن اهتمامك بالتعاون.',
+            'label.excerpt': 'مقتطف',
+            'imvucca.excerpt': '<p><strong>La casa</strong></p><p>Eufemia entra in scena trasformata: i capelli sono raccolti con cura, i vestiti sono ordinati. Mentre parla, inizia a comporre lo spazio. Trascina una sedia, sistema un tavolo, appende (o posiziona su un cavalletto) il ritratto di suo padre. Ogni oggetto è un pezzo di puzzle che ritorna al suo posto.</p><p><strong>EUFEMIA</strong></p><p>Vivo in un grande palazzo. Da fuori sembra un castello, una casa di re. Grande più di tutti i palazzi di Reggio, con le finestre dorate che ci puoi vedere il mare. Con le statue di leoni bianchi e mattonelle gialle e blu e rosse e verdi e ancora dorate. Che deve farci venire vergogna a chi ci passa davanti, che devono abbassare gli occhi e la testa tutti quanti e farsi il segno della croce.</p><p>Dentro è molto più piccolo, i muri spessi quanto gli scogli della Marina che prima era un paese a solo. I muri spessi marci fatti di muffa e sabbia della marina. I muri e le fondamenta ammalate si sgretolano come il sale indurito nel boccaccio grande dentro la credenza in cucina. I muri e le fondamenta pieni di vermi e serpenti, che si muovono uguali e schizzano neri fuori verso il centro.</p><p>E al centro ci sono io, non sopra un letto ma sul pavimento, sotto una poltrona di paglia ancora verde.</p><p>Al centro ci sono io e grido e ho paura.</p><p>E fuori dalle sbarre gli occhi non incontrano niente. Non puoi raggiungere un mondo diverso da quello che vivi tu.</p><p>E fuori dalle finestre dorate nessuno osa spiare cosa succede dentro una casa di re.</p><p>E al centro ci sono sempre io.</p><p>Sul tappeto cucito da zia Annunziata che alla fine non si è mai sposata perché porta il velo nero, zia Annunziata che alla fine non si è mai fatta suora ma prega il Signore per una punizione e non per grazia.</p>',
+            
+            'label.contact': 'مهتم؟',
+            'imvucca.collaboration': 'إذا كنت تريد معرفة المزيد عن هذا المشروع أو إذا كنت مهتماً بالتعاون، فلا تتردد في الاتصال بي.',
+            
+            'label.status': 'الحالة',
+            'label.genre': 'النوع',
+            
+            'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
+        }
+    };
+
+    // Language management
+    let currentLanguage = localStorage.getItem('language') || 'fr';
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        updatePageLanguage();
+        updateActiveButton(lang);
+        if (lang === 'ar') {
+            document.documentElement.lang = 'ar';
+            document.documentElement.dir = 'rtl';
+        } else {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = 'ltr';
+        }
+    }
+
+    function updatePageLanguage() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                const content = translations[currentLanguage][key];
+                // Check if content contains HTML tags
+                if (content.includes('<') && content.includes('>')) {
+                    element.innerHTML = content;
+                } else {
+                    element.textContent = content;
+                }
+            }
+        });
+    }
+
+    function updateActiveButton(lang) {
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        updatePageLanguage();
+        updateActiveButton(currentLanguage);
+
+        // Language button event listeners
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                setLanguage(button.getAttribute('data-lang'));
+            });
+        });
+
+        // Excerpt toggle functionality
+        const excerptSection = document.getElementById('excerpt');
+        if (excerptSection) {
+            const excerptTitle = excerptSection.querySelector('h3');
+            if (excerptTitle) {
+                excerptTitle.addEventListener('click', function() {
+                    excerptSection.classList.toggle('active');
+                });
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
