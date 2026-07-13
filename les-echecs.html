@@ -1092,6 +1092,7 @@
     <button class="lang-btn" data-lang="en">EN</button>
     <button class="lang-btn" data-lang="it">IT</button>
     <button class="lang-btn" data-lang="de">DE</button>
+    <button class="lang-btn" data-lang="es">ES</button>
     <button class="lang-btn" data-lang="ar">AR</button>
 </div>
 
@@ -1521,7 +1522,55 @@
             'cast.character9.name': 'Tina',
             'cast.character10.name': 'المغنية',
             'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
-        }
+        },
+        es: {
+            'header.subtitle': 'Autora teatral',
+            'btn.back': '← Volver a la portada',
+            'btn.watch': 'Ver',
+            'btn.see-book': 'Ver el libro',
+            'les-echecs.tag': 'Comedia',
+            'les-echecs.title': 'Les Échecs',
+            'les-echecs.short-desc': 'Una comedia sobre las desventuras de una joven: amores, convivencia y pequeñas tragedias cotidianas.',
+            'les-echecs.video-section': 'Grabación',
+            'les-echecs.description': 'Les Échecs es una exploración trágico-cómica de las relaciones humanas, la soledad y la dificultad de hacer duelo, ya sea por una amistad rota o por un amor truncado. A través del personaje de Camille, la obra nos sumerge en una sucesión de confrontaciones, reales o imaginadas.\n\nLa historia se abre con el encuentro entre Camille y Mathys, un seductor empedernido cuya vida no es más que una serie de mentiras, cada una más ridícula que la anterior. Entre cursos de enología inventados y metáforas dudosas, Camille intenta encontrar una verdad donde solo hay apariencia.\n\nLuego entramos en la intimidad de la vida compartida con Tina y Mara. Lo que empieza con anécdotas ligeras — una urgencia médica disparatada o una caza obsesiva de polillas — termina revelando las grietas profundas de la amistad. Camille debe enfrentarse a la “huida” de sus amigas y a la violencia silenciosa de las rupturas amistosas, que compara con verdaderos divorcios.\n\nA lo largo del relato, la sombra de Ariel, su primer amor, planea sobre todo. En un diálogo onírico, interroga la memoria y las “capas” que colocamos sobre nuestros recuerdos para volverlos soportables.\n\nEl desenlace se juega literalmente alrededor de varios tableros de ajedrez: Camille se enfrenta una última vez a sus fantasmas y a sus seres queridos. Aprende que, si el final es inevitable, la clave reside en aceptar el amor recibido y en decidir, pese a todo, seguir viviendo.',
+            'label.edition': 'Edición:',
+            'label.company': 'Compañía:',
+            'label.support': 'Apoyo:',
+            'label.synopsis': 'Sinopsis',
+            'label.performances': 'Estreno',
+            'label.date': 'Fecha:',
+            'label.location': 'Lugar:',
+            'label.direction': 'Dirección:',
+            'label.cast': 'Reparto original',
+            'label.creative-team': 'Equipo creativo',
+            'label.music': 'Música:',
+            'label.gallery': 'Galería de fotos',
+            'label.characters': 'Número de personajes',
+            'label.duration': 'Duración',
+            'les-echecs.duration': '1h45',
+            'label.excerpt': 'Extracto',
+            'label.select-scene': 'Selecciona una escena:',
+            'scene.scene1': 'Escena 1: Mathys y Camille',
+            'label.photo-credits': 'Créditos fotográficos',
+            'label.photos-by': 'Fotografías de:',
+            'label.poster-by': 'Cartel creado por:',
+            'label.thanks': 'Gracias a los fotógrafos por estas magníficas imágenes de las representaciones.',
+            'les-echecs.music-by': 'Lara Chorosz',
+            'les-echecs.poster-by': 'Alessandro Bocquet',
+            'company.name': 'Troupe des Soirs bleus',
+            'cast.character1.name': 'Camille',
+            'cast.character2.name': 'Mathys',
+            'cast.character3.name': 'Lola',
+            'cast.character4.name': 'Ariel',
+            'cast.character5.name': 'Cary',
+            'cast.character6.name': 'Paul',
+            'cast.character7.name': 'Lou',
+            'cast.character8.name': 'Mara',
+            'cast.character9.name': 'Tina',
+            'cast.character10.name': 'la cantante',
+            'footer.copyright': '© 2026 Lina Biancarelli - Autora teatral'
+        },
+        ar: {
     };
 
     // Language management
@@ -1670,7 +1719,7 @@
     // Initialize script content from translation
     function initializeScriptContent() {
         const contentContainer = document.getElementById('script-content-scene1');
-        if (contentContainer && contentContainer.innerHTML === '') {
+        if (contentContainer) {
             const key = `les-echecs.excerpt`;
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
                 const content = translations[currentLanguage][key];

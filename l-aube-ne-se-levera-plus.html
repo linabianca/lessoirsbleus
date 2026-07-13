@@ -572,22 +572,31 @@
 <body>
     <header>
         <h1>Lina Biancarelli</h1>
-        <p>Autrice de théâtre</p>
+        <p data-i18n="header.subtitle">Autrice de théâtre</p>
     </header>
 
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+    </div>
+
     <main class="container">
-        <a href="index.html#projets-a-venir" class="back-link">Retour aux projets</a>
+        <a href="index.html#projets-a-venir" class="back-link" data-i18n="btn.back-projects">Retour aux projets</a>
 
         <section class="hero">
             <div class="hero-poster">
             </div>
             <div class="hero-content">
-                <span class="tag">Projet à venir</span>
-                <h2>L'aube ne se lèvera plus</h2>
-                <p class="short-desc">Anciennement intitulé Oedipe, ce projet explore une bascule tragique où le lever du jour ne promet plus la lumière, mais la fin des certitudes. Le titre annonce d’emblée le mouvement du texte: une attente suspendue, presque funèbre, dans laquelle tout semble déjà sur le point de basculer.</p>
+                <span class="tag" data-i18n="l-aube.tag">Projet à venir</span>
+                <h2 data-i18n="l-aube.title">L'aube ne se lèvera plus</h2>
+                <p class="short-desc" data-i18n="l-aube.short-desc">Anciennement intitulé Oedipe, ce projet explore une bascule tragique où le lever du jour ne promet plus la lumière, mais la fin des certitudes. Le titre annonce d’emblée le mouvement du texte: une attente suspendue, presque funèbre, dans laquelle tout semble déjà sur le point de basculer.</p>
                 <div class="button-group">
-                    <a href="index.html#projets-a-venir" class="btn">Retour à l’accueil</a>
-                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me contacter</a>
+                    <a href="index.html#projets-a-venir" class="btn" data-i18n="btn.back-home">Retour à l’accueil</a>
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me contacter</a>
                 </div>
             </div>
         </section>
@@ -595,19 +604,19 @@
         <section class="section">
             <div class="tech-sheet">
                 <div class="tech-item">
-                    <label>Mise en scène</label>
+                    <label data-i18n="label.directing">Mise en scène</label>
                     <value>Eliot Hoff</value>
                 </div>
                 <div class="tech-item">
-                    <label>Statut</label>
+                    <label data-i18n="label.status">Statut</label>
                     <value>En développement</value>
                 </div>
                 <div class="tech-item">
-                    <label>Nombre de personnages</label>
+                    <label data-i18n="label.characters">Nombre de personnages</label>
                     <value>7</value>
                 </div>
                 <div class="tech-item">
-                    <label>Durée estimée</label>
+                    <label data-i18n="label.duration">Durée estimée</label>
                     <value>Deux heures</value>
                 </div>
                 <!-- Troupe removed as requested -->
@@ -616,7 +625,7 @@
             <!-- Note d'intention removed -->
 
             <div class="section" id="excerpt">
-                <h3>Extrait</h3>
+                <h3 data-i18n="label.excerpt">Extrait</h3>
                 <div class="description-text">
                     <div class="script">
                         <div class="dialogue-line"><span class="character">ŒDIPE</span><span class="speech">Ses yeux… Ses yeux pleins de larmes. Mais Jocaste, il fallait bien que je te le dise ! Comment ne pas te le dire !</span></div>
@@ -628,13 +637,100 @@
             </div>
 
             <div class="button-group">
-                <a href="index.html#projets-a-venir" class="btn">Retour à l’accueil</a>
-                <a href="mailto:biancarellilina1@gmail.com" class="btn">Me contacter</a>
+                <a href="index.html#projets-a-venir" class="btn" data-i18n="btn.back-home">Retour à l’accueil</a>
+                <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me contacter</a>
             </div>
         </section>
     </main>
 
     <script>
+        const translations = {
+            fr: {
+                'header.subtitle': 'Autrice de théâtre',
+                'btn.back-projects': 'Retour aux projets',
+                'btn.back-home': 'Retour à l’accueil',
+                'btn.contact': 'Me contacter',
+                'l-aube.tag': 'Projet à venir',
+                'l-aube.title': 'L\'aube ne se lèvera plus',
+                'l-aube.short-desc': 'Anciennement intitulé Oedipe, ce projet explore une bascule tragique où le lever du jour ne promet plus la lumière, mais la fin des certitudes. Le titre annonce d’emblée le mouvement du texte: une attente suspendue, presque funèbre, dans laquelle tout semble déjà sur le point de basculer.',
+                'label.directing': 'Mise en scène',
+                'label.status': 'Statut',
+                'label.characters': 'Nombre de personnages',
+                'label.duration': 'Durée estimée',
+                'label.excerpt': 'Extrait'
+            },
+            en: {
+                'header.subtitle': 'Playwright',
+                'btn.back-projects': 'Back to projects',
+                'btn.back-home': 'Back home',
+                'btn.contact': 'Contact me',
+                'l-aube.tag': 'Upcoming project',
+                'l-aube.title': 'Dawn Will Rise No More',
+                'l-aube.short-desc': 'Formerly titled Oedipus, this project explores a tragic shift in which dawn no longer promises light, but the end of certainties. The title immediately announces the movement of the text: a suspended, almost funereal waiting where everything already seems about to tip over.',
+                'label.directing': 'Direction',
+                'label.status': 'Status',
+                'label.characters': 'Number of characters',
+                'label.duration': 'Estimated duration',
+                'label.excerpt': 'Excerpt'
+            },
+            it: {
+                'header.subtitle': 'Drammaturga',
+                'btn.back-projects': 'Torna ai progetti',
+                'btn.back-home': 'Torna all’inizio',
+                'btn.contact': 'Contattami',
+                'l-aube.tag': 'Progetto in arrivo',
+                'l-aube.title': 'L\'alba non sorgerà più',
+                'l-aube.short-desc': 'Precedentemente intitolato Edipo, questo progetto esplora una svolta tragica in cui il sorgere del giorno non promette più la luce, ma la fine delle certezze. Il titolo annuncia fin da subito il movimento del testo: un’attesa sospesa, quasi funebre, in cui tutto sembra già sul punto di rovesciarsi.',
+                'label.directing': 'Regia',
+                'label.status': 'Stato',
+                'label.characters': 'Numero di personaggi',
+                'label.duration': 'Durata stimata',
+                'label.excerpt': 'Estratto'
+            },
+            de: {
+                'header.subtitle': 'Dramatikerin',
+                'btn.back-projects': 'Zurück zu den Projekten',
+                'btn.back-home': 'Zurück zur Startseite',
+                'btn.contact': 'Kontaktieren Sie mich',
+                'l-aube.tag': 'Bevorstehendes Projekt',
+                'l-aube.title': 'Die Morgenröte wird nicht mehr aufgehen',
+                'l-aube.short-desc': 'Früher unter dem Titel Ödipus bekannt, untersucht dieses Projekt eine tragische Wende, in der der Tagesanbruch nicht mehr Licht, sondern das Ende der Gewissheiten verspricht. Der Titel kündigt sofort die Bewegung des Textes an: ein schwebendes, beinahe funebres Warten, in dem alles bereits kurz vor dem Umkippen steht.',
+                'label.directing': 'Regie',
+                'label.status': 'Status',
+                'label.characters': 'Anzahl der Figuren',
+                'label.duration': 'Geschätzte Dauer',
+                'label.excerpt': 'Auszug'
+            },
+            es: {
+                'header.subtitle': 'Autora teatral',
+                'btn.back-projects': 'Volver a los proyectos',
+                'btn.back-home': 'Volver al inicio',
+                'btn.contact': 'Contáctame',
+                'l-aube.tag': 'Proyecto en camino',
+                'l-aube.title': 'El alba no volverá a levantarse',
+                'l-aube.short-desc': 'Antes titulado Edipo, este proyecto explora un giro trágico en el que el amanecer ya no promete luz, sino el final de las certezas. El título anuncia de inmediato el movimiento del texto: una espera suspendida, casi fúnebre, en la que todo parece ya a punto de derrumbarse.',
+                'label.directing': 'Dirección',
+                'label.status': 'Estado',
+                'label.characters': 'Número de personajes',
+                'label.duration': 'Duración estimada',
+                'label.excerpt': 'Extracto'
+            },
+            ar: {
+                'header.subtitle': 'كاتبة مسرح',
+                'btn.back-projects': 'العودة إلى المشاريع',
+                'btn.back-home': 'العودة إلى الصفحة الرئيسية',
+                'btn.contact': 'اتصل بي',
+                'l-aube.tag': 'مشروع قادم',
+                'l-aube.title': 'لن يطلع الفجر بعد الآن',
+                'l-aube.short-desc': 'كان يحمل سابقًا عنوان أوديب، ويستكشف هذا المشروع انعطافة مأساوية لا يعد فيها شروق النهار بالنور، بل بنهاية اليقين. يعلن العنوان منذ البداية حركة النص: انتظار معلّق، شبه جنائزي، يبدو فيه كل شيء على وشك الانقلاب.',
+                'label.directing': 'الإخراج',
+                'label.status': 'الحالة',
+                'label.characters': 'عدد الشخصيات',
+                'label.duration': 'المدة التقديرية',
+                'label.excerpt': 'مقتطف'
+            }
+        };
+
         const excerptSection = document.getElementById('excerpt');
         if (excerptSection) {
             const excerptHeading = excerptSection.querySelector('h3');
@@ -642,6 +738,49 @@
                 excerptSection.classList.toggle('active');
             });
         }
+
+        let currentLanguage = localStorage.getItem('language') || 'fr';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            updatePageLanguage();
+            updateActiveButton(lang);
+            if (lang === 'ar') {
+                document.documentElement.lang = 'ar';
+                document.documentElement.dir = 'rtl';
+            } else {
+                document.documentElement.lang = lang;
+                document.documentElement.dir = 'ltr';
+            }
+        }
+
+        function updatePageLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+        }
+
+        function updateActiveButton(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                setLanguage(this.getAttribute('data-lang'));
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updatePageLanguage();
+            updateActiveButton(currentLanguage);
+            setLanguage(currentLanguage);
+        });
     </script>
 </body>
 </html>
