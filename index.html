@@ -177,6 +177,16 @@
             color: #d4a574;
         }
 
+        /* Section 6 - La troupe des Soirs bleus */
+        .section:nth-child(6) {
+            background: linear-gradient(135deg, #0d1b2a 0%, #4d6784 28%, #7f9bb0 58%, #f0b27a 100%);
+            color: #e8f4f4;
+        }
+
+        .section:nth-child(6) .accent {
+            color: #7fd4d4;
+        }
+
         .section-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -236,6 +246,75 @@
             text-align: center;
         }
 
+        /* Harmonisation: projets list */
+        .projects-list {
+            display: grid;
+            gap: 18px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: left;
+            grid-template-columns: 1fr; /* always stacked vertically */
+        }
+
+        .project-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(255,255,255,0.16);
+            padding: 18px 28px;
+            border-radius: 8px;
+            min-height: 68px;
+        }
+
+        .project-title {
+            color: #64b4ff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.08em;
+            min-width: 220px;
+            white-space: normal;
+            overflow: visible;
+        }
+
+        .project-desc {
+            color: inherit;
+            line-height: 1.45;
+            font-size: 0.98em;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Expand on hover and show full text */
+        .project-item {
+            cursor: default;
+            transition: background 180ms ease, transform 180ms ease;
+        }
+
+        .project-item:hover {
+            background: rgba(255,255,255,0.22);
+            transform: translateY(-4px);
+        }
+
+        .project-item:hover .project-desc {
+            -webkit-line-clamp: unset;
+            display: block;
+            overflow: visible;
+        }
+
+        .btn.small {
+            padding: 10px 16px;
+            font-size: 0.85em;
+            white-space: nowrap;
+        }
+
+        /* Reduce excess vertical spacing for the section */
+        .section:nth-child(4) .text-content p {
+            margin-bottom: 6px;
+        }
+
         .section:nth-child(4) .text-content p {
             font-size: 1.1em;
             line-height: 1.8;
@@ -290,6 +369,11 @@
             color: #2a2a2a;
         }
 
+        .section:nth-child(6) .tag {
+            background: #7fd4d4;
+            color: #1a3a52;
+        }
+
         .text-content p {
             font-size: 1.1em;
             line-height: 1.8;
@@ -306,6 +390,11 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
+        }
+
+        /* Increase spacing above the contact button in the "Projets à Venir" section */
+        .section:nth-child(4) .button-group {
+            margin-top: 28px;
         }
 
         .btn {
@@ -376,6 +465,17 @@
         .section:nth-child(5) .btn:hover {
             background: transparent;
             color: #d4a574;
+        }
+
+        .section:nth-child(6) .btn {
+            background: #7fd4d4;
+            color: #0f2839;
+            border-color: #7fd4d4;
+        }
+
+        .section:nth-child(6) .btn:hover {
+            background: transparent;
+            color: #7fd4d4;
         }
 
         .btn:hover {
@@ -488,20 +588,13 @@
 
             /* Mobile styles for new sections */
             .section:nth-child(4) .text-content,
-            .section:nth-child(5) .text-content {
+            .section:nth-child(5) .text-content,
+            .section:nth-child(6) .text-content {
                 padding: 0 15px;
             }
 
             .section:nth-child(4) .text-content h2 {
                 font-size: 1.6em;
-            }
-
-            .section:nth-child(5) .poster-container img {
-                max-width: 250px;
-            }
-
-            .section:nth-child(5) .poster-container {
-                flex-direction: column;
             }
 
             .section:nth-child(5) .text-content {
@@ -515,6 +608,28 @@
             }
 
             .section:nth-child(5) .text-content p {
+                font-size: 0.95em;
+                line-height: 1.5;
+                margin-bottom: 25px;
+                word-break: break-word;
+            }
+
+            .section:nth-child(6) .section-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section:nth-child(6) .text-content {
+                padding: 0 15px;
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .section:nth-child(6) .text-content h2 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+
+            .section:nth-child(6) .text-content p {
                 font-size: 0.95em;
                 line-height: 1.5;
                 margin-bottom: 25px;
@@ -664,6 +779,189 @@
         html[lang="ar"] header {
             direction: rtl;
         }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-snap-type: none;
+            }
+
+            body {
+                background-attachment: scroll, scroll;
+            }
+
+            header {
+                padding: 14px 16px;
+            }
+
+            header h1 {
+                font-size: 1.35em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .scroll-nav {
+                display: none !important;
+            }
+
+            .language-switcher {
+                top: 92px;
+                right: 12px;
+                left: auto;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+            }
+
+            .projects-container {
+                padding-top: 92px;
+            }
+
+            .section {
+                padding: 110px 16px 64px;
+                min-height: auto;
+            }
+
+            .section-content,
+            .hero,
+            .synopsis-grid,
+            .gallery,
+            .info-grid,
+            .credits-grid,
+            .roles-grid,
+            .cards-grid,
+            .media-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+                max-width: 100%;
+            }
+
+            .poster-container,
+            .hero-poster {
+                width: 100%;
+                justify-content: center;
+                order: -1;
+            }
+
+            .poster-container img,
+            .hero-poster img {
+                width: min(85vw, 300px);
+                max-width: 300px;
+                height: auto;
+            }
+
+            .text-content,
+            .hero-content {
+                width: 100%;
+                margin: 0 !important;
+                padding: 0 !important;
+                text-align: center;
+            }
+
+            .text-content h2,
+            .hero-content h2,
+            .synopsis-hero h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .text-content p,
+            .hero-content p,
+            .description-text,
+            .info-box {
+                font-size: 1em;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            .projects-list,
+            .project-item {
+                width: 100%;
+            }
+
+            .project-item,
+            .tech-item,
+            .performance-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .button-group,
+            .btn-group,
+            .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            iframe,
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .scripts-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            .back-link {
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                white-space: normal;
+            }
+
+            footer {
+                padding: 24px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .language-switcher {
+                top: 88px;
+            }
+
+            .section {
+                padding: 100px 14px 56px;
+            }
+
+            .text-content h2,
+            .hero-content h2,
+            .synopsis-hero h2 {
+                font-size: 1.35em;
+            }
+
+            .btn {
+                max-width: 280px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -696,6 +994,9 @@
     </a>
     <a href="#a-propos" class="nav-dot" data-section="4">
         <span data-i18n="nav.a-propos">À Propos</span>
+    </a>
+    <a href="#la-troupe-des-soirs-bleus" class="nav-dot" data-section="5">
+        <span data-i18n="nav.la-troupe">La Troupe</span>
     </a>
 </nav>
 
@@ -767,9 +1068,25 @@
             <div class="text-content">
                 <span class="tag" data-i18n="section4.tag">À venir</span>
                 <h2 data-i18n="section4.title">Projets à Venir</h2>
-                <p><a href="ophelia.html" style="color: rgba(100, 180, 255, 0.9); text-decoration: none; border-bottom: 2px solid rgba(100, 180, 255, 0.7); transition: all 0.3s ease;" class="accent" data-i18n="section4.project1.title">Ophelia au bord du gouffre</a> — <span data-i18n="section4.project1.description">Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</span> <a href="ophelia.html" class="btn" style="padding: 8px 16px; font-size: 0.8em; margin-left: 15px; display: inline-block; vertical-align: middle;" data-i18n="btn.learn-more">En savoir plus</a></p>
-                <p><span class="accent" data-i18n="section4.project2.title">Oedipe</span> — <span data-i18n="section4.project2.description">Un projet en développement, mais dont le nom en révèle déjà trop!</span></p>
-                <p><a href="imvucca-linfernu.html" style="color: rgba(100, 180, 255, 0.9); text-decoration: none; border-bottom: 2px solid rgba(100, 180, 255, 0.7); transition: all 0.3s ease;" class="accent" data-i18n="section4.project3.title">VUCCA I'MPERNU</a> — <span data-i18n="section4.project3.description">Une adaptation théâtrale du texte de Silvia Mangione, exploration poétique d'une histoire captivante et intemporelle.</span> <a href="imvucca-linfernu.html" class="btn" style="padding: 8px 16px; font-size: 0.8em; margin-left: 15px; display: inline-block; vertical-align: middle;" data-i18n="btn.learn-more">En savoir plus</a></p>
+                <div class="projects-list">
+                    <div class="project-item">
+                        <a href="ophelia.html" class="project-title accent" data-i18n="section4.project1.title">Ophelia au bord du gouffre</a>
+                        <span class="project-desc" data-i18n="section4.project1.description">Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</span>
+                        <a href="ophelia.html" class="btn small" data-i18n="btn.learn-more">En savoir plus</a>
+                    </div>
+
+                    <div class="project-item">
+                        <a href="l-aube-ne-se-levera-plus.html" class="project-title accent" data-i18n="section4.project2.title">L'aube ne se lèvera plus</a>
+                        <span class="project-desc" data-i18n="section4.project2.description">Un projet en développement, mais son titre en dit déjà beaucoup.</span>
+                        <a href="l-aube-ne-se-levera-plus.html" class="btn small" data-i18n="btn.learn-more">En savoir plus</a>
+                    </div>
+
+                    <div class="project-item">
+                        <a href="imvucca-linfernu.html" class="project-title accent" data-i18n="section4.project3.title">I'MVUCCA L'infernu</a>
+                        <span class="project-desc" data-i18n="section4.project3.description">Une adaptation théâtrale du texte de Silvia Mangione, exploration poétique d'une histoire captivante et intemporelle.</span>
+                        <a href="imvucca-linfernu.html" class="btn small" data-i18n="btn.learn-more">En savoir plus</a>
+                    </div>
+                </div>
                 <div class="button-group">
                     <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
                 </div>
@@ -790,9 +1107,22 @@
                 <span class="tag" data-i18n="section5.tag">Biographie</span>
                 <h2 data-i18n="section5.title">À Propos</h2>
                 <p data-i18n="section5.description">Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd'hui résidente en Italie.</p>
-                <p><span data-i18n="section5.troupe">Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre. </span><br><a href="la-troupe-des-soirs-bleus.html" style="color: #d4a574; text-decoration: none; border-bottom: 2px solid #d4a574; transition: all 0.3s ease;" data-i18n="section5.troupe-link">Rencontrez la troupe des soirs bleus !</a></p>
                 <div class="button-group">
                     <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: La troupe des Soirs bleus -->
+    <section class="section" id="la-troupe-des-soirs-bleus">
+        <div class="section-content">
+            <div class="text-content">
+                <span class="tag" data-i18n="section6.tag">La troupe</span>
+                <h2 data-i18n="section6.title">La troupe des Soirs bleus</h2>
+                <p data-i18n="section6.description">Une troupe de théâtre portée par l'envie de créer ensemble. Elle est basée à Berlin et fait partie de la <a href="https://lamenagerie.org/fr/" target="_blank" rel="noopener noreferrer">Ménagerie e.V.</a></p>
+                <div class="button-group">
+                    <a href="la-troupe-des-soirs-bleus.html" class="btn" data-i18n="section6.button">La rencontrer !</a>
                 </div>
             </div>
         </div>
@@ -813,6 +1143,7 @@
             'nav.les-echecs': 'Les Échecs',
             'nav.projets-a-venir': 'À Venir',
             'nav.a-propos': 'À Propos',
+            'nav.la-troupe': 'La Troupe',
             
             'section1.tag': 'Comédie familiale',
             'section1.title': 'Mazel',
@@ -820,18 +1151,12 @@
             
             'section2.tag': 'Tragédie',
             'section2.title': '2 Secondes avant l\'extase',
-            'section2.description': 'Deux secondes avant l\'extase est une réécriture du mythe d\'Antigone, qui déplace le regard des enjeux politiques vers l\'intimité d\'une femme qui aime démesurément. La pièce s\'ouvre sur un moment suspendu : le monologue d\'Antigone contemplant l\'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n\'aurait pas eu à choisir le sacrifice.\n\nL\'histoire nous plonge dans la veille du drame. Loin de l\'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s\'enfermer dans une Thèbes maudite et sanglante.\n\nMais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu\'il lui inflige n\'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d\'une vie qui continue sans elle.\n\nLe dénouement, porté par l\'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l\'extase finale. Entre empoisonnement libérateur et espoir d\'antidote, le Chœur nous laisse face à l\'éternelle question : peut-on réellement choisir la fin ?',
-            
-            'section3.tag': 'Comédie',
-            'section3.title': 'Les Échecs',
-            'section3.description': 'Une comédie sur les déboires d\'une jeune femme : amours, colocation et petites tragédies du quotidien.',
-            
-            'section4.tag': 'À venir',
+            'section2.description': `Deux secondes avant l'extase est une réécriture du mythe d'Antigone, qui déplace le regard des enjeux politiques vers l'intimité d'une femme qui aime démesurément.`,
             'section4.title': 'Projets à Venir',
             'section4.project1.title': 'Ophelia au bord du gouffre',
             'section4.project1.description': 'Une nouvelle création.\n\nEt si Ophélia n\'avait jamais été folle? Et si elle n\'allait simplement que cueillir des fleurs la nuit...?',
-            'section4.project2.title': 'Oedipe',
-            'section4.project2.description': 'Un projet en développement, mais dont le nom en révèle déjà trop!',
+            'section4.project2.title': 'L\'aube ne se lèvera plus',
+            'section4.project2.description': 'Un nouveau projet des Soirs bleus, une version du mythe d\'Oedipe.',
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'Une adaptation théâtrale du texte de Silvia Mangione, une histoire calabraise.',
@@ -840,8 +1165,11 @@
             'section5.title': 'À Propos',
             'section5.photo-credit': 'Photo © Anna de Tavera',
             'section5.description': 'Lina Biancarelli est une autrice nomade, étudiante en médecine, formée en psychanalyse et psychothérapie. Corse, Algérienne, Berlinoise, aujourd\'hui résidente en Italie.',
-            'section5.troupe': 'Toujours à la recherche de nouveaux projets pour rassembler les passionné.e.s du théâtre. ',
-            'section5.troupe-link': 'Rencontrez la troupe des soirs bleus !',
+
+            'section6.tag': 'La troupe',
+            'section6.title': 'La troupe des Soirs bleus',
+                    'section6.description': 'Une troupe de théâtre portée par l\'envie de créer ensemble. Elle est basée à Berlin et fait partie de la %MENAGERIE%',
+            'section6.button': 'La rencontrer !',
             
             'btn.learn-more': 'En savoir plus',
             'btn.see-book': 'Voir le livre',
@@ -858,6 +1186,7 @@
             'nav.les-echecs': 'Les Échecs',
             'nav.projets-a-venir': 'Upcoming',
             'nav.a-propos': 'About',
+            'nav.la-troupe': 'The Troupe',
             
             'section1.tag': 'Family Comedy',
             'section1.title': 'Mazel',
@@ -865,13 +1194,13 @@
             
             'section2.tag': 'Tragedy',
             'section2.title': '2 Seconds Before Ecstasy',
-            'section2.description': '2 Seconds Before Ecstasy is a rewriting of the Antigone myth, shifting focus from political stakes to the intimacy of a woman who loves excessively. The play opens on a suspended moment: Antigone\'s monologue contemplating the abyss, stealing a few seconds from a dreary life to imagine an existence where she would not have had to choose sacrifice.
+            'section2.description': `2 Seconds Before Ecstasy is a rewriting of the Antigone myth, shifting focus from political stakes to the intimacy of a woman who loves excessively. The play opens on a suspended moment: Antigone's monologue contemplating the abyss, stealing a few seconds from a dreary life to imagine an existence where she would not have had to choose sacrifice.
 
 The story plunges us into the eve of the tragedy. Far from a marble heroine, we discover a vibrant Antigone, inhabited by desire for her fiancé Haemon, and confronted with her sister Ismene, embodiment of life and beauty. Her perfection hides a secret: she is expecting a child and begs her sister to choose life for this future nephew, rather than lock herself away in a cursed and bloody Thebes.
 
 But for Antigone, refusal is an act of absolute courage. She rejects the simplicity of happiness offered by her uncle Creon, a weary regent who dreams of planting turnips but finds himself trapped by his own authority. The punishment he inflicts is not immediate death, but psychological torture: condemned to endless dreams by a paralyzing potion, she must remain a spectator of a life that continues without her.
 
-The denouement, driven by the cruel innocence of two children, Eusebia and Laodamas, tips toward final ecstasy. Between liberating poisoning and hope for an antidote, the Chorus leaves us facing the eternal question: can we truly choose the end?',
+The denouement, driven by the cruel innocence of two children, Eusebia and Laodamas, tips toward final ecstasy. Between liberating poisoning and hope for an antidote, the Chorus leaves us facing the eternal question: can we truly choose the end?`,
             
             'section3.tag': 'Comedy',
             'section3.title': 'Les Échecs',
@@ -881,8 +1210,8 @@ The denouement, driven by the cruel innocence of two children, Eusebia and Laoda
             'section4.title': 'Upcoming Projects',
             'section4.project1.title': 'Ophelia at the Edge',
             'section4.project1.description': 'A new creation.\n\nWhat if Ophelia had never gone mad? What if she was simply gathering flowers at night...?',
-            'section4.project2.title': 'Oedipus',
-            'section4.project2.description': 'A project in development, but whose name already reveals too much!',
+            'section4.project2.title': 'Dawn Will Rise No More',
+            'section4.project2.description': 'A new Soirs Bleus project — a retelling of the Oedipus myth.',
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'A theatrical adaptation of Silvia Mangione\'s text.',
@@ -891,8 +1220,11 @@ The denouement, driven by the cruel innocence of two children, Eusebia and Laoda
             'section5.title': 'About',
             'section5.photo-credit': 'Photo © Anna de Tavera',
             'section5.description': 'Lina Biancarelli is a nomadic playwright, medical student, trained in psychoanalysis and psychotherapy. Corsican, Algerian, Berliner, now resident in Italy.',
-            'section5.troupe': 'Always looking for new projects to bring together theater enthusiasts. ',
-            'section5.troupe-link': 'Meet La Troupe des Soirs Bleus!',
+
+            'section6.tag': 'The troupe',
+            'section6.title': 'La Troupe des Soirs Bleus',
+            'section6.description': 'A theater company driven by the desire to create together. It is based in Berlin and is part of the %MENAGERIE%',
+            'section6.button': 'Meet it!',
             
             'btn.learn-more': 'Learn More',
             'btn.see-book': 'See the Book',
@@ -909,6 +1241,7 @@ The denouement, driven by the cruel innocence of two children, Eusebia and Laoda
             'nav.les-echecs': 'Les échecs',
             'nav.projets-a-venir': 'In Arrivo',
             'nav.a-propos': 'Chi Sono',
+            'nav.la-troupe': 'La Compagnia',
             
             'section1.tag': 'Commedia Familiare',
             'section1.title': 'Mazel',
@@ -916,13 +1249,13 @@ The denouement, driven by the cruel innocence of two children, Eusebia and Laoda
             
             'section2.tag': 'Tragedia',
             'section2.title': '2 Secondi Prima dell\'Estasi',
-            'section2.description': '2 Secondi Prima dell\'Estasi è una riscrittura del mito di Antigone, che sposta lo sguardo dalle questioni politiche all\'intimità di una donna che ama eccessivamente. L\'opera si apre su un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando alcuni secondi a una vita triste per immaginare un\'esistenza dove non avrebbe dovuto scegliere il sacrificio.
+            'section2.description': `2 Secondi Prima dell\'Estasi è una riscrittura del mito di Antigone, che sposta lo sguardo dalle questioni politiche all\'intimità di una donna che ama eccessivamente. L\'opera si apre su un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando alcuni secondi a una vita triste per immaginare un\'esistenza dove non avrebbe dovuto scegliere il sacrificio.
 
 La storia ci immerge nella vigilia del dramma. Lontano dall\'eroina di marmo, scopriamo un\'Antigone vibrante, abitata dal desiderio per il suo fidanzato Emone, e confrontata con sua sorella Ismene, incarnazione della vita e della bellezza. La sua perfezione nasconde un segreto: aspetta un figlio e supplica sua sorella di scegliere la vita per questo futuro nipote, piuttosto che rinchiudersi in una Tebe maledetta e sanguinosa.
 
 Ma per Antigone, il rifiuto è un atto di coraggio assoluto. Rifiuta la semplicità della felicità offerta da suo zio Creonte, un reggente stanco che sogna di piantare rape ma si trova intrappolato dalla sua stessa autorità. La punizione che le infligge non è la morte immediata, ma una tortura psicologica: condannata ai sogni infiniti da una pozione paralizzante, deve rimanere spettatrice di una vita che continua senza di lei.
 
-Il finale, portato dall\'innocenza crudele di due bambini, Euseba e Laodamante, si inclina verso l\'estasi finale. Tra l\'avvelenamento liberatore e la speranza di un antidoto, il Coro ci lascia di fronte alla domanda eterna: possiamo veramente scegliere la fine?',
+Il finale, portato dall\'innocenza crudele di due bambini, Euseba e Laodamante, si inclina verso l\'estasi finale. Tra l\'avvelenamento liberatore e la speranza di un antidoto, il Coro ci lascia di fronte alla domanda eterna: possiamo veramente scegliere la fine?`,
             
             'section3.tag': 'Commedia',
             'section3.title': 'Les échecs',
@@ -932,18 +1265,21 @@ Il finale, portato dall\'innocenza crudele di due bambini, Euseba e Laodamante, 
             'section4.title': 'Progetti in Arrivo',
             'section4.project1.title': 'Ofelia sull\'Orlo',
             'section4.project1.description': 'Una nuova creazione.\n\nE se Ofelia non fosse mai impazzita? E se raccogliesse semplicemente fiori di notte...?',
-            'section4.project2.title': 'Edipo',
-            'section4.project2.description': 'Un progetto in sviluppo, ma il cui nome rivela già troppo!',
+            'section4.project2.title': 'L\'alba non sorgerà più',
+            'section4.project2.description': 'Un nuovo progetto dei Soirs Bleus, una versione del mito di Edipo.',
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'Un adattamento teatrale del testo di Silvia Mangione.',
             
             'section5.tag': 'Biografia',
             'section5.title': 'Chi Sono',
-            'section5.photo-credit': 'Foto © Anna de Tavera',
+            'section5.photo-credit': 'Foto © Anna di Tavera',
             'section5.description': 'Lina Biancarelli è una drammaturga nomade, studentessa di medicina, formata in psicoanalisi e psicoterapia. Corsa, Algerina, Berlinese, ora residente in Italia.',
-            'section5.troupe': 'Sempre alla ricerca di nuovi progetti per riunire gli appassionati di teatro.\n',
-            'section5.troupe-link': 'Conosci La Troupe des Soirs Bleus!',
+
+            'section6.tag': 'La compagnia',
+            'section6.title': 'La Troupe des Soirs Bleus',
+            'section6.description': 'Una compagnia teatrale guidata dal desiderio di creare insieme. Ha sede a Berlino e fa parte di %MENAGERIE%',
+            'section6.button': 'Conoscerla!',
             
             'btn.learn-more': 'Scopri di Più',
             'btn.see-book': 'Vedi il Libro',
@@ -960,6 +1296,7 @@ Il finale, portato dall\'innocenza crudele di due bambini, Euseba e Laodamante, 
             'nav.les-echecs': 'Les Échecs',
             'nav.projets-a-venir': 'Bevorstehend',
             'nav.a-propos': 'Über Mich',
+            'nav.la-troupe': 'Die Truppe',
             
             'section1.tag': 'Familienkomödie',
             'section1.title': 'Mazel',
@@ -967,13 +1304,13 @@ Il finale, portato dall\'innocenza crudele di due bambini, Euseba e Laodamante, 
             
             'section2.tag': 'Tragödie',
             'section2.title': '2 Sekunden vor dem Höhepunkt',
-            'section2.description': '2 Sekunden vor dem Höhepunkt ist eine Neuinterpretation des Antigone-Mythos, die den Blick von politischen Themen zur Intimität einer Frau verlagert, die unmäßig liebt. Das Stück öffnet sich auf einem schwebenden Moment: Antigones Monolog, der den Abgrund betrachtet, wobei sie sich wenige Sekunden aus einem tristen Leben stiehlt, um sich eine Existenz vorzustellen, in der sie sich nicht für das Opfer hätte entscheiden müssen.
+            'section2.description': `2 Sekunden vor dem Höhepunkt ist eine Neuinterpretation des Antigone-Mythos, die den Blick von politischen Themen zur Intimität einer Frau verlagert, die unmäßig liebt. Das Stück öffnet sich auf einem schwebenden Moment: Antigones Monolog, der den Abgrund betrachtet, wobei sie sich wenige Sekunden aus einem tristen Leben stiehlt, um sich eine Existenz vorzustellen, in der sie sich nicht für das Opfer hätte entscheiden müssen.
 
 Die Geschichte taucht uns in den Vorabend des Dramas ein. Fern von der steinernen Heldin entdecken wir eine vibrierende Antigone, erfüllt von Sehnsucht nach ihrem Verlobten Haimon und konfrontiert mit ihrer Schwester Ismene, Verkörperung von Leben und Schönheit. Ihre Perfektion verbirgt ein Geheimnis: Sie erwartet ein Kind und fleht ihre Schwester an, für diesen zukünftigen Neffen das Leben zu wählen, anstatt sich in einem verfluchten und blutigen Theben einzusperren.
 
 Aber für Antigone ist die Weigerung ein Akt absoluten Mutes. Sie lehnt die Einfachheit des Glücks ab, das ihr Onkel Kreon anbietet, ein müder Regent, der davon träumt, Rüben zu pflanzen, aber von seiner eigenen Autorität gefangen ist. Die Strafe, die er ihr auferlegt, ist nicht der unmittelbare Tod, sondern psychologische Folter: verdammt zu endlosen Träumen durch einen lähmenden Trank, muss sie Zuschauerin eines Lebens bleiben, das ohne sie weitergehen.
 
-Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Laodamas, neigt sich zur endgültigen Ekstase. Zwischen befreiendem Vergiften und Hoffnung auf Gegengift lässt uns der Chor vor der ewigen Frage stehen: Können wir das Ende wirklich wählen?',
+Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Laodamas, neigt sich zur endgültigen Ekstase. Zwischen befreiendem Vergiften und Hoffnung auf Gegengift lässt uns der Chor vor der ewigen Frage stehen: Können wir das Ende wirklich wählen?`,
             
             'section3.tag': 'Komödie',
             'section3.title': 'Les Échecs',
@@ -983,8 +1320,8 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             'section4.title': 'Bevorstehende Projekte',
             'section4.project1.title': 'Ophelia am Rande',
             'section4.project1.description': 'Eine Neuschöpfung\n\nWas wäre, wenn Ophelia nie dem Wahnsinn verfallen wäre?\nWas, wenn sie in der Stille der Nacht einfach nur Blumen sammeln würde…?',
-            'section4.project2.title': 'Ödipus',
-            'section4.project2.description': 'Ein Projekt in Entwicklung, aber dessen Name verrät bereits zu viel!',
+            'section4.project2.title': 'Die Morgenröte wird nicht mehr aufgehen',
+            'section4.project2.description': 'Ein neues Soirs-Bleus-Projekt — eine Version des Ödipus-Mythos.',
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'Eine theatralische Adaption des Textes von Silvia Mangione.',
@@ -993,8 +1330,11 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             'section5.title': 'Über Mich',
             'section5.photo-credit': 'Foto © Anna de Tavera',
             'section5.description': 'Lina Biancarelli ist eine nomadische Dramatikerin, Medizinstudentin, ausgebildet in Psychoanalyse und Psychotherapie. Korsin, Algerierin, Berlinerin, jetzt in Italien ansässig.',
-            'section5.troupe': 'Immer auf der Suche nach neuen Projekten, um Theaterbegeisterte zusammenzubringen. ',
-            'section5.troupe-link': 'Lerne La Troupe des Soirs Bleus kennen!',
+
+            'section6.tag': 'Die Truppe',
+            'section6.title': 'La Troupe des Soirs Bleus',
+            'section6.description': 'Eine Theatertruppe, angetrieben vom Wunsch, gemeinsam zu schaffen. Sie ist in Berlin ansässig und Teil der %MENAGERIE%',
+            'section6.button': 'Sie kennenlernen!',
             
             'btn.learn-more': 'Mehr Erfahren',
             'btn.see-book': 'Das Buch Ansehen',
@@ -1011,6 +1351,7 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             'nav.les-echecs': 'Les Échecs',
             'nav.projets-a-venir': 'قادم',
             'nav.a-propos': 'حول',
+            'nav.la-troupe': 'الفرقة',
             
             'section1.tag': 'كوميديا عائلية',
             'section1.title': 'مازال',
@@ -1018,13 +1359,13 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             
             'section2.tag': 'تراجيديا',
             'section2.title': 'ثانيتان قبل النشوة',
-            'section2.description': 'ثانيتان قبل النشوة هي إعادة كتابة لأسطورة أنتيجون، تنقل النظر من القضايا السياسية إلى الحميمية امرأة تحب بإفراط. تنفتح المسرحية على لحظة معلقة: مونولوج أنتيجون تتأمل الهاوية، تسرق بضع ثوان من حياة كئيبة لتتخيل وجودًا حيث لم يكن عليها أن تختار التضحية.
+            'section2.description': `ثانيتان قبل النشوة هي إعادة كتابة لأسطورة أنتيجون، تنقل النظر من القضايا السياسية إلى الحميمية امرأة تحب بإفراط. تنفتح المسرحية على لحظة معلقة: مونولوج أنتيجون تتأمل الهاوية، تسرق بضع ثوان من حياة كئيبة لتتخيل وجودًا حيث لم يكن عليها أن تختار التضحية.
 
 تغطس القصة بنا في أمس الدراما. بعيدًا عن بطلة رخام، نكتشف أنتيجون نابضة بالحياة، تشعر بالرغبة تجاه خطيبها هايمون، ومواجهة أختها إسمينة، تجسيد الحياة والجمال. تخفي كمالها سرًا: تتوقع طفلًا وتتوسل لأختها اختيار الحياة لهذا ابن الأخ المستقبلي، بدلاً من حبس نفسها في ثيبة ملعونة وملطخة بالدماء.
 
 لكن بالنسبة لأنتيجون، الرفض هو فعل من أفعال الشجاعة المطلقة. ترفض بساطة السعادة التي يقدمها عمها كريون، وصي متعب يحلم بزراعة اللفت لكنه يجد نفسه محاصرًا بسلطته الخاصة. العقاب الذي يوقعه عليها ليس الموت الفوري، بل التعذيب النفسي: محكومة بأحلام لا نهاية لها بسبب جرعة مشلة، يجب أن تبقى متفرجة على حياة تستمر بدونها.
 
-النهاية، التي تقودها براءة قاسية لطفلين، يوسيبيا ولاوداماس، تنجرف نحو النشوة النهائية. بين التسمم المحرر والأمل في ترياق، يتركنا الجوقة في مواجهة السؤال الأبدي: هل يمكننا أن نختار النهاية حقًا؟',
+النهاية، التي تقودها براءة قاسية لطفلين، يوسيبيا ولاوداماس، تنجرف نحو النشوة النهائية. بين التسمم المحرر والأمل في ترياق، يتركنا الجوقة في مواجهة السؤال الأبدي: هل يمكننا أن نختار النهاية حقًا?`,
 
             'section3.tag': 'كوميديا',
             'section3.title': 'Les Échecs',
@@ -1034,8 +1375,8 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             'section4.title': 'مشاريع قادمة',
             'section4.project1.title': 'أوفيليا على الحافة',
             'section4.project1.description': 'إنشاء جديد.\n\nماذا لو لم تجن أوفيليا قط؟ ماذا لو كانت تجمع الأزهار ليلا فقط...؟',
-            'section4.project2.title': 'أوديب',
-            'section4.project2.description': 'مشروع قيد التطوير، لكن اسمه يكشف بالفعل الكثير!',
+            'section4.project2.title': 'لن يطلع الفجر بعد الآن',
+            'section4.project2.description': 'مشروع جديد من Soirs Bleus — نسخة من أسطورة أوديب.',
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'اقتباس مسرحي من نص سيلفيا مانجيوني.',
@@ -1044,8 +1385,11 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
             'section5.title': 'حول',
             'section5.photo-credit': 'صورة © آنا دي تافيرا',
             'section5.description': 'لينا بيانكاريلي هي كاتبة مسرح بدوية، طالبة طب، مدربة في التحليل النفسي والعلاج النفسي. قرسية، جزائرية، برلينية، تعيش الآن في إيطاليا.',
-            'section5.troupe': 'دائمة البحث عن مشاريع جديدة لتجميع عشاق المسرح. ',
-            'section5.troupe-link': 'تعرف على La Troupe des Soirs Bleus!',
+
+            'section6.tag': 'الفرقة',
+            'section6.title': 'La Troupe des Soirs Bleus',
+            'section6.description': 'فرقة مسرحية تدفعها الرغبة في الخلق معًا. مقرها في برلين وهي جزء من %MENAGERIE%',
+            'section6.button': 'تعرف عليها!',
             
             'btn.learn-more': 'معرفة المزيد',
             'btn.see-book': 'عرض الكتاب',
@@ -1080,10 +1424,30 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
-                element.textContent = translations[currentLanguage][key];
+                if (key === 'section6.description') {
+                    element.innerHTML = translations[currentLanguage][key].replace(
+                        '%MENAGERIE%',
+                        '<a href="https://lamenagerie.org/fr/" target="_blank" rel="noopener noreferrer">Ménagerie e.V.</a>'
+                    );
+                } else {
+                    element.textContent = translations[currentLanguage][key];
+                }
             }
         });
     }
+
+    // After updating text, add native tooltips and ensure truncated texts have a title
+    function applyTooltips() {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                // Use full translation as title for native tooltip
+                element.setAttribute('title', translations[currentLanguage][key]);
+            }
+        });
+    }
+
 
     function updateActiveButton(lang) {
         document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -1104,6 +1468,7 @@ Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Lao
     // Initialize page with saved language
     document.addEventListener('DOMContentLoaded', function() {
         updatePageLanguage();
+        applyTooltips();
         updateActiveButton(currentLanguage);
     });
 

@@ -835,6 +835,159 @@
                 padding: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll, scroll;
+            }
+
+            header {
+                padding: 14px 16px;
+            }
+
+            header h1 {
+                font-size: 1.35em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .container {
+                padding: 102px 16px 32px;
+            }
+
+            .language-switcher {
+                top: 92px;
+                right: 12px;
+                left: auto;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+            }
+
+            .scroll-nav {
+                display: none !important;
+            }
+
+            .back-link {
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .hero,
+            .synopsis-grid,
+            .gallery,
+            .info-grid,
+            .credits-grid,
+            .roles-grid,
+            .cards-grid,
+            .media-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+            }
+
+            .hero-poster {
+                order: -1;
+            }
+
+            .hero-poster img {
+                width: min(85vw, 280px);
+                max-width: 280px;
+                height: auto;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .hero-content p,
+            .short-desc,
+            .description-text,
+            .info-box {
+                font-size: 1em;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            .button-group,
+            .btn-group,
+            .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .tech-item,
+            .performance-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            iframe,
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .scripts-container {
+                grid-template-columns: 1fr !important;
+                max-height: none;
+            }
+
+            footer {
+                padding: 24px 16px;
+                margin-top: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding-top: 96px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.35em;
+            }
+
+            .btn {
+                max-width: 280px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>

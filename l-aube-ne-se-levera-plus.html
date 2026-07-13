@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'aube ne se lèvera plus | Lina Biancarelli</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, rgba(73, 133, 166, 0.22), transparent 36%),
+                linear-gradient(180deg, #061521 0%, #0d2434 42%, #07131a 100%),
+                url('assets/night-sky-seamless.svg');
+            background-size: cover, cover, cover;
+            background-attachment: fixed, fixed, fixed;
+            color: #eef2f7;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(126, 194, 188, 0.08), transparent 40%, rgba(0, 0, 0, 0.14));
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.18;
+            background-image:
+                radial-gradient(ellipse at 20% 18%, rgba(124, 184, 177, 0.18) 0 2px, transparent 3px),
+                radial-gradient(ellipse at 60% 30%, rgba(143, 211, 207, 0.12) 0 3px, transparent 5px),
+                radial-gradient(ellipse at 82% 72%, rgba(124, 184, 177, 0.10) 0 2px, transparent 5px),
+                radial-gradient(circle at 15% 80%, rgba(143, 211, 207, 0.08) 0 1px, transparent 3px),
+                linear-gradient(12deg, transparent 0 46%, rgba(124, 184, 177, 0.08) 47%, transparent 49%),
+                linear-gradient(168deg, transparent 0 42%, rgba(143, 211, 207, 0.06) 43%, transparent 45%),
+                linear-gradient(78deg, transparent 0 44%, rgba(124, 184, 177, 0.06) 45%, transparent 47%);
+            background-size: 180px 180px, 220px 220px, 240px 240px, 160px 160px, 320px 320px, 280px 280px, 260px 260px;
+            mix-blend-mode: screen;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+            padding: 20px;
+            background: rgba(6, 21, 33, 0.94);
+            border-bottom: 4px solid #7cb8b1;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: white;
+            font-weight: 900;
+        }
+
+        header p {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 30px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #7cb8b1;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(124, 184, 177, 0.7);
+            padding: 12px 24px;
+        }
+
+        .back-link:hover {
+            background: #7cb8b1;
+            color: #061521;
+            border-color: #7cb8b1;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-poster {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 420px;
+            border: 5px dashed rgba(124, 184, 177, 0.45);
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(143, 211, 207, 0.08), transparent 38%),
+                radial-gradient(ellipse at 72% 68%, rgba(124, 184, 177, 0.10), transparent 42%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(124, 184, 177, 0.06)),
+                linear-gradient(96deg, transparent 0 42%, rgba(124, 184, 177, 0.08) 43%, transparent 45%),
+                rgba(255, 255, 255, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-poster::before {
+            content: 'Affiche à venir';
+            color: rgba(143, 211, 207, 0.55);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85em;
+            font-weight: 700;
+        }
+
+        .hero-poster::after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            border: 1px solid rgba(124, 184, 177, 0.16);
+            background:
+                radial-gradient(circle at 18% 22%, rgba(143, 211, 207, 0.12) 0 1px, transparent 3px),
+                radial-gradient(circle at 74% 28%, rgba(143, 211, 207, 0.10) 0 1px, transparent 4px),
+                radial-gradient(circle at 36% 74%, rgba(143, 211, 207, 0.09) 0 1px, transparent 3px),
+                radial-gradient(circle at 78% 68%, rgba(143, 211, 207, 0.10) 0 1px, transparent 4px),
+                linear-gradient(8deg, transparent 0 48%, rgba(124, 184, 177, 0.05) 49%, transparent 51%),
+                linear-gradient(172deg, transparent 0 52%, rgba(124, 184, 177, 0.05) 53%, transparent 55%);
+            background-size: 140px 140px, 180px 180px, 130px 130px, 170px 170px, 280px 280px, 260px 260px;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+
+        .hero-poster img {
+            width: 100%;
+            max-width: 340px;
+            height: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45), inset 0 0 0 12px rgba(255, 255, 255, 0.2);
+            border: 3px solid rgba(124, 184, 177, 0.8);
+        }
+
+        .hero-content h2 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: 2px;
+            color: #8fd3cf;
+            text-transform: uppercase;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(124, 184, 177, 0.95);
+            color: #061521;
+            padding: 8px 16px;
+            font-size: 0.75em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .short-desc {
+            font-size: 1.2em;
+            line-height: 1.85;
+            margin-bottom: 30px;
+            color: rgba(232, 247, 246, 0.93);
+            max-width: none;
+        }
+
+        .tech-sheet {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: rgba(124, 184, 177, 0.08);
+            border: 2px solid #7cb8b1;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .tech-item label {
+            font-weight: 700;
+            color: #7cb8b1;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .tech-item value {
+            font-size: 1.1em;
+            color: #e8f7f6;
+        }
+
+        @media (max-width: 768px) {
+            .tech-sheet {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .info-box {
+            background: rgba(124, 184, 177, 0.1);
+            border-left: 5px solid #7cb8b1;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0;
+        }
+
+        .info-box strong {
+            color: #7cb8b1;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #7cb8b1;
+            color: #061521;
+            text-decoration: none;
+            border-radius: 0;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #7cb8b1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #8fd3cf;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h3 {
+            font-size: 2em;
+            color: #7cb8b1;
+            border-bottom: 3px solid #7cb8b1;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        #excerpt .description-text {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 30px 0 30px;
+        }
+
+        #excerpt.active .description-text {
+            max-height: 6000px;
+            opacity: 1;
+            padding: 30px;
+        }
+
+        #excerpt h3 {
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s ease;
+        }
+
+        #excerpt h3::after {
+            content: '▼';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%) rotate(-180deg);
+            transition: transform 0.3s ease;
+            font-size: 0.8em;
+            color: #7cb8b1;
+        }
+
+        #excerpt.active h3::after {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        #excerpt h3:hover {
+            color: #8fd3cf;
+        }
+
+        .description-text {
+            background: rgba(124, 184, 177, 0.07);
+            border-left: 5px solid #7cb8b1;
+            font-size: 1.05em;
+            line-height: 1.85;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: justify;
+        }
+
+        .script {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .script-intro {
+            color: rgba(232, 247, 246, 0.8);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .dialogue-line {
+            display: block;
+        }
+
+        .character {
+            display: inline-block;
+            font-weight: 700;
+            color: #8fd3cf;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            margin-right: 10px;
+        }
+
+        .speech {
+            color: #eef2f7;
+        }
+
+        .pause {
+            margin: 6px 0 2px;
+            color: rgba(232, 247, 246, 0.72);
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .hero-poster {
+                min-height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 120px 18px 50px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .short-desc {
+                font-size: 1rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll, scroll;
+            }
+
+            header {
+                padding: 14px 16px;
+            }
+
+            header h1 {
+                font-size: 1.35em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .container {
+                padding: 102px 16px 32px;
+            }
+
+            .language-switcher {
+                top: 92px;
+                right: 12px;
+                left: auto;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+            }
+
+            .back-link {
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .hero,
+            .synopsis-grid,
+            .gallery,
+            .info-grid,
+            .credits-grid,
+            .roles-grid,
+            .cards-grid,
+            .media-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+            }
+
+            .hero {
+                margin-bottom: 60px;
+            }
+
+            .hero-poster {
+                order: -1;
+            }
+
+            .hero-poster img {
+                width: min(85vw, 280px);
+                max-width: 280px;
+                height: auto;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .hero-content p,
+            .short-desc,
+            .description-text,
+            .info-box {
+                font-size: 1em;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            .button-group,
+            .btn-group,
+            .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .tech-item,
+            .performance-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            iframe,
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .scripts-container {
+                grid-template-columns: 1fr !important;
+                max-height: none;
+            }
+
+            footer {
+                padding: 24px 16px;
+                margin-top: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding-top: 96px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.35em;
+            }
+
+            .btn {
+                max-width: 280px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lina Biancarelli</h1>
+        <p>Autrice de théâtre</p>
+    </header>
+
+    <main class="container">
+        <a href="index.html#projets-a-venir" class="back-link">Retour aux projets</a>
+
+        <section class="hero">
+            <div class="hero-poster">
+            </div>
+            <div class="hero-content">
+                <span class="tag">Projet à venir</span>
+                <h2>L'aube ne se lèvera plus</h2>
+                <p class="short-desc">Anciennement intitulé Oedipe, ce projet explore une bascule tragique où le lever du jour ne promet plus la lumière, mais la fin des certitudes. Le titre annonce d’emblée le mouvement du texte: une attente suspendue, presque funèbre, dans laquelle tout semble déjà sur le point de basculer.</p>
+                <div class="button-group">
+                    <a href="index.html#projets-a-venir" class="btn">Retour à l’accueil</a>
+                    <a href="mailto:biancarellilina1@gmail.com" class="btn">Me contacter</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="tech-sheet">
+                <div class="tech-item">
+                    <label>Mise en scène</label>
+                    <value>Eliot Hoff</value>
+                </div>
+                <div class="tech-item">
+                    <label>Statut</label>
+                    <value>En développement</value>
+                </div>
+                <div class="tech-item">
+                    <label>Nombre de personnages</label>
+                    <value>7</value>
+                </div>
+                <div class="tech-item">
+                    <label>Durée estimée</label>
+                    <value>Deux heures</value>
+                </div>
+                <!-- Troupe removed as requested -->
+            </div>
+
+            <!-- Note d'intention removed -->
+
+            <div class="section" id="excerpt">
+                <h3>Extrait</h3>
+                <div class="description-text">
+                    <div class="script">
+                        <div class="dialogue-line"><span class="character">ŒDIPE</span><span class="speech">Ses yeux… Ses yeux pleins de larmes. Mais Jocaste, il fallait bien que je te le dise ! Comment ne pas te le dire !</span></div>
+                        <div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Avant de la trouver, j’avais déjà la sensation d’un grand malheur. Ma reine, ma pauvre reine… Elle était effondrée, une mare de sang lui faisait comme une traine de mariée. Les poings serrés le long du corps. Elle a tourné la tête vers moi. « C’est fini, Anaïs », a-t-elle dit. Je n’avais jamais vu un regard comme le sien. « Prends les enfants, emmène-les chez Argos. Ne dis pas pourquoi, ou plutôt dis-leur que c’est pour les amuser, qu’ils verront des voiliers… ». Je ne pouvais pas détacher mes yeux du sang. Il y en avait partout. Je me suis dit qu’elle avait dû perdre son bébé. J’ai enfin réalisé que je devais l’aider, je me suis précipitée vers elle. J’ai glissé dans le sang et je suis tombée.</span></div>
+                        <div class="dialogue-line"><span class="character">ŒDIPE</span><span class="speech">Je lui ai pris les mains et je les ai embrassées. Doucement, tout doucement, je baissais la tête car je ne voulais pas qu’elle voie que je pleurais. Comment lui dire ? Elle m’a caressé la joue, et a senti les larmes qui les baignaient. Elle a remonté mon visage vers elle et elle m’a dit « Œdipe, parle. » Aucun son n’est sorti de ma bouche. « Parle, Œdipe, tu te sentiras mieux si tu me parles. », je n’avais plus aucun souffle. « Œdipe, c’est moins grave que ce que tu penses. » Là, j’ai craqué. Je me suis levé brusquement et j’ai hurlé. Je m’en veux, je m’en veux ! J’ai hurlé ! Je l’ai secouée ! Et je lui ai dit - non - je lui ai craché au visage la vérité ! « Tu es ma mère, Jocaste, ma mère ! ». Elle ne disait plus rien. Juste un souffle comme une longue plainte. Puis tout doucement elle m’a chuchoté « Œdipe, ce n’est pas vrai, comment peux-tu penser cela ? ». Mais je voyais bien qu’elle avait compris. J’ai bien vu qu’elle avait fait un lien. Qu’elle était touchée. Je me suis tourné, j’ai vu son joli peigne sur la commode, celui qui je lui avait offert à la naissance d’Etéocle. Je ne pouvais plus la voir, je n’avais plus le droit. Pas après ce que j’avais fait. Alors je l’ai attrapé, et je me suis crevé les yeux. Je n’ai pas eu mal. C’était plutôt un soulagement. J’ai enfin compris comment les sauver et me faire pardonner des Dieux. Il fallait que je parte.</span></div>
+                        <div class="dialogue-line"><span class="character">LA NOURRICE</span><span class="speech">Je me suis relevée et je l’ai prise dans mes bras. Je l’ai bercée. Combien de temps ? Comment savoir ?</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <a href="index.html#projets-a-venir" class="btn">Retour à l’accueil</a>
+                <a href="mailto:biancarellilina1@gmail.com" class="btn">Me contacter</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const excerptSection = document.getElementById('excerpt');
+        if (excerptSection) {
+            const excerptHeading = excerptSection.querySelector('h3');
+            excerptHeading.addEventListener('click', () => {
+                excerptSection.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -795,6 +795,163 @@
                 padding: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll, scroll;
+            }
+
+            header {
+                padding: 14px 16px;
+            }
+
+            header h1 {
+                font-size: 1.35em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .container {
+                padding: 102px 16px 32px;
+            }
+
+            .language-switcher {
+                top: 92px;
+                right: 12px;
+                left: auto;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+            }
+
+            .scroll-nav {
+                display: none !important;
+            }
+
+            .back-link {
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .hero,
+            .synopsis-grid,
+            .gallery,
+            .info-grid,
+            .credits-grid,
+            .roles-grid,
+            .cards-grid,
+            .media-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+            }
+
+            .hero-poster {
+                order: -1;
+            }
+
+            .hero-poster img {
+                width: min(85vw, 280px);
+                max-width: 280px;
+                height: auto;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .hero-content p,
+            .short-desc,
+            .description-text,
+            .info-box {
+                font-size: 1em;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            .button-group,
+            .btn-group,
+            .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .tech-item,
+            .performance-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            iframe,
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .scripts-container {
+                grid-template-columns: 1fr !important;
+                max-height: none;
+            }
+
+            .script {
+                padding: 20px;
+            }
+
+            footer {
+                padding: 24px 16px;
+                margin-top: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding-top: 96px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.35em;
+            }
+
+            .btn {
+                max-width: 280px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -852,7 +1009,7 @@
         <div class="hero-content">
             <span class="tag" data-i18n="deux-secondes.tag">Tragédie</span>
             <h2 data-i18n="deux-secondes.title">2 Secondes avant l'extase</h2>
-            <p data-i18n="deux-secondes.short-desc">Une adaptation d'Antigone. Le portrait d'une femme qui aime démesurément, saisie juste avant l'abîme.</p>
+            <p data-i18n="deux-secondes.short-desc">Une adaptation d'Antigone.</p>
             
             <div class="tech-sheet">
                 <div class="tech-item">
@@ -995,7 +1152,7 @@
             'btn.back': '← Retour à l\'accueil',
             'deux-secondes.tag': 'Tragédie',
             'deux-secondes.title': '2 Secondes avant l\'extase',
-            'deux-secondes.short-desc': 'Une adaptation d\'Antigone. Le portrait d\'une femme qui aime démesurément, saisie juste avant l\'abîme.',
+            'deux-secondes.short-desc': 'Une adaptation d\'Antigone.',
             'deux-secondes.video-section': 'Captation',
             'deux-secondes.description': 'Deux secondes avant l\'extase est une réécriture du mythe d\'Antigone, qui déplace le regard des enjeux politiques vers l\'intimité d\'une femme qui aime démesurément. La pièce s\'ouvre sur un moment suspendu : le monologue d\'Antigone contemplant l\'abîme, volant quelques secondes à une vie morose pour imaginer une existence où elle n\'aurait pas eu à choisir le sacrifice. L\'histoire nous plonge dans la veille du drame. Loin de l\'héroïne de marbre, on découvre une Antigone vibrante, habitée par le désir pour son fiancé Hémon, et confrontée à sa sœur Ismène, incarnation de la vie et de la beauté. Sa perfection cache un secret : elle attend un enfant et supplie sa sœur de choisir la vie pour ce futur neveu, plutôt que de s\'enfermer dans une Thèbes maudite et sanglante. Mais pour Antigone, le refus est un acte de courage absolu. Elle rejette la simplicité du bonheur offerte par son oncle Créon, un régent fatigué qui rêve de planter des navets mais se retrouve piégé par sa propre autorité. Le châtiment qu\'il lui inflige n\'est pas la mort immédiate, mais une torture psychologique : condamnée au rêve sans fin par une décoction paralysante, elle doit rester spectatrice d\'une vie qui continue sans elle. Le dénouement, porté par l\'innocence cruelle de deux enfants, Eusébie et Laodamas, bascule vers l\'extase finale. Entre empoisonnement libérateur et espoir d\'antidote, le Chœur nous laisse face à l\'éternelle question : peut-on réellement choisir la fin ?',
             'deux-secondes.duration': '1h45',
@@ -1070,7 +1227,7 @@
             'btn.see-book': 'Vedi l\'Edizione',
             'deux-secondes.tag': 'Tragedia',
             'deux-secondes.title': '2 Secondi Prima dell\'Estasi',
-            'deux-secondes.short-desc': 'Un adattamento dell\'Antigone. Il ritratto di una donna che ama eccessivamente, colta proprio prima dell\'abisso.',
+            'deux-secondes.short-desc': 'Un adattamento dell\'Antigone.',
             'deux-secondes.video-section': 'Registrazione',
             'deux-secondes.description': 'Due secondi prima dell\'estasi è una riscrittura del mito di Antigone, che sposta lo sguardo dalle questioni politiche all\'intimità di una donna che ama eccessivamente. Il dramma si apre su un momento sospeso: il monologo di Antigone che contempla l\'abisso, rubando alcuni secondi a una vita monotona per immaginare un\'esistenza dove non avrebbe dovuto scegliere il sacrificio. La storia ci immerge nella vigilia del dramma. Lontano dall\'eroina di marmo, scopriamo un\'Antigone vibrante, abitata dal desiderio per il suo fidanzato Emone, e confrontata con sua sorella Ismene, incarnazione della vita e della bellezza. La sua perfezione nasconde un segreto: è incinta e supplica sua sorella di scegliere la vita per questo nipote futuro, piuttosto che confinarsi in una Tebe maledetta e sanguinosa. Ma per Antigone, il rifiuto è un atto di coraggio assoluto. Rifiuta la semplicità della felicità offerta da suo zio Creonte, un reggente stanco che sogna di piantare rape ma si ritrova intrappolato dalla sua stessa autorità. La punizione che le infligge non è la morte immediata, ma una tortura psicologica: condannata ai sogni infiniti da una pozione paralizzante, deve rimanere spettatrice di una vita che continua senza di lei. Lo scioglimento, portato dall\'innocenza crudele di due bambini, Eusebeia e Laodamas, si trasforma verso l\'estasi finale. Tra il veleno liberatorio e la speranza di un antidoto, il Coro ci lascia di fronte alla domanda eterna: si può veramente scegliere la fine?',
             'deux-secondes.duration': '1h45',
@@ -1106,7 +1263,7 @@
             'btn.see-book': 'Ausgabe Ansehen',
             'deux-secondes.tag': 'Tragödie',
             'deux-secondes.title': '2 Sekunden vor dem Höhepunkt',
-            'deux-secondes.short-desc': 'Eine Anpassung der Antigone. Das Porträt einer Frau, die übermäßig liebt, erfasst gerade vor dem Abgrund.',
+            'deux-secondes.short-desc': 'Eine Anpassung der Antigone.',
             'deux-secondes.video-section': 'Aufzeichnung',
             'deux-secondes.description': 'Zwei Sekunden vor der Ekstase ist eine Umschreibung des Antigone-Mythos, die den Blick von den politischen Fragen zur Intimität einer Frau verlegt, die unstillbar liebt. Das Stück öffnet sich auf einen schwebenden Moment: Antigones Monolog, der in den Abgrund blickt, und stiehlt einige Sekunden aus einem trüben Leben, um sich ein Dasein vorzustellen, in dem sie nicht zwischen Opfer hätte wählen müssen. Die Geschichte taucht uns in die Nacht vor dem Drama. Weit entfernt von der steinernen Heldin entdecken wir eine vibrierende Antigone, erfüllt von Verlangen nach ihrem Verlobten Haimon, und konfrontiert mit ihrer Schwester Ismene, Verkörperung von Leben und Schönheit. Ihre Perfektion verbirgt ein Geheimnis: Sie ist schwanger und fleht ihre Schwester an, das Leben für diesen zukünftigen Neffen zu wählen, statt sich in einem verfluchten und blutigen Theben einzusperren. Aber für Antigone ist Ablehnung ein absoluter Akt des Mutes. Sie lehnt die Einfachheit des Glücks ab, das ihr Onkel Kreon anbietet, ein müder Regent, der davon träumt, Rüben zu pflanzen, aber in seiner eigenen Autorität gefangen ist. Die Strafe, die er ihr auferlegt, ist nicht sofortiger Tod, sondern psychologische Qual: verurteilt zu endlosen Träumen durch einen lähmenden Trank, muss sie Zuschauerin eines Lebens bleiben, das ohne sie weitergehen. Der Ausgang, getragen von der grausamen Unschuld zweier Kinder, Eusebeia und Laodamas, wendet sich der finalen Ekstase zu. Zwischen befreiender Gift und der Hoffnung auf ein Gegengift lässt uns der Chor vor die ewige Frage stehen: Kann man das Ende wirklich wählen?',
             'deux-secondes.duration': '1h45',
@@ -1286,6 +1443,11 @@
         // Initialize with current language
         if (translations[currentLanguage] && translations[currentLanguage]['deux-secondes.excerpt']) {
             scriptContent.innerHTML = translations[currentLanguage]['deux-secondes.excerpt'];
+        }
+
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            accordionToggle.classList.remove('collapsed');
+            scriptsContainer.classList.remove('collapsed');
         }
 
         // Toggle accordion on header click

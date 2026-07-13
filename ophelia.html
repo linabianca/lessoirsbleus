@@ -1,3 +1,5 @@
+﻿1 performeur d\'opéra cantonais
+1 performeur d\'opéra cantonais
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -252,30 +254,33 @@
             padding-bottom: 10px;
         }
 
-        /* Excerpt Section Toggle */
-        #excerpt h3 {
+        /* Foldable Sections */
+        .section.foldable > h3 {
             cursor: pointer;
             user-select: none;
             position: relative;
             transition: color 0.3s ease;
+            padding-right: 28px;
         }
 
-        #excerpt h3:hover {
+        .section.foldable > h3:hover {
             color: rgba(127, 212, 212, 1);
         }
 
-        #excerpt h3::after {
-            content: '▼';
+        .section.foldable > h3::after {
+            content: '▶';
             position: absolute;
             right: 0;
-            font-size: 0.6em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8em;
             line-height: 1;
             vertical-align: baseline;
             transition: transform 0.3s ease;
-            transform: rotate(-180deg);
+            color: rgba(100, 180, 255, 0.9);
         }
 
-        #excerpt .description-text {
+        .section.foldable > .description-text {
             max-height: 0;
             overflow: hidden;
             opacity: 0;
@@ -285,14 +290,30 @@
             border-left: 5px solid rgba(100, 180, 255, 0.6);
         }
 
-        #excerpt.active .description-text {
+        .section.foldable.active > .description-text {
             max-height: 2000px;
             opacity: 1;
             padding: 30px 30px 30px 30px;
         }
 
-        #excerpt.active h3::after {
-            transform: rotate(0deg);
+        .section.foldable > .foldable-body {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+            padding: 0 30px;
+            background: rgba(100, 180, 255, 0.1);
+            border-left: 5px solid rgba(100, 180, 255, 0.6);
+        }
+
+        .section.foldable.active > .foldable-body {
+            max-height: 6000px;
+            opacity: 1;
+            padding: 30px;
+        }
+
+        .section.foldable.active > h3::after {
+            content: '▼';
         }
 
         .description-text {
@@ -312,6 +333,60 @@
 
         .description-text p {
             margin-bottom: 20px;
+        }
+
+        .dossier-meta-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        .dossier-meta-table th,
+        .dossier-meta-table td {
+            padding: 10px 0;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(100, 180, 255, 0.15);
+        }
+
+        .dossier-meta-table th {
+            width: 260px;
+            padding-right: 18px;
+            text-align: left;
+            font-size: 0.88em;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: rgba(100, 180, 255, 0.95);
+        }
+
+        .dossier-meta-table td {
+            color: #e8f4f4;
+        }
+
+        @media (max-width: 768px) {
+            .dossier-meta-table,
+            .dossier-meta-table tbody,
+            .dossier-meta-table tr,
+            .dossier-meta-table th,
+            .dossier-meta-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .dossier-meta-table th {
+                padding: 12px 0 4px;
+                border-bottom: none;
+            }
+
+            .dossier-meta-table td {
+                padding: 0 0 12px;
+            }
+        }
+
+        .dossier-subtitle {
+            margin: 28px 0 14px;
+            font-size: 1.2em;
+            color: rgba(100, 180, 255, 0.95);
+            font-weight: 800;
         }
 
         /* Theater Script Formatting for Ophelia */
@@ -662,6 +737,158 @@
             right: auto;
             left: 15px;
         }
+
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll, scroll;
+            }
+
+            header {
+                padding: 14px 16px;
+            }
+
+            header h1 {
+                font-size: 1.35em;
+                letter-spacing: 1px;
+            }
+
+            header p {
+                font-size: 0.8em;
+            }
+
+            .container {
+                padding: 102px 16px 32px;
+            }
+
+            .language-switcher {
+                top: 92px;
+                right: 12px;
+                left: auto;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .lang-btn {
+                padding: 10px 14px;
+                font-size: 0.75em;
+            }
+
+            .back-link {
+                display: block;
+                width: 100%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                white-space: normal;
+            }
+
+            .hero,
+            .synopsis-grid,
+            .gallery,
+            .info-grid,
+            .credits-grid,
+            .roles-grid,
+            .cards-grid,
+            .media-grid {
+                grid-template-columns: 1fr !important;
+                gap: 32px;
+            }
+
+            .hero {
+                margin-bottom: 60px;
+            }
+
+            .hero-poster {
+                order: -1;
+            }
+
+            .hero-poster img {
+                width: min(85vw, 280px);
+                max-width: 280px;
+                height: auto;
+            }
+
+            .hero-content {
+                text-align: center;
+                padding: 0;
+            }
+
+            .hero-content h2 {
+                font-size: 1.6em;
+                line-height: 1.2;
+            }
+
+            .hero-content p,
+            .short-desc,
+            .description-text,
+            .info-box {
+                font-size: 1em;
+                line-height: 1.6;
+                overflow-wrap: anywhere;
+                word-break: break-word;
+            }
+
+            .button-group,
+            .btn-group,
+            .actions {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .tech-item,
+            .performance-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .video-container {
+                width: 100%;
+            }
+
+            iframe,
+            video {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .scripts-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            footer {
+                padding: 24px 16px;
+                margin-top: 56px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding-top: 96px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.35em;
+            }
+
+            .btn {
+                max-width: 280px;
+                padding: 14px 24px;
+                font-size: 0.85em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -691,67 +918,45 @@
             <span class="tag" data-i18n="ophelia.tag">Création</span>
             <h2 data-i18n="ophelia.title">Ophelia au bord de l'eau</h2>
             <p class="short-desc" data-i18n="ophelia.short-desc">Une nouvelle création. Et si Ophélia n'avait jamais été folle? Et si elle n'allait simplement que cueillir des fleurs la nuit...?</p>
-            
-            <div class="tech-sheet">
-                <div class="tech-item">
-                    <label data-i18n="label.status">Statut</label>
-                    <value data-i18n="ophelia.status">En développement</value>
-                </div>
-                <div class="tech-item">
-                    <label data-i18n="label.genre">Genre</label>
-                    <value data-i18n="ophelia.genre">Exploration poétique</value>
-                </div>
-            </div>
-            
-            <div class="info-box">
-                <strong data-i18n="label.description">Description :</strong><br>
-                <span data-i18n="ophelia.info">Ophelia au bord du gouffre est une nouvelle création, une réinterprétation poétique et intime du personnage d'Ophelia. Loin des représentations classiques, cette pièce explore l'idée que la folie n'était peut-être qu'une apparence, et que derrière le chaos, il y a simplement une femme qui cherche sa vérité dans la nuit.</span>
-            </div>
-
-            <div class="button-group">
-                <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
-            </div>
         </div>
     </div>
 
-    <!-- Excerpt Section -->
-    <div class="section" id="excerpt">
+    <div class="section foldable" id="excerpt">
         <h3 data-i18n="label.excerpt">Extrait</h3>
         <div class="description-text" data-i18n="ophelia.excerpt"></div>
     </div>
 
-    <!-- Concept Section -->
-    <div class="section">
-        <h3 data-i18n="label.concept">Concept</h3>
-        <div class="description-text">
-            <p data-i18n="ophelia.concept-part1">Ophelia est une figure littéraire qui a fasciné innombrables écrivains, metteurs en scène, peintres et poètes. Toujours présentée à travers un regard paternalisant, son histoire est souvent réduite à son malheur amoureux et à sa folie inévitable.</p>
-            <p data-i18n="ophelia.concept-part2">Et si nous lui donnions une autre voix?</p>
-            <p data-i18n="ophelia.concept-part3">Cette création explore les zones grises entre la raison et la folie, entre la soumission et la rébellion, entre ce qu'on nous dit être et ce que nous choisissons de devenir.</p>
+    <div class="section foldable active" id="dossier">
+        <h3 data-i18n="ophelia.dossier.title">Dossier artistique</h3>
+        <div class="foldable-body">
+            <div class="description-text" data-i18n="ophelia.dossier.meta"><table class="dossier-meta-table"><tbody><tr><th>OPHÉLIA</th><td>Tragédie poétique chorégraphique interculturelle</td></tr><tr><th>TEXTE ORIGINAL</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Lina Biancarelli</a></td></tr><tr><th>TRANSCRIPTION EN CHINOIS ET CHANT</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>CHORÉGRAPHIE</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>FORMAT</th><td>Performance immersive &amp; in situ / théâtre expérimental et danse</td></tr><tr><th>DISTRIBUTION</th><td>2 interprètes masculins (1 danseur contemporain / 1 performeur d\'opéra cantonais)</td></tr><tr><th>UNIVERS SONORE</th><td>Musique baroque européenne &amp; opéra cantonais en direct</td></tr><tr><th>ESPACES CIBLES</th><td>Lieux singuliers (sites industriels désaffectés, cryptes, cloîtres, théâtres anatomiques, plein air... par exemple Villa Racagni)</td></tr></tbody></table></div>
+
+            <h4 class="dossier-subtitle" data-i18n="ophelia.dossier.summary-title">Résumé du projet</h4>
+            <div class="description-text">
+                <p data-i18n="ophelia.dossier.summary">OPHÉLIA est une réécriture du mythe shakespearien qui propose une conversation entre deux cultures partageant une mythologie proche. Sur scène, deux artistes masculins incarnent la fragmentation d'Ophélia à travers un dialogue entre le français et le chinois. Le spectacle est conçu comme une performance expérimentale, in situ et flexible, pensée pour s'adapter à l'architecture de lieux singuliers en Italie.</p>
+            </div>
+
+            <h4 class="dossier-subtitle" data-i18n="ophelia.dossier.direction-title">Note de mise en scène et vision dramaturgique</h4>
+            <div class="description-text">
+                <p data-i18n="ophelia.dossier.direction-1">Ce texte rompt avec la vision éthérée et romantique du XIXe siècle qui dépeint Ophélia comme une figure passivement folle. Dans cette mise en scène, Ophélia est une figure forte et volontaire, mais qui se retrouve dépassée par la médiocrité d'Hamlet et par la profonde souffrance de son histoire familiale.</p>
+                <p data-i18n="ophelia.dossier.direction-2">L'inversion de genre, confiée à deux interprètes hommes, crée un parallèle historique et conceptuel: un lien avec le théâtre élisabéthain shakespearien, où les rôles féminins étaient interprétés par de jeunes acteurs; et un lien avec la tradition historique de l'opéra cantonais, à l'origine chanté et joué uniquement par des hommes.</p>
+                <p data-i18n="ophelia.dossier.direction-3">Ce choix permet de donner corps au pendant "masculin", fort et résistant d'Ophélia, tout en explorant sur scène une part féminine de la masculinité. Le spectacle se développe également comme une tragédie comparée entre Ophélia et la princesse Changping (de l'opéra cantonais <em>The Flower Princess</em>). Les deux héroïnes affrontent des obstacles semblables: la corruption des cours, l'assassinat du père et l'effondrement de leur monde politique. Pourtant, tandis que la douleur d'Ophélia se dissout dans la perte du langage et de fragments de chansons, Changping conserve sa dignité en s'exprimant par la poésie et le chant jusqu'à la fin. Ophélia tente ainsi de trouver une ligne d'expression en rejoignant des héroïnes qui ont connu des destins similaires, comme Didon, qui chante jusqu'à la mort, ou Camille Claudel, elle aussi réduite au silence parce qu'étiquetée comme folle.</p>
+            </div>
+
+            <h4 class="dossier-subtitle" data-i18n="ophelia.dossier.death-title">Le mystère de la mort</h4>
+            <div class="description-text">
+                <p data-i18n="ophelia.dossier.death">La mise en scène choisit volontairement de ne pas donner de réponse univoque à la fin d'Ophélia, en laissant planer le doute: suicide, accident fatal ou disparition due à des forces extérieures. Le texte intègre des éléments du folklore traditionnel corse, racines de l'autrice, et évoque le mystère des créatures maléfiques et des esprits ancestraux qui peuplent les cours d'eau la nuit. L'eau devient ainsi une entité active et obscure qui enveloppe le corps d'Ophélia.</p>
+            </div>
+
+            <h4 class="dossier-subtitle" data-i18n="ophelia.dossier.languages-title">Langages artistiques et dispositif scénique</h4>
+            <div class="description-text">
+                <p data-i18n="ophelia.dossier.languages-1"><strong>La danse contemporaine (le corps):</strong> La chorégraphie de James Potter donne un corps viscéral à ce qui ne peut pas être dit avec des mots. Elle intègre dans le mouvement des éléments de sculpture, inspirés de Camille Claudel comme <em>La valse</em> ou <em>L'Âge mûr</em>, à travers des moments de "pose" et explore des manières masculines d'occuper l'espace.</p>
+                <p data-i18n="ophelia.dossier.languages-2"><strong>La musique et la voix:</strong> La performance fait coexister la musique baroque européenne, qui exprime le deuil par de longues lignes mélodiques profondes, et l'opéra cantonais, qui élève la souffrance par le chant et une gestuelle codifiée, comme l'usage des longues manches.</p>
+                <p data-i18n="ophelia.dossier.languages-3"><strong>Le dispositif textile (les costumes):</strong> Les costumes sont entièrement réalisés à la main avec des tissus recherchés, intégrant la mode et la matière textile comme de véritables langages de la performance.</p>
+                <p data-i18n="ophelia.dossier.languages-4"><strong>L'élément spatial et la trace:</strong> Le spectacle s'ouvre dans l'obscurité totale guidé par le son de l'eau en mouvement. Il se conclut par un geste rituel où les deux performeurs unissent leurs mouvements pour laisser des traces de poudre rouge sur les murs de l'espace, avant qu'Ophélia ne s'allonge dans le cours d'eau.</p>
+            </div>
         </div>
     </div>
-
-    <!-- Inspiration Section -->
-    <div class="section">
-        <h3 data-i18n="label.inspiration">Inspirations</h3>
-        <div class="description-text">
-            <p data-i18n="ophelia.inspiration">Cette pièce s'inscrit dans la tradition des réinterprétations poétiques et parfois absurde de mythes et de textes classiques, tout en cherchant à créer quelque chose d'entièrement nouveau. Avec ce projet nous aimerions explorer différentes frontières: celles de la danse et du théâtre, celle du genre, celles de la raison et de la folie.</p>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="section">
-        <h3 data-i18n="label.contact">Collaboration et Développement</h3>
-        <div class="description-text">
-            <p data-i18n="ophelia.collaboration">Ce projet est actuellement en phase de développement. Lina Biancarelli travaille étroitement avec le danseur et chorégraphe James Potter. Nous aimerions explorer les mouvements de l'eau au travers des mots et des corps. Nous cherchons des collaborateurs passionnés - acteurs, metteurs en scène, dramaturges, musiciens - pour explorer et affiner cette vision.
-
-Si cette création vous intéresse, ou si vous souhaitez discuter de possibilités de collaboration, n'hésitez pas à prendre contact.</p>
-        </div>
-        <div class="button-group">
-            <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
-            <a href="index.html" class="btn" data-i18n="btn.back">Retour à l'accueil</a>
-        </div>
-    </div>
-
 </div>
 
 <footer>
@@ -786,6 +991,21 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             'label.contact': 'Collaboration et Développement',
             'ophelia.collaboration': 'Ce projet est actuellement en phase de développement. Lina Biancarelli travaille étroitement avec le danseur et chorégraphe James Potter. Nous aimerions explorer les mouvements de l\'eau au travers des mots et des corps. Nous cherchons des collaborateurs passionnés - acteurs, metteurs en scène, dramaturges, musiciens - pour explorer et affiner cette vision.\n\nSi cette création vous intéresse, ou si vous souhaitez discuter de possibilités de collaboration, n\'hésitez pas à prendre contact.',
             'ophelia.collaboration-contact': '',
+                        'ophelia.dossier.title': 'Dossier artistique',
+            'ophelia.dossier.meta': '<table class="dossier-meta-table"><tbody><tr><th>OPHÉLIA</th><td>Tragédie poétique chorégraphique interculturelle</td></tr><tr><th>TEXTE ORIGINAL</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Lina Biancarelli</a></td></tr><tr><th>TRANSCRIPTION EN CHINOIS ET CHANT</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>CHORÉGRAPHIE</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>FORMAT</th><td>Performance immersive &amp; in situ / théâtre expérimental et danse</td></tr><tr><th>DISTRIBUTION</th><td>2 interprètes masculins (1 danseur contemporain / 1 performeur d\'opéra cantonais)</td></tr><tr><th>UNIVERS SONORE</th><td>Musique baroque européenne &amp; opéra cantonais en direct</td></tr><tr><th>ESPACES CIBLES</th><td>Lieux singuliers (sites industriels désaffectés, cryptes, cloîtres, théâtres anatomiques, plein air... par exemple Villa Racagni)</td></tbody></table>',
+            'ophelia.dossier.summary-title': 'Résumé du projet',
+            'ophelia.dossier.summary': 'OPHÉLIA est une réécriture du mythe shakespearien qui propose une conversation entre deux cultures partageant une mythologie proche. Sur scène, deux artistes masculins incarnent la fragmentation d\'Ophélia à travers un dialogue entre le français et le chinois. Le spectacle est conçu comme une performance expérimentale, in situ et flexible, pensée pour s\'adapter à l\'architecture de lieux singuliers en Italie.',
+            'ophelia.dossier.direction-title': 'Note de mise en scène et vision dramaturgique',
+            'ophelia.dossier.direction-1': 'Ce texte rompt avec la vision éthérée et romantique du XIXe siècle qui dépeint Ophélia comme une figure passivement folle. Dans cette mise en scène, Ophélia est une figure forte et volontaire, mais qui se retrouve dépassée par la médiocrité d\'Hamlet et par la profonde souffrance de son histoire familiale.',
+            'ophelia.dossier.direction-2': 'L\'inversion de genre, confiée à deux interprètes hommes, crée un parallèle historique et conceptuel: un lien avec le théâtre élisabéthain shakespearien, où les rôles féminins étaient interprétés par de jeunes acteurs; et un lien avec la tradition historique de l\'opéra cantonais, à l\'origine chanté et joué uniquement par des hommes.',
+            'ophelia.dossier.direction-3': 'Ce choix permet de donner corps au pendant "masculin", fort et résistant d\'Ophélia, tout en explorant sur scène une part féminine de la masculinité. Le spectacle se développe également comme une tragédie comparée entre Ophélia et la princesse Changping (de l\'opéra cantonais <em>The Flower Princess</em>). Les deux héroïnes affrontent des obstacles semblables: la corruption des cours, l\'assassinat du père et l\'effondrement de leur monde politique. Pourtant, tandis que la douleur d\'Ophélia se dissout dans la perte du langage et de fragments de chansons, Changping conserve sa dignité en s\'exprimant par la poésie et le chant jusqu\'à la fin. Ophélia tente ainsi de trouver une ligne d\'expression en rejoignant des héroïnes qui ont connu des destins similaires, comme Didon, qui chante jusqu\'à la mort, ou Camille Claudel, elle aussi réduite au silence parce qu\'étiquetée comme folle.',
+            'ophelia.dossier.death-title': 'Le mystère de la mort',
+            'ophelia.dossier.death': 'La mise en scène choisit volontairement de ne pas donner de réponse univoque à la fin d\'Ophélia, en laissant planer le doute: suicide, accident fatal ou disparition due à des forces extérieures. Le texte intègre des éléments du folklore traditionnel corse, racines de l\'autrice, et évoque le mystère des créatures maléfiques et des esprits ancestraux qui peuplent les cours d\'eau la nuit. L\'eau devient ainsi une entité active et obscure qui enveloppe le corps d\'Ophélia.',
+            'ophelia.dossier.languages-title': 'Langages artistiques et dispositif scénique',
+            'ophelia.dossier.languages-1': '<strong>La danse contemporaine (le corps):</strong> La chorégraphie de James Potter donne un corps viscéral à ce qui ne peut pas être dit avec des mots. Elle intègre dans le mouvement des éléments de sculpture, inspirés de Camille Claudel comme <em>La valse</em> ou <em>L\'Âge mûr</em>, à travers des moments de "pose" et explore des manières masculines d\'occuper l\'espace.',
+            'ophelia.dossier.languages-2': '<strong>La musique et la voix:</strong> La performance fait coexister la musique baroque européenne, qui exprime le deuil par de longues lignes mélodiques profondes, et l\'opéra cantonais, qui élève la souffrance par le chant et une gestuelle codifiée, comme l\'usage des longues manches.',
+            'ophelia.dossier.languages-3': '<strong>Le dispositif textile (les costumes):</strong> Les costumes sont entièrement réalisés à la main avec des tissus recherchés, intégrant la mode et la matière textile comme de véritables langages de la performance.',
+            'ophelia.dossier.languages-4': '<strong>L\'élément spatial et la trace:</strong> Le spectacle s\'ouvre dans l\'obscurité totale guidé par le son de l\'eau en mouvement. Il se conclut par un geste rituel où les deux performeurs unissent leurs mouvements pour laisser des traces de poudre rouge sur les murs de l\'espace, avant qu\'Ophélia ne s\'allonge dans le cours d\'eau.',
             
             'label.status': 'Statut',
             'label.genre': 'Genre',
@@ -819,6 +1039,21 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             'label.contact': 'Collaboration and Development',
             'ophelia.collaboration': 'This project is currently in development. Lina Biancarelli is working closely with dancer and choreographer James Potter. We would like to explore the movements of water through words and bodies. We are looking for passionate collaborators - actors, directors, playwrights, musicians - to explore and refine this vision.\n\nIf this creation interests you, or if you would like to discuss collaboration possibilities, please feel free to contact me.',
             'ophelia.collaboration-contact': '',
+                        'ophelia.dossier.title': 'Artistic Dossier',
+            'ophelia.dossier.meta': '<table class="dossier-meta-table"><tbody><tr><th>OPHELIA</th><td>Intercultural poetic choreographic tragedy</td></tr><tr><th>ORIGINAL TEXT</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Lina Biancarelli</a></td></tr><tr><th>CHINESE TRANSCRIPTION AND SONG</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>CHOREOGRAPHY</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>FORMAT</th><td>Immersive &amp; in situ performance / experimental theatre and dance</td></tr><tr><th>CAST</th><td>2 male performers (1 contemporary dancer / 1 Cantonese opera performer)</td></tr><tr><th>SONIC WORLD</th><td>European baroque music &amp; live Cantonese opera</td></tr><tr><th>TARGET SPACES</th><td>Special spaces (disused industrial sites, crypts, cloisters, anatomical theatres, outdoors... for example Villa Racagni)</td></tbody></table>',
+            'ophelia.dossier.summary-title': 'Project Summary',
+            'ophelia.dossier.summary': 'OPHELIA is a rewriting of the Shakespearean myth that creates a conversation between two cultures sharing a similar mythology. On stage, two male artists embody Ophélia\'s fragmentation through a dialogue between French and Chinese. The show is structured as an experimental, in situ and flexible performance, designed to adapt to the architecture of special places in Italy.',
+            'ophelia.dossier.direction-title': 'Directorial Note and Dramaturgical Vision',
+            'ophelia.dossier.direction-1': 'This text breaks with the ethereal and romantic vision of the nineteenth century that portrays Ophelia as passively mad. In this staging, Ophélia is strong and willing, yet overwhelmed by Hamlet\'s mediocrity and the deep suffering of her family history.',
+            'ophelia.dossier.direction-2': 'The gender inversion, entrusted to two male performers, creates a historical and conceptual parallel: a link to Shakespearean Elizabethan theatre, where female roles were performed by young actors; and a link to the historical tradition of Cantonese opera, originally sung and played only by men.',
+            'ophelia.dossier.direction-3': 'This choice gives body to Ophélia\'s "masculine" counterpart, strong and resilient, while exploring a feminine side of masculinity on stage. The show also unfolds as a comparative tragedy between Ophélia and Princess Changping (from the Cantonese opera <em>The Flower Princess</em>). Both heroines face similar obstacles: court corruption, the assassination of the father and the collapse of their political world. Yet while Ophélia\'s pain dissolves into the loss of language and fragments of song, Changping maintains her dignity by expressing herself through poetry and song until the end. Ophélia therefore seeks an expressive line by joining heroines who lived similar fates, such as Dido, who sings to her death, or Camille Claudel, also silenced after being labeled mad.',
+            'ophelia.dossier.death-title': 'The Mystery of Death',
+            'ophelia.dossier.death': 'The staging deliberately refuses to give a single answer to Ophélia\'s end, preserving the doubt of whether it is suicide, a fatal accident, or a disappearance caused by external forces. The text integrates elements of traditional Corsican folklore, rooted in the author\'s background, evoking the mystery of evil creatures and ancestral spirits that inhabit waterways at night. Water thus becomes an active and dark entity that envelops Ophélia\'s body.',
+            'ophelia.dossier.languages-title': 'Artistic Languages and Stage Device',
+            'ophelia.dossier.languages-1': '<strong>Contemporary Dance (The Body):</strong> James Potter\'s choreography gives a visceral body to what cannot be said in words. It incorporates sculptural elements inspired by Camille Claudel, such as <em>La valse</em> or <em>L\'Âge mûr</em>, through moments of "pose" and explores masculine ways of occupying space.',
+            'ophelia.dossier.languages-2': '<strong>Music and Voice:</strong> The performance brings together European baroque music, which expresses mourning through long, deep melodic lines, and Cantonese opera, which elevates suffering through song and codified gesture, such as the use of long sleeves.',
+            'ophelia.dossier.languages-3': '<strong>The Textile Device (Costumes):</strong> The costumes are entirely handmade with carefully sourced fabrics, integrating fashion and textile matter as true performance languages.',
+            'ophelia.dossier.languages-4': '<strong>Spatial Element and Trace:</strong> The show opens in complete darkness guided by the sound of moving water. It ends with a ritual gesture in which the two performers join their movements to leave traces of red powder on the walls of the space, before Ophelia settles into the watercourse.',
             
             'label.status': 'Status',
             'label.genre': 'Genre',
@@ -852,6 +1087,21 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             'label.contact': 'Collaborazione e Sviluppo',
             'ophelia.collaboration': 'Questo progetto è attualmente in fase di sviluppo. Lina Biancarelli sta lavorando a stretto contatto con il ballerino e coreografo James Potter. Desideriamo esplorare i movimenti dell\'acqua attraverso le parole e i corpi. Stiamo cercando collaboratori appassionati - attori, registi, drammaturghi, musicisti - per esplorare e affinare questa visione.\n\nSe questa creazione ti interessa, o se desideri discutere di possibilità di collaborazione, non esitare a contattarmi.',
             'ophelia.collaboration-contact': '',
+            'ophelia.dossier.title': 'Dossier artistico',
+            'ophelia.dossier.meta': '<table class="dossier-meta-table"><tbody><tr><th>OPHÉLIA</th><td>Tragedia poetica coreografica interculturale</td></tr><tr><th>TESTO ORIGINALE</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Lina Biancarelli</a></td></tr><tr><th>TRANSCREAZIONE IN CINESE E CANTO</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>COREOGRAFIA</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>FORMAT</th><td>Performance immersiva &amp; in situ / Teatro sperimentale e danza</td></tr><tr><th>CAST</th><td>2 interpreti maschili (1 danzatore contemporaneo / 1 performer d\'opera cantonese)</td></tr><tr><th>UNIVERSO SONORO</th><td>Musica barocca europea &amp; opera cantonese dal vivo</td></tr><tr><th>SPAZI TARGET</th><td>Spazi speciali (siti industriali dismessi, cripte, chiostri, teatri anatomici, all\'aperto... come ad esempio Villa Racagni)</td></tr></tbody></table>',
+            'ophelia.dossier.summary-title': 'Sintesi del progetto',
+            'ophelia.dossier.summary': 'OPHELIA è una riscrittura del mito shakespeariano che propone una conversazione tra due culture che condividono una mitologia simile. Sul palco, due artisti maschili incarnano la frammentazione di Ophélia attraverso un dialogo tra lingua francese e cinese. Lo spettacolo è strutturato come una performance sperimentale, in situ e flessibile, pensata per adattarsi all\'architettura di luoghi speciali in Italia.',
+            'ophelia.dossier.direction-title': 'Nota di regia e visione drammaturgica',
+            'ophelia.dossier.direction-1': 'Questo testo rompe con la visione eterea e romantica del XIX secolo che dipinge Ophélia come una figura passivamente pazza. In questa messinscena, Ophélia è una figura forte e volontaria, ma che si ritrova superata dalla mediocrità di Amleto e dalla profonda sofferenza della sua storia familiare.',
+            'ophelia.dossier.direction-2': 'L\'inversione di genere, affidata a due interpreti uomini, crea un parallelo storico e concettuale: un legame con il teatro elisabettiano shakespeariano, dove i ruoli femminili erano interpretati da giovani attori; e un legame con la tradizione storica dell\'Opera Cantonese, originariamente cantata e interpretata solo da uomini.',
+            'ophelia.dossier.direction-3': 'Questa scelta permette di dare corpo al pendant "maschile", forte e resistente di Ophélia, esplorando al contempo una parte femminile della mascolinità sul palco. Lo spettacolo si sviluppa inoltre come una tragedia comparata tra Ophélia e la Principessa Changping (dall\'Opera Cantonese <em>The Flower Princess</em>). Entrambe le eroine affrontano ostacoli simili: la corruzione delle corti, l\'assassinio del padre e il crollo del loro mondo politico. Tuttavia, mentre il dolore di Ophélia si dissolve nella perdita del linguaggio e dei frammenti di canzoni, Changping mantiene la sua dignità esprimendosi attraverso la poesia e il canto fino alla fine. Ophélia tenta così di trovare una linea espressiva unendosi a eroine che hanno vissuto destini simili, come Didon, che canta fino alla morte, o Camille Claudel, anch\'essa ridotta al silenzio in quanto etichettata come pazza.',
+            'ophelia.dossier.death-title': 'Il mistero della morte',
+            'ophelia.dossier.death': 'La messinscena sceglie volutamente di non dare una risposta univoca alla fine di Ophélia, mantenendo il dubbio se si tratti di un suicidio, di un fatale incidente o di una scomparsa dovuta a forze esterne. Il testo integra elementi del folklore tradizionale corso, radici dell\'autrice, evocando il mistero delle creature maligne e degli spiriti ancestrali che popolano i corsi d\'acqua durante la notte. L\'acqua diventa così un\'entità attiva e oscura che avvolge il corpo di Ophélia.',
+            'ophelia.dossier.languages-title': 'Linguaggi artistici e dispositivo scenico',
+            'ophelia.dossier.languages-1': '<strong>La Danza Contemporanea (Il Corpo):</strong> La coreografia di James Potter dà un corpo viscerale a ciò che non può essere detto a parole. Integra nel movimento elementi della scultura, ispirati a Camille Claudel come <em>La valse</em> o <em>L\'Âge mûr</em>, attraverso momenti di "posa" e sperimenta modalità maschili di occupare lo spazio.',
+            'ophelia.dossier.languages-2': '<strong>La Musica e la Voce:</strong> La performance fa coesistere la musica barocca europea, che esprime il lutto attraverso lunghe linee melodiche profonde, e l\'opera cantonese, che eleva la sofferenza attraverso il canto e una gestualità codificata, come l\'uso delle maniche lunghe.',
+            'ophelia.dossier.languages-3': '<strong>Il Dispositivo Tessile (I Costumi):</strong> I costumi sono interamente realizzati a mano con tessuti ricercati, integrando la moda e la materia tessile come veri e propri linguaggi della performance.',
+            'ophelia.dossier.languages-4': '<strong>L\'Elemento Spaziale e la Traccia:</strong> Lo spettacolo si apre nel buio completo guidato dal suono dell\'acqua in movimento. Si conclude con un gesto rituale in cui i due performer uniscono i loro movimenti per lasciare segni con la polvere rossa sulle pareti dello spazio, prima che Ofelia si adagi nel corso d\'acqua.',
             
             'label.status': 'Stato',
             'label.excerpt': 'Estratto',
@@ -885,6 +1135,21 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             'label.contact': 'Zusammenarbeit und Entwicklung',
             'ophelia.collaboration': 'Dieses Projekt befindet sich derzeit in der Entwicklung. Lina Biancarelli arbeitet eng mit der Tänzerin und Choreographin James Potter zusammen. Wir möchten die Bewegungen des Wassers durch Worte und Körper erforschen. Wir suchen leidenschaftliche Mitarbeiter - Schauspieler, Regisseure, Dramatiker, Musiker - um diese Vision zu erkunden und zu verfeinern.\n\nWenn Sie diese Schöpfung interessiert oder Sie über Zusammenarbeitsmöglichkeiten sprechen möchten, setzen Sie sich bitte gerne mit mir in Verbindung.',
             'ophelia.collaboration-contact': '',
+            'ophelia.dossier.title': 'Künstlerisches Dossier',
+            'ophelia.dossier.meta': '<table class="dossier-meta-table"><tbody><tr><th>OPHÉLIA</th><td>Interkulturelle poetische choreografische Tragödie</td></tr><tr><th>ORIGINALTEXT</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Lina Biancarelli</a></td></tr><tr><th>CHINESISCHE TRANSKRIPTION UND GESANG</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>CHOREOGRAFIE</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>FORMAT</th><td>Immersive &amp; in-situ-Performance / experimentelles Theater und Tanz</td></tr><tr><th>BESETZUNG</th><td>2 männliche Darsteller (1 zeitgenössischer Tänzer / 1 kantonesischer Opernperformer)</td></tr><tr><th>KLANGWELT</th><td>Europäische Barockmusik &amp; kantonesische Oper live</td></tr><tr><th>ZIELRÄUME</th><td>Besondere Orte (stillgelegte Industriebauten, Krypten, Kreuzgänge, anatomische Theater, im Freien... zum Beispiel Villa Racagni)</td></tr></tbody></table>',
+            'ophelia.dossier.summary-title': 'Projektzusammenfassung',
+            'ophelia.dossier.summary': 'OPHÉLIA ist eine Neuerschreibung des Shakespeare-Mythos, die ein Gespräch zwischen zwei Kulturen eröffnet, die eine ähnliche Mythologie teilen. Auf der Bühne verkörpern zwei männliche Künstler Ophélies Fragmentierung durch einen Dialog zwischen Französisch und Chinesisch. Die Aufführung ist als experimentelle, ortsspezifische und flexible Performance konzipiert, die sich an die Architektur besonderer Orte in Italien anpassen kann.',
+            'ophelia.dossier.direction-title': 'Regieanmerkung und dramaturgische Vision',
+            'ophelia.dossier.direction-1': 'Dieser Text bricht mit der ätherischen und romantischen Sicht des 19. Jahrhunderts, die Ophelia als passiv wahnsinnig darstellt. In dieser Inszenierung ist Ophélia eine starke und willentliche Figur, die jedoch von Hamlets Mittelmäßigkeit und dem tiefen Leid ihrer Familiengeschichte überwältigt wird.',
+            'ophelia.dossier.direction-2': 'Die Geschlechterumkehr, die zwei männlichen Darstellern anvertraut wird, schafft eine historische und konzeptionelle Parallele: eine Verbindung zum elisabethanischen Shakespeare-Theater, in dem weibliche Rollen von jungen Schauspielern gespielt wurden; und eine Verbindung zur historischen Tradition der kantonesischen Oper, die ursprünglich nur von Männern gesungen und gespielt wurde.',
+            'ophelia.dossier.direction-3': 'Diese Entscheidung gibt Ophélias "männlichem" Gegenstück, stark und widerständig, Körper und zugleich eine weibliche Seite der Männlichkeit auf der Bühne. Das Stück entwickelt sich außerdem als Vergleichstragödie zwischen Ophélia und Prinzessin Changping (aus der kantonesischen Oper <em>The Flower Princess</em>). Beide Heldinnen stehen vor ähnlichen Hindernissen: der Korruption der Höfe, dem Mord am Vater und dem Zusammenbruch ihrer politischen Welt. Während Ophélias Schmerz jedoch im Verlust der Sprache und von Liedfragmenten zerfällt, bewahrt Changping ihre Würde, indem sie sich bis zum Ende durch Poesie und Gesang ausdrückt. Ophélia versucht so, eine Ausdruckslinie zu finden, indem sie sich mit Heldinnen verbindet, die ähnliche Schicksale erlebten, wie Dido, die bis zum Tod singt, oder Camille Claudel, die ebenfalls zum Schweigen gebracht wurde, weil sie als verrückt etikettiert wurde.',
+            'ophelia.dossier.death-title': 'Das Geheimnis des Todes',
+            'ophelia.dossier.death': 'Die Inszenierung verzichtet bewusst darauf, ein eindeutiges Ende für Ophélia zu liefern, und lässt offen, ob es sich um Selbstmord, einen tödlichen Unfall oder ein Verschwinden durch äußere Kräfte handelt. Der Text integriert Elemente der traditionellen korsischen Folklore, den Wurzeln der Autorin, und beschwört das Geheimnis böser Wesen und ahnenhafter Geister, die nachts die Wasserläufe bevölkern. Das Wasser wird so zu einer aktiven und dunklen Entität, die Ophélies Körper umhüllt.',
+            'ophelia.dossier.languages-title': 'Künstlerische Sprachen und szenisches Dispositiv',
+            'ophelia.dossier.languages-1': '<strong>Der zeitgenössische Tanz (der Körper):</strong> Die Choreografie von James Potter verleiht dem, was nicht in Worte gefasst werden kann, einen viszeralen Körper. Sie integriert Bewegungselemente der Skulptur, inspiriert von Camille Claudel wie <em>La valse</em> oder <em>L\'Âge mûr</em>, durch Momente der "Pose" und erforscht männliche Arten, Raum zu besetzen.',
+            'ophelia.dossier.languages-2': '<strong>Musik und Stimme:</strong> Die Performance lässt europäische Barockmusik, die Trauer durch lange, tiefe melodische Linien ausdrückt, und kantonesische Oper nebeneinander bestehen, die das Leiden durch Gesang und kodifizierte Gestik, etwa die Verwendung langer Ärmel, erhebt.',
+            'ophelia.dossier.languages-3': '<strong>Das textile Dispositiv (die Kostüme):</strong> Die Kostüme werden vollständig von Hand aus ausgesuchten Stoffen gefertigt und integrieren Mode und textile Materie als eigentliche Sprachen der Performance.',
+            'ophelia.dossier.languages-4': '<strong>Das räumliche Element und die Spur:</strong> Die Aufführung beginnt in völliger Dunkelheit, geführt vom Klang des bewegten Wassers. Sie endet mit einer rituellen Geste, in der die beiden Performer ihre Bewegungen vereinen, um rote Pulverspuren an den Wänden des Raumes zu hinterlassen, bevor Ophelia sich in den Wasserlauf legt.',
             
             'label.excerpt': 'Auszug',
             'label.status': 'Status',
@@ -918,6 +1183,21 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             'label.contact': 'التعاون والتطوير',
             'ophelia.collaboration': 'هذا المشروع حالياً في مرحلة التطوير. تعمل لينا بيانكاريلي بشكل وثيق مع الراقصة والرقاصة جيمس بوتر. نود استكشاف حركات الماء من خلال الكلمات والأجسام. نحن نبحث عن متعاونين متحمسين - ممثلين ومخرجين ودرامتورجيين وموسيقيين - لاستكشاف وصقل هذه الرؤية.\n\nإذا كان هذا الإنشاء يثير اهتمامك، أو إذا كنت تريد مناقشة إمكانيات التعاون، فلا تتردد في الاتصال بي.',
             'ophelia.collaboration-contact': '',
+            'ophelia.dossier.title': 'الملف الفني',
+            'ophelia.dossier.meta': '<table class="dossier-meta-table"><tbody><tr><th>أوفيليا</th><td>تراجيديا شعرية راقصة عابرة للثقافات</td></tr><tr><th>النص الأصلي</th><td><a href="https://www.instagram.com/linabiancarelli/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">لينا بيانكاريلي</a></td></tr><tr><th>النقل الصيني والغناء</th><td><a href="https://www.instagram.com/henrie.lau/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">Henrie Lau</a></td></tr><tr><th>الرقص</th><td><a href="https://www.instagram.com/sir_pottington/" target="_blank" rel="noopener noreferrer" style="color: #f4d03f; text-decoration: none; border-bottom: 2px solid #f4d03f;">James Potter</a></td></tr><tr><th>الشكل</th><td>عرض غامر ومكاني / مسرح تجريبي ورقص</td></tr><tr><th>الطاقم</th><td>مؤدّيان رجاليان (راقص معاصر واحد / مؤدٍّ في أوبرا كانتونية واحد)</td></tr><tr><th>العالم الصوتي</th><td>موسيقى باروكية أوروبية &amp; أوبرا كانتونية حية</td></tr><tr><th>الأماكن المستهدفة</th><td>أماكن خاصة (مواقع صناعية مهجورة، سراديب، أروقة، مسارح تشريحية، فضاءات مفتوحة... مثل Villa Racagni)</td></tr></tbody></table>',
+            'ophelia.dossier.summary-title': 'ملخص المشروع',
+            'ophelia.dossier.summary': 'أوفيليا هي إعادة كتابة لأسطورة شكسبير تفتح حواراً بين ثقافتين تتشاركان أسطورة متشابهة. على الخشبة يجسد فنانان رجاليان تفتت أوفيليا عبر حوار بين الفرنسية والصينية. صُمم العرض بوصفه أداءً تجريبياً ومكانياً ومرناً، بحيث يتكيف مع عمارة أماكن خاصة في إيطاليا.',
+            'ophelia.dossier.direction-title': 'ملاحظة إخراجية ورؤية دراماتورجية',
+            'ophelia.dossier.direction-1': 'يكسر هذا النص الرؤية الرومانسية الشفافة للقرن التاسع عشر التي تصوّر أوفيليا بوصفها شخصية مجنونة بشكل سلبي. في هذا التقديم، تكون أوفيليا قوية وذات إرادة، لكنها تُهزم أمام تفاهة هاملت والمعاناة العميقة لتاريخ عائلتها.',
+            'ophelia.dossier.direction-2': 'إن عكس الجنس، الموكول إلى مؤدّيَين رجلين، يخلق تماثلاً تاريخياً ومفاهيمياً: صلة بالمسرح الشكسبيري الإليزابيثي، حيث كانت الأدوار النسائية تؤدّى من قبل ممثلين شبّان؛ وصلة بالتقليد التاريخي للأوبرا الكانتونية التي كانت تُغنّى وتُؤدّى في الأصل من قبل الرجال فقط.',
+            'ophelia.dossier.direction-3': 'هذا الاختيار يمنح الجسد للجانب "الرجولي" من أوفيليا، القوي والمقاوم، مع استكشاف جانب أنثوي من الرجولة على الخشبة. ويتطور العرض أيضاً كتراجيديا مقارنة بين أوفيليا والأميرة تشانغبينغ (من أوبرا كانتونية <em>The Flower Princess</em>). تواجه البطلتان عقبات متشابهة: فساد البلاط، اغتيال الأب، وانهيار عالمهما السياسي. لكن بينما يذوب ألم أوفيليا في فقدان اللغة وشظايا الأغاني، تحافظ تشانغبينغ على كرامتها بالتعبير عن نفسها عبر الشعر والغناء حتى النهاية. هكذا تحاول أوفيليا أن تجد خطاً تعبيرياً بالانضمام إلى بطلات عشن مصائر متشابهة، مثل ديدون التي تغني حتى الموت، أو كاميل كلوديل التي أُسكتت أيضاً بعد وسمها بالجنون.',
+            'ophelia.dossier.death-title': 'لغز الموت',
+            'ophelia.dossier.death': 'يختار العرض عمداً ألا يعطي جواباً واحداً لنهاية أوفيليا، ويترك الشك قائماً: هل هو انتحار، أم حادث مميت، أم اختفاء بفعل قوى خارجية. يدمج النص عناصر من الفولكلور الكورسيكي التقليدي، الجذور الثقافية للمؤلفة، مستحضراً لغز المخلوقات الشريرة والأرواح الأجدادية التي تسكن المجاري المائية ليلاً. وهكذا يصبح الماء كياناً فاعلاً ومظلماً يلف جسد أوفيليا.',
+            'ophelia.dossier.languages-title': 'اللغات الفنية والجهاز المشهدي',
+            'ophelia.dossier.languages-1': '<strong>الرقص المعاصر (الجسد):</strong> تمنح كوريغرافيا James Potter جسداً حشويّاً لما لا يمكن قوله بالكلمات. وتدمج في الحركة عناصر من النحت، مستوحاة من Camille Claudel مثل <em>La valse</em> و<em>L\'Âge mûr</em>، عبر لحظات من "الوقفة" وتستكشف طرقاً رجولية لاحتلال الفضاء.',
+            'ophelia.dossier.languages-2': '<strong>الموسيقى والصوت:</strong> يجمع العرض بين الموسيقى الباروكية الأوروبية، التي تعبّر عن الحداد عبر خطوط لحنية طويلة وعميقة، وبين الأوبرا الكانتونية التي ترفع المعاناة عبر الغناء والإيماءة المقننة، مثل استخدام الأكمام الطويلة.',
+            'ophelia.dossier.languages-3': '<strong>العنصر النسيجي (الملابس):</strong> تُصنع الأزياء كلها يدوياً من أقمشة مختارة بعناية، لتدمج الموضة والمادة النسيجية كلغات حقيقية للأداء.',
+            'ophelia.dossier.languages-4': '<strong>العنصر المكاني والأثر:</strong> يبدأ العرض في ظلام كامل تقوده حركة الماء وصوته. وينتهي بإيماءة طقسية يوحّد فيها المؤديان حركتهما لترك آثار من المسحوق الأحمر على جدران المكان، قبل أن تستلقي أوفيليا في مجرى الماء.',
             
             'label.status': 'الحالة',
             'label.genre': 'النوع',
@@ -950,7 +1230,7 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
-                const content = translations[currentLanguage][key];
+                let content = translations[currentLanguage][key];
                 // Check if content contains HTML tags
                 if (content.includes('<') && content.includes('>')) {
                     element.innerHTML = content;
@@ -981,18 +1261,18 @@ Si cette création vous intéresse, ou si vous souhaitez discuter de possibilit�
             });
         });
 
-        // Excerpt toggle functionality
-        const excerptSection = document.getElementById('excerpt');
-        if (excerptSection) {
-            const excerptTitle = excerptSection.querySelector('h3');
-            if (excerptTitle) {
-                excerptTitle.addEventListener('click', function() {
-                    excerptSection.classList.toggle('active');
-                });
-            }
-        }
+        document.querySelectorAll('.section.foldable > h3').forEach(title => {
+            title.addEventListener('click', function() {
+                const section = title.parentElement;
+                section.classList.toggle('active');
+            });
+        });
     });
 </script>
 
 </body>
 </html>
+
+
+
+
