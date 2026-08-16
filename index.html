@@ -187,6 +187,8 @@
             color: #7fd4d4;
         }
 
+        /* (removed .section.troupe to preserve original section ordering styles) */
+
         .section-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1002,6 +1004,7 @@
 </nav>
 
 <div class="projects-container">
+    <!-- troupe section temporarily removed from top; restored at bottom -->
     <!-- Section 1: Mazel -->
     <section class="section" id="mazel">
         <div class="section-content">
@@ -1087,9 +1090,12 @@
                         <span class="project-desc" data-i18n="section4.project3.description">Une adaptation théâtrale du texte de Silvia Mangione, exploration poétique d'une histoire captivante et intemporelle.</span>
                         <a href="imvucca-linfernu.html" class="btn small" data-i18n="btn.learn-more">En savoir plus</a>
                     </div>
-                </div>
-                <div class="button-group">
-                    <a href="mailto:biancarellilina1@gmail.com" class="btn" data-i18n="btn.contact">Me Contacter</a>
+                    
+                    <div class="project-item">
+                        <a href="garibaldi.html" class="project-title accent" data-i18n="section4.project4.title">GARIBALDI — La vie d'Anita Garibaldi</a>
+                        <span class="project-desc" data-i18n="section4.project4.description">Une pièce sur les révolutions, retraçant la vie d'Anita Garibaldi.</span>
+                        <a href="garibaldi.html" class="btn small" data-i18n="btn.learn-more">En savoir plus</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1115,9 +1121,12 @@
         </div>
     </section>
 
-    <!-- Section 6: La troupe des Soirs bleus -->
+    <!-- Section 6: La troupe des Soirs bleus (restored to bottom) -->
     <section class="section" id="la-troupe-des-soirs-bleus">
         <div class="section-content">
+            <div class="poster-container">
+                <!-- photo intentionally removed per request -->
+            </div>
             <div class="text-content">
                 <span class="tag" data-i18n="section6.tag">La troupe</span>
                 <h2 data-i18n="section6.title">La troupe des Soirs bleus</h2>
@@ -1161,6 +1170,8 @@
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'Une adaptation théâtrale du texte de Silvia Mangione, une histoire calabraise.',
+            'section4.project4.title': 'GARIBALDI — La vie d\'Anita Garibaldi',
+            'section4.project4.description': 'Une pièce sur les révolutions, retraçant la vie d\'Anita Garibaldi.',
             
             'section5.tag': 'Biographie',
             'section5.title': 'À Propos',
@@ -1210,6 +1221,8 @@
             
             'section4.project3.title': 'I\'MVUCCA L\'infernu',
             'section4.project3.description': 'A theatrical adaptation of Silvia Mangione\'s text.',
+            'section4.project4.title': 'GARIBALDI — The Life of Anita Garibaldi',
+            'section4.project4.description': 'A play about revolutions, retracing the life of Anita Garibaldi.',
             
             'section5.tag': 'Biography',
             'section5.title': 'About',

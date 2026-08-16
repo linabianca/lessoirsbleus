@@ -132,26 +132,26 @@
             filter: brightness(1.1) contrast(1.1);
         }
 
-        /* Image framing adjustments for specific actors */
-        .actor-card:nth-child(1) img { object-position: center 25%; } /* Anissa */
-        .actor-card:nth-child(2) img { object-position: center 30%; } /* Clémence */
-        .actor-card:nth-child(3) img { object-position: center 35%; } /* Valentin */
-        .actor-card:nth-child(4) img { object-position: center 25%; } /* Victor */
-        .actor-card:nth-child(5) img { object-position: center 20%; } /* Maymouna */
-        .actor-card:nth-child(6) img { object-position: center 30%; } /* Cécile */
-        .actor-card:nth-child(7) img { object-position: center 25%; } /* Alessandra */
-        .actor-card:nth-child(8) img { object-position: center 30%; } /* Ilias */
-        .actor-card:nth-child(9) img { object-position: center 25%; } /* Lina Chelha */
-        .actor-card:nth-child(10) img { object-position: center 25%; } /* Tania */
-        .actor-card:nth-child(11) img { object-position: center 25%; } /* Anaïs */
-        .actor-card:nth-child(12) img { object-position: center 30%; } /* Léa */
-        .actor-card:nth-child(13) img { object-position: center 25%; } /* Frédérique */
-        .actor-card:nth-child(14) img { object-position: center 30%; } /* Eliot */
-        .actor-card:nth-child(15) img { object-position: center 25%; } /* Jeanne */
-        .actor-card:nth-child(16) img { object-position: center 20%; } /* Fleur */
-        .actor-card:nth-child(17) img { object-position: center 30%; } /* Sabrina */
-        .actor-card:nth-child(18) img { object-position: center 25%; } /* Lara */
-        .actor-card:nth-child(19) img { object-position: center 25%; } /* Tanja */
+        /* Image framing adjustments for specific actors (class-based to survive reordering) */
+        .actor-card.actor-anissa img { object-position: center 25%; }
+        .actor-card.actor-clemence img { object-position: center 30%; }
+        .actor-card.actor-valentin img { object-position: center 35%; }
+        .actor-card.actor-victor img { object-position: center 25%; }
+        .actor-card.actor-maymouna img { object-position: center 20%; }
+        .actor-card.actor-cecile img { object-position: center 30%; }
+        .actor-card.actor-alessandra img { object-position: center 25%; }
+        .actor-card.actor-ilias img { object-position: center 30%; }
+        .actor-card.actor-lina img { object-position: center 40%; transform: scale(1.25); transform-origin: center center; }
+        .actor-card.actor-tania img { object-position: center 25%; }
+        .actor-card.actor-anais img { object-position: center 25%; }
+        .actor-card.actor-lea img { object-position: center 30%; }
+        .actor-card.actor-frederique img { object-position: center 25%; }
+        .actor-card.actor-eliot img { object-position: center 30%; }
+        .actor-card.actor-jeanne img { object-position: center 25%; }
+        .actor-card.actor-fleur img { object-position: center 20%; }
+        .actor-card.actor-sabrina img { object-position: center 30%; }
+        .actor-card.actor-lara img { object-position: center 25%; }
+        .actor-card.actor-tanja img { object-position: center 25%; }
 
         /* Placeholder card for missing photos */
         .actor-card.placeholder {
@@ -363,45 +363,44 @@
         <p data-i18n="troupe.description">Découvrez les talentueuses actrices et acteurs qui donnent vie à nos créations théâtrales</p>
     </div>
 
-    <div class="actors-grid">
-        <div class="actor-card">
-            <img src="assets/photo troupe/Anissa.png" alt="Anissa">
+    <div class="biography" style="max-width:1100px;margin:0 auto 40px;color:inherit;">
+        <h3 style="font-size:1.6em;margin-bottom:12px;color:#7fd4d4;" data-i18n="troupe.bio-title">Biographie de la troupe</h3>
+        <p style="font-size:1.05em;line-height:1.8;opacity:0.95;text-align:justify;" data-i18n="troupe.bio">Fondée à Berlin en 2020 par Lina Biancarelli, la troupe <strong>Les Soirs Bleus</strong> est née pour donner vie à ses créations dramatiques et porter ses textes au plateau. Elle rassemble un ensemble de comédiens et d\'artistes francophones issus de diverses nationalités, réunis par le plaisir du jeu en langue française et le goût de la scène.<br><br>Après y avoir créé et joué ses premières pièces (<em>Les Échecs</em>, <em>Deux secondes avant l\'extase</em>, <em>Mazel</em>), la troupe reste profondément attachée à son ancrage berlinois tout en s\'ouvrant progressivement à de nouveaux horizons géographiques et artistiques au fil des projets.</p>
+    </div>
+
+    <div class="actors-section">
+        <h3 style="font-size:1.4em;margin-bottom:14px;color:#7fd4d4;" data-i18n="troupe.active-title">Membres actifs</h3>
+        <div class="actors-grid active-members">
+        <div class="actor-card actor-lina">
+            <img src="assets/photo troupe/Lina 41_centre.jpg" alt="Lina">
             <div class="actor-overlay">
-                <span class="actor-name">Anissa</span>
-                <span class="actor-role" data-i18n="actor.anissa-role">Actrice / Metteuse en scène</span>
+                <span class="actor-name">Lina</span>
+                <span class="actor-role" data-i18n="actor.lina-role">Autrice / Metteuse en scène</span>
             </div>
         </div>
-
-        <div class="actor-card">
+        <div class="actor-card actor-clemence">
             <img src="assets/photo troupe/Clemence 1.jpg" alt="Clémence">
             <div class="actor-overlay">
                 <span class="actor-name">Clémence</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-valentin">
             <img src="assets/photo troupe/Valentin.png" alt="Valentin">
             <div class="actor-overlay">
                 <span class="actor-name">Valentin</span>
+                <span class="actor-role" data-i18n="actor.valentin-role">Acteur / Metteur en scène</span>
             </div>
         </div>
 
-        <div class="actor-card">
-            <img src="assets/photo troupe/Victor.png" alt="Victor">
-            <div class="actor-overlay">
-                <span class="actor-name">Victor</span>
-                <span class="actor-role" data-i18n="actor.victor-role">Acteur / Photographe</span>
-            </div>
-        </div>
-
-        <div class="actor-card">
+        <div class="actor-card actor-maymouna">
             <img src="assets/photo troupe/Maymouna.png" alt="Maymouna">
             <div class="actor-overlay">
                 <span class="actor-name">Maymouna</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-cecile">
             <img src="assets/photo troupe/Cecile.jpg" alt="Cécile">
             <div class="actor-overlay">
                 <span class="actor-name">Cécile</span>
@@ -409,35 +408,14 @@
             </div>
         </div>
 
-        <div class="actor-card">
-            <img src="assets/photo troupe/Ale.jpg" alt="Alessandra">
-            <div class="actor-overlay">
-                <span class="actor-name">Alessandra</span>
-            </div>
-        </div>
-
-        <div class="actor-card">
-            <img src="assets/photo troupe/Ilias.png" alt="Ilias">
-            <div class="actor-overlay">
-                <span class="actor-name">Ilias</span>
-            </div>
-        </div>
-
-        <div class="actor-card">
-            <img src="assets/photo troupe/LinaChelha.png" alt="Lina Chelha">
+        <div class="actor-card actor-lina">
+            <img src="assets/photo troupe/LinaChelha.png" alt="Lina">
             <div class="actor-overlay">
                 <span class="actor-name">Lina</span>
             </div>
         </div>
 
-        <div class="actor-card">
-            <img src="assets/photo troupe/Tania.png" alt="Tania">
-            <div class="actor-overlay">
-                <span class="actor-name">Tania</span>
-            </div>
-        </div>
-
-        <div class="actor-card">
+        <div class="actor-card actor-anais">
             <img src="assets/photo troupe/Anaïs.JPG" alt="Anaïs">
             <div class="actor-overlay">
                 <span class="actor-name">Anaïs</span>
@@ -445,77 +423,120 @@
             </div>
         </div>
 
-        <div class="actor-card">
-            <img src="assets/photo troupe/Léa.JPG" alt="Léa">
-            <div class="actor-overlay">
-                <span class="actor-name">Léa</span>
-            </div>
-        </div>
-
-        <div class="actor-card">
+        <div class="actor-card actor-frederique">
             <img src="assets/photo troupe/Frédérique.JPG" alt="Frédérique">
             <div class="actor-overlay">
                 <span class="actor-name">Frédérique</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-eliot">
             <img src="assets/photo troupe/Eliot.JPG" alt="Eliot">
             <div class="actor-overlay">
                 <span class="actor-name">Eliot</span>
+                <span class="actor-role" data-i18n="actor.eliot-role">Acteur / Metteur en scène</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-jeanne">
             <img src="assets/photo troupe/Jeanne.JPG" alt="Jeanne">
             <div class="actor-overlay">
                 <span class="actor-name">Jeanne</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-anissa">
+            <img src="assets/photo troupe/Anissa.png" alt="Anissa">
+            <div class="actor-overlay">
+                <span class="actor-name">Anissa</span>
+                <span class="actor-role" data-i18n="actor.anissa-role">Actrice / Metteuse en scène</span>
+            </div>
+        </div>
+
+        <div class="actor-card actor-victor">
+            <img src="assets/photo troupe/Victor.png" alt="Victor">
+            <div class="actor-overlay">
+                <span class="actor-name">Victor</span>
+                <span class="actor-role" data-i18n="actor.victor-role">Acteur / Photographe</span>
+            </div>
+        </div>
+
+        <div class="actor-card actor-lea">
+            <img src="assets/photo troupe/Léa.JPG" alt="Léa">
+            <div class="actor-overlay">
+                <span class="actor-name">Léa</span>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder actor-james">
+            <div class="placeholder-content">
+                <div class="actor-name">James</div>
+                <div class="coming-soon" data-i18n="label.coming-soon">Acteur / danseur / chorégraphe</div>
+            </div>
+        </div>
+
+        <div class="actor-card placeholder actor-henrie">
+            <div class="placeholder-content">
+                <div class="actor-name">Henrie</div>
+                <div class="coming-soon" data-i18n="label.coming-soon">Acteur / chanteur / Design</div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="actors-section">
+        <h3 style="font-size:1.4em;margin-bottom:14px;color:#7fd4d4;" data-i18n="troupe.alumni-title">Alumni</h3>
+        <div class="actors-grid alumni-members">
+        <div class="actor-card actor-alessandra">
+            <img src="assets/photo troupe/Ale.jpg" alt="Alessandra">
+            <div class="actor-overlay">
+                <span class="actor-name">Alessandra</span>
+            </div>
+        </div>
+
+        <div class="actor-card actor-ilias">
+            <img src="assets/photo troupe/Ilias.png" alt="Ilias">
+            <div class="actor-overlay">
+                <span class="actor-name">Ilias</span>
+            </div>
+        </div>
+
+        <div class="actor-card actor-tania">
+            <img src="assets/photo troupe/Tania.png" alt="Tania">
+            <div class="actor-overlay">
+                <span class="actor-name">Tania</span>
+            </div>
+        </div>
+
+        <div class="actor-card actor-fleur">
             <img src="assets/photo troupe/Fleur.jpg" alt="Fleur">
             <div class="actor-overlay">
                 <span class="actor-name">Fleur</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-sabrina">
             <img src="assets/photo troupe/Sabrina.jpg" alt="Sabrina">
             <div class="actor-overlay">
                 <span class="actor-name">Sabrina</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-lara">
             <img src="assets/photo troupe/Lara.jpg" alt="Lara">
             <div class="actor-overlay">
                 <span class="actor-name">Lara</span>
             </div>
         </div>
 
-        <div class="actor-card">
+        <div class="actor-card actor-tanja">
             <img src="assets/photo troupe/Tanja.png" alt="Tanja">
             <div class="actor-overlay">
                 <span class="actor-name">Tanja</span>
             </div>
         </div>
-
-        <div class="actor-card placeholder">
-            <div class="placeholder-content">
-                <div class="actor-name">James</div>
-                <div class="coming-soon">Acteur / danseur / chorégraphe</div>
-            </div>
-        </div>
-
-        <div class="actor-card placeholder">
-            <div class="placeholder-content">
-                <div class="actor-name">Henrie</div>
-                <div class="coming-soon">Acteur / chanteur / Design</div>
-            </div>
         </div>
     </div>
-</div>
 
 <footer>
     <p data-i18n="footer.copyright">&copy; 2026 Lina Biancarelli - Autrice de théâtre</p>
@@ -530,10 +551,17 @@
             'troupe.subtitle': 'Les acteurs et actrices au cœur de nos créations',
             'troupe.page-title': 'La Troupe des Soirs Bleus',
             'troupe.description': 'Découvrez les talentueuses actrices et acteurs qui donnent vie à nos créations théâtrales',
+            'troupe.active-title': 'Membres actifs',
+            'troupe.alumni-title': 'Alumni',
             'actor.anissa-role': 'Actrice / Metteuse en scène',
             'actor.cecile-role': 'Actrice / Scénographe',
             'actor.anaïs-role': 'Actrice / Photographe',            'actor.victor-role': 'Acteur / Photographe',            'label.coming-soon': 'À venir',
-            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre'
+            'actor.valentin-role': 'Acteur / Metteur en scène',
+            'actor.eliot-role': 'Acteur / Metteur en scène',
+            'actor.lina-role': 'Autrice / Metteuse en scène',
+            'footer.copyright': '© 2026 Lina Biancarelli - Autrice de théâtre',
+            'troupe.bio-title': 'Biographie de la troupe',
+            'troupe.bio': 'Fondée à Berlin en 2020 par Lina Biancarelli, la troupe <strong>Les Soirs Bleus</strong> est née pour donner vie à ses créations dramatiques et porter ses textes au plateau. Elle rassemble un ensemble de comédiens et d\'artistes francophones issus de diverses nationalités, réunis par le plaisir du jeu en langue française et le goût de la scène.<br><br>Après y avoir créé et joué ses premières pièces (<em>Les Échecs</em>, <em>Deux secondes avant l\'extase</em>, <em>Mazel</em>), la troupe reste profondément attachée à son ancrage berlinois tout en s\'ouvrant progressivement à de nouveaux horizons géographiques et artistiques au fil des projets.'
         },
         en: {
             'btn.back': '← Back',
@@ -541,9 +569,14 @@
             'troupe.subtitle': 'The actors at the heart of our creations',
             'troupe.page-title': 'La Troupe des Soirs Bleus',
             'troupe.description': 'Meet the talented actors and actresses who bring our theatrical creations to life',
+            'troupe.active-title': 'Active members',
+            'troupe.alumni-title': 'Alumni',
             'actor.anissa-role': 'Actress / Director',
             'actor.cecile-role': 'Actress / Scenographer',
             'actor.anaïs-role': 'Actress / Photographer',
+            'actor.valentin-role': 'Actor / Director',
+            'actor.eliot-role': 'Actor / Director',
+            'actor.lina-role': 'Playwright / Director',
             'actor.victor-role': 'Actor / Photographer',
             'label.coming-soon': 'Coming Soon',
             'footer.copyright': '© 2026 Lina Biancarelli - Playwright'
@@ -554,9 +587,14 @@
             'troupe.subtitle': 'Gli attori e le attrici al cuore delle nostre creazioni',
             'troupe.page-title': 'La Troupe des Soirs Bleus',
             'troupe.description': 'Conosci i talentuosi attori e attrici che danno vita alle nostre creazioni teatrali',
+            'troupe.active-title': 'Membri attivi',
+            'troupe.alumni-title': 'Alumni',
             'actor.anissa-role': 'Attrice / Regista',
             'actor.cecile-role': 'Attrice / Scenografa',
             'actor.anaïs-role': 'Attrice / Fotografa',
+            'actor.valentin-role': 'Attore / Regista',
+            'actor.eliot-role': 'Attore / Regista',
+            'actor.lina-role': 'Drammaturga / Regista',
             'actor.victor-role': 'Attore / Fotografo',
             'label.coming-soon': 'Presto',
             'footer.copyright': '© 2026 Lina Biancarelli - Drammaturga'
@@ -567,9 +605,14 @@
             'troupe.subtitle': 'Die Schauspieler und Schauspielerinnen im Herzen unserer Kreationen',
             'troupe.page-title': 'La Troupe des Soirs Bleus',
             'troupe.description': 'Treffen Sie die talentierten Schauspieler und Schauspielerinnen, die unsere Theaterkreationen zum Leben erwecken',
+            'troupe.active-title': 'Aktive Mitglieder',
+            'troupe.alumni-title': 'Ehemalige',
             'actor.anissa-role': 'Schauspielerin / Regisseurin',
             'actor.cecile-role': 'Schauspielerin / Szenografin',
             'actor.anaïs-role': 'Schauspielerin / Fotografin',
+            'actor.valentin-role': 'Schauspieler / Regisseur',
+            'actor.eliot-role': 'Schauspieler / Regisseur',
+            'actor.lina-role': 'Dramatikerin / Regisseurin',
             'actor.victor-role': 'Schauspieler / Fotograf',
             'label.coming-soon': 'Bald',
             'footer.copyright': '© 2026 Lina Biancarelli - Dramatikerin'
@@ -580,9 +623,14 @@
             'troupe.subtitle': 'Los actores y actrices en el corazón de nuestras creaciones',
             'troupe.page-title': 'La Troupe des Soirs Bleus',
             'troupe.description': 'Conoce a las talentosas actrices y actores que dan vida a nuestras creaciones teatrales',
+            'troupe.active-title': 'Miembros activos',
+            'troupe.alumni-title': 'Antiguos miembros',
             'actor.anissa-role': 'Actriz / Directora',
             'actor.cecile-role': 'Actriz / Escenógrafa',
             'actor.anaïs-role': 'Actriz / Fotógrafa',
+            'actor.valentin-role': 'Actor / Director',
+            'actor.eliot-role': 'Actor / Director',
+            'actor.lina-role': 'Dramaturga / Directora',
             'actor.victor-role': 'Actor / Fotógrafo',
             'label.coming-soon': 'Próximamente',
             'footer.copyright': '© 2026 Lina Biancarelli - Autora teatral'
@@ -593,9 +641,14 @@
             'troupe.subtitle': 'الممثلات والممثلون في قلب إبداعاتنا',
             'troupe.page-title': 'فرقة أمسيات الأزرق',
             'troupe.description': 'تعرف على الممثلات والممثلين الموهوبين الذين يحيون إبداعاتنا المسرحية',
+            'troupe.active-title': 'الأعضاء النشطون',
+            'troupe.alumni-title': 'الخريجون',
             'actor.anissa-role': 'ممثلة / مخرجة',
             'actor.cecile-role': 'ممثلة / مصممة ديكور',
             'actor.anaïs-role': 'ممثلة / مصورة',
+            'actor.valentin-role': 'ممثل / مخرج',
+            'actor.eliot-role': 'ممثل / مخرج',
+            'actor.lina-role': 'كاتبة مسرح / مخرجة',
             'actor.victor-role': 'ممثل / مصور',
             'label.coming-soon': 'قريباً',
             'footer.copyright': '© 2026 لينا بيانكاريلي - كاتبة مسرح'
@@ -625,7 +678,11 @@
         elements.forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[currentLanguage] && translations[currentLanguage][key]) {
-                element.textContent = translations[currentLanguage][key];
+                if (key === 'troupe.bio') {
+                    element.innerHTML = translations[currentLanguage][key];
+                } else {
+                    element.textContent = translations[currentLanguage][key];
+                }
             }
         });
     }
